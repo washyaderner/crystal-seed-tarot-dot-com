@@ -2,53 +2,6 @@
 
 import Image from "next/image"
 
-const portfolioItems = [
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2023/01/bachelorette-party-portland.webp?w=564",
-    caption: "Bachelorette party, rental house, Portland, OR",
-  },
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2023/01/11-yo-birthday-party.webp?w=564",
-    caption: "Witch-themed 11th B-day party, Portland, OR",
-  },
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2023/01/14-yo-birthday-party.jpeg?w=564",
-    caption: "14th B-day party, Lake Oswego, OR",
-  },
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2023/01/rosey-award-overhead-shot-2017.webp?w=564",
-    caption: "The Portland Rosey's 2017 – Advertising Awards – Portland, OR",
-    isLandscape: true,
-  },
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2023/01/bachelorette-party-house-boat-2021.jpg?w=959",
-    caption: "Bachelorette Party, House Boat, Vancouver, WA",
-  },
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2023/01/next-adventure-work-party-2023.jpg?w=768",
-    caption: "Next Adventure\nEmployee Party 2023\nPortland, OR",
-  },
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2023/01/sdf-collective-halloween-2022.jpg?w=768",
-    caption: "Halloween Event 2022\nSDF Collective\nGresham, OR",
-  },
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2025/02/img_8190.jpeg?w=683",
-    caption: "2024 End of Year Vendor Party\nEvergreen Event Center",
-    credit: "Photo credit: Dionne Krauss Photography",
-  },
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2025/02/img_8194.jpeg?w=683",
-    caption: "2024 End of Year Vendor Party\nEvergreen Event Center",
-    credit: "Photo credit: Dionne Krauss Photography",
-  },
-  {
-    image: "https://crystalseedtarot.com/wp-content/uploads/2025/02/img_9538.jpeg?w=750",
-    caption: "Goth Wedding at the Benson Hotel 2024",
-    isLandscape: true,
-  },
-]
-
 const reviews = [
   {
     name: "Gina G.",
@@ -310,70 +263,52 @@ const reviews = [
   },
 ]
 
-export default function Portfolio() {
+export default function Reviews() {
   return (
     <div className="min-h-screen">
-      <section className="py-16 bg-black/20 backdrop-blur-md">
-        <h1 className="text-4xl md:text-5xl font-serif text-white mb-4 text-center">Portfolio</h1>
-
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <p className="text-xl text-white/90">
-              Here are a few of the amazing parties and events I've done Tarot at over the years.
-            </p>
+      <section className="py-16 bg-black/20 backdrop-blur-md relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute left-0 top-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+          <div className="absolute -left-10 top-20 rotate-[-15deg]">
+            <Image src="/images/Services-Tarot-Readings-10-Card-Spread.webp" alt="" width={300} height={300} className="opacity-30" />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-min mb-16">
-            {portfolioItems.map((item, index) => (
-              <div
-                key={index}
-                className={`bg-white/10 backdrop-blur-md p-4 rounded-lg ${
-                  item.isLandscape ? "md:col-span-2 lg:col-span-2" : ""
-                }`}
-              >
-                <Image
-                  src={item.image || "/placeholder.svg"}
-                  alt={item.caption}
-                  width={item.isLandscape ? 800 : 564}
-                  height={item.isLandscape ? 450 : 564}
-                  className="rounded-lg mb-4 w-full h-auto object-cover"
-                />
-                <p className="text-white/90 text-center whitespace-pre-line">{item.caption}</p>
-                {item.credit && <p className="text-white/70 text-sm text-center mt-2">{item.credit}</p>}
-              </div>
-            ))}
+          <div className="absolute right-10 bottom-5 rotate-[10deg]">
+            <Image src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp" alt="" width={280} height={280} className="opacity-30" />
           </div>
+        </div>
 
-          <div className="text-center mb-12">
+        <div className="container mx-auto px-4 relative z-10">
+          <h1 className="text-4xl md:text-5xl font-serif text-white mb-2 text-center">Client Reviews</h1>
+          <p className="text-center text-white/80 max-w-2xl mx-auto mb-12">
+            Read what clients have to say about their experiences with Crystal Seed Tarot's readings, events, and services.
+          </p>
+
+          <div className="text-center mb-12 bg-gradient-to-r from-purple-500/20 via-white/20 to-purple-500/20 p-6 rounded-lg shadow-inner">
             <h2 className="text-2xl font-serif text-white mb-2">Top Pro status on Thumbtack</h2>
             <p className="text-xl text-white/90">
               Top Pros are among the highest-rated, most popular professionals on Thumbtack.
             </p>
           </div>
 
-          <div className="border-t border-white/20 pt-12 mt-12">
-            <h2 className="text-3xl md:text-4xl font-serif text-white mb-8 text-center">Client Reviews</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {reviews.map((review, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-md p-6 rounded-lg">
-                  <h3 className="text-xl font-serif text-white mb-2">{review.name}</h3>
-                  <p className="text-white/70 text-sm mb-4">{review.date}</p>
-                  <p className="text-white/90 mb-4">{review.body}</p>
-                  {review.details && <p className="text-white/70 text-sm mb-2">Details: {review.details}</p>}
-                  {review.type && <p className="text-white/70 text-sm mb-4">Type: {review.type}</p>}
-                  {review.reply && (
-                    <div className="bg-white/5 p-4 rounded-lg mt-4">
-                      <p className="text-white/90 italic">Crystal Seed Tarot's reply:</p>
-                      <p className="text-white/80 mt-2">{review.reply}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {reviews.map((review, index) => (
+              <div key={index} className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+                <h3 className="text-xl font-serif text-white mb-2">{review.name}</h3>
+                <p className="text-white/70 text-sm mb-4">{review.date}</p>
+                <p className="text-white/90 mb-4">{review.body}</p>
+                {review.details && <p className="text-white/70 text-sm mb-2">Details: {review.details}</p>}
+                {review.type && <p className="text-white/70 text-sm mb-4">Type: {review.type}</p>}
+                {review.reply && (
+                  <div className="bg-white/5 p-4 rounded-lg mt-4 transition-all duration-300 hover:bg-white/10">
+                    <p className="text-white/90 italic">Crystal Seed Tarot's reply:</p>
+                    <p className="text-white/80 mt-2">{review.reply}</p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
     </div>
   )
-}
-
+} 

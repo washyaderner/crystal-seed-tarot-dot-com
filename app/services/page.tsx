@@ -52,7 +52,7 @@ export default function Services() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
             {services.map((service) => (
-              <Card key={service.title} className="bg-white/10 backdrop-blur-md border border-white/20">
+              <Card key={service.title} className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
                 <CardContent className="p-6">
                   <h2 className="text-2xl font-serif text-white mb-4">{service.title}</h2>
                   <p className="text-white/80 mb-4">{service.description}</p>
@@ -67,14 +67,14 @@ export default function Services() {
             ))}
           </div>
 
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-lg mb-16">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-lg mb-16 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:bg-white/15">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative aspect-[3/4] w-full">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tarot-Classes-evergreen-spreading-cards-1-RPTjreZZq8n1CnDCqItA6f7pLpg2To.webp"
+                  src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
                   alt="Tarot cards being spread with candlelight"
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:brightness-110"
                 />
                 <p className="text-white/60 text-sm mt-2 absolute bottom-0 left-0 p-2">
                   Photo credit: Dionne Krauss Photography
@@ -107,7 +107,7 @@ export default function Services() {
                     see you in class!!
                   </p>
                   <div className="pt-4">
-                    <Button asChild variant="outline" className="text-white border-white hover:bg-white/20">
+                    <Button asChild variant="outline">
                       <a href="#" className="inline-flex items-center">
                         Register for Tarot Card Training Course
                       </a>
@@ -177,7 +177,7 @@ export default function Services() {
 
           <div className="mt-8 text-center">
             <Button asChild variant="outline">
-              <Link href="/contact" className="text-white border-white hover:bg-white/20">
+              <Link href="/contact">
                 Book a Service
               </Link>
             </Button>
