@@ -10,7 +10,7 @@ const blogPosts = [
     date: "February 23, 2025",
     author: "crystalseedhealing",
     slug: "better-practices-for-your-practice",
-    image: "https://crystalseedtarot.com/wp-content/uploads/2025/02/img_9934.jpeg?w=800&h=600&crop=1",
+    image: "/images/Blog-Better-Practices-For-Your-Practice.webp",
   },
   {
     title: "When Being A Good Person Goes Bad",
@@ -19,17 +19,16 @@ const blogPosts = [
     date: "February 3, 2023",
     author: "crystalseedhealing",
     slug: "when-being-a-good-person-goes-bad",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/when-being-a-good-person-goes-bad-blog-2023_02_03_blog-pic-bridge.jpg-dgzBWw3eGUZvFrkAIDOHi5pxYza4Sy.jpeg",
+    image: "/images/Blog-When-Being-A-Good-Person-Goes-Bad.jpg",
   },
   {
     title: "Accepting the Totality of Your Worth",
     excerpt:
-      'One question that I get asked a lot in Tarot is "How do I find my soulmate?" While I can\'t tell you exactly where you\'ll meet your significant other or when, there are several things that I believe can help bring you to the point in your life where just the right circumstances are met and you finally meet "the one". It all has to do with what you believe you deserve.',
+      "One question that I get asked a lot in Tarot is \"How do I find my soulmate?\" While I can't tell you exactly where you'll meet your significant other or when, there are several things that I believe can help bring you to the point in your life where just the right circumstances are met…",
     date: "November 11, 2021",
     author: "crystalseedhealing",
     slug: "accepting-the-totality-of-your-worth",
-    image: "https://crystalseedtarot.com/wp-content/uploads/2021/11/blog-pic-cloud-swirl.jpg?w=800&h=600&crop=1",
+    image: "/images/Blog-Accepting-the-Totality-of-Your-Worth.webp",
   },
   {
     title: "The Irrational Fear of Starting Over",
@@ -38,7 +37,7 @@ const blogPosts = [
     date: "June 15, 2021",
     author: "crystalseedhealing",
     slug: "the-irrational-fear-of-starting-over",
-    image: "https://crystalseedtarot.com/wp-content/uploads/2021/06/irrational-fear.jpg?w=800&h=600&crop=1",
+    image: "/images/Blog-The-Irrational-Fear-of-Starting-Over.webp",
   },
   {
     title: "Ghost Week!",
@@ -47,7 +46,7 @@ const blogPosts = [
     date: "March 8, 2021",
     author: "crystalseedhealing",
     slug: "ghost-week",
-    image: "https://crystalseedtarot.com/wp-content/uploads/2021/03/ghost-week-2021.jpg?w=1200&h=900&crop=1",
+    image: "/images/Blog-Ghost-Week-2021.webp",
   },
   {
     title: "Be Nice to Yourself, D@mnit!",
@@ -55,7 +54,7 @@ const blogPosts = [
     date: "February 21, 2021",
     author: "crystalseedhealing",
     slug: "be-nice-to-yourself-damnit",
-    image: "https://crystalseedtarot.com/wp-content/uploads/2021/02/image_6483441.jpg?w=800&h=600&crop=1",
+    image: "/images/Blog-Be-Nice-to-Yourself-D@mnit!.webp",
   },
 ]
 
@@ -67,7 +66,7 @@ export default function Blog() {
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">Blog</h1>
           <div className="mb-12">
             <Image
-              src="https://crystalseedtarot.com/wp-content/uploads/2021/02/image_6483441-7.jpg"
+              src="/images/Blog-Hero.jpg"
               alt="Crystal Seed Blog"
               width={1200}
               height={400}
@@ -76,7 +75,7 @@ export default function Blog() {
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post, index) => (
-              <Card key={index} className="bg-white/10 backdrop-blur-md border border-white/20">
+              <Card key={index} className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
                 <CardContent className="p-6">
                   {post.image && (
                     <Image
@@ -84,14 +83,14 @@ export default function Blog() {
                       alt={post.title}
                       width={800}
                       height={600}
-                      className="w-full h-48 object-cover rounded-lg mb-4"
+                      className="w-full h-48 object-cover rounded-lg mb-4 transition-all duration-300 hover:brightness-110"
                     />
                   )}
                   <h2 className="text-2xl font-serif text-white mb-4">{post.title}</h2>
                   <p className="text-white/80 mb-4">{post.excerpt}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-white/60">{post.date}</span>
-                    <Link href={`/blog/${post.slug}`} className="text-white hover:text-white/80 transition-colors">
+                    <Link href={`/blog/${post.slug}`} className="text-white hover:text-purple-300 transition-colors">
                       Read more →
                     </Link>
                   </div>

@@ -10,6 +10,105 @@ Also update the progress of the task in the Scratchpad when you finish a subtask
 Especially when you finished a milestone, it will help to improve your depth of task accomplishment to use the Scratchpad to reflect and plan.
 The goal is to help you maintain a big picture as well as the progress of the task. Always refer to the Scratchpad when you plan the next step.
 
+# Question-Only Mode
+
+If the user starts a prompt with the word "question", respond concisely to their question without taking any action. Do not:
+- Run terminal commands
+- Edit files
+- Search the codebase
+- Make suggestions for changes
+- Create pull requests
+
+Simply provide a direct, concise answer to their question and wait for further instructions.
+
+# Git Branching Workflow
+
+## Branch Types
+1. main (Production)
+   - Always stable and deployable
+   - Direct commits not allowed
+   - Changes come only through PR merges from dev
+   - Protected branch requiring PR reviews
+
+2. dev (Development)
+   - Main development branch
+   - Feature branches merge here first
+   - Used for preview deployments
+   - Must pass tests before merging to main
+
+3. feature/* (Feature Branches)
+   - Created from dev branch
+   - One branch per feature
+   - Format: feature/descriptive-name
+   - Merged back to dev when complete
+
+## Pull Request Templates
+
+1. Feature Branch to Dev:
+   ```markdown
+   Title: [Cursor] Feature Description
+   Base: dev
+   Compare: feature/your-feature-name
+   
+   ## Changes
+   - List specific changes made
+   - One change per line
+   - Be specific and clear
+   
+   ## Testing
+   - List what was tested
+   - Include preview deployment checks
+   - Note any specific test cases
+   
+   ## Notes
+   - Any additional context
+   - Breaking changes if any
+   - Dependencies or requirements
+   ```
+
+2. Dev to Main (Production):
+   ```markdown
+   Title: [Cursor] Merge dev into main for production
+   Base: main
+   Compare: dev
+   
+   ## Changes
+   - List all features being promoted to production
+   - Note any major updates or changes
+   - Reference related PR numbers if applicable
+   
+   ## Testing
+   - Confirm all changes verified in dev
+   - List preview deployments tested
+   - Note any specific production considerations
+   
+   ## Notes
+   - Any deployment requirements
+   - Breaking changes if any
+   - Required environment variables
+   ```
+
+## PR Management Rules
+- All pull requests will be handled through GitHub UI
+- NO git commands for PR operations should be executed by Cursor
+- Feature branches to dev: Use squash and merge
+- Dev to main: Use regular merge
+- Always maintain clean git history
+- Include "[Cursor] " prefix in PR titles
+
+## PR Instructions Checklist
+Every time we talk about doing a pull request, do not execute any commands to start the process, as the user will be doing it on GitHub manually every time. Instead, provide the following information in a clear, organized format:
+
+1. Which branch needs to be base, which is compare?
+2. What's the title? (Always include "[Cursor] " prefix)
+3. What's the complete description to copy/paste?
+4. Are we doing squash and merge or regular merge?
+5. Should the branch be deleted after merging?
+6. Do we need to move back to a different branch after PR?
+
+For feature branches to dev, always use squash and merge to maintain clean history.
+For dev to main, always use regular merge to preserve feature commits.
+
 # Tools
 
 Note all the tools are in python3. So in the case you need to do batch processing, you can always consult the python files and write your own script.
@@ -89,6 +188,57 @@ Snippet: This is a snippet of the search result
 ```
 If needed, you can further use the `web_scraper.py` file to scrape the web page content.
 
+# Scratchpad Usage
+
+Use the `.cursorrules` file as a Scratchpad to organize your thoughts. When receiving a new task:
+
+1. Review the content of the Scratchpad
+2. Clear old tasks if necessary
+3. Explain the new task and plan the steps needed to complete it
+4. Use todo markers to track progress:
+   [X] Completed task
+   [ ] Pending task
+
+Update the progress in the Scratchpad when finishing subtasks. After completing milestones, reflect and plan the next steps. This maintains a big picture view and documents the project's progress.
+
+Structure the Scratchpad with these sections:
+- Current Project Status & Roadmap
+- Completed Major Milestones
+- Current Task (with implementation steps)
+- Upcoming Tasks
+- Error Resolution Documentation
+
+# Error Resolution Documentation
+
+Document errors and their solutions in a consistent format:
+
+1. Issue Name
+   - Issue: Brief description of the problem
+   - Root Cause: What caused the issue
+   - Resolution: How it was fixed
+   - Prevention: Steps to prevent recurrence
+
+This creates a knowledge base for common issues and their solutions, helping prevent repeated problems.
+
+# Content Standardization
+
+If the project involves content management:
+- Standardize on a single content format (Markdown recommended)
+- Create style guides for content creation
+- Implement validation utilities for content checking
+- Document content requirements for each component
+- Establish clear conversion processes for legacy content
+
+# Safety Measures
+
+Implement these safety practices:
+- Add warning comments to configuration files
+- Include purpose documentation for each configuration section
+- Implement validation checks for critical configuration values
+- Create separation between environment-specific and shared configurations
+- Document clear procedures for branch synchronization
+- Create pre-merge checklists for critical files
+
 # Lessons
 
 ## User Specified Lessons
@@ -106,6 +256,24 @@ If needed, you can further use the `web_scraper.py` file to scrape the web page 
 - Use 'gpt-4o' as the model name for OpenAI's GPT-4 with vision capabilities
 
 # Scratchpad
+
+# Current Project Status & Roadmap
+- Working on the Crystal Seed Tarot website
+- Currently on feature/images branch making UI enhancements
+
+# Completed Major Milestones
+- Updated About page layout
+- Enhanced image display on About page
+- Modified Contact page with personalized heading
+
+# Current Task
+[X] Make the image on About page width consistent with text card
+[X] Update the About page with separate cards for image and text
+[X] Commit changes with proper [Cursor] prefix
+[ ] Provide PR creation instructions
+
+# Upcoming Tasks
+- Create PR to merge feature/images into dev
 
 # Debugging and Reasoning Framework
 

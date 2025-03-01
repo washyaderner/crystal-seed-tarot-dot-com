@@ -15,7 +15,7 @@ With that said, here are some common misconceptions I would like to clear up abo
     date: "February 23, 2025",
     author: "crystalseedhealing",
     slug: "better-practices-for-your-practice",
-    image: "https://crystalseedtarot.com/wp-content/uploads/2025/02/img_9934.jpeg?w=800&h=600&crop=1",
+    image: "/images/Blog-Better-Practices-For-Your-Practice.webp",
   },
   {
     title: "When Being A Good Person Goes Bad",
@@ -23,8 +23,7 @@ With that said, here are some common misconceptions I would like to clear up abo
     date: "February 3, 2023",
     author: "crystalseedhealing",
     slug: "when-being-a-good-person-goes-bad",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/when-being-a-good-person-goes-bad-blog-2023_02_03_blog-pic-bridge.jpg-dgzBWw3eGUZvFrkAIDOHi5pxYza4Sy.jpeg",
+    image: "/images/Blog-When-Being-A-Good-Person-Goes-Bad.jpg",
   },
   {
     title: "Accepting the Totality of Your Worth",
@@ -64,7 +63,7 @@ If you do the energy math, I'm sure you can look back and see how many times you
     date: "November 11, 2021",
     author: "crystalseedhealing",
     slug: "accepting-the-totality-of-your-worth",
-    image: "https://crystalseedtarot.com/wp-content/uploads/2021/11/blog-pic-cloud-swirl.jpg?w=800&h=600&crop=1",
+    image: "/images/Blog-Accepting-the-Totality-of-Your-Worth.webp",
   },
   // Add other blog posts here...
 ]
