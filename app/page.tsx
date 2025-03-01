@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -35,9 +36,18 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-white/90">
             A Crystal Clear Connection to Yourself
           </p>
+          <div className="mb-8">
+            <Image 
+              src="/images/Home-Shuffle-Words.png" 
+              alt="Crystal Seed Tarot: Insight, Clarity, Growth, Peace" 
+              width={500} 
+              height={100}
+              className="mx-auto"
+            />
+          </div>
           <p className="text-lg mb-8">Helping connect you to yourself since 2008</p>
           <Button asChild variant="outline">
-            <Link href="/contact" className="text-white border-white hover:bg-white/20 text-lg px-6 py-3">
+            <Link href="/contact" className="text-lg px-6 py-3">
               Begin Your Journey
             </Link>
           </Button>
@@ -48,8 +58,17 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-serif text-center mb-16 text-white">Our Services</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
               <CardContent className="p-6">
+                <div className="mb-4">
+                  <Image 
+                    src="/images/Services-Tarot-Readings-10-Card-Spread.webp" 
+                    alt="Private Tarot Reading" 
+                    width={300} 
+                    height={200}
+                    className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
+                  />
+                </div>
                 <h3 className="text-xl font-serif mb-4 text-white">Private Readings</h3>
                 <p className="text-white/80 mb-4">
                   Gain insights into your life's journey and receive guidance for better outcomes. Available in-person
@@ -58,8 +77,17 @@ export default function Home() {
                 <p className="text-white font-semibold">$80/hour</p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
               <CardContent className="p-6">
+                <div className="mb-4">
+                  <Image 
+                    src="/images/Services-Tarot-Private-Event.webp" 
+                    alt="Tarot at Private Events" 
+                    width={300} 
+                    height={200}
+                    className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
+                  />
+                </div>
                 <h3 className="text-xl font-serif mb-4 text-white">Private Events</h3>
                 <p className="text-white/80 mb-4">
                   Tarot services for various events, customized to fit your theme and group size. Available online or
@@ -68,8 +96,17 @@ export default function Home() {
                 <p className="text-white font-semibold">$110/hour</p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20">
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
               <CardContent className="p-6">
+                <div className="mb-4">
+                  <Image 
+                    src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp" 
+                    alt="Tarot Lessons" 
+                    width={300} 
+                    height={200}
+                    className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
+                  />
+                </div>
                 <h3 className="text-xl font-serif mb-4 text-white">Tarot Lessons</h3>
                 <p className="text-white/80 mb-4">
                   Learn the art of Tarot with comprehensive lessons covering various aspects of this ancient oracle.

@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function Contact() {
   return (
     <div className="min-h-screen">
       <section className="py-16 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">I look forward to hearing from you!</h1>
 
           <div className="max-w-2xl mx-auto mb-12">
             <p className="text-white/90 text-center mb-8">
@@ -14,21 +15,33 @@ export default function Contact() {
             </p>
 
             <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg mb-12">
-              <h2 className="text-3xl font-serif text-white mb-6 text-center">Get in Touch</h2>
-              <div className="text-center space-y-4">
-                <p>
-                  <a
-                    href="mailto:crystalseedtarot@gmail.com"
-                    className="text-white hover:text-white/80 transition-colors"
-                  >
-                    crystalseedtarot@gmail.com
-                  </a>
-                </p>
-                <p>
-                  <a href="tel:5416352278" className="text-white hover:text-white/80 transition-colors">
-                    Call/Text (541) 635-2278
-                  </a>
-                </p>
+              <div className="flex flex-col items-center">
+                <div className="w-full mb-6">
+                  <Image
+                    src="/images/About-Holly-Nicole-Laughing-2022.jpeg"
+                    alt="Holly Nicole laughing"
+                    width={800}
+                    height={800}
+                    className="rounded-lg shadow-lg transition-all duration-300 hover:shadow-purple-500/30 hover:scale-[1.02] w-full h-auto"
+                  />
+                </div>
+                <div className="text-center w-full">
+                  <div className="space-y-4">
+                    <p>
+                      <a
+                        href="mailto:crystalseedtarot@gmail.com"
+                        className="text-white hover:text-white/80 transition-colors text-lg"
+                      >
+                        crystalseedtarot@gmail.com
+                      </a>
+                    </p>
+                    <p>
+                      <a href="tel:5416352278" className="text-white hover:text-white/80 transition-colors text-lg">
+                        Call/Text (541) 635-2278
+                      </a>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -82,22 +95,35 @@ export default function Contact() {
                   required
                 ></textarea>
               </div>
-              <Button type="submit" className="bg-white/20 text-white border border-white/40 hover:bg-white/30">
+              <Button type="submit" className="bg-transparent border border-white hover:bg-white/10">
                 Send Message
               </Button>
             </form>
           </div>
 
           <div className="mt-12 text-center">
-            <h2 className="text-2xl font-serif text-white mb-4">Additional Contact Information</h2>
+            <h2 className="text-2xl font-serif text-white mb-4">Follow Us</h2>
             <div className="space-x-4">
-              <a href="#" className="text-white hover:text-white/80 transition-colors">
+              <a 
+                href="https://www.facebook.com/CrystalSeedTarot/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white hover:text-white/80 transition-colors"
+              >
                 Facebook
               </a>
-              <a href="#" className="text-white hover:text-white/80 transition-colors">
+              <a 
+                href="https://www.instagram.com/crystal_seed_tarot/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white hover:text-white/80 transition-colors"
+              >
                 Instagram
               </a>
-              <a href="#" className="text-white hover:text-white/80 transition-colors">
+              <a 
+                href="#" 
+                className="text-white hover:text-white/80 transition-colors"
+              >
                 Twitter
               </a>
             </div>
