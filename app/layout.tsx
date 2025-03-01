@@ -3,6 +3,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import Link from "next/link"
+import Navigation from "../components/ui/Navigation"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const playfair = Playfair_Display({
@@ -14,7 +15,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Crystal Seed Tarot",
   description: "A Crystal Clear Connection to Yourself - Helping connect you to yourself since 2008",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -28,85 +29,37 @@ export default function RootLayout({
         <div className="bg-blur"></div>
         <div className="content-wrapper flex flex-col min-h-screen">
           <header className="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
-            <nav className="container mx-auto px-4 py-4">
-              <div className="flex justify-between items-center">
-                <Link href="/" className="text-2xl font-serif text-white mb-2 md:mb-0">
-                  Crystal Seed Tarot
-                </Link>
-                <ul className="flex space-x-6">
-                  <li>
-                    <Link href="/" className="text-white hover:text-white/80 transition-colors">
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/services" className="text-white hover:text-white/80 transition-colors">
-                      Services
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/portfolio" className="text-white hover:text-white/80 transition-colors">
-                      Portfolio
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/blog" className="text-white hover:text-white/80 transition-colors">
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/about" className="text-white hover:text-white/80 transition-colors">
-                      About
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact" className="text-white hover:text-white/80 transition-colors">
-                      Contact
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </nav>
+            <Navigation />
           </header>
-          <main className="flex-grow">{children}</main>
-          <footer className="bg-white/10 backdrop-blur-md border-t border-white/20 py-8">
+          
+          {/* Main content */}
+          <main className="flex-1 relative z-10">
+            {children}
+          </main>
+          
+          {/* Footer section */}
+          <footer className="bg-black/40 backdrop-blur-md border-t border-white/20 py-8 mt-auto relative z-20">
             <div className="container mx-auto px-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                  <h3 className="text-xl font-serif text-white mb-4">Crystal Seed Tarot & Healing</h3>
-                  <p className="text-white/80">Helping connect you to yourself since 2008</p>
+              <div className="flex flex-col md:flex-row justify-between items-center">
+                <div className="mb-4 md:mb-0">
+                  <p className="text-white/80 text-sm">&copy; {new Date().getFullYear()} Crystal Seed Tarot. All rights reserved.</p>
                 </div>
-                <div>
-                  <h4 className="text-lg font-serif text-white mb-2">Services</h4>
-                  <ul className="text-white/80">
-                    <li>Tarot Readings – Intuitive & Spiritual Guidance</li>
-                    <li>Classes & Lessons</li>
-                    <li>Events – Meditations – Blogs</li>
-                  </ul>
+                <div className="flex space-x-4">
+                  <a href="#" className="text-white/80 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                    <span className="sr-only">Facebook</span>
+                  </a>
+                  <a href="#" className="text-white/80 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span className="sr-only">Instagram</span>
+                  </a>
                 </div>
-                <div>
-                  <h4 className="text-lg font-serif text-white mb-2">Connect</h4>
-                  <ul className="text-white/80">
-                    <li>
-                      <Link href="/contact" className="hover:text-white transition-colors">
-                        Contact Us
-                      </Link>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:text-white transition-colors">
-                        Facebook
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:text-white transition-colors">
-                        Instagram
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="mt-8 text-center text-white/60">
-                <p>&copy; {new Date().getFullYear()} Crystal Seed Tarot. All rights reserved.</p>
               </div>
             </div>
           </footer>
@@ -115,7 +68,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
