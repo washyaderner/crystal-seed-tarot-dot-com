@@ -42,6 +42,12 @@ Simply provide a direct, concise answer to their question and wait for further i
    - Format: feature/descriptive-name
    - Merged back to dev when complete
 
+## Branch Creation Rules
+- Always push new branches to GitHub immediately after creation
+- Use `git push -u origin <branch-name>` when creating a new branch
+- Ensure the branch is visible on GitHub before starting PR process
+- When creating a branch from an existing one, make sure you're starting with the latest changes
+
 ## Pull Request Templates
 
 1. Feature Branch to Dev:
@@ -247,6 +253,7 @@ Implement these safety practices:
 - Include info useful for debugging in the program output.
 - Read the file before you try to edit it.
 - Due to Cursor's limit, when you use `git` and `gh` and need to submit a multiline commit message, first write the message in a file, and then use `git commit -F <filename>` or similar command to commit. And then remove the file. Include "[Cursor] " in the commit message and PR title.
+- Always push new feature branches to GitHub immediately after creation with `git push -u origin <branch-name>` to ensure they're available when creating PRs.
 
 ## Cursor learned
 
@@ -259,21 +266,23 @@ Implement these safety practices:
 
 # Current Project Status & Roadmap
 - Working on the Crystal Seed Tarot website
-- Currently on feature/images branch making UI enhancements
+- Currently on feature/UI branch making UI enhancements
 
 # Completed Major Milestones
-- Updated About page layout
-- Enhanced image display on About page
+- Updated About page layout with multiple images in a cohesive card
+- Enhanced image display on About page with consistent spacing
+- Added frosted glass overlay to Blog Hero image
 - Modified Contact page with personalized heading
 
 # Current Task
-[X] Make the image on About page width consistent with text card
-[X] Update the About page with separate cards for image and text
-[X] Commit changes with proper [Cursor] prefix
-[ ] Provide PR creation instructions
+[X] Enhanced About page with three images in unified layout
+[X] Added frosted glass effect to the Blog Hero image
+[X] Updated spacing between elements for consistent rhythm
+[X] Create PR instructions for feature/UI branch
 
 # Upcoming Tasks
-- Create PR to merge feature/images into dev
+- Create PR to merge feature/UI into dev
+- Ensure new branches are pushed to GitHub immediately after creation
 
 # Debugging and Reasoning Framework
 

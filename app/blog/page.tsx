@@ -64,14 +64,15 @@ export default function Blog() {
       <section className="py-16 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">Blog</h1>
-          <div className="mb-12">
+          <div className="mb-12 relative rounded-lg overflow-hidden">
             <Image
               src="/images/Blog-Hero.jpg"
               alt="Crystal Seed Blog"
               width={1200}
               height={400}
-              className="w-full h-64 object-cover rounded-lg"
+              className="w-full h-64 object-cover"
             />
+            <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px] mix-blend-overlay"></div>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post, index) => (
