@@ -96,7 +96,7 @@ export default function Home() {
               <CardContent className="p-6">
                 <div className="mb-4">
                   <Image 
-                    src="/images/Services-Tarot-Private-Event.webp" 
+                    src="/images/Home-Private-Events.webp" 
                     alt="Tarot at Private Events" 
                     width={300} 
                     height={200}
