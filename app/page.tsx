@@ -32,30 +32,37 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <section className="flex-grow flex items-center justify-center text-white px-4 py-16">
         <div className="text-center bg-black/20 backdrop-blur-md p-8 rounded-lg max-w-3xl">
-          <h1 className="text-5xl md:text-7xl font-serif mb-6">Crystal Seed Tarot</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-white/90">
-            A Crystal Clear Connection to Yourself
+          <h1 className="text-4xl md:text-5xl font-serif tracking-wide text-pink-500 mb-3 drop-shadow-lg">
+            Crystal Seed<br />
+            Tarot & Healing
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-pink-300 mb-6 drop-shadow-lg">
+            Helping connect you to yourself since 2008
           </p>
-          <div className="mb-8 relative">
+          
+          <div className="mb-6">
             <Image 
               src="/images/Home-Shuffle.png" 
               alt="Crystal Seed Tarot" 
-              width={500} 
-              height={250}
+              width={600} 
+              height={600}
               className="mx-auto rounded-lg shadow-lg"
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-              <p className="text-2xl md:text-3xl font-serif tracking-wide text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                <span className="block mb-2">Insight</span>
-                <span className="block mb-2">Clarity</span>
-                <span className="block mb-2">Growth</span>
-                <span className="block">Peace</span>
-              </p>
-            </div>
           </div>
-          <p className="text-lg mb-8">Helping connect you to yourself since 2008</p>
-          <Button asChild variant="outline">
-            <Link href="/contact" className="text-lg px-6 py-3">
+          
+          <div className="mb-6">
+            <h3 className="text-xl md:text-2xl font-medium text-pink-300 mb-2 drop-shadow-lg">
+              Tarot Services:
+            </h3>
+            <p className="text-lg md:text-xl text-white/90 drop-shadow-lg">
+              private bookings, party readings,<br />
+              private lessons, classes, events, & more
+            </p>
+          </div>
+          
+          <Button asChild variant="outline" size="lg" className="mt-4">
+            <Link href="/contact" className="text-lg px-8 py-3">
               Begin Your Journey
             </Link>
           </Button>
