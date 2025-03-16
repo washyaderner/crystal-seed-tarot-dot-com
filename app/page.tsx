@@ -36,14 +36,22 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-white/90">
             A Crystal Clear Connection to Yourself
           </p>
-          <div className="mb-8">
+          <div className="mb-8 relative">
             <Image 
-              src="/images/Home-Shuffle-Words.png" 
-              alt="Crystal Seed Tarot: Insight, Clarity, Growth, Peace" 
+              src="/images/Home-Shuffle.png" 
+              alt="Crystal Seed Tarot" 
               width={500} 
-              height={100}
-              className="mx-auto"
+              height={250}
+              className="mx-auto rounded-lg shadow-lg"
             />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+              <p className="text-2xl md:text-3xl font-serif tracking-wide text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                <span className="block mb-2">Insight</span>
+                <span className="block mb-2">Clarity</span>
+                <span className="block mb-2">Growth</span>
+                <span className="block">Peace</span>
+              </p>
+            </div>
           </div>
           <p className="text-lg mb-8">Helping connect you to yourself since 2008</p>
           <Button asChild variant="outline">
