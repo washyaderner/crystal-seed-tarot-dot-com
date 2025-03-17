@@ -44,17 +44,6 @@ export default function About() {
                   Student Bar Association to name a few.
                 </p>
 
-                {/* Second image with equal padding above and below */}
-                <div className="mb-8">
-                  <Image 
-                    src="/images/About-Holly-Nicole-Laughing-2022.jpeg" 
-                    alt="Holly Nicole laughing" 
-                    width={800} 
-                    height={800} 
-                    className="rounded-lg shadow-lg transition-all duration-300 hover:shadow-purple-500/30 hover:scale-[1.02] w-full h-auto"
-                  />
-                </div>
-
                 <p className="text-white/90 mb-8 leading-relaxed">
                   As I opened myself up to the world of metaphysics and healing, I began to understand that I could
                   study a wide range of things that would all compliment each other or that could be used together. To
@@ -70,17 +59,6 @@ export default function About() {
                   but scratch the surface of any one of these and you'll find that at their cores, this is all about
                   energy work and consciousness (which is another form of energy).
                 </p>
-
-                {/* Third image with equal padding above and below */}
-                <div className="mb-8">
-                  <Image 
-                    src="/images/About-Holly-Rocky-2022.jpeg" 
-                    alt="Holly with Rocky" 
-                    width={800} 
-                    height={800} 
-                    className="rounded-lg shadow-lg transition-all duration-300 hover:shadow-purple-500/30 hover:scale-[1.02] w-full h-auto"
-                  />
-                </div>
 
                 <p className="text-white/90 leading-relaxed">
                   Aside from the things I study and specialize in, I am an intuitive healer, an empath, a
