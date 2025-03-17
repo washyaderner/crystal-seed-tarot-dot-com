@@ -32,12 +32,12 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <section className="flex-grow flex items-center justify-center text-white px-4 py-16">
         <div className="text-center bg-black/20 backdrop-blur-md p-8 rounded-lg max-w-3xl">
-          <h1 className="text-4xl md:text-5xl font-serif tracking-wide text-pink-500 mb-3 drop-shadow-lg">
+          <h1 className="text-4xl md:text-5xl font-serif tracking-wide text-white mb-3 drop-shadow-lg">
             Crystal Seed<br />
             Tarot & Healing
           </h1>
           
-          <p className="text-xl md:text-2xl text-pink-300 mb-6 drop-shadow-lg">
+          <p className="text-xl md:text-2xl text-white mb-6 drop-shadow-lg">
             Helping connect you to yourself since 2008
           </p>
           
@@ -52,17 +52,17 @@ export default function Home() {
           </div>
           
           <div className="mb-6">
-            <h3 className="text-xl md:text-2xl font-medium text-pink-300 mb-2 drop-shadow-lg">
+            <h3 className="text-xl md:text-2xl font-medium text-white mb-2 drop-shadow-lg">
               Tarot Services:
             </h3>
-            <p className="text-lg md:text-xl text-white/90 drop-shadow-lg">
+            <p className="text-lg md:text-xl text-white drop-shadow-lg">
               private bookings, party readings,<br />
               private lessons, classes, events, & more
             </p>
           </div>
           
           <Button asChild variant="outline" size="lg" className="mt-4">
-            <Link href="/contact" className="text-lg px-8 py-3">
+            <Link href="/contact" className="text-lg px-8 py-3 text-white">
               Begin Your Journey
             </Link>
           </Button>
@@ -85,7 +85,7 @@ export default function Home() {
                   />
                 </div>
                 <h3 className="text-xl font-serif mb-4 text-white">Private Readings</h3>
-                <p className="text-white/80 mb-4">
+                <p className="text-white mb-4">
                   Gain insights into your life's journey and receive guidance for better outcomes. Available in-person
                   or virtually.
                 </p>
@@ -96,7 +96,7 @@ export default function Home() {
               <CardContent className="p-6">
                 <div className="mb-4">
                   <Image 
-                    src="/images/Services-Tarot-Private-Event.webp" 
+                    src="/images/Home-Private-Events.webp" 
                     alt="Tarot at Private Events" 
                     width={300} 
                     height={200}
@@ -104,7 +104,7 @@ export default function Home() {
                   />
                 </div>
                 <h3 className="text-xl font-serif mb-4 text-white">Private Events</h3>
-                <p className="text-white/80 mb-4">
+                <p className="text-white mb-4">
                   Tarot services for various events, customized to fit your theme and group size. Available online or
                   in-person.
                 </p>
@@ -123,7 +123,7 @@ export default function Home() {
                   />
                 </div>
                 <h3 className="text-xl font-serif mb-4 text-white">Tarot Lessons</h3>
-                <p className="text-white/80 mb-4">
+                <p className="text-white mb-4">
                   Learn the art of Tarot with comprehensive lessons covering various aspects of this ancient oracle.
                   In-person or virtual options available.
                 </p>
@@ -146,9 +146,9 @@ export default function Home() {
             {blogPosts.map((post, index) => (
               <article key={index} className="bg-white/10 backdrop-blur-md p-6 rounded-lg">
                 <h3 className="text-2xl font-serif mb-4 text-white">{post.title}</h3>
-                <p className="text-white/80 mb-4">{post.excerpt}</p>
+                <p className="text-white mb-4">{post.excerpt}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-white/60">{post.date}</span>
+                  <span className="text-white">{post.date}</span>
                   <Link href={`/blog/${post.slug}`} className="text-white hover:text-white/80 transition-colors">
                     Read more →
                   </Link>
@@ -162,7 +162,7 @@ export default function Home() {
       <section className="py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white">What Our Clients Say</h2>
-          <blockquote className="text-xl md:text-2xl text-white/80 italic mb-6">
+          <blockquote className="text-xl md:text-2xl text-white italic mb-6">
             "Crystal Seed Tarot provided me with clarity and guidance during a difficult time. The readings were
             insightful and transformative."
           </blockquote>

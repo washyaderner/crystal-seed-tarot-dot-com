@@ -1,0 +1,1 @@
+[Cursor] Update homepage and About page layout - Make all text on homepage white for better visibility - Fix private events image path to use Home-Private-Events.webp - Simplify About page by removing additional images - Reorganize About page content for better flow

@@ -259,21 +259,28 @@ Implement these safety practices:
 
 # Current Project Status & Roadmap
 - Working on the Crystal Seed Tarot website
-- Currently on feature/images branch making UI enhancements
+- Created a new feature/General branch for general enhancements
 
 # Completed Major Milestones
-- Updated About page layout
-- Enhanced image display on About page
-- Modified Contact page with personalized heading
+- Updated About page layout with three images in unified styling
+- Added frosted glass effect to Blog Hero image
+- Updated Private Events card on homepage with new image (Home-Private-Events.webp)
+- Created feature/General branch for new enhancements
+- Made all homepage text white for better visibility and consistency
+- Simplified About page by removing both additional images and improving layout
 
 # Current Task
-[X] Make the image on About page width consistent with text card
-[X] Update the About page with separate cards for image and text
-[X] Commit changes with proper [Cursor] prefix
-[ ] Provide PR creation instructions
+[X] Create new feature/General branch from dev
+[X] Push the new branch to GitHub
+[X] Update all text colors to white on homepage
+[X] Fix private events image path
+[X] Remove middle image from About page
+[X] Remove second image from About page
+[ ] Test changes in development server
 
 # Upcoming Tasks
-- Create PR to merge feature/images into dev
+- Make general enhancements to the website
+- Create PR to merge feature/General into dev
 
 # Debugging and Reasoning Framework
 

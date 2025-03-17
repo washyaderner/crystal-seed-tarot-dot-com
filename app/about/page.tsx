@@ -17,10 +17,11 @@ export default function About() {
         <div className="container mx-auto px-4 relative z-10">
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">About Crystal Seed Tarot</h1>
 
-          <div className="max-w-3xl mx-auto space-y-8">
-            {/* Image Card */}
+          <div className="max-w-3xl mx-auto">
+            {/* Single card with all content */}
             <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg shadow-inner border border-white/5 transition-all duration-300 hover:bg-white/15">
-              <div>
+              {/* First image */}
+              <div className="mb-8">
                 <Image 
                   src="/images/About-Holly-Kyle-Reading.jpeg" 
                   alt="Holly Nicole performing a tarot reading" 
@@ -30,12 +31,9 @@ export default function About() {
                   priority
                 />
               </div>
-            </div>
 
-            {/* Text Card */}
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg shadow-inner border border-white/5 transition-all duration-300 hover:bg-white/15">
               <div className="prose prose-invert prose-lg max-w-none">
-                <p className="text-white/90 mb-6 leading-relaxed">
+                <p className="text-white/90 mb-8 leading-relaxed">
                   I have been a professional Tarot card reader for sixteen years and I love what I do! I provide Tarot
                   services for private readings as well as public and private events, and teach Tarot classes and give
                   private Tarot lessons. I am grateful for all of the amazing experiences I've had through Tarot, and
@@ -46,7 +44,7 @@ export default function About() {
                   Student Bar Association to name a few.
                 </p>
 
-                <p className="text-white/90 mb-6 leading-relaxed">
+                <p className="text-white/90 mb-8 leading-relaxed">
                   As I opened myself up to the world of metaphysics and healing, I began to understand that I could
                   study a wide range of things that would all compliment each other or that could be used together. To
                   this end, I use crystals and Reiki in every Tarot reading as they help strengthen my connection to the
@@ -54,7 +52,7 @@ export default function About() {
                   between the two of us.
                 </p>
 
-                <p className="text-white/90 mb-6 leading-relaxed">
+                <p className="text-white/90 mb-8 leading-relaxed">
                   In addition to studying Tarot and practicing Reiki, I have also studied Witchcraft, Shamanism,
                   mediumship, palmistry, numerology, quantum physics, the Mayan Calendar, spirit communication, sound
                   healing, manifestation, and hand-writing analysis. These things may all sound random and unrelated,
