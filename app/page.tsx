@@ -63,7 +63,7 @@ export default function Home() {
           
           <Button asChild variant="outline" size="lg" className="mt-4">
             <Link href="/contact" className="text-lg px-8 py-3 text-white">
-              Begin Your Journey
+              Check Availability
             </Link>
           </Button>
         </div>
