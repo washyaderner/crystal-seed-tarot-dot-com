@@ -148,7 +148,7 @@ export default function Contact() {
               </Button>
               <Button asChild variant="outline" size="icon" className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30">
                 <a 
-                  href="https://www.thebash.com/tarot-card-reading/crystal-seed-tarot" 
+                  href="https://www.thebash.com/tarot-card-reader/crystal-seed-tarot" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-white"
