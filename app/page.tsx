@@ -166,11 +166,16 @@ export default function Home() {
       <section className="py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white">What Our Clients Say</h2>
-          <blockquote className="text-xl md:text-2xl text-white italic mb-6">
-            "Crystal Seed Tarot provided me with clarity and guidance during a difficult time. The readings were
-            insightful and transformative."
-          </blockquote>
-          <cite className="text-white font-semibold not-italic">— Sarah M.</cite>
+          <Link href="/reviews" className="block">
+            <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+              <blockquote className="text-xl md:text-2xl text-white italic mb-6">
+                "Crystal Seed Tarot provided me with clarity and guidance during a difficult time. The readings were
+                insightful and transformative."
+              </blockquote>
+              <cite className="text-white font-semibold not-italic">— Sarah M.</cite>
+              <p className="text-white mt-4">Click to see more reviews →</p>
+            </div>
+          </Link>
         </div>
       </section>
     </div>
