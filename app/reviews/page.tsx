@@ -283,7 +283,7 @@ export default function Reviews() {
             Read what clients have to say about their experiences with Crystal Seed Tarot's readings, events, and services.
           </p>
 
-          <div className="text-center mb-12 bg-gradient-to-r from-purple-500/20 via-white/20 to-purple-500/20 p-6 rounded-lg shadow-inner">
+          <div className="text-center mb-12 bg-gradient-to-r from-purple-500/20 via-white/20 to-purple-500/20 p-6 rounded-lg shadow-inner transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-gradient-to-r hover:from-purple-500/30 hover:via-white/30 hover:to-purple-500/30">
             <h2 className="text-2xl font-serif text-white mb-2">Top Pro status on Thumbtack</h2>
             <p className="text-xl text-white/90">
               Top Pros are among the highest-rated, most popular professionals on Thumbtack.
