@@ -28,17 +28,21 @@ export default function Contact() {
                 <div className="text-center w-full">
                   <div className="space-y-4">
                     <p>
-                      <a
-                        href="mailto:crystalseedtarot@gmail.com"
-                        className="text-white hover:text-white/80 transition-colors text-lg"
-                      >
-                        crystalseedtarot@gmail.com
-                      </a>
+                      <Button asChild variant="ghost" size="default">
+                        <a
+                          href="mailto:crystalseedtarot@gmail.com"
+                          className="text-white text-lg"
+                        >
+                          crystalseedtarot@gmail.com
+                        </a>
+                      </Button>
                     </p>
                     <p>
-                      <a href="tel:5416352278" className="text-white hover:text-white/80 transition-colors text-lg">
-                        Call/Text (541) 635-2278
-                      </a>
+                      <Button asChild variant="ghost" size="default">
+                        <a href="tel:5416352278" className="text-white text-lg">
+                          Call/Text (541) 635-2278
+                        </a>
+                      </Button>
                     </p>
                   </div>
                 </div>
@@ -104,28 +108,34 @@ export default function Contact() {
           <div className="mt-12 text-center">
             <h2 className="text-2xl font-serif text-white mb-4">Follow Us</h2>
             <div className="space-x-4">
-              <a 
-                href="https://www.facebook.com/CrystalSeedTarot/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white hover:text-white/80 transition-colors"
-              >
-                Facebook
-              </a>
-              <a 
-                href="https://www.instagram.com/crystal_seed_tarot/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white hover:text-white/80 transition-colors"
-              >
-                Instagram
-              </a>
-              <a 
-                href="#" 
-                className="text-white hover:text-white/80 transition-colors"
-              >
-                Twitter
-              </a>
+              <Button asChild variant="ghost" size="sm">
+                <a 
+                  href="https://www.facebook.com/CrystalSeedTarot/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-white"
+                >
+                  Facebook
+                </a>
+              </Button>
+              <Button asChild variant="ghost" size="sm">
+                <a 
+                  href="https://www.instagram.com/crystal_seed_tarot/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-white"
+                >
+                  Instagram
+                </a>
+              </Button>
+              <Button asChild variant="ghost" size="sm">
+                <a 
+                  href="#" 
+                  className="text-white"
+                >
+                  Twitter
+                </a>
+              </Button>
             </div>
           </div>
         </div>

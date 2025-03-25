@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 
 const blogPosts = [
   {
@@ -91,9 +92,11 @@ export default function Blog() {
                   <p className="text-white/80 mb-4">{post.excerpt}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-white/60">{post.date}</span>
-                    <Link href={`/blog/${post.slug}`} className="text-white hover:text-purple-300 transition-colors">
-                      Read more →
-                    </Link>
+                    <Button asChild variant="ghost" size="sm">
+                      <Link href={`/blog/${post.slug}`} className="text-white">
+                        Read more →
+                      </Link>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
