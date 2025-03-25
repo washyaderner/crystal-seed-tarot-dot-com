@@ -10,6 +10,7 @@ export default function Home() {
       excerpt:
         "It's finally here! My very first online Tarot course presented through Kumara Academy!!! I have been wanting to get the opportunity to do online courses for years, so this is a long time coming and I am very excited! This online beginner's Tarot course will be 4 weeks long with classes occurring every Sunday in…",
       date: "January 9, 2025",
+      author: "Holly Cole",
       slug: "new-tarot-classes-online",
     },
     {
@@ -17,6 +18,7 @@ export default function Home() {
       excerpt:
         "Life rules for the overly empathic, care-takers, over-helpers, and the overly-objective Recently I read for a woman who sat down for a 3 card reading. I was at a public event and had met her briefly when I read for her daughter a few hours earlier. I knew then that I really wanted to read…",
       date: "February 3, 2023",
+      author: "Holly Cole",
       slug: "when-being-a-good-person-goes-bad",
     },
     {
@@ -24,6 +26,7 @@ export default function Home() {
       excerpt:
         "One question that I get asked a lot in Tarot is \"How do I find my soulmate?\" While I can't tell you exactly where you'll meet your significant other or when, there are several things that I believe can help bring you to the point in your life where just the right circumstances are met…",
       date: "November 11, 2021",
+      author: "Holly Cole",
       slug: "accepting-the-totality-of-your-worth",
     },
   ]
@@ -150,7 +153,10 @@ export default function Home() {
                 <h3 className="text-2xl font-serif mb-4 text-white">{post.title}</h3>
                 <p className="text-white mb-4">{post.excerpt}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-white">{post.date}</span>
+                  <div>
+                    <span className="text-white/80">{post.date}</span>
+                    <span className="text-white/80 ml-2">| by {post.author}</span>
+                  </div>
                   <Button asChild variant="ghost" size="sm">
                     <Link href={`/blog/${post.slug}`} className="text-white">
                       Read more →
