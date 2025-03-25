@@ -132,9 +132,11 @@ export default function Home() {
             </Card>
           </div>
           <div className="text-center mt-8">
-            <Link href="/services" className="text-white hover:text-white/80 transition-colors">
-              View full service details →
-            </Link>
+            <Button asChild variant="outline" size="default">
+              <Link href="/services" className="text-white">
+                View full service details →
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -149,9 +151,11 @@ export default function Home() {
                 <p className="text-white mb-4">{post.excerpt}</p>
                 <div className="flex justify-between items-center">
                   <span className="text-white">{post.date}</span>
-                  <Link href={`/blog/${post.slug}`} className="text-white hover:text-white/80 transition-colors">
-                    Read more →
-                  </Link>
+                  <Button asChild variant="ghost" size="sm">
+                    <Link href={`/blog/${post.slug}`} className="text-white">
+                      Read more →
+                    </Link>
+                  </Button>
                 </div>
               </article>
             ))}
