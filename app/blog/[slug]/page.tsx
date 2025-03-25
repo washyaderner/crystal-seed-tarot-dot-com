@@ -13,7 +13,7 @@ With that said, here are some common misconceptions I would like to clear up abo
 
 ...`,
     date: "February 23, 2025",
-    author: "crystalseedhealing",
+    author: "Holly Cole",
     slug: "better-practices-for-your-practice",
     image: "/images/Blog-Better-Practices-For-Your-Practice.webp",
   },
@@ -21,7 +21,7 @@ With that said, here are some common misconceptions I would like to clear up abo
     title: "When Being A Good Person Goes Bad",
     content: `Life rules for the overly empathic, care-takers, over-helpers, and the overly-objective Recently I read for a woman who sat down for a 3 card reading. I was at a public event and had met her briefly when I read for her daughter a few hours earlier. I knew then that I really wanted to read for her, but she was hesitant. When she finally sat down, I could see why...`,
     date: "February 3, 2023",
-    author: "crystalseedhealing",
+    author: "Holly Cole",
     slug: "when-being-a-good-person-goes-bad",
     image: "/images/Blog-When-Being-A-Good-Person-Goes-Bad.jpg",
   },
@@ -61,7 +61,7 @@ You have to quit looking too low for your partner. You must lift your gaze to th
 
 If you do the energy math, I'm sure you can look back and see how many times you have given conflicting messages, or how many times you had an unequal energy exchange in a relationship. If I can solve this equation, trust me, you can too. Cuz I am terrible at math, and even I was able to pass Universe Algebra 101. Start making these adjustments and I'm sure it will open doors in your life, and lead you to that time when you meet your other, or allow you to see that maybe you already have.`,
     date: "November 11, 2021",
-    author: "crystalseedhealing",
+    author: "Holly Cole",
     slug: "accepting-the-totality-of-your-worth",
     image: "/images/Blog-Accepting-the-Totality-of-Your-Worth.webp",
   },
@@ -74,6 +74,20 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   if (!post) {
     notFound()
   }
+
+  // Function to parse subheadings and format paragraphs
+  const formatContent = (content: string) => {
+    const paragraphs = content.split('\n\n');
+    
+    return paragraphs.map((paragraph, index) => {
+      // Check if paragraph appears to be a heading (shorter, standalone text that ends with proper punctuation)
+      if (paragraph.length < 100 && !paragraph.includes('?') && !paragraph.includes('.') && !paragraph.trim().startsWith('"')) {
+        return <h3 key={index} className="text-2xl font-serif text-white mt-8 mb-4">{paragraph}</h3>;
+      }
+      
+      return <p key={index} className="mb-4">{paragraph}</p>;
+    });
+  };
 
   return (
     <div className="min-h-screen">
@@ -99,11 +113,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
               </div>
             )}
             <div className="text-white/80 prose prose-invert max-w-none">
-              {post.content.split("\n\n").map((paragraph, index) => (
-                <p key={index} className="mb-4">
-                  {paragraph}
-                </p>
-              ))}
+              {formatContent(post.content)}
             </div>
           </article>
         </div>
