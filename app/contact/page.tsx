@@ -137,7 +137,7 @@ export default function Contact() {
               </Button>
               <Button asChild variant="outline" size="icon" className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30">
                 <a 
-                  href="https://www.thumbtack.com/wa/seattle/tarot-card-reading/crystal-seed-tarot/service/359053511012745217" 
+                  href="https://www.thumbtack.com/or/beaverton/tarot-card-readings/crystal-seed-tarot/service/89656832633660551" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-white"
