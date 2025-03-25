@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import { Mail, Phone, Facebook, Instagram, Award, GlassWater } from "lucide-react"
+import { Mail, Phone, Facebook, Instagram, GlassWater } from "lucide-react"
+import ThumbTackIcon from "@/components/icons/ThumbTackIcon"
 
 export default function Contact() {
   return (
@@ -141,7 +142,7 @@ export default function Contact() {
                   className="text-white"
                   aria-label="Thumbtack"
                 >
-                  <Award className="h-5 w-5" />
+                  <ThumbTackIcon className="h-5 w-5" />
                 </a>
               </Button>
               <Button asChild variant="outline" size="icon" className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30">
