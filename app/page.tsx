@@ -149,21 +149,18 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">Latest Blog Posts</h2>
           <div className="space-y-12">
             {blogPosts.map((post, index) => (
-              <article key={index} className="bg-white/10 backdrop-blur-md p-6 rounded-lg">
-                <h3 className="text-2xl font-serif mb-4 text-white">{post.title}</h3>
-                <p className="text-white mb-4">{post.excerpt}</p>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <span className="text-white/80">{post.date}</span>
-                    <span className="text-white/80 ml-2">| by {post.author}</span>
+              <Link key={index} href={`/blog/${post.slug}`} className="block">
+                <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+                  <h3 className="text-2xl font-serif mb-4 text-white">{post.title}</h3>
+                  <p className="text-white mb-4">{post.excerpt}</p>
+                  <div className="flex items-center">
+                    <div>
+                      <span className="text-white/80">{post.date}</span>
+                      <span className="text-white/80 ml-2">| by {post.author}</span>
+                    </div>
                   </div>
-                  <Button asChild variant="ghost" size="sm">
-                    <Link href={`/blog/${post.slug}`} className="text-white">
-                      Read more →
-                    </Link>
-                  </Button>
-                </div>
-              </article>
+                </article>
+              </Link>
             ))}
           </div>
         </div>

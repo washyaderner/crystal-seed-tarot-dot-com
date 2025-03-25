@@ -77,32 +77,29 @@ export default function Blog() {
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post, index) => (
-              <Card key={index} className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-                <CardContent className="p-6">
-                  {post.image && (
-                    <Image
-                      src={post.image || "/placeholder.svg"}
-                      alt={post.title}
-                      width={800}
-                      height={600}
-                      className="w-full h-48 object-cover rounded-lg mb-4 transition-all duration-300 hover:brightness-110"
-                    />
-                  )}
-                  <h2 className="text-2xl font-serif text-white mb-4">{post.title}</h2>
-                  <p className="text-white/80 mb-4">{post.excerpt}</p>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <span className="text-white/60">{post.date}</span>
-                      <span className="text-white/60 ml-2">| by {post.author}</span>
+              <Link key={index} href={`/blog/${post.slug}`}>
+                <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+                  <CardContent className="p-6">
+                    {post.image && (
+                      <Image
+                        src={post.image || "/placeholder.svg"}
+                        alt={post.title}
+                        width={800}
+                        height={600}
+                        className="w-full h-48 object-cover rounded-lg mb-4 transition-all duration-300 hover:brightness-110"
+                      />
+                    )}
+                    <h2 className="text-2xl font-serif text-white mb-4">{post.title}</h2>
+                    <p className="text-white/80 mb-4">{post.excerpt}</p>
+                    <div className="flex items-center">
+                      <div>
+                        <span className="text-white/60">{post.date}</span>
+                        <span className="text-white/60 ml-2">| by {post.author}</span>
+                      </div>
                     </div>
-                    <Button asChild variant="ghost" size="sm">
-                      <Link href={`/blog/${post.slug}`} className="text-white">
-                        Read more →
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
