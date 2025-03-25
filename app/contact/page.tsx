@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import { Mail, Phone, Facebook, Instagram, GlassWater } from "lucide-react"
+import { Mail, Phone, Facebook, Instagram } from "lucide-react"
 import ThumbTackIcon from "@/components/icons/ThumbTackIcon"
+import BashIcon from "@/components/icons/BashIcon"
 
 export default function Contact() {
   return (
@@ -153,7 +154,7 @@ export default function Contact() {
                   className="text-white"
                   aria-label="The Bash"
                 >
-                  <GlassWater className="h-5 w-5" />
+                  <BashIcon className="h-5 w-5" />
                 </a>
               </Button>
             </div>
