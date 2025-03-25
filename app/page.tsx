@@ -173,7 +173,7 @@ export default function Home() {
                 insightful and transformative."
               </blockquote>
               <cite className="text-white font-semibold not-italic">— Sarah M.</cite>
-              <p className="text-white mt-4">Click to see more reviews →</p>
+              <p className="text-white mt-4">See more reviews →</p>
             </div>
           </Link>
         </div>
