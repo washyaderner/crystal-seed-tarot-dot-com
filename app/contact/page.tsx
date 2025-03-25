@@ -1,5 +1,8 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { Mail, Phone, Facebook, Instagram } from "lucide-react"
+import ThumbTackIcon from "@/components/icons/ThumbTackIcon"
+import BashIcon from "@/components/icons/BashIcon"
 
 export default function Contact() {
   return (
@@ -31,15 +34,17 @@ export default function Contact() {
                       <Button asChild variant="ghost" size="default">
                         <a
                           href="mailto:crystalseedtarot@gmail.com"
-                          className="text-white text-lg"
+                          className="text-white text-lg flex items-center gap-2"
                         >
+                          <Mail className="h-5 w-5" />
                           crystalseedtarot@gmail.com
                         </a>
                       </Button>
                     </p>
                     <p>
                       <Button asChild variant="ghost" size="default">
-                        <a href="tel:5416352278" className="text-white text-lg">
+                        <a href="tel:5416352278" className="text-white text-lg flex items-center gap-2">
+                          <Phone className="h-5 w-5" />
                           Call/Text (541) 635-2278
                         </a>
                       </Button>
@@ -107,33 +112,49 @@ export default function Contact() {
 
           <div className="mt-12 text-center">
             <h2 className="text-2xl font-serif text-white mb-4">Follow Us</h2>
-            <div className="space-x-4">
-              <Button asChild variant="ghost" size="sm">
+            <div className="flex justify-center space-x-4">
+              <Button asChild variant="outline" size="icon" className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30">
                 <a 
                   href="https://www.facebook.com/CrystalSeedTarot/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-white"
+                  aria-label="Facebook"
                 >
-                  Facebook
+                  <Facebook className="h-5 w-5" />
                 </a>
               </Button>
-              <Button asChild variant="ghost" size="sm">
+              <Button asChild variant="outline" size="icon" className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30">
                 <a 
                   href="https://www.instagram.com/crystal_seed_tarot/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-white"
+                  aria-label="Instagram"
                 >
-                  Instagram
+                  <Instagram className="h-5 w-5" />
                 </a>
               </Button>
-              <Button asChild variant="ghost" size="sm">
+              <Button asChild variant="outline" size="icon" className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30">
                 <a 
-                  href="#" 
+                  href="https://www.thumbtack.com/or/beaverton/tarot-card-readings/crystal-seed-tarot/service/89656832633660551" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="text-white"
+                  aria-label="Thumbtack"
                 >
-                  Twitter
+                  <ThumbTackIcon className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="icon" className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30">
+                <a 
+                  href="https://www.thebash.com/tarot-card-reader/crystal-seed-tarot" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-white"
+                  aria-label="The Bash"
+                >
+                  <BashIcon className="h-5 w-5" />
                 </a>
               </Button>
             </div>
