@@ -8,7 +8,7 @@ export default function Navigation() {
   
   // Define base and active link styles
   const baseLinkStyle = "transition-all duration-300 hover:text-white hover:tracking-wider hover:scale-110 origin-left"
-  const activeLinkStyle = "text-white"
+  const activeLinkStyle = "text-white text-lg font-bold scale-110 tracking-wide drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
   const inactiveLinkStyle = `text-white/70 ${baseLinkStyle}`
   
   return (
