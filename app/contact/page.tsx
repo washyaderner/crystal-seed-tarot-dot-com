@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import { Mail, Phone, Facebook, Instagram, Twitter } from "lucide-react"
+import { Mail, Phone, Facebook, Instagram, Award, GlassWater } from "lucide-react"
 
 export default function Contact() {
   return (
@@ -135,11 +135,24 @@ export default function Contact() {
               </Button>
               <Button asChild variant="outline" size="icon" className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30">
                 <a 
-                  href="#" 
+                  href="https://www.thumbtack.com/wa/seattle/tarot-card-reading/crystal-seed-tarot/service/359053511012745217" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
                   className="text-white"
-                  aria-label="Twitter"
+                  aria-label="Thumbtack"
                 >
-                  <Twitter className="h-5 w-5" />
+                  <Award className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="icon" className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30">
+                <a 
+                  href="https://www.thebash.com/tarot-card-reading/crystal-seed-tarot" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-white"
+                  aria-label="The Bash"
+                >
+                  <GlassWater className="h-5 w-5" />
                 </a>
               </Button>
             </div>
