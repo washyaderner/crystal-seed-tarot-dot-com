@@ -63,7 +63,7 @@ export default function Home() {
           
           <Button asChild variant="outline" size="lg" className="mt-4">
             <Link href="/contact" className="text-lg px-8 py-3 text-white">
-              Begin Your Journey
+              Check Availability
             </Link>
           </Button>
         </div>
@@ -132,9 +132,11 @@ export default function Home() {
             </Card>
           </div>
           <div className="text-center mt-8">
-            <Link href="/services" className="text-white hover:text-white/80 transition-colors">
-              View full service details →
-            </Link>
+            <Button asChild variant="outline" size="default">
+              <Link href="/services" className="text-white">
+                View full service details →
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -149,9 +151,11 @@ export default function Home() {
                 <p className="text-white mb-4">{post.excerpt}</p>
                 <div className="flex justify-between items-center">
                   <span className="text-white">{post.date}</span>
-                  <Link href={`/blog/${post.slug}`} className="text-white hover:text-white/80 transition-colors">
-                    Read more →
-                  </Link>
+                  <Button asChild variant="ghost" size="sm">
+                    <Link href={`/blog/${post.slug}`} className="text-white">
+                      Read more →
+                    </Link>
+                  </Button>
                 </div>
               </article>
             ))}
@@ -162,14 +166,18 @@ export default function Home() {
       <section className="py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white">What Our Clients Say</h2>
-          <blockquote className="text-xl md:text-2xl text-white italic mb-6">
-            "Crystal Seed Tarot provided me with clarity and guidance during a difficult time. The readings were
-            insightful and transformative."
-          </blockquote>
-          <cite className="text-white font-semibold not-italic">— Sarah M.</cite>
+          <Link href="/reviews" className="block">
+            <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+              <blockquote className="text-xl md:text-2xl text-white italic mb-6">
+                "Crystal Seed Tarot provided me with clarity and guidance during a difficult time. The readings were
+                insightful and transformative."
+              </blockquote>
+              <cite className="text-white font-semibold not-italic">— Sarah M.</cite>
+              <p className="text-white mt-4">See more reviews →</p>
+            </div>
+          </Link>
         </div>
       </section>
     </div>
   )
 }
-
