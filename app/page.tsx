@@ -32,12 +32,12 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <section className="flex-grow flex items-center justify-center text-white px-4 py-16">
         <div className="text-center bg-black/20 backdrop-blur-md p-8 rounded-lg max-w-3xl transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-black/30">
-          <h1 className="text-4xl md:text-5xl font-serif tracking-wide text-white mb-3 drop-shadow-lg transition-all duration-2000 hover:tracking-wider">
+          <h1 className="text-4xl md:text-5xl font-serif tracking-wide text-white mb-3 drop-shadow-lg">
             Crystal Seed<br />
             Tarot & Healing
           </h1>
           
-          <p className="text-xl md:text-2xl text-white mb-6 drop-shadow-lg transition-all duration-2000 hover:tracking-wide">
+          <p className="text-xl md:text-2xl text-white mb-6 drop-shadow-lg">
             Helping connect you to yourself since 2008
           </p>
           
