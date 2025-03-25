@@ -153,8 +153,8 @@ export default function Home() {
                 <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
                   <h3 className="text-2xl font-serif mb-4 text-white">{post.title}</h3>
                   <p className="text-white mb-4">{post.excerpt}</p>
-                  <div className="flex items-center">
-                    <div>
+                  <div className="flex justify-center items-center">
+                    <div className="text-center">
                       <span className="text-white/80">{post.date}</span>
                       <span className="text-white/80 ml-2">| by {post.author}</span>
                     </div>

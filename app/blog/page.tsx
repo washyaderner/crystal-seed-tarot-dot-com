@@ -91,8 +91,8 @@ export default function Blog() {
                     )}
                     <h2 className="text-2xl font-serif text-white mb-4">{post.title}</h2>
                     <p className="text-white/80 mb-4">{post.excerpt}</p>
-                    <div className="flex items-center">
-                      <div>
+                    <div className="flex justify-center items-center">
+                      <div className="text-center">
                         <span className="text-white/60">{post.date}</span>
                         <span className="text-white/60 ml-2">| by {post.author}</span>
                       </div>
