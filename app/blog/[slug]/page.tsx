@@ -13,15 +13,15 @@ Often, we may find that although we adopt certain practices when we first start 
 
 With that said, here are some common misconceptions I would like to clear up about Tarot which I provide in the hopes that it may help you have an updated foundation for your own practice should you need. If nothing else, it's important to know that _you can_ adapt and change your practice over the years as needed. To demonstrate this, I will identify what I'll refer to as "gen. one" (i.e. generation one) practices and "gen. two" (generation two) practices for Tarot. Much like our smartphones and computers need updates, our Tarot practices can need them too, especially when we are in our first few years of learning.
 
-**1. Coming into ownership of your deck  
+1. Coming into ownership of your deck  
 Gen. 1 misconception: You must be gifted your deck.  
-Gen. 2 better practice: You can gift yourself a deck.**
+Gen. 2 better practice: You can gift yourself a deck.
 
 If I had waited to be gifted a deck, I never would have started doing Tarot and that was almost twenty years ago now. If you are called to do Tarot, then by all means, DO TAROT! I think the concept of being gifted a deck is an older tradition that doesn't necessarily apply to our current day and age anymore. I fully believe in taking destiny into your own hands and buying your own deck, and we wouldn't be here today if I hadn't. Also, now that I do Tarot, people buy me decks all the time.
 
-**2.  Storing and caring for your cards  
+2.  Storing and caring for your cards  
 Gen. 1 misconception: You must store your cards in a silk cloth.  
-Gen. 2 better practice: Store your cards in whatever feels best to you.**
+Gen. 2 better practice: Store your cards in whatever feels best to you.
 
 There are many ways to take care of your cards and store them safely, but I often see people suggest that a silk cloth is best for card storage. I don't use a silk cloth, and personally could not deal with silk for a few reasons; 1. Silk does not travel well, 2. It's easy to snag, and 3. It's not very durable or protective in my opinion.
 
@@ -29,17 +29,17 @@ I have used the same purple, white, and red cotton scarf to wrap and store my ca
 
 You can also get very nice boxes to keep cards in, and if that is your preference, there's nothing wrong with that. For me, I like a cozier scarf situation for my cards, as I feel like a wooden box may be rather cold for my cards, but wood does hold energy very well without suffocating it.
 
-**3. Bringing your cards with you everywhere you go  
+3. Bringing your cards with you everywhere you go  
 Gen. 1 misconception: You should bring your cards with you everywhere you go to become closer to them and allow them to absorb your energy more.  
-Gen. 2 better practice: Don't bring your cards with you everywhere you go because you can ruin your cards that way/you won't always want your cards to absorb the energy going on around you.**
+Gen. 2 better practice: Don't bring your cards with you everywhere you go because you can ruin your cards that way/you won't always want your cards to absorb the energy going on around you.
 
 I tried this practice when I was just starting out and I would say that after about three years of this, I realized that my cards deserve better and I needed to treat them with more respect. While I did carry my cards around with me in my purse and thought it was so cool to get to do people's Tarot at any time any place I was whenever the mood struck me, at some point, I realized that I didn't always want my cards to pick up the energy of where I was at. I started feeling bad for taking my cards to stand in line at the post office, taking them to boring work every day, and taking them to various bars and clubs I would go to back in my music playing days. The last straw was leaving my purse where I thought was a safe location while I was playing an outdoor show during which it rained. I'm sure you can guess what happened: my cards got wet and I had to buy a new deck. From then on, I left my cards at home in a designated spot where they could be happy, honored, and protected.
 
 You don't constantly need to be around your cards 24/7 to bond with them energetically – you just need to practice using them on many different people to develop your relationship with them. Dragging them around with you everywhere you go can invite bad energy or bad things to happen to them accidentally. We also don't need them everywhere we go, and should only interact with them when we are ready to actually use them. There is no point in dragging our Tarot deck around with us to various other parts of our lives which have nothing to do with Tarot. We should mix our cards with the spiritual, psychic, healing, meditative parts of our lives, not parts of our lives that may carry a very opposite or unhelpful energy.
 
-**4. Letting other people touch your cards  
+4. Letting other people touch your cards  
 Gen. 1 misconception: You should never let another person touch your cards.  
-Gen. 2 better practice: You should let other people touch your cards as you want their energy on the cards so that you can read it.**
+Gen. 2 better practice: You should let other people touch your cards as you want their energy on the cards so that you can read it.
 
 To each his own, and if you prefer not having people touch your cards, that's fine, but either way, what I know from my experience and practice is that Tarot works best when you allow the other person's energy to affect the cards. So, whether the other person physically shuffles your cards or just sends their energy to the cards while you shuffle and they tell you when to stop shuffling, their energy needs to be included in the process somehow. Anytime I have gotten a reading or seen another reading done where the reader is the only person who was shuffling or who decided what cards to pull without the other person's energy invited in somehow, it's a reading that tends to fall flat and not really resonate the way it should. Inviting the other person's energy into the reading via having them shuffle or sending their energy while you shuffle and them telling you when to stop shuffling provides the right energetic imprint on the cards that you need there to be able to really give a proper Tarot reading to another person. Without this, the reading is usually disjointed or overly generalized, and doesn't produce the truly healing results that it should.
 
@@ -47,9 +47,9 @@ The benefits of this are not just that the other person's energy will show up fa
 
 Letting our clients shuffle or tell us when to stop shuffling is also extremely empowering to the person you're reading for, and ultimately helps connect them to their own reading making them much more open to being read. This is also more legit looking to your client and even a bit more mind blowing since they shuffled, and you are now telling them extremely accurate and personal information about their life. If you are the only person shuffling or deciding when to stop shuffling for the other person, the cards run the risk of having more of your energy on them than the person you're reading for, which makes for a muddled energy that may not translate as well or make as much sense.
 
-**5. Resetting your deck  
+5. Resetting your deck  
 Gen. 1 misconception: You should reset your deck by turning cards all upright before a reading.  
-Gen. 2 better practice: You should let the cards and the energy go where they want.**
+Gen. 2 better practice: You should let the cards and the energy go where they want.
 
 While I recall running into this advice when I was first learning Tarot, I didn't align with it and would only really reset the cards by flipping them all upright if I found that the cards had become heavily reversed for several readings in a row maybe once every few months or so (and even then, I would flip them all upright and would then shuffle them immediately in ways that would reverse a decent portion of them again). I felt the need to honor and accept reversals fully, and felt as though this practice of uprighting all of the cards and then leaving it that way was somewhat of an attempt to control the energy or the cards. I can't say I continued this practice of uprighting all the cards really and haven't done that for probably over a decade now, and find that honoring reversals and the energy of the cards the way I do by letting them do whatever they need or want to makes for consistently accurate, authentic, and validating information in readings.
 
@@ -57,15 +57,15 @@ There are many good ways to reset the energy of your cards which don't involve e
 
 Other ways that you can reset your cards would be to cleanse them with sage or incense, or set them out in the moonlight (preferably on a full moon), but it's important to do this inside your home through a window and not leave your cards outside and vulnerable to the elements. You can also set them on your altar or with some of your favorite crystals to reset them, and certain crystals can be particularly good for absorbing and resetting energy such as obsidian, smoky quartz, selenite, and quartz.
 
-**6. You can flip the cards over in a layout either one at a time or all at once.  
+6. You can flip the cards over in a layout either one at a time or all at once.  
 Gen. 1 misconception: You can either flip the cards one at a time or all at once.  
-Gen. 2 better practice: You must flip the cards all at once to give a proper reading and see the bigger picture.**
+Gen. 2 better practice: You must flip the cards all at once to give a proper reading and see the bigger picture.
 
 I can understand that perhaps when you're first starting out, it can be overwhelming to look at several cards all at once, but if we only take them in one at a time, we miss the benefit of what the overall bigger picture of the reading is saying. The cards you pull in a reading are supposed to connect together and weave a cohesive storyline of some kind. When we only flip the cards over one at a time, the meanings become more disjointed or shallow, rather than showing you the overarching connection between all of them together. While you do have to kind of "take in" the cards before you individually in a reading, you then need to look at all of them together to see the "bigger picture" and see what kinds of patterns or what kind of storyline you may see in the reading as a whole. This is what it means to do the art of Tarot – to find that bigger picture and read the energy accordingly in a deep, meaningful, and accurate way.
 
-**7. Reversals being viewed as optional  
+7. Reversals being viewed as optional  
 Gen. 1 misconception: Reversals can be optional.  
-Gen. 2 better practice: Reversals are necessary and extremely important.**
+Gen. 2 better practice: Reversals are necessary and extremely important.
 
 I do recall reading when I was first learning how to do Tarot and developing my practice that some people advised that reversals could be optional, and that some readers did Tarot this way. I felt as though this could potentially limit the array of things the cards can mean, as if we don't work with reversals, we only have 78 potential ways of viewing the cards, but if we let the reversals in, we have twice that amount. What I've come to discover in all my years of doing Tarot and working with a lot of reversals is there is a vast array of information we get with reversals, and we need to honor them, however many of them we get in a reading.
 
@@ -77,9 +77,9 @@ If I have but one soapbox to stand on as a Tarot reader, it's this: Reversals ar
 
 Life is not all sunshine and roses, and we need to honor reversals, as many as want or need to come through in order to accurately show us what is going on in a person's life. Tarot cards are not oracle cards, nor are they positive affirmation cards. They are truth telling, validating, healing cards, and we need to let the energy do what it needs to do to the cards so that we can get to the truth of the matters in our readings.
 
-**8. Shuffling via pop out method  
+8. Shuffling via pop out method  
 Gen. 1 misconception: You should shuffle and select cards by seeing which cards pop out or fall out.  
-Gen. 2 better practice: Building and harnessing a container of energy and allowing the person you're reading for to decide which are their cards gives us a more direct energy to read and a better understanding of the boundaries of their energy.**
+Gen. 2 better practice: Building and harnessing a container of energy and allowing the person you're reading for to decide which are their cards gives us a more direct energy to read and a better understanding of the boundaries of their energy.
 
 While I do honor the occasional pop out card, I personally don't think you can get as clear of a reading using only the pop out method for card selection. The reasons for this are many, one of them being that to me this makes for a more scattered energy to try and read from as the cards themselves are scattered. I find that allowing the other person to send their energy to the cards and then having them create that "hard stop" of when to stop shuffling makes for a better cohesive energetic imprint to read from. You want their energy to make a giant splash on the cards as though they have jumped into the Tarot pool with their entire being, not just dipping a toe in the water here and there.
 
@@ -99,9 +99,9 @@ One last thing to consider on using the pop-out method and why I wouldn't rely o
 
 My point is, as we progress in our practice, we may find that there are things that don't always work or that you have to learn the hard way aren't a good idea when put in practice 100% of the time. We must learn to adapt our practice as we learn and grow and understand how to work with the cards better and what works best in various situations. My practice now versus my first few years of doing Tarot is quite different, and much more streamlined today.
 
-**9. There should be no crying in Tarot  
+9. There should be no crying in Tarot  
 Gen. 1 misconception: If your client starts crying during a reading, you should stop the reading because it's too intense.  
-Gen. 2 better practice: Crying happens in Tarot and we need to allow that to happen and provide a safe space for our clients to be vulnerable in.**
+Gen. 2 better practice: Crying happens in Tarot and we need to allow that to happen and provide a safe space for our clients to be vulnerable in.
 
 Truly, if you are a genuine, open, empathic, deep, and talented Tarot reader who people feel emotionally safe with, you will absolutely get some people who cry during a reading. I sometimes joke and say that Tarot is one of the only jobs where if you make someone cry, it means you did a good job. But all kidding aside, crying in Tarot happens when people feel deeply emotionally validated or understood, when you have spoken to how they have truly been feeling, or when the reading provides enough healing for them to be able to finally release their emotions and validate their emotions to themselves. Often people are somewhat in denial about how they truly feel, especially when they are going through an extended rough period of time. We tend to downplay how bad we may be feeling about certain things or situations in our lives, but Tarot will cut through all of our downplaying and denying and call out our true feelings. For our clients, seeing their true feelings reflected in the cards sometimes allows them to finally acknowledge or accept them or allows them to release a lot of things emotionally, which can mean that they might cry. This can be a delicate situation that needs to be handled with grace and care, but should not be a reason to stop the reading altogether. Readings like this can be very healing for our clients and we need to help our clients through the process, even if there is crying, and this is part of what we have signed up for as Tarot readers. In my opinion, the experience of having someone emotionally release and cry in a reading is often a sign of a very healing reading and a sign that you are someone who people can be emotionally vulnerable with and still feel safe around.
 
@@ -113,9 +113,9 @@ Ultimately, we hope to uncover or learn something in the reading that can help t
 
 I do always keep tissues on hand whenever and wherever I do Tarot as even in the middle of a large happy party, people can cry, and we need to be ready for anything as Tarot readers. I also usually end a reading that brought out some crying by asking if it's okay to give the person a hug to wrap up their emotionally intense reading with some kindness and a little love.
 
-**10. Tarot is fortune telling  
+10. Tarot is fortune telling  
 Gen. 1 misconception: Tarot should be thought of as "fortune telling", or predicting mainly a person's future life.  
-Gen. 2 better practice: Tarot should be thought of as "now telling", and a way to read a person's energy through the various ways a person's energy is expressed (physical, spiritual, emotional, and mental).**
+Gen. 2 better practice: Tarot should be thought of as "now telling", and a way to read a person's energy through the various ways a person's energy is expressed (physical, spiritual, emotional, and mental).
 
 I think Tarot can get a bad rap sometimes as being more concerned with the future or "fortune telling" but that couldn't be farther from the truth. There are so many past aspects in numerous layouts, and getting to see the past-present-future paints us quite a big picture in which we can see a person's energetic patterns. If we can recognize these patterns, we can change them if need be, and even have a heads up about things should we continue to repeat bad habits.
 
@@ -123,7 +123,7 @@ Tarot really works from the standpoint of now, which allows us to see where we h
 
 Since the future isn't necessarily set in stone, Tarot should not be thought of as "fortune telling" or as something we use merely used to predict the future. It's a life navigation tool among many other things, and has much more to do with our present, while also giving us the empowerment to change ourselves and our lives. It has nothing to do with "doom and gloom" scary future predictions or becoming boxed into a non-changeable outcome.
 
-**Crystal Seed Tarot Tips for Best Practices:**
+Crystal Seed Tarot Tips for Best Practices:
 
 -Cleanse cards with Palo Santo, store in a breathable fabric, and use the fabric to do the readings on.
 
