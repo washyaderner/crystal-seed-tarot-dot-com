@@ -270,8 +270,8 @@ Implement these safety practices:
 
 # Current Project Status & Roadmap
 - Enhancing Crystal Seed Tarot website with improved UX and evergreen content
-- Currently working on homepage content improvements and layout enhancements
-- Moving toward completion of feature/blog-copy branch for PR to dev
+- Currently working on blog post detail pages with improved layout and readability
+- Recently merged homepage improvements from feature/blog-copy to dev
 - Focus on making content more evergreen and responsive
 - Following a structured git workflow with feature branches → dev → main
 
@@ -291,19 +291,18 @@ Implement these safety practices:
 - Made testimonial section on homepage clickable, linking to reviews page
 - Replaced Twitter icon with Thumbtack icon and added Bash icon
 
-# Current Task - Homepage and Blog Enhancements
-[X] Update "What Our Clients Say" section to display three reviews
-[X] Make testimonial text smaller to fit better in cards
-[X] Update Tarot Classes text with evergreen course information
-[X] Add specific course format details (4 weeks, 2 hour sessions)
-[X] Commit all changes to feature/blog-copy branch
-[X] Prepare PR details for merging to dev branch
+# Current Task - Blog Detail Enhancements
+[X] Review current blog post detail pages
+[X] Identify opportunities for improved layout and readability
+[X] Enhance blog post image display options
+[X] Improve heading hierarchy and typography
+[X] Add related posts section to the bottom of blog posts
+[X] Make code changes and commit to feature/blog-detail branch
+[ ] Prepare PR details for merging to dev branch
 
 # Upcoming Tasks
-- Create PR to merge feature/blog-copy into dev
-- Test all changes in development environment
-- Consider additional content updates for improved user engagement
-- Review mobile responsiveness of all components
+- Test all blog detail enhancements in development environment
+- Create PR to merge feature/blog-detail into dev
 - Consider additional feature improvements (possibly contact form or gallery)
 - Prepare for eventual production deployment from dev to main
 
