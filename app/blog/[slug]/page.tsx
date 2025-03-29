@@ -61,7 +61,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const relatedPosts = await getRelatedBlogPosts(params.slug, 3) as BlogPost[];
 
   return (
-    <div className="min-h-screen bg-black text-white/90 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 text-white/90">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <Link href="/blog" className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
@@ -128,7 +128,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 <Link 
                   key={relatedPost.slug} 
                   href={`/blog/${relatedPost.slug}`}
-                  className="bg-gray-800/50 backdrop-blur rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1"
+                  className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1"
                 >
                   {relatedPost.featuredImage && (
                     <div className="h-40 relative">

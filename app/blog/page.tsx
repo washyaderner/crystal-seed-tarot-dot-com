@@ -26,7 +26,7 @@ export default async function BlogPage() {
   const blogPosts = await getAllBlogPosts() as BlogPost[];
 
   return (
-    <div className="min-h-screen bg-black text-white/90 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 text-white/90">
       <div className="max-w-6xl mx-auto">
         <div>
           <h1 className="text-5xl font-bold mb-10 text-center text-white">Crystal Seed Tarot Blog</h1>
@@ -48,7 +48,7 @@ export default async function BlogPage() {
               <Link 
                 key={post.slug} 
                 href={`/blog/${post.slug}`}
-                className="bg-gray-800/50 backdrop-blur rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 flex flex-col"
+                className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 flex flex-col"
               >
                 <div className="h-48 relative">
                   <Image
