@@ -7,6 +7,7 @@ import { getBlogPostBySlug, getRelatedBlogPosts } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 // This page will statically generate at build time
 // but will be revalidated every 60 seconds in production
@@ -96,7 +97,20 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             )}
             
             <div className="prose prose-lg prose-invert max-w-none">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              <ReactMarkdown 
+                remarkPlugins={[remarkGfm]} 
+                rehypePlugins={[rehypeRaw]}
+                components={{
+                  // Define custom components for certain elements if needed
+                  h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
+                  h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
+                  p: ({node, ...props}) => <p className="mb-4" {...props} />,
+                  a: ({node, ...props}) => <a className="text-purple-400 hover:text-purple-300" {...props} />,
+                  ul: ({node, ...props}) => <ul className="list-disc pl-5 mb-4" {...props} />,
+                  ol: ({node, ...props}) => <ol className="list-decimal pl-5 mb-4" {...props} />,
+                  li: ({node, ...props}) => <li className="mb-1" {...props} />,
+                }}
+              >
                 {post.content}
               </ReactMarkdown>
             </div>
