@@ -60,9 +60,11 @@ export default async function BlogPage() {
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
                   <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-                  <p className="text-sm text-purple-300 mb-3">
-                    {post.publishDate ? formatDate(post.publishDate) : 'Draft'}
-                  </p>
+                  {post.publishDate ? (
+                    <p className="text-sm text-purple-300 mb-3">
+                      {formatDate(post.publishDate)}
+                    </p>
+                  ) : null}
                   <p className="text-white/75 mb-4 flex-1">{post.excerpt}</p>
                   <div className="mt-auto">
                     <span className="text-purple-400 inline-flex items-center">
