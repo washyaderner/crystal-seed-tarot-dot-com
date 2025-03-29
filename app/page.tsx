@@ -149,7 +149,11 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">Latest Blog Posts</h2>
           <div className="space-y-12">
             {blogPosts.map((post, index) => (
-              <Link key={index} href={`/blog/${post.slug}`} className="block">
+              <Link 
+                key={index} 
+                href={post.slug === "new-tarot-classes-online" ? "/services#tarot-classes" : `/blog/${post.slug}`}
+                className="block"
+              >
                 <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
                   <h3 className="text-2xl font-serif mb-4 text-white">{post.title}</h3>
                   <p className="text-white mb-4">{post.excerpt}</p>

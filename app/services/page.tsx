@@ -67,7 +67,7 @@ export default function Services() {
             ))}
           </div>
 
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-lg mb-16 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:bg-white/15">
+          <div id="tarot-classes" className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-lg mb-16 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:bg-white/15">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
                 <Image
