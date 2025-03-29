@@ -176,7 +176,7 @@ export default function Home() {
                   className="rounded-lg w-full h-64 object-cover transition-all duration-300 hover:brightness-110"
                 />
               </div>
-              <div className="md:w-2/3">
+              <div className="md:w-2/3 md:pt-4">
                 <h3 className="text-2xl font-serif mb-4 text-white">NEW!! Tarot Classes ONLINE!!!</h3>
                 <p className="text-white mb-4">I have put together Beginner's, Intermediate and Advanced Tarot courses which will be in a consistent rotation a few times a year. Each course is 4 weeks long—2 hour sessions once per week. I look forward to seeing you in class!</p>
                 <div className="text-center md:text-left mt-6">
