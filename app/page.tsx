@@ -146,7 +146,7 @@ export default function Home() {
 
       <section className="py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">Latest Updates</h2>
+          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">Updates</h2>
           
           {/* Featured Update/Service */}
           <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 mb-16">
