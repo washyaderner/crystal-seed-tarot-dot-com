@@ -31,6 +31,22 @@ export default function Home() {
     },
   ]
 
+  // Add testimonials array
+  const testimonials = [
+    {
+      quote: "Crystal Seed Tarot provided me with clarity and guidance during a difficult time. The readings were insightful and transformative.",
+      name: "Sarah M."
+    },
+    {
+      quote: "Holly has an incredible gift. Her reading helped me navigate a challenging career transition with confidence and purpose.",
+      name: "Michael R."
+    },
+    {
+      quote: "I was skeptical at first, but my reading was surprisingly accurate and helpful. Holly creates a comfortable space for self-reflection and growth.",
+      name: "Jennifer K."
+    }
+  ]
+
   return (
     <div className="min-h-screen flex flex-col">
       <section className="flex-grow flex items-center justify-center text-white px-4 py-16">
@@ -146,22 +162,55 @@ export default function Home() {
 
       <section className="py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">Latest Blog Posts</h2>
-          <div className="space-y-12">
-            {blogPosts.map((post, index) => (
-              <Link key={index} href={`/blog/${post.slug}`} className="block">
-                <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-                  <h3 className="text-2xl font-serif mb-4 text-white">{post.title}</h3>
-                  <p className="text-white mb-4">{post.excerpt}</p>
-                  <div className="flex justify-center items-center">
-                    <div className="text-center">
-                      <span className="text-white/80">{post.date}</span>
-                      <span className="text-white/80 ml-2">| by {post.author}</span>
-                    </div>
-                  </div>
-                </article>
+          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">Updates</h2>
+          
+          {/* Featured Update/Service */}
+          <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 mb-16">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3">
+                <Image 
+                  src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp" 
+                  alt="Tarot Classes" 
+                  width={300} 
+                  height={300}
+                  className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
+                />
+              </div>
+              <div className="md:w-2/3">
+                <h3 className="text-2xl font-serif mb-4 text-white">NEW!! Tarot Classes ONLINE!!!</h3>
+                <p className="text-white mb-4">I have put together Beginner's, Intermediate and Advanced Tarot courses which will be in a consistent rotation a few times a year. Each course is 4 weeks long—2 hour sessions once per week. I look forward to seeing you in class!</p>
+                <div className="text-center md:text-left mt-6">
+                  <Button asChild variant="outline">
+                    <Link href="/services#tarot-classes" className="text-white">
+                      Learn more
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </article>
+          
+          {/* Most Recent Blog Post */}
+          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">Latest Blog Post</h2>
+          <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+            <h3 className="text-2xl font-serif mb-4 text-white">{blogPosts[1].title}</h3>
+            <p className="text-white mb-4">{blogPosts[1].excerpt}</p>
+            <div className="flex justify-between items-center">
+              <span className="text-white">{blogPosts[1].date} | by {blogPosts[1].author}</span>
+              <Button asChild variant="outline" size="sm">
+                <Link href={`/blog/${blogPosts[1].slug}`} className="text-white">
+                  Read more
+                </Link>
+              </Button>
+            </div>
+          </article>
+          
+          <div className="mt-8 text-center">
+            <Button asChild variant="outline">
+              <Link href="/blog" className="text-white">
+                View all blog posts →
               </Link>
-            ))}
+            </Button>
           </div>
         </div>
       </section>
@@ -169,16 +218,25 @@ export default function Home() {
       <section className="py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white">What Our Clients Say</h2>
-          <Link href="/reviews" className="block">
-            <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-              <blockquote className="text-xl md:text-2xl text-white italic mb-6">
-                "Crystal Seed Tarot provided me with clarity and guidance during a difficult time. The readings were
-                insightful and transformative."
-              </blockquote>
-              <cite className="text-white font-semibold not-italic">— Sarah M.</cite>
-              <p className="text-white mt-4">See more reviews →</p>
-            </div>
-          </Link>
+          <div className="grid gap-6 md:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <Link key={index} href="/reviews" className="block">
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 h-full flex flex-col">
+                  <blockquote className="text-lg text-white italic mb-4 flex-grow">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <cite className="text-white font-semibold not-italic">— {testimonial.name}</cite>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Button asChild variant="outline">
+              <Link href="/reviews" className="text-white">
+                Read more reviews
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>

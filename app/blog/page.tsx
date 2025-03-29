@@ -77,7 +77,7 @@ export default function Blog() {
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post, index) => (
-              <Link key={index} href={`/blog/${post.slug}`}>
+              <Link key={index} href={`/blog/${post.slug}`} className="block">
                 <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
                   <CardContent className="p-6">
                     {post.image && (

@@ -98,7 +98,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           </Link>
           <article className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-8 max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-serif text-white mb-4">{post.title}</h1>
-            <div className="text-white/60 mb-6">
+            <div className="text-white/60 mb-6 text-center">
               {post.date} | by {post.author}
             </div>
             {post.image && (
