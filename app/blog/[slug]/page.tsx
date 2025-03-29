@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 
 const blogPosts = [
   {
@@ -74,6 +76,16 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   if (!post) {
     notFound()
   }
+  
+  // Get related posts (excluding current post)
+  const relatedPosts = blogPosts
+    .filter(p => p.slug !== params.slug)
+    .slice(0, 3); // Get up to 3 related posts
+    
+  // Helper function to create excerpt from content if needed
+  const getExcerpt = (content: string): string => {
+    return content.split('\n\n')[0].substring(0, 150) + '...';
+  };
 
   // Function to parse subheadings and format paragraphs
   const formatContent = (content: string) => {
@@ -96,26 +108,91 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           <Link href="/blog" className="text-white hover:text-white/80 transition-colors mb-8 inline-block">
             ← Back to Blog
           </Link>
-          <article className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-8 max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-serif text-white mb-4">{post.title}</h1>
+          
+          {/* Blog Post Header */}
+          <div className="mb-8">
+            <h1 className="text-4xl md:text-5xl font-serif text-white mb-4 text-center">{post.title}</h1>
             <div className="text-white/60 mb-6 text-center">
               {post.date} | by {post.author}
             </div>
+          </div>
+          
+          {/* Main Article with Image and Content */}
+          <article className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-8 max-w-3xl mx-auto shadow-lg shadow-purple-500/10">
             {post.image && (
-              <div className="flex justify-center mb-8">
+              <div className="mb-8 transform transition-all duration-500 hover:scale-[1.02]">
                 <Image
                   src={post.image || "/placeholder.svg"}
                   alt={post.title}
-                  width={600}
+                  width={800}
                   height={600}
-                  className="rounded-lg object-cover"
+                  className="rounded-lg object-cover w-full max-h-[500px] shadow-md"
+                  priority
                 />
               </div>
             )}
-            <div className="text-white/80 prose prose-invert max-w-none">
+            <div className="text-white/90 prose prose-invert max-w-none prose-lg">
               {formatContent(post.content)}
             </div>
+            
+            {/* Author Bio */}
+            <div className="mt-12 pt-8 border-t border-white/10">
+              <div className="flex items-center">
+                <div className="mr-4">
+                  <div className="w-16 h-16 rounded-full bg-purple-700/30 flex items-center justify-center text-white text-2xl font-serif">
+                    {post.author.charAt(0)}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="text-white text-xl font-medium">{post.author}</h4>
+                  <p className="text-white/70">Professional Tarot Reader, Writer, and Spiritual Guide</p>
+                </div>
+              </div>
+            </div>
           </article>
+          
+          {/* Related Posts Section */}
+          {relatedPosts.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-3xl font-serif text-white mb-8 text-center">You Might Also Enjoy</h2>
+              <div className="grid gap-6 md:grid-cols-3">
+                {relatedPosts.map((related, index) => (
+                  <Link key={index} href={`/blog/${related.slug}`} className="block">
+                    <Card className="bg-white/10 backdrop-blur-md border border-white/20 h-full transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+                      <CardContent className="p-6 flex flex-col h-full">
+                        {related.image && (
+                          <Image
+                            src={related.image}
+                            alt={related.title}
+                            width={400}
+                            height={300}
+                            className="w-full h-40 object-cover rounded-lg mb-4"
+                          />
+                        )}
+                        <h3 className="text-xl font-serif text-white mb-2">{related.title}</h3>
+                        <p className="text-white/70 text-sm mb-4 flex-grow line-clamp-2">
+                          {/* Use first paragraph of content if no excerpt exists */}
+                          {getExcerpt(related.content)}
+                        </p>
+                        <div className="text-white/60 text-xs">
+                          {related.date} | by {related.author}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {/* Return to Blog Button */}
+          <div className="mt-10 text-center">
+            <Button asChild variant="outline">
+              <Link href="/blog" className="text-white">
+                Return to Blog
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>

@@ -67,13 +67,14 @@ export default function Blog() {
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">Blog</h1>
           <div className="mb-12 relative rounded-lg overflow-hidden">
             <Image
-              src="/images/Blog-Hero.jpg"
-              alt="Crystal Seed Blog"
+              src="/images/Blog-Banner-Moon.png"
+              alt="Crystal Seed Blog - Moon Banner"
               width={1200}
               height={400}
-              className="w-full h-64 object-cover"
+              className="w-full h-80 object-cover"
+              priority
             />
-            <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px] mix-blend-overlay"></div>
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] mix-blend-overlay"></div>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post, index) => (
