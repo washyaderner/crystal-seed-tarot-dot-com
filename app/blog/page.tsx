@@ -67,7 +67,7 @@ export default function Blog() {
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">Blog</h1>
           <div className="mb-12 relative rounded-lg overflow-hidden">
             <Image
-              src="/images/Blog-Banner-Moon-Thin.png"
+              src="/images/Blog-Banner-Moon-Slim.png"
               alt="Crystal Seed Blog - Moon Banner"
               width={1200}
               height={400}
