@@ -75,7 +75,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     notFound()
   }
 
-  // Function to parse content and format with headers
+  // Function to parse subheadings and format paragraphs
   const formatContent = (content: string) => {
     const paragraphs = content.split('\n\n');
     
