@@ -173,7 +173,7 @@ export default function Home() {
                   alt="Tarot Classes" 
                   width={300} 
                   height={300}
-                  className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
+                  className="rounded-lg w-full h-64 object-cover transition-all duration-300 hover:brightness-110"
                 />
               </div>
               <div className="md:w-2/3">
