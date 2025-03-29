@@ -33,11 +33,11 @@ export default async function BlogPage() {
           
           <div className="mb-12 relative rounded-lg overflow-hidden">
             <Image
-              src="/images/Blog-Banner-Moon-Slim.png"
-              alt="Crystal Seed Blog - Moon Banner"
+              src="/images/Blog-Northern-Lights-Banner.jpg"
+              alt="Crystal Seed Blog - Northern Lights Banner"
               width={1200}
               height={400}
-              className="w-full h-64 object-cover object-top"
+              className="w-full h-64 object-cover object-center"
               priority
             />
             <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] mix-blend-overlay"></div>
