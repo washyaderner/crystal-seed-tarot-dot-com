@@ -149,40 +149,45 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">Latest Updates</h2>
           
           {/* Featured Update/Service */}
-          <Link href="/services#tarot-classes" className="block mb-16">
-            <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/3">
-                  <Image 
-                    src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp" 
-                    alt="Tarot Classes" 
-                    width={300} 
-                    height={300}
-                    className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
-                  />
-                </div>
-                <div className="md:w-2/3">
-                  <h3 className="text-2xl font-serif mb-4 text-white">NEW!! Tarot Classes ONLINE!!!</h3>
-                  <p className="text-white mb-4">It's finally here! My very first online Tarot course presented through Kumara Academy!!! This online beginner's Tarot course will be 4 weeks long with classes occurring every Sunday in February from 4:00 – 6:00 pm.</p>
-                  <div className="text-center md:text-left">
-                    <span className="text-white/80 inline-block border-b border-white/30 hover:border-white/60 transition-colors">Learn more →</span>
-                  </div>
+          <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 mb-16">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3">
+                <Image 
+                  src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp" 
+                  alt="Tarot Classes" 
+                  width={300} 
+                  height={300}
+                  className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
+                />
+              </div>
+              <div className="md:w-2/3">
+                <h3 className="text-2xl font-serif mb-4 text-white">NEW!! Tarot Classes ONLINE!!!</h3>
+                <p className="text-white mb-4">It's finally here! My very first online Tarot course presented through Kumara Academy!!! This online beginner's Tarot course will be 4 weeks long with classes occurring every Sunday in February from 4:00 – 6:00 pm.</p>
+                <div className="text-center md:text-left mt-6">
+                  <Button asChild variant="outline">
+                    <Link href="/services#tarot-classes" className="text-white">
+                      Learn more
+                    </Link>
+                  </Button>
                 </div>
               </div>
-            </article>
-          </Link>
+            </div>
+          </article>
           
           {/* Most Recent Blog Post */}
           <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">Latest Blog Post</h2>
-          <Link href={`/blog/${blogPosts[1].slug}`} className="block">
-            <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-              <h3 className="text-2xl font-serif mb-4 text-white">{blogPosts[1].title}</h3>
-              <p className="text-white mb-4">{blogPosts[1].excerpt}</p>
-              <div className="flex justify-center items-center">
-                <span className="text-white">{blogPosts[1].date} | by {blogPosts[1].author}</span>
-              </div>
-            </article>
-          </Link>
+          <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+            <h3 className="text-2xl font-serif mb-4 text-white">{blogPosts[1].title}</h3>
+            <p className="text-white mb-4">{blogPosts[1].excerpt}</p>
+            <div className="flex justify-between items-center">
+              <span className="text-white">{blogPosts[1].date} | by {blogPosts[1].author}</span>
+              <Button asChild variant="outline" size="sm">
+                <Link href={`/blog/${blogPosts[1].slug}`} className="text-white">
+                  Read more
+                </Link>
+              </Button>
+            </div>
+          </article>
           
           <div className="mt-8 text-center">
             <Button asChild variant="outline">
