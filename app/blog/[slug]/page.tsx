@@ -6,6 +6,7 @@ import { Metadata, ResolvingMetadata } from 'next';
 import { getBlogPostBySlug, getRelatedBlogPosts } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 // This page will statically generate at build time
 // but will be revalidated every 60 seconds in production
@@ -95,7 +96,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             )}
             
             <div className="prose prose-lg prose-invert max-w-none">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {post.content}
+              </ReactMarkdown>
             </div>
             
             {post.author && (
