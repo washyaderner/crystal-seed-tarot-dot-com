@@ -5,7 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Metadata, ResolvingMetadata } from 'next';
 import { getBlogPostBySlug, getRelatedBlogPosts } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import ReactMarkdown from 'react-markdown';
 
 // This page will statically generate at build time
 // but will be revalidated every 60 seconds in production
