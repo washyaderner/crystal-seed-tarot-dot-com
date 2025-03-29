@@ -265,13 +265,17 @@ Implement these safety practices:
 - For testimonial or review components, use a grid layout with responsive columns (md:grid-cols-3)
 - Make text content evergreen whenever possible to avoid frequent updates
 - Use smaller text sizes (text-lg) when displaying multiple testimonials in a grid to maintain readability
+- When implementing Contentful or any headless CMS, add fallback mechanisms for development without real API keys
+- Use sys.createdAt from Contentful as a fallback date when specific date fields are missing
+- Include proper error handling in API client code to prevent breaking the application when API issues occur
+- Add rehype-raw and remarkGfm plugins when using ReactMarkdown for better rendering support
 
 # Scratchpad
 
 # Current Project Status & Roadmap
 - Enhancing Crystal Seed Tarot website with improved UX and evergreen content
-- Currently working on blog post detail pages with improved layout and readability
-- Recently merged homepage improvements from feature/blog-copy to dev
+- Working on blog post detail pages with improved layout and readability
+- Added Contentful CMS integration for easier content management
 - Focus on making content more evergreen and responsive
 - Following a structured git workflow with feature branches → dev → main
 
@@ -290,19 +294,30 @@ Implement these safety practices:
 - Converted text links to buttons for consistent styling
 - Made testimonial section on homepage clickable, linking to reviews page
 - Replaced Twitter icon with Thumbtack icon and added Bash icon
+- Integrated Contentful CMS for blog content management
+- Added fallback mechanism for development without Contentful credentials
 
-# Current Task - Blog Detail Enhancements
+# Current Task - Blog Detail & Contentful Integration
 [X] Review current blog post detail pages
 [X] Identify opportunities for improved layout and readability
 [X] Enhance blog post image display options
 [X] Improve heading hierarchy and typography
 [X] Add related posts section to the bottom of blog posts
 [X] Make code changes and commit to feature/blog-detail branch
+[X] Add Contentful CMS integration for blog content
+[X] Create mock data system for development without Contentful
+[X] Implement error handling for Contentful API
+[X] Add proper markdown rendering with ReactMarkdown
+[X] Update blog background to match site styling
+[X] Change blog banner to Northern Lights image
+[X] Fix Contentful integration to work without publishDate field
 [ ] Prepare PR details for merging to dev branch
 
 # Upcoming Tasks
 - Test all blog detail enhancements in development environment
 - Create PR to merge feature/blog-detail into dev
+- Add more blog post content in Contentful
+- Configure Contentful preview/publish workflow
 - Consider additional feature improvements (possibly contact form or gallery)
 - Prepare for eventual production deployment from dev to main
 
@@ -310,19 +325,25 @@ Implement these safety practices:
 - Grid layouts with responsive columns work well for showcasing multiple items
 - Evergreen content helps minimize future maintenance
 - Consistent styling (text color, backgrounds, effects) improves visual cohesion
-- Specific course details help set clear expectations for potential students
+- Headless CMS like Contentful provides more flexibility for content management
+- Mock data systems are essential for smooth development workflow
+- Custom React components help maintain design consistency
 
-# Recent Technical Challenges
-- Resolved merge conflicts when merging feature branches into dev
-- Updated button styling consistently across multiple pages
-- Ensured proper image paths after file renaming/moving
-- Maintained visual consistency when implementing new UI components
+# Recent Technical Challenges & Solutions
+- ReactMarkdown import errors: Fixed by using correct import syntax and adding necessary plugins
+- Contentful field mismatch: Implemented fallback to system metadata and added error handling
+- Next.js security vulnerability: Updated to latest version (14.2.26) to address critical issues
+- Background consistency: Removed solid backgrounds to allow site background to show through
+- Markdown styling: Added custom component renderers for consistent typography
 
 # Technical Notes
 - Development server runs on port 3001 (port 3000 was in use)
+- Next.js upgraded from 14.2.16 to 14.2.26 to fix security vulnerabilities
+- Added react-markdown, remark-gfm, and rehype-raw for markdown support
+- Contentful integration uses preview API in development, published content in production
+- System createdAt timestamp used as fallback when publishDate field is missing
 - All pages compile successfully with no errors
-- Next.js 14.2.16 is the current framework version
-- Focus on maintaining clean, modular components and consistent styling
+- Environment variables (.env.local) used for Contentful configuration
 
 # Debugging and Reasoning Framework
 
