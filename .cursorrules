@@ -261,35 +261,49 @@ Implement these safety practices:
 - Add debug information to stderr while keeping the main output clean in stdout for better pipeline integration
 - When using seaborn styles in matplotlib, use 'seaborn-v0_8' instead of 'seaborn' as the style name due to recent seaborn version changes
 - Use 'gpt-4o' as the model name for OpenAI's GPT-4 with vision capabilities
+- When creating component layouts that need to maintain equal heights, use flex-col and h-full CSS properties
+- For testimonial or review components, use a grid layout with responsive columns (md:grid-cols-3)
+- Make text content evergreen whenever possible to avoid frequent updates
+- Use smaller text sizes (text-lg) when displaying multiple testimonials in a grid to maintain readability
 
 # Scratchpad
 
 # Current Project Status & Roadmap
-- Working on the Crystal Seed Tarot website
-- Created a new feature/General branch for general enhancements
-- Resolving merge conflicts with dev branch
+- Enhancing Crystal Seed Tarot website with improved UX and evergreen content
+- Currently working on homepage content improvements and layout enhancements
+- Moving toward completion of feature/blog-copy branch for PR to dev
+- Focus on making content more evergreen and responsive
 
 # Completed Major Milestones
-- Updated About page layout with single image and improved content flow
+- Updated "What Our Clients Say" section to display 3 testimonials in a responsive grid
+- Made testimonial text smaller (text-lg) to fit better in the card layout
+- Created hover effects and consistent styling for testimonial cards
+- Updated Tarot Classes content with evergreen course information and specific format details
+- Fixed private events image path on homepage
+- Simplified About page by removing additional images and improving layout
 - Added frosted glass effect to Blog Hero image
-- Updated Private Events card on homepage with new image (Home-Private-Events.webp)
-- Created feature/General branch for new enhancements
 - Made all homepage text white for better visibility and consistency
-- Simplified About page by removing both additional images and improving layout
 
 # Current Task
-[X] Create new feature/General branch from dev
-[X] Push the new branch to GitHub
-[X] Update all text colors to white on homepage
-[X] Fix private events image path
-[X] Remove middle image from About page
-[X] Remove second image from About page
-[X] Resolve merge conflicts with dev branch
-[ ] Test changes in development server
+[X] Update "What Our Clients Say" section to display three reviews
+[X] Make testimonial text smaller to fit better in cards
+[X] Update Tarot Classes text with evergreen course information
+[X] Add specific course format details (4 weeks, 2 hour sessions)
+[X] Commit all changes to feature/blog-copy branch
+[X] Prepare PR details for merging to dev branch
 
 # Upcoming Tasks
-- Create PR to merge feature/General into dev
+- Create PR to merge feature/blog-copy into dev
 - Test all changes in development environment
+- Consider additional content updates for improved user engagement
+- Review mobile responsiveness of all components
+- Consider adding more features to the Blog section
+
+# Recent Observations
+- Grid layouts with responsive columns work well for showcasing multiple items
+- Evergreen content helps minimize future maintenance
+- Consistent styling (text color, backgrounds, effects) improves visual cohesion
+- Specific course details help set clear expectations for potential students
 
 # Debugging and Reasoning Framework
 
