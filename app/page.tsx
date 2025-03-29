@@ -178,7 +178,7 @@ export default function Home() {
               </div>
               <div className="md:w-2/3">
                 <h3 className="text-2xl font-serif mb-4 text-white">NEW!! Tarot Classes ONLINE!!!</h3>
-                <p className="text-white mb-4">It's finally here! My very first online Tarot course presented through Kumara Academy!!! This online beginner's Tarot course will be 4 weeks long with classes occurring every Sunday in February from 4:00 – 6:00 pm.</p>
+                <p className="text-white mb-4">I will be running Beginner's Intermediate and Advanced Tarot courses a few times a year, so if you'd like to learn more, click below to stay up to date via my email list. I look forward to seeing you in class!</p>
                 <div className="text-center md:text-left mt-6">
                   <Button asChild variant="outline">
                     <Link href="/services#tarot-classes" className="text-white">
