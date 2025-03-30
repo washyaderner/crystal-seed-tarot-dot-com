@@ -124,13 +124,13 @@ export default async function BlogPage() {
               <div className="p-6 pt-2 flex-1 flex flex-col">
                 <h2 className={BLOG_DEFAULTS.titleStyle}>{post.title}</h2>
                 {post.publishDate ? (
-                  <p className="text-purple-300 mb-4 text-sm">
+                  <p className={`${BLOG_DEFAULTS.mutedTextColor} mb-4 text-sm`}>
                     {formatDate(post.publishDate)}
                   </p>
                 ) : null}
-                <p className="text-white mb-4 flex-1">{post.excerpt}</p>
+                <p className={`${BLOG_DEFAULTS.textColor} mb-4 flex-1`}>{post.excerpt}</p>
                 <div className="mt-auto pt-4">
-                  <span className="text-purple-400 inline-flex items-center transition-colors hover:text-purple-300">
+                  <span className={`${BLOG_DEFAULTS.textColor} inline-flex items-center transition-colors hover:brightness-125`}>
                     Read more
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>

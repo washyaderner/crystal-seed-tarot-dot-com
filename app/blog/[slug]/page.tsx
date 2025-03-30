@@ -146,39 +146,38 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       
       <div className="container mx-auto max-w-4xl">
         <div className="mb-8">
-          <Link href="/blog" className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
+          <Link href="/blog" className={`inline-flex items-center ${BLOG_DEFAULTS.textColor} hover:brightness-125 transition-colors`}>
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to all posts
           </Link>
         </div>
         
         <article className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg overflow-hidden shadow-xl">
-          {post.featuredImage && (
-            <div className="p-6 pb-4">
-              <div className="relative h-80 w-full rounded-lg overflow-hidden">
-                <Image
-                  src={post.featuredImage}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-all duration-300 hover:brightness-110"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-              </div>
+          {/* Featured image - always show image with fallback if none provided */}
+          <div className="p-6 pb-4">
+            <div className="relative h-80 w-full rounded-lg overflow-hidden">
+              <Image
+                src={post.featuredImage || BLOG_DEFAULTS.fallbackImage}
+                alt={post.title}
+                fill
+                className="object-cover transition-all duration-300 hover:brightness-110"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
             </div>
-          )}
+          </div>
           
           <div className="px-8 pt-6 pb-12">
             <h1 className="text-4xl md:text-5xl font-serif mb-4 text-white">{post.title}</h1>
             
             {post.publishDate && (
-              <p className="text-purple-300 mb-2">
+              <p className={BLOG_DEFAULTS.mutedTextColor + " mb-2"}>
                 {formatDate(post.publishDate)}
                 {post.author?.name && ` · By ${post.author.name}`}
               </p>
             )}
             
-            <p className="text-purple-300/70 mb-8">
+            <p className={BLOG_DEFAULTS.mutedTextColor + " mb-8"}>
               {readingTime} min read
             </p>
             
@@ -191,7 +190,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   h1: ({node, ...props}) => <h1 className="text-3xl font-serif mt-8 mb-4" {...props} />,
                   h2: ({node, ...props}) => <h2 className="text-2xl font-serif mt-6 mb-3" {...props} />,
                   p: ({node, ...props}) => <p className="mb-4" {...props} />,
-                  a: ({node, ...props}) => <a className="text-purple-400 hover:text-purple-300" {...props} />,
+                  a: ({node, ...props}) => <a className={`${BLOG_DEFAULTS.textColor} hover:brightness-125`} {...props} />,
                   ul: ({node, ...props}) => <ul className="list-disc pl-5 mb-4" {...props} />,
                   ol: ({node, ...props}) => <ol className="list-decimal pl-5 mb-4" {...props} />,
                   li: ({node, ...props}) => <li className="mb-1" {...props} />,
@@ -248,7 +247,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   <div className="p-6 pt-2">
                     <h3 className={BLOG_DEFAULTS.titleStyle}>{relatedPost.title}</h3>
                     {relatedPost.publishDate && (
-                      <p className="text-purple-300 mb-4 text-sm">
+                      <p className={`${BLOG_DEFAULTS.mutedTextColor} mb-4 text-sm`}>
                         {formatDate(relatedPost.publishDate)}
                       </p>
                     )}
