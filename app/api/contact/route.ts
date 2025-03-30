@@ -1,20 +1,29 @@
-import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import { z } from "zod";
+
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Validation schema
+const formSchema = z.object({
+  name: z.string().min(2, "Name is too short"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(7, "Phone number is too short"),
+  message: z.string().min(10, "Message is too short")
+});
 
 export async function POST(request: Request) {
   try {
+    // Parse the request body
     const body = await request.json();
-    const { name, email, phone, message } = body;
-
-    // Validate required fields
-    if (!name || !email || !phone || !message) {
-      return NextResponse.json(
-        { error: 'All fields are required' },
-        { status: 400 }
-      );
-    }
-
-    // Create email content
+    console.log("Received form submission:", body);
+    
+    // Validate the request data
+    const validatedFields = formSchema.parse(body);
+    const { name, email, phone, message } = validatedFields;
+    
+    // Prepare email content
     const emailContent = `
       <h2>New Contact Form Submission</h2>
       <p><strong>Name:</strong> ${name}</p>
@@ -23,43 +32,62 @@ export async function POST(request: Request) {
       <p><strong>Message:</strong></p>
       <p>${message.replace(/\n/g, '<br />')}</p>
     `;
-
-    // Configure transporter
-    // Note: For production, you should use environment variables for these credentials
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER || 'crystalseedtarot@gmail.com',
-        pass: process.env.EMAIL_PASSWORD, // This should be an app password, not your regular password
-      },
-    });
-
-    // Email options
-    const mailOptions = {
-      from: process.env.EMAIL_USER || 'crystalseedtarot@gmail.com',
-      to: 'crystalseedtarot@gmail.com',
-      subject: `New Contact Form: ${name}`,
-      html: emailContent,
-      replyTo: email,
-    };
-
-    // Check if email password is configured
-    if (!process.env.EMAIL_PASSWORD) {
-      console.log('Email would be sent in production:');
-      console.log(mailOptions);
+    
+    // Handle development without API key
+    if (!process.env.RESEND_API_KEY) {
+      console.log("RESEND_API_KEY not configured. Would send:");
+      console.log({ 
+        from: 'Crystal Seed Tarot <hello@crystalseedtarot.com>',
+        to: 'crystalseedtarot@gmail.com',
+        subject: `New Contact Form: ${name}`,
+        html: emailContent
+      });
       
-      // For development, just return success without actually sending
-      return NextResponse.json({ message: 'Message received (dev mode)' });
+      // Return success for development
+      return NextResponse.json({
+        message: "Email would be sent in production"
+      });
     }
 
-    // Send email in production
-    await transporter.sendMail(mailOptions);
+    // Send email via Resend
+    const { data, error } = await resend.emails.send({
+      from: 'Crystal Seed Tarot <hello@crystalseedtarot.com>',
+      to: ['crystalseedtarot@gmail.com'],
+      subject: `New Contact Form: ${name}`,
+      html: emailContent,
+      replyTo: email
+    });
 
-    return NextResponse.json({ message: 'Email sent successfully' });
+    if (error) {
+      console.error("Resend API error:", error);
+      return NextResponse.json(
+        { error: "Failed to send email" },
+        { status: 500 }
+      );
+    }
+
+    // Log success and return response
+    console.log("Email sent successfully:", data);
+    return NextResponse.json({
+      message: "Email sent successfully",
+      id: data?.id
+    });
+    
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error("Error in contact form submission:", error);
+    
+    // Handle validation errors
+    if (error instanceof z.ZodError) {
+      const fieldErrors = error.flatten().fieldErrors;
+      return NextResponse.json(
+        { error: "Validation failed", fieldErrors },
+        { status: 400 }
+      );
+    }
+    
+    // Handle other errors
     return NextResponse.json(
-      { error: 'Failed to send message' },
+      { error: "Failed to send message" },
       { status: 500 }
     );
   }

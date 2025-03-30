@@ -5,46 +5,84 @@ import Image from "next/image";
 import { Mail, Phone, Facebook, Instagram } from "lucide-react";
 import ThumbTackIcon from "@/components/icons/ThumbTackIcon";
 import BashIcon from "@/components/icons/BashIcon";
-import { useState, FormEvent } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Toaster, toast } from "sonner";
+
+// Form validation schema
+const formSchema = z.object({
+  name: z.string().min(2, "Please enter at least 2 characters for your name"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(7, "Please enter a valid phone number"),
+  message: z.string().min(10, "Please provide a message of at least 10 characters")
+});
+
+type FormData = z.infer<typeof formSchema>;
+
+// Loading spinner component
+const Spinner = () => (
+  <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+  </svg>
+);
+
+// Glowing error message component
+const GlowingErrorMessage = ({ message }: { message: string }) => (
+  <p className="mt-1 text-sm text-red-400 animate-pulse">{message}</p>
+);
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    mode: "onBlur" // Validate on blur for better UX
+  });
+
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    setError(null);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    
     try {
-      // Use FormSubmit.co API
-      const response = await fetch('https://formsubmit.co/ajax/crystalseedtarot@gmail.com', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       });
+
+      const result = await response.json();
       
-      const data = await response.json();
-      
-      if (data.success === "true" || data.success === true) {
-        form.reset();
-        setSubmitted(true);
-      } else {
-        throw new Error("Form submission failed");
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
       }
-    } catch (err) {
-      console.error("Error submitting form:", err);
-      setError("There was an error sending your message. Please try again or contact us directly.");
+
+      // Success
+      toast.success('Message sent successfully! I\'ll be in touch soon.');
+      reset();
+      setSubmitted(true);
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
+      toast.error(`Failed to send message: ${errorMessage}`);
+      console.error("Error submitting form:", error);
     } finally {
       setIsSubmitting(false);
     }
-  }
+  };
+
+  const handleSendAnother = () => {
+    setSubmitted(false);
+  };
 
   return (
     <div className="min-h-screen">
+      <Toaster position="top-center" richColors />
       <section className="py-16 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">
@@ -107,24 +145,14 @@ export default function Contact() {
                   Your message has been sent successfully. I'll get back to you as soon as possible.
                 </p>
                 <Button 
-                  onClick={() => setSubmitted(false)}
+                  onClick={handleSendAnother}
                   className="bg-transparent border border-white hover:bg-white/10"
                 >
                   Send Another Message
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md p-8 rounded-lg">
-                {/* FormSubmit.co configuration */}
-                <input type="hidden" name="_subject" value="New Contact Form Submission" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_captcha" value="false" />
-                
-                {error && (
-                  <div className="mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded text-white">
-                    {error}
-                  </div>
-                )}
+              <form onSubmit={handleSubmit(onSubmit)} className="bg-white/10 backdrop-blur-md p-8 rounded-lg space-y-6">
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-white mb-2">
                     Name <span className="text-red-400">*</span>
@@ -132,10 +160,12 @@ export default function Contact() {
                   <input
                     type="text"
                     id="name"
-                    name="name"
-                    className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
-                    required
+                    {...register("name")}
+                    className={`w-full p-2 bg-white/20 border ${errors.name ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   />
+                  {errors.name && (
+                    <GlowingErrorMessage message={errors.name.message || "Name is required"} />
+                  )}
                 </div>
                 <div className="mb-4">
                   <label htmlFor="email" className="block text-white mb-2">
@@ -144,10 +174,12 @@ export default function Contact() {
                   <input
                     type="email"
                     id="email"
-                    name="email"
-                    className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
-                    required
+                    {...register("email")}
+                    className={`w-full p-2 bg-white/20 border ${errors.email ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   />
+                  {errors.email && (
+                    <GlowingErrorMessage message={errors.email.message || "Email is required"} />
+                  )}
                 </div>
                 <div className="mb-4">
                   <label htmlFor="phone" className="block text-white mb-2">
@@ -156,10 +188,12 @@ export default function Contact() {
                   <input
                     type="tel"
                     id="phone"
-                    name="phone"
-                    className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
-                    required
+                    {...register("phone")}
+                    className={`w-full p-2 bg-white/20 border ${errors.phone ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   />
+                  {errors.phone && (
+                    <GlowingErrorMessage message={errors.phone.message || "Phone is required"} />
+                  )}
                 </div>
                 <div className="mb-4">
                   <label htmlFor="message" className="block text-white mb-2">
@@ -167,17 +201,20 @@ export default function Contact() {
                   </label>
                   <textarea
                     id="message"
-                    name="message"
+                    {...register("message")}
                     rows={4}
-                    className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
-                    required
+                    className={`w-full p-2 bg-white/20 border ${errors.message ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   ></textarea>
+                  {errors.message && (
+                    <GlowingErrorMessage message={errors.message.message || "Message is required"} />
+                  )}
                 </div>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="bg-transparent border border-white hover:bg-white/10 disabled:opacity-50"
                 >
+                  {isSubmitting && <Spinner />}
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
