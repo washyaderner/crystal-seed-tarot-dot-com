@@ -11,6 +11,10 @@ import rehypeRaw from 'rehype-raw';
 import { generateBlogPostSchema, generateBlogBreadcrumbSchema, generateFAQSchemaFromContent } from '@/lib/schema';
 import Script from 'next/script';
 import DebugImage from '@/components/debugImage';
+import ClientImage from '@/components/ClientImage';
+import { existsSync } from 'fs';
+import { join } from 'path';
+import * as fs from 'fs';
 
 // This page will statically generate at build time
 // but will be revalidated every 60 seconds in production
@@ -174,18 +178,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               </>
             )}
             <div className="relative h-80 w-full rounded-lg overflow-hidden bg-gray-800/50">
-              <Image
-                src={post.featuredImage || getBlogImagePath(post.title) || BLOG_DEFAULTS.fallbackImage}
+              <ClientImage
+                src={post.featuredImage || getBlogImagePath(post.title)}
                 alt={post.title}
-                fill
+                fallbackSrc={BLOG_DEFAULTS.fallbackImage}
                 className="object-cover transition-all duration-300 hover:brightness-110"
+                fill
                 priority
-                onError={(e) => {
-                  console.error("Image failed to load:", post.featuredImage);
-                  const imgElement = e.currentTarget as HTMLImageElement;
-                  // Try the generated path, then fallback
-                  imgElement.src = getBlogImagePath(post.title) || BLOG_DEFAULTS.fallbackImage;
-                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
             </div>
@@ -258,16 +257,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 >
                   <div className={BLOG_DEFAULTS.imagePadding}>
                     <div className="relative h-48 w-full">
-                      <Image
-                        src={relatedPost.featuredImage || getBlogImagePath(relatedPost.title) || BLOG_DEFAULTS.fallbackImage}
+                      <ClientImage
+                        src={relatedPost.featuredImage || getBlogImagePath(relatedPost.title)}
                         alt={relatedPost.title}
-                        fill
+                        fallbackSrc={BLOG_DEFAULTS.fallbackImage}
                         className={BLOG_DEFAULTS.imageStyle}
-                        onError={(e) => {
-                          console.error("Related post image failed to load:", relatedPost.featuredImage);
-                          const imgElement = e.currentTarget as HTMLImageElement;
-                          imgElement.src = getBlogImagePath(relatedPost.title) || BLOG_DEFAULTS.fallbackImage;
-                        }}
+                        fill
                       />
                     </div>
                   </div>

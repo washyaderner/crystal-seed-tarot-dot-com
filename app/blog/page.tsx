@@ -5,6 +5,7 @@ import { formatDate, getCanonicalUrl, cleanTextForMeta, generateKeywords, getBlo
 import { Metadata } from 'next';
 import { generateWebsiteSchema, generateBlogBreadcrumbSchema } from '@/lib/schema';
 import Script from 'next/script';
+import ClientImage from '@/components/ClientImage';
 
 // This page will statically generate at build time
 // but will be revalidated every 60 seconds in production
@@ -113,16 +114,12 @@ export default async function BlogPage() {
             >
               <div className={BLOG_DEFAULTS.imagePadding}>
                 <div className="relative h-48 w-full">
-                  <Image
-                    src={post.featuredImage || getBlogImagePath(post.title) || BLOG_DEFAULTS.fallbackImage}
+                  <ClientImage
+                    src={post.featuredImage || getBlogImagePath(post.title)}
                     alt={post.title}
-                    fill
+                    fallbackSrc={BLOG_DEFAULTS.fallbackImage}
                     className={BLOG_DEFAULTS.imageStyle}
-                    onError={(e) => {
-                      console.error("Blog card image failed to load:", post.featuredImage);
-                      const imgElement = e.currentTarget as HTMLImageElement;
-                      imgElement.src = getBlogImagePath(post.title) || BLOG_DEFAULTS.fallbackImage;
-                    }}
+                    fill
                   />
                 </div>
               </div>

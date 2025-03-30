@@ -24,6 +24,19 @@ export default function DebugImage({ src, fallback }: { src: string | null | und
     
     img.src = imageSrc;
     
+    // Also fetch the image directly with a HEAD request to see server response
+    fetch(imageSrc, { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          console.log(`Image exists on server: ${imageSrc}`);
+        } else {
+          console.error(`Image does not exist on server: ${imageSrc}`);
+        }
+      })
+      .catch(error => {
+        console.error(`Error checking image: ${imageSrc}`, error);
+      });
+    
     return () => {
       // Clean up
       img.onload = null;
@@ -37,6 +50,8 @@ export default function DebugImage({ src, fallback }: { src: string | null | und
       <div>Original Path: {src || 'No source provided'}</div>
       <div>Status: {status}</div>
       <div>Using: {imagePath}</div>
+      <div className="text-yellow-400">NOTE: Image paths should be public URLs like /images/Blog-Name.webp</div>
+      <div className="text-yellow-400">NOT absolute file paths like /Users/.../public/images/Blog-Name.webp</div>
     </div>
   );
 } 
