@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { Metadata, ResolvingMetadata } from 'next';
-import { getBlogPostBySlug, getRelatedBlogPosts } from '@/lib/contentful';
+import { getBlogPostBySlug, getRelatedBlogPosts, BLOG_DEFAULTS } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -74,8 +74,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         
         <article className="bg-gray-900/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl">
           {post.featuredImage && (
-            <div className="p-3 pb-0">
-              <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
+            <div className={BLOG_DEFAULTS.imagePadding}>
+              <div className={`relative w-full ${BLOG_DEFAULTS.imageStyle}`} style={{ aspectRatio: BLOG_DEFAULTS.imageAspectRatio }}>
                 <Image
                   src={post.featuredImage}
                   alt={post.title}
@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           )}
           
           <div className="px-8 pt-6 pb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{post.title}</h1>
+            <h1 className={`text-4xl md:text-5xl ${BLOG_DEFAULTS.titleStyle} mb-4 text-white`}>{post.title}</h1>
             
             {post.publishDate && (
               <p className="text-purple-300 mb-8">
@@ -147,13 +147,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 <Link 
                   key={relatedPost.slug} 
                   href={`/blog/${relatedPost.slug}`}
-                  className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1"
+                  className={`${BLOG_DEFAULTS.cardStyle} transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1`}
                 >
                   {relatedPost.featuredImage && (
-                    <div className="p-3 pb-1">
-                      <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                    <div className={BLOG_DEFAULTS.imagePadding}>
+                      <div className={`relative w-full ${BLOG_DEFAULTS.imageStyle}`} style={{ aspectRatio: BLOG_DEFAULTS.imageAspectRatio }}>
                         <Image
-                          src={relatedPost.featuredImage}
+                          src={relatedPost.featuredImage || BLOG_DEFAULTS.fallbackImage}
                           alt={relatedPost.title}
                           fill
                           className="object-cover"

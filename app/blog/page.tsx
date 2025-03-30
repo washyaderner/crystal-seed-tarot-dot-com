@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllBlogPosts } from '@/lib/contentful';
+import { getAllBlogPosts, BLOG_DEFAULTS } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
 import { useState } from 'react';
 
@@ -49,12 +49,12 @@ export default async function BlogPage() {
               <Link 
                 key={post.slug} 
                 href={`/blog/${post.slug}`}
-                className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 flex flex-col"
+                className={`${BLOG_DEFAULTS.cardStyle} transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 flex flex-col`}
               >
-                <div className="p-3 pb-1">
-                  <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
+                <div className={BLOG_DEFAULTS.imagePadding}>
+                  <div className={`relative w-full ${BLOG_DEFAULTS.imageStyle}`} style={{ aspectRatio: BLOG_DEFAULTS.imageAspectRatio }}>
                     <Image
-                      src={post.featuredImage || '/images/blog-placeholder.jpg'}
+                      src={post.featuredImage || BLOG_DEFAULTS.fallbackImage}
                       alt={post.title}
                       fill
                       className="object-cover"
