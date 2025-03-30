@@ -74,8 +74,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         
         <article className="bg-gray-900/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl">
           {post.featuredImage && (
-            <div className="p-4">
-              <div className="relative aspect-square rounded-lg overflow-hidden max-w-2xl mx-auto">
+            <div className="p-3 pb-0">
+              <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
                 <Image
                   src={post.featuredImage}
                   alt={post.title}
@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </div>
           )}
           
-          <div className="px-8 pt-8 pb-12">
+          <div className="px-8 pt-6 pb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">{post.title}</h1>
             
             {post.publishDate && (
@@ -150,8 +150,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1"
                 >
                   {relatedPost.featuredImage && (
-                    <div className="aspect-square p-3">
-                      <div className="relative w-full h-full rounded-lg overflow-hidden">
+                    <div className="p-3 pb-1">
+                      <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
                         <Image
                           src={relatedPost.featuredImage}
                           alt={relatedPost.title}
@@ -161,7 +161,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                       </div>
                     </div>
                   )}
-                  <div className="p-4">
+                  <div className="p-4 pt-2">
                     <h3 className="text-lg font-semibold mb-2">{relatedPost.title}</h3>
                     {relatedPost.publishDate && (
                       <p className="text-sm text-purple-300 mb-2">

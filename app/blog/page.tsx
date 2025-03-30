@@ -51,8 +51,8 @@ export default async function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 flex flex-col"
               >
-                <div className="aspect-square p-3">
-                  <div className="relative w-full h-full rounded-lg overflow-hidden">
+                <div className="p-3 pb-1">
+                  <div className="relative w-full rounded-lg overflow-hidden" style={{ aspectRatio: '16/9' }}>
                     <Image
                       src={post.featuredImage || '/images/blog-placeholder.jpg'}
                       alt={post.title}
@@ -61,7 +61,7 @@ export default async function BlogPage() {
                     />
                   </div>
                 </div>
-                <div className="p-6 flex-1 flex flex-col">
+                <div className="p-4 pt-2 flex-1 flex flex-col">
                   <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
                   {post.publishDate ? (
                     <p className="text-sm text-purple-300 mb-3">
