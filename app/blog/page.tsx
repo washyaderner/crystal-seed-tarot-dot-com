@@ -21,6 +21,13 @@ export default async function Blog() {
     ? mockBlogPosts.items
     : (await getAllBlogPosts()).items;
 
+  // Sort posts by date (publishDate or createdAt) descending
+  const sortedPosts = [...posts].sort((a, b) => {
+    const dateA = new Date(a.fields.publishDate || a.sys.createdAt);
+    const dateB = new Date(b.fields.publishDate || b.sys.createdAt);
+    return dateB.getTime() - dateA.getTime();
+  });
+
   return (
     <div className="min-h-screen">
       <section className="py-16 bg-black/20 backdrop-blur-md">
@@ -29,17 +36,25 @@ export default async function Blog() {
           
           {/* Blog grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              <BlogCard
-                key={post.sys.id}
-                title={post.fields.title}
-                slug={post.fields.slug}
-                excerpt={post.fields.excerpt}
-                imageUrl={post.fields.featuredImage.url}
-                imageTitle={post.fields.featuredImage.title}
-                publishDate={post.fields.publishDate}
-              />
-            ))}
+            {sortedPosts.map((post) => {
+              // Add fallbacks for missing fields
+              const featuredImage = post.fields.featuredImage || {
+                url: '/images/Blog-Default.webp',
+                title: 'Default Blog Image',
+              };
+              
+              return (
+                <BlogCard
+                  key={post.sys.id}
+                  title={post.fields.title || 'Untitled Post'}
+                  slug={post.fields.slug}
+                  excerpt={post.fields.excerpt || 'No excerpt available'}
+                  imageUrl={featuredImage.url}
+                  imageTitle={featuredImage.title}
+                  publishDate={post.fields.publishDate || post.sys.createdAt}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

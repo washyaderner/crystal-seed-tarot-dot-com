@@ -12,7 +12,7 @@ export interface BlogPost extends EntrySkeletonType {
       title: string;
       description?: string;
     };
-    publishDate: string;
+    publishDate?: string;
     author?: string;
     tags?: string[];
   };

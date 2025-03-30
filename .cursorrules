@@ -266,7 +266,10 @@ Implement these safety practices:
 - Make text content evergreen whenever possible to avoid frequent updates
 - Use smaller text sizes (text-lg) when displaying multiple testimonials in a grid to maintain readability
 - When implementing Contentful or any headless CMS, add fallback mechanisms for development without real API keys
-- Use sys.createdAt from Contentful as a fallback date when specific date fields are missing
+- Use sys.createdAt from Contentful as a fallback when specific date fields are missing
+- Make fields optional in TypeScript interfaces if they might not exist in the CMS model
+- Avoid sorting by fields that might not exist in the content model
+- When querying Contentful, don't assume field existence - always add fallbacks
 - Include proper error handling in API client code to prevent breaking the application when API issues occur
 - Add rehype-raw and remarkGfm plugins when using ReactMarkdown for better rendering support
 - In Next.js 14+, event handlers (like onError) must be in components with 'use client' directive

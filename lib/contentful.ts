@@ -13,13 +13,18 @@ export async function getAllBlogPosts(): Promise<ContentfulResponse> {
   try {
     const response = await client.getEntries<BlogPost>({
       content_type: 'blogPost',
-      order: ['-fields.publishDate'],
+      // Don't sort by publishDate since it might not exist
     });
     
     // Transform the response to match our ContentfulResponse type
+    // and add fallbacks for missing fields
     return {
       items: response.items.map(item => ({
-        fields: item.fields as BlogPost,
+        fields: {
+          ...item.fields as BlogPost['fields'],
+          // Ensure publishDate exists by using createdAt as fallback
+          publishDate: item.fields.publishDate || item.sys.createdAt
+        },
         sys: {
           id: item.sys.id,
           createdAt: item.sys.createdAt,
@@ -40,7 +45,21 @@ export async function getBlogPostBySlug(slug: string) {
       content_type: 'blogPost',
       'fields.slug': slug,
     });
-    return response.items[0];
+    
+    if (response.items.length === 0) {
+      return null;
+    }
+    
+    const item = response.items[0];
+    
+    // Add fallback for publishDate
+    return {
+      ...item,
+      fields: {
+        ...item.fields,
+        publishDate: item.fields.publishDate || item.sys.createdAt
+      }
+    };
   } catch (error) {
     console.error('Error fetching blog post:', error);
     throw error;

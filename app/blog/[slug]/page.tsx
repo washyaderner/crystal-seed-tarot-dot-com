@@ -18,7 +18,7 @@ interface BlogPostPageProps {
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const post = process.env.NODE_ENV === 'development' && !process.env.CONTENTFUL_SPACE_ID
     ? mockBlogPosts.items.find(item => item.fields.slug === params.slug)
-    : (await getBlogPostBySlug(params.slug))?.fields;
+    : (await getBlogPostBySlug(params.slug));
 
   if (!post) {
     return {
@@ -27,7 +27,14 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
   }
 
-  const { title, excerpt, featuredImage } = post as BlogPost['fields'];
+  // Access fields correctly and add fallbacks
+  const fields = post.fields;
+  const title = fields.title || 'Untitled Post';
+  const excerpt = fields.excerpt || 'No excerpt available';
+  const featuredImage = fields.featuredImage || {
+    url: '/images/Blog-Default.webp',
+    title: 'Default Blog Image',
+  };
 
   return {
     title: `${title} | Crystal Seed Tarot Blog`,
@@ -58,6 +65,15 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
   }
 
   const { fields } = post;
+  
+  // Add fallbacks for any potentially missing fields
+  const title = fields.title || 'Untitled Post';
+  const content = fields.content || '# No content available';
+  const publishDate = fields.publishDate || post.sys.createdAt;
+  const featuredImage = fields.featuredImage || {
+    url: '/images/Blog-Default.webp',
+    title: 'Default Blog Image',
+  };
 
   return (
     <article className="min-h-screen">
@@ -74,8 +90,8 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
           {/* Featured image with 16:9 aspect ratio */}
           <div className="relative w-full aspect-video mb-8 rounded-lg overflow-hidden">
             <Image
-              src={fields.featuredImage.url}
-              alt={fields.featuredImage.title}
+              src={featuredImage.url}
+              alt={featuredImage.title}
               fill
               className="object-cover"
               priority
@@ -85,10 +101,10 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
           {/* Blog content */}
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-serif text-white mb-4">
-              {fields.title}
+              {title}
             </h1>
             <time className="text-gray-400 mb-8 block">
-              {new Date(fields.publishDate).toLocaleDateString('en-US', {
+              {new Date(publishDate).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
@@ -132,7 +148,7 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
                   ),
                 }}
               >
-                {fields.content}
+                {content}
               </ReactMarkdown>
             </div>
           </div>
