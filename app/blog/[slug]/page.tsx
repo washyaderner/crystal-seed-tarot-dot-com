@@ -124,7 +124,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   
   // We need to render each schema separately due to type issues
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 text-white/90">
+    <div className="min-h-screen py-24 px-4 sm:px-6 lg:px-8 text-white">
       {/* Add JSON-LD structured data */}
       <Script
         id="blog-post-schema"
@@ -144,7 +144,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         />
       )}
       
-      <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto max-w-4xl">
         <div className="mb-8">
           <Link href="/blog" className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -152,15 +152,15 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           </Link>
         </div>
         
-        <article className="bg-gray-900/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl">
+        <article className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg overflow-hidden shadow-xl">
           {post.featuredImage && (
-            <div className={BLOG_DEFAULTS.imagePadding}>
-              <div className={`relative w-full ${BLOG_DEFAULTS.imageStyle}`} style={{ aspectRatio: BLOG_DEFAULTS.imageAspectRatio }}>
+            <div className="p-6 pb-4">
+              <div className="relative h-80 w-full rounded-lg overflow-hidden">
                 <Image
                   src={post.featuredImage}
                   alt={post.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-all duration-300 hover:brightness-110"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -169,7 +169,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           )}
           
           <div className="px-8 pt-6 pb-12">
-            <h1 className={`text-4xl md:text-5xl ${BLOG_DEFAULTS.titleStyle} mb-4 text-white`}>{post.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-serif mb-4 text-white">{post.title}</h1>
             
             {post.publishDate && (
               <p className="text-purple-300 mb-2">
@@ -188,8 +188,8 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 rehypePlugins={[rehypeRaw]}
                 components={{
                   // Define custom components for certain elements if needed
-                  h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
-                  h2: ({node, ...props}) => <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />,
+                  h1: ({node, ...props}) => <h1 className="text-3xl font-serif mt-8 mb-4" {...props} />,
+                  h2: ({node, ...props}) => <h2 className="text-2xl font-serif mt-6 mb-3" {...props} />,
                   p: ({node, ...props}) => <p className="mb-4" {...props} />,
                   a: ({node, ...props}) => <a className="text-purple-400 hover:text-purple-300" {...props} />,
                   ul: ({node, ...props}) => <ul className="list-disc pl-5 mb-4" {...props} />,
@@ -202,7 +202,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </div>
             
             {post.author && (
-              <div className="mt-12 pt-8 border-t border-white/10">
+              <div className="mt-12 pt-8 border-t border-white/20">
                 <div className="flex items-center">
                   {post.author.avatar && (
                     <Image
@@ -214,7 +214,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                     />
                   )}
                   <div>
-                    <h3 className="text-xl font-semibold">{post.author.name || 'Author'}</h3>
+                    <h3 className="text-xl font-serif">{post.author.name || 'Author'}</h3>
                     <p className="text-white/70">Crystal Seed Tarot</p>
                   </div>
                 </div>
@@ -225,30 +225,30 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         
         {relatedPosts.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-2xl font-bold mb-8">You might also enjoy</h2>
+            <h2 className="text-3xl font-serif mb-8">You might also enjoy</h2>
             <div className="grid gap-8 md:grid-cols-3">
               {relatedPosts.map((relatedPost) => (
                 <Link 
                   key={relatedPost.slug} 
                   href={`/blog/${relatedPost.slug}`}
-                  className={`${BLOG_DEFAULTS.cardStyle} transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1`}
+                  className={BLOG_DEFAULTS.cardStyle}
                 >
                   {relatedPost.featuredImage && (
                     <div className={BLOG_DEFAULTS.imagePadding}>
-                      <div className={`relative w-full ${BLOG_DEFAULTS.imageStyle}`} style={{ aspectRatio: BLOG_DEFAULTS.imageAspectRatio }}>
+                      <div className="relative h-48 w-full">
                         <Image
                           src={relatedPost.featuredImage || BLOG_DEFAULTS.fallbackImage}
                           alt={relatedPost.title}
                           fill
-                          className="object-cover"
+                          className={BLOG_DEFAULTS.imageStyle}
                         />
                       </div>
                     </div>
                   )}
-                  <div className="p-4 pt-2">
-                    <h3 className="text-lg font-semibold mb-2">{relatedPost.title}</h3>
+                  <div className="p-6 pt-2">
+                    <h3 className={BLOG_DEFAULTS.titleStyle}>{relatedPost.title}</h3>
                     {relatedPost.publishDate && (
-                      <p className="text-sm text-purple-300 mb-2">
+                      <p className="text-purple-300 mb-4 text-sm">
                         {formatDate(relatedPost.publishDate)}
                       </p>
                     )}
