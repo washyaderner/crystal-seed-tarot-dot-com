@@ -96,6 +96,41 @@ Note: Basic functionality works without API keys. Advanced features (like multim
 - `.vscode.example/`: Recommended VS Code settings
 - `.github/`: CI/CD workflows
 
+## Deployment
+
+This Next.js website is set up to be deployed on platforms like Vercel, Netlify, or any service that supports Next.js deployments.
+
+### Important: Contentful Configuration for Production
+
+The blog system relies on Contentful as a headless CMS. For production deployments, you **must** configure the following environment variables:
+
+```bash
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
+```
+
+Without these environment variables, the blog section will not display any posts in production environments. The application has built-in safeguards that will:
+
+1. Show mock blog data in development environments for convenience
+2. Return empty arrays/null values in production when Contentful credentials are missing
+3. Log errors to the console when Contentful cannot be reached
+
+#### Setting Environment Variables
+
+- **Vercel**: Add environment variables in your project settings
+- **Netlify**: Configure environment variables in the build settings
+- **Other platforms**: Refer to platform documentation for setting environment variables
+
+### Testing Your Deployment
+
+After deploying, verify that:
+
+1. The blog page loads and displays your Contentful posts
+2. Individual blog posts can be accessed
+3. Related posts are displayed correctly
+
+If you see an empty blog page in production, check your deployment logs for Contentful connection errors.
+
 ## License
 
 MIT License
