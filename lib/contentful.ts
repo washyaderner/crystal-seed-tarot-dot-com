@@ -15,6 +15,7 @@ const CUSTOM_PUBLISH_DATES: Record<string, string> = {
   "when-being-a-good-person-goes-bad": "2023-02-03T12:00:00.000Z",
   "accepting-the-totality-of-your-worth": "2021-11-11T12:00:00.000Z",
   "the-irrational-fear-of-starting-over": "2021-06-15T12:00:00.000Z",
+  "be-nice-to-yourself-d-mnit": "2021-02-21T12:00:00.000Z",
 };
 
 // Function to get publish date (custom if available, otherwise from Contentful)

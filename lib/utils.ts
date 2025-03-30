@@ -70,6 +70,17 @@ export function generateBlogImagePath(title: string): string {
     return "/images/blog-placeholder.jpg";
   }
 
+  // Special case for blog titles with special characters that need exact filename matching
+  const specialCaseImages: Record<string, string> = {
+    "Be Nice to Yourself, D@mnit!": "/images/Blog-Be-Nice-to-Yourself-D@mnit!.webp",
+  };
+
+  // Check if we have a special case exact match for this title
+  if (specialCaseImages[title]) {
+    console.log(`Using special case image path for "${title}": ${specialCaseImages[title]}`);
+    return specialCaseImages[title];
+  }
+
   // Create a mapping of blog slugs to their file extensions
   const blogImageExtensions: Record<string, string> = {
     "when-being-a-good-person-goes-bad": "jpg",
