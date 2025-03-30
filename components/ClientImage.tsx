@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { BLOG_DEFAULTS } from '@/lib/contentful';
 
@@ -27,6 +27,18 @@ export default function ClientImage({
 }: ClientImageProps) {
   const [imgSrc, setImgSrc] = useState<string>(src || fallbackSrc);
   const [hasError, setHasError] = useState(false);
+
+  // Log debug info to console only
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      console.group('Image Debug Info:');
+      console.log('Alt text:', alt);
+      console.log('Original path:', src || '(none)');
+      console.log('Using path:', imgSrc);
+      console.log('Fallback path:', fallbackSrc);
+      console.groupEnd();
+    }
+  }, [alt, src, imgSrc, fallbackSrc]);
 
   const handleError = () => {
     if (!hasError) {

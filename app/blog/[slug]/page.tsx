@@ -160,23 +160,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <article className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg overflow-hidden shadow-xl">
           {/* Featured image - always show image with fallback if none provided */}
           <div className="p-6 pb-4">
-            {/* Add debug output only in development mode */}
-            {process.env.NODE_ENV === 'development' && (
-              <>
-                <DebugImage 
-                  src={post.featuredImage} 
-                  fallback={BLOG_DEFAULTS.fallbackImage} 
-                />
-                <div className="bg-black/30 p-2 mb-2 rounded text-xs">
-                  <div>Blog Post Debug:</div>
-                  <div>Title: {post.title}</div>
-                  <div>Slug: {post.slug}</div>
-                  <div>Current Image Path: {post.featuredImage || '(none)'}</div>
-                  <div>Expected Image Path: {getBlogImagePath(post.title)}</div>
-                  <div>Fallback Path: {BLOG_DEFAULTS.fallbackImage}</div>
-                </div>
-              </>
-            )}
+            {/* Debug information moved to console logs only */}
             <div className="relative h-80 w-full rounded-lg overflow-hidden bg-gray-800/50">
               <ClientImage
                 src={post.featuredImage || getBlogImagePath(post.title)}
