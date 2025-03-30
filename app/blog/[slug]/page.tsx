@@ -151,17 +151,17 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
                     </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-gray-300 mb-4 leading-relaxed">
+                    <p className="text-white mb-4 leading-relaxed">
                       {children}
                     </p>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-inside text-gray-300 mb-4">
+                    <ul className="list-disc list-inside text-white mb-4">
                       {children}
                     </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal list-inside text-gray-300 mb-4">
+                    <ol className="list-decimal list-inside text-white mb-4">
                       {children}
                     </ol>
                   ),
@@ -177,7 +177,7 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
                     </a>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 border-primary pl-4 italic text-gray-300 my-4">
+                    <blockquote className="border-l-4 border-primary pl-4 italic text-white my-4">
                       {children}
                     </blockquote>
                   ),
