@@ -1,1 +1,1 @@
-[Cursor] Replace contentful.js with TypeScript version
+[Cursor] Remove Contentful and simplify blog pages

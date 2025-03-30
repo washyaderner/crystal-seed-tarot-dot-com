@@ -1,0 +1,1 @@
+[Cursor] Complete blog system rebuild with TypeScript Contentful integration
