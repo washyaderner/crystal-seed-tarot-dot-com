@@ -43,7 +43,8 @@ Simply provide a direct, concise answer to their question and wait for further i
    - Merged back to dev when complete
 
 ## Branch Creation Rules
-- Always push new branches to GitHub immediately after creation
+- CRITICAL: Always push new branches to GitHub immediately after creation
+- CRITICAL: Before suggesting PR creation, ALWAYS verify the branch exists on GitHub
 - Use `git push -u origin <branch-name>` when creating a new branch
 - Ensure the branch is visible on GitHub before starting PR process
 - When creating a branch from an existing one, make sure you're starting with the latest changes
@@ -254,6 +255,7 @@ Implement these safety practices:
 - Read the file before you try to edit it.
 - Due to Cursor's limit, when you use `git` and `gh` and need to submit a multiline commit message, first write the message in a file, and then use `git commit -F <filename>` or similar command to commit. And then remove the file. Include "[Cursor] " in the commit message and PR title.
 - Always push new feature branches to GitHub immediately after creation with `git push -u origin <branch-name>` to ensure they're available when creating PRs.
+- CRITICAL: Before suggesting PR creation, ALWAYS check if the branch exists on GitHub using `git branch -r` or by pushing it with `git push -u origin <branch-name>`.
 
 ## Cursor learned
 
@@ -473,3 +475,15 @@ Remember:
 19. Consider performance implications
 20. Keep security in mind
 21. Maintain backward compatibility
+
+# PR Checklist - ALWAYS Verify Before Creating PR
+1. [ ] Verify the branch exists on GitHub (`git branch -r` or check GitHub UI)
+2. [ ] If not, push it with `git push -u origin <branch-name>`
+3. [ ] Verify all tests are passing
+4. [ ] Ensure code is properly formatted
+5. [ ] Check that all TypeScript errors are resolved
+6. [ ] Confirm there are no linting issues
+7. [ ] Make sure the branch is up to date with the base branch
+8. [ ] Verify all necessary files are included in the commit
+9. [ ] Ensure PR title follows "[Cursor] Feature Description" format
+10. [ ] Create comprehensive PR description with Changes, Testing, and Notes sections

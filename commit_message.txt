@@ -1,0 +1,1 @@
+[Cursor] Replace contentful.js with TypeScript version
