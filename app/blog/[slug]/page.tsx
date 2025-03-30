@@ -109,7 +109,7 @@ export async function generateMetadata(
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = await getBlogPostBySlug(params.slug) as BlogPost | null;
-  
+
   if (!post) {
     notFound();
   }
@@ -161,7 +161,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           {/* Featured image - always show image with fallback if none provided */}
           <div className="p-6 pb-4">
             {/* Debug information moved to console logs only */}
-            <div className="relative h-80 w-full rounded-lg overflow-hidden bg-gray-800/50">
+            <div className="relative w-full rounded-lg overflow-hidden bg-gray-800/50" style={{ aspectRatio: '16/9' }}>
               <ClientImage
                 src={post.featuredImage || getBlogImagePath(post.title)}
                 alt={post.title}
@@ -211,7 +211,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               <div className="mt-12 pt-8 border-t border-white/20">
                 <div className="flex items-center">
                   {post.author.avatar && (
-                    <Image
+                <Image
                       src={post.author.avatar}
                       alt={post.author.name || 'Author'}
                       width={60}
@@ -263,7 +263,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             </div>
           </div>
         )}
-      </div>
+        </div>
     </div>
   );
 }
