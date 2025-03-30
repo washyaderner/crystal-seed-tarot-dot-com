@@ -91,7 +91,7 @@ export const mockBlogPosts: ContentfulResponse = {
         title: "Better Practices For Your Practice",
         slug: "better-practices-for-your-practice",
         content:
-          "# Better Practices For Your Practice\n\nThis is a sample blog post...",
+          "# Better Practices For Your Practice\n\nThis is a sample blog post with proper formatting. Each paragraph should have appropriate spacing.\n\n## Introduction\n\nWhen we first begin studying and practicing Tarot, there can be an overwhelming amount of information we come across, and not all of it is good. We can be steered in many misguided directions unfortunately, or may be given advice about how to work with Tarot which may more be rooted in superstition than the reality of how energy works.\n\nHopefully, with the right amount of practice, experience, and better guidance, we can find our way to better information and practices, but it takes time, discernment, and development to get there.\n\n## Misconceptions\n\nWith that said, here are some common misconceptions I would like to clear up about Tarot which I provide in the hopes that it may help you have an updated foundation for your own practice should you need. If nothing else, it's important to know that you can adapt and change your practice over the years as needed.",
         excerpt:
           "Learn how to improve your tarot practice with these essential tips.",
         featuredImage: undefined, // Changed from null to undefined to match type

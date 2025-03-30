@@ -136,7 +136,18 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
 
               {/* Blog content */}
               <div className="prose prose-lg max-w-none text-white prose-headings:text-white prose-a:text-blue-300 hover:prose-a:text-blue-200 prose-strong:text-white">
-                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                <ReactMarkdown 
+                  remarkPlugins={[remarkGfm]} 
+                  rehypePlugins={[rehypeRaw]}
+                  components={{
+                    // Ensure headers get proper styling and stand out
+                    h1: ({node, ...props}) => <h1 className="text-4xl font-serif mb-6 mt-8" {...props} />,
+                    h2: ({node, ...props}) => <h2 className="text-3xl font-serif mb-4 mt-6" {...props} />,
+                    h3: ({node, ...props}) => <h3 className="text-2xl font-serif mb-3 mt-5" {...props} />,
+                    // Ensure paragraphs render with proper spacing
+                    p: ({node, ...props}) => <p className="mb-4 whitespace-pre-line" {...props} />
+                  }}
+                >
                   {content}
                 </ReactMarkdown>
               </div>
