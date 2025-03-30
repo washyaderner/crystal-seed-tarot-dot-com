@@ -161,3 +161,34 @@ export function formatSocialText(text: string, maxLength: number = 250): string 
   return cleanText;
 }
 
+/**
+ * Generate standardized blog image path using the Blog-{{blogName}} convention
+ * @param title - Blog post title 
+ * @returns The standardized image path
+ */
+export function getBlogImagePath(title: string): string {
+  if (!title) return '/images/Blog-Northern-Lights-Banner.jpg';
+  
+  // Format the title in title case with hyphens
+  const titleCase = title.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+  const formattedTitle = titleCase.replace(/[^\w\s]/gi, '').replace(/\s+/g, '-');
+  
+  // Standardized format: Blog-{{blogName}}.webp
+  return `/images/Blog-${formattedTitle}.webp`;
+}
+
+/**
+ * Create URL-friendly slug from title
+ * @param title - Title to convert to slug
+ * @returns URL-friendly slug
+ */
+export function createSlugFromTitle(title: string): string {
+  if (!title) return 'untitled-post';
+  
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters except hyphens
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-'); // Replace multiple hyphens with a single one
+}
+

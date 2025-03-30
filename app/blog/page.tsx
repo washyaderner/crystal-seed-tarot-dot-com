@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllBlogPosts, BLOG_DEFAULTS } from '@/lib/contentful';
-import { formatDate, getCanonicalUrl, cleanTextForMeta, generateKeywords } from '@/lib/utils';
+import { formatDate, getCanonicalUrl, cleanTextForMeta, generateKeywords, getBlogImagePath } from '@/lib/utils';
 import { Metadata } from 'next';
 import { generateWebsiteSchema, generateBlogBreadcrumbSchema } from '@/lib/schema';
 import Script from 'next/script';
@@ -114,10 +114,15 @@ export default async function BlogPage() {
               <div className={BLOG_DEFAULTS.imagePadding}>
                 <div className="relative h-48 w-full">
                   <Image
-                    src={post.featuredImage || BLOG_DEFAULTS.fallbackImage}
+                    src={post.featuredImage || getBlogImagePath(post.title) || BLOG_DEFAULTS.fallbackImage}
                     alt={post.title}
                     fill
                     className={BLOG_DEFAULTS.imageStyle}
+                    onError={(e) => {
+                      console.error("Blog card image failed to load:", post.featuredImage);
+                      const imgElement = e.currentTarget as HTMLImageElement;
+                      imgElement.src = getBlogImagePath(post.title) || BLOG_DEFAULTS.fallbackImage;
+                    }}
                   />
                 </div>
               </div>
