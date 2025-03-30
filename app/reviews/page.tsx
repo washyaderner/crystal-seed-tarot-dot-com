@@ -1,27 +1,30 @@
-"use client"
+"use client";
 
-import Image from "next/image"
+import Image from "next/image";
 
 const reviews = [
   {
     name: "Gina G.",
     date: "Jan 13, 2025",
     body: "Holly came to the house last night to read for me and my partner. Our experience was thoroughly positive. Holly's pre-event communications with me were engaging and positive. She was very kind and sensitive to my ADHD—I was late in responding several times and in answering the door for her! She was unbothered and validating each time and that gave me extra comfort with her. When she arrived, she set up beautifully and seamlessly—a total pro! She was genuinely engaged and spirited about our readings. She delivered information clearly and confidently, which inspired our trust. We both felt comfortable, open and vulnerable to share and receive. Overall, it was the very best experience we could have had with our readings and we are extremely grateful to Holly. I highly recommend hiring her for an awesome date night reading.",
-    details: "Don't have prior experience • 2 people • 60 minutes • My home, venue, etc.",
+    details:
+      "Don't have prior experience • 2 people • 60 minutes • My home, venue, etc.",
     type: "Tarot Card Reading",
   },
   {
     name: "Madison W.",
     date: "Nov 9, 2024",
     body: "Holly was amazing! I felt bad because the wedding was a bit chaotic and busy, but she rolled with it flawlessly. She created such a comfortable, calming atmosphere during the reading and everyone could tell she was the real deal. Thank you so much Holly!!",
-    details: "Have prior experience • Small group • 90 minutes • My home, venue, etc.",
+    details:
+      "Have prior experience • Small group • 90 minutes • My home, venue, etc.",
     type: "Tarot Card Reading",
   },
   {
     name: "Patrick W.",
     date: "Feb 15, 2024",
     body: "I reached out to Holly to ask about her working our company holiday party and she was extremely responsive and easy to work with. Once the party night arrived, Holly was ready to go at our agreed upon time and provided a great atmosphere and experience for our team. Everyone who received readings from her enjoyed their time. I hight recommend her services, and will be looking for an opportunity down the line to hire her again.",
-    details: "Have prior experience • Small group • 15 minutes • My home, venue, etc.",
+    details:
+      "Have prior experience • Small group • 15 minutes • My home, venue, etc.",
     type: "Tarot Card Reading",
   },
   {
@@ -73,7 +76,8 @@ const reviews = [
     details:
       "Tarot Card Reading • Palm Reading • Fortune Telling • Astrology Reading • Birthday party • 1 - 20 guests • 18 - 30 years old • Don't need reader to provide table & chairs",
     type: "Tarot and Psychic Reader Entertainment",
-    reply: "Thank you so much Kristi! I had a lovely time getting to read for all of you!",
+    reply:
+      "Thank you so much Kristi! I had a lovely time getting to read for all of you!",
   },
   {
     name: "Michelle C.",
@@ -82,7 +86,8 @@ const reviews = [
     details:
       "Tarot Card Reading • Wedding • 51 - 100 guests • 18 years old and older • Need reader to provide table & chairs",
     type: "Tarot and Psychic Reader Entertainment",
-    reply: "Thank you so much Michelle! I'm so grateful to have been part of such an amazing wedding! 🤩",
+    reply:
+      "Thank you so much Michelle! I'm so grateful to have been part of such an amazing wedding! 🤩",
   },
   {
     name: "Danika D.",
@@ -118,16 +123,19 @@ const reviews = [
     name: "Veronica P.",
     date: "Oct 28, 2021",
     body: "Holly was amazing! She is incredibly sweet and understanding. She explained things very well and made me feel so comfortable during the reading. I highly recommend her to anyone!",
-    details: "Have prior experience • 1 person • 30 minutes • Remotely (phone or internet)",
+    details:
+      "Have prior experience • 1 person • 30 minutes • Remotely (phone or internet)",
     type: "Tarot Card Reading",
   },
   {
     name: "Alex B.",
     date: "Sep 20, 2021",
     body: "Holly was super professional and even came to us for a bachelorette party we had! We all enjoyed her vibe and personality! I would definitely recommend booking her!",
-    details: "Don't have prior experience • Small group • 30 minutes • At the pro's location • My home, venue, etc.",
+    details:
+      "Don't have prior experience • Small group • 30 minutes • At the pro's location • My home, venue, etc.",
     type: "Tarot Card Reading",
-    reply: "Thank you so much, Alex! I had a fabulous time getting to read for you all! Hope the wedding is amazing!",
+    reply:
+      "Thank you so much, Alex! I had a fabulous time getting to read for you all! Hope the wedding is amazing!",
   },
   {
     name: "Polly Z.",
@@ -153,7 +161,8 @@ const reviews = [
     name: "Brian M.",
     date: "Jun 30, 2021",
     body: "I wish I could select more than three highlights because then it would actually embody the entire experience. Holly was excellent and encouraged me to express myself so that we could corroborate on understanding the cards. Too many people assume tarot is a fortune reader but there requires honesty in self to truly understand and Holly is excellent at bringing this out. She will be my tarot reader going forward.",
-    details: "Have prior experience • 1 person • 60 minutes • Remotely (phone or internet)",
+    details:
+      "Have prior experience • 1 person • 60 minutes • Remotely (phone or internet)",
     type: "Tarot Card Reading",
   },
   {
@@ -169,14 +178,16 @@ const reviews = [
     name: "Dina Y.",
     date: "Jun 4, 2021",
     body: "She was awesome! Made us feel very comfortable. She had a great sense of humor and was very personable. Will definitely use her again!",
-    details: "Don't have prior experience • 1 person • 30 minutes • My home, venue, etc.",
+    details:
+      "Don't have prior experience • 1 person • 30 minutes • My home, venue, etc.",
     type: "Tarot Card Reading",
   },
   {
     name: "Julie D.",
     date: "May 22, 2021",
     body: "I had such an amazing reading with Holly. It's not just her work quality, but also by her spirit, you can tell she is genuine, and is trying to help. I had gain so much clarity and confidence from my reading. She was honest, upbeat, patient, and did not rush the reading at all. She was also responsive, communicates well, and if you do a zoom reading, you also get pictures of your card spreads. I highly recommend her for anyone who is in need of a reading and I will also be reaching out to Holly for my future ones!",
-    details: "Have prior experience • 1 person • 60 minutes • Remotely (phone or internet)",
+    details:
+      "Have prior experience • 1 person • 60 minutes • Remotely (phone or internet)",
     type: "Tarot Card Reading",
     reply:
       "Thank you so much Julie! I immensely appreciate your kind words and very much am looking forward to our next reading 💜 Keep kicking a** in the meantime! 🙌🏻",
@@ -185,14 +196,16 @@ const reviews = [
     name: "Elsa L.",
     date: "Apr 3, 2021",
     body: "It seemed meant to be the minute I opened up to Holly. She lead me through the whole reading and was patient enough to answer my follow up questions She was able to analyze all perspectives but tune into the messages that really mattered. Thank you again!",
-    details: "Have prior experience • 1 person • 60 minutes • Remotely (phone or internet)",
+    details:
+      "Have prior experience • 1 person • 60 minutes • Remotely (phone or internet)",
     type: "Tarot Card Reading",
   },
   {
     name: "Drew D.",
     date: "Nov 18, 2019",
     body: "Really enjoyed our reading. Extremely thorough and patient - and we were astounded on how accurate it was. Would highly recommend!!!!",
-    details: "Don't have prior experience • 2 people • 15 minutes • At the pro's location",
+    details:
+      "Don't have prior experience • 2 people • 15 minutes • At the pro's location",
     type: "Tarot Card Reading",
   },
   {
@@ -225,7 +238,8 @@ const reviews = [
     name: "Chioma u.",
     date: "Jun 23, 2021",
     body: "did a birthday reading over zoom and she was very good at explaining and answering my questions about our session before and during.",
-    details: "Don't have prior experience • 1 person • 30 minutes • Remotely (phone or internet)",
+    details:
+      "Don't have prior experience • 1 person • 30 minutes • Remotely (phone or internet)",
     type: "Tarot Card Reading",
   },
   {
@@ -235,7 +249,8 @@ const reviews = [
     details:
       "Tarot Card Reading • Palm Reading • Special Event / Party / Other • 21 - 50 guests • 31 - 50 years old • Need reader to provide table & chairs",
     type: "Tarot and Psychic Reader Entertainment",
-    reply: "Thank you Maria! I had a fantastic time getting to read for everyone and meeting so many wonderful people!",
+    reply:
+      "Thank you Maria! I had a fantastic time getting to read for everyone and meeting so many wonderful people!",
   },
   {
     name: "Sharr S.",
@@ -249,19 +264,22 @@ const reviews = [
     name: "Michelle S.",
     date: "Aug 24, 2021",
     body: "Thanks for reading for me and helping me gain clarity. I will definitely work towards my future happiness.",
-    details: "Don't have prior experience • 1 person • 30 minutes • Remotely (phone or internet)",
+    details:
+      "Don't have prior experience • 1 person • 30 minutes • Remotely (phone or internet)",
     type: "Tarot Card Reading",
-    reply: "Thank you Michelle! Sending you and your future all the good energy!",
+    reply:
+      "Thank you Michelle! Sending you and your future all the good energy!",
   },
   {
     name: "Fatima I.",
     date: "May 28, 2021",
     body: "Very profesional and felt all positive vibes from her .",
-    details: "Don't have prior experience • 1 person • 30 minutes • Remotely (phone or internet)",
+    details:
+      "Don't have prior experience • 1 person • 30 minutes • Remotely (phone or internet)",
     type: "Tarot Card Reading",
     reply: "Thank you so much! 💜💜💜",
   },
-]
+];
 
 export default function Reviews() {
   return (
@@ -270,37 +288,70 @@ export default function Reviews() {
         {/* Decorative elements */}
         <div className="absolute left-0 top-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
           <div className="absolute -left-10 top-20 rotate-[-15deg]">
-            <Image src="/images/Services-Tarot-Readings-10-Card-Spread.webp" alt="" width={300} height={300} className="opacity-30" />
+            <Image
+              src="/images/Services-Tarot-Readings-10-Card-Spread.webp"
+              alt=""
+              width={300}
+              height={300}
+              className="opacity-30"
+            />
           </div>
           <div className="absolute right-10 bottom-5 rotate-[10deg]">
-            <Image src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp" alt="" width={280} height={280} className="opacity-30" />
+            <Image
+              src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
+              alt=""
+              width={280}
+              height={280}
+              className="opacity-30"
+            />
           </div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <h1 className="text-4xl md:text-5xl font-serif text-white mb-2 text-center">Client Reviews</h1>
+          <h1 className="text-4xl md:text-5xl font-serif text-white mb-2 text-center">
+            Client Reviews
+          </h1>
           <p className="text-center text-white/80 max-w-2xl mx-auto mb-12">
-            Read what clients have to say about their experiences with Crystal Seed Tarot's readings, events, and services.
+            Read what clients have to say about their experiences with Crystal
+            Seed Tarot's readings, events, and services.
           </p>
 
           <div className="text-center mb-12 bg-gradient-to-r from-purple-500/20 via-white/20 to-purple-500/20 p-6 rounded-lg shadow-inner transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-gradient-to-r hover:from-purple-500/30 hover:via-white/30 hover:to-purple-500/30">
-            <h2 className="text-2xl font-serif text-white mb-2">Top Pro status on Thumbtack</h2>
+            <h2 className="text-2xl font-serif text-white mb-2">
+              Top Pro status on Thumbtack
+            </h2>
             <p className="text-xl text-white/90">
-              Top Pros are among the highest-rated, most popular professionals on Thumbtack.
+              Top Pros are among the highest-rated, most popular professionals
+              on Thumbtack.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {reviews.map((review, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-                <h3 className="text-xl font-serif text-white mb-2">{review.name}</h3>
+              <div
+                key={index}
+                className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15"
+              >
+                <h3 className="text-xl font-serif text-white mb-2">
+                  {review.name}
+                </h3>
                 <p className="text-white/70 text-sm mb-4">{review.date}</p>
                 <p className="text-white/90 mb-4">{review.body}</p>
-                {review.details && <p className="text-white/70 text-sm mb-2">Details: {review.details}</p>}
-                {review.type && <p className="text-white/70 text-sm mb-4">Type: {review.type}</p>}
+                {review.details && (
+                  <p className="text-white/70 text-sm mb-2">
+                    Details: {review.details}
+                  </p>
+                )}
+                {review.type && (
+                  <p className="text-white/70 text-sm mb-4">
+                    Type: {review.type}
+                  </p>
+                )}
                 {review.reply && (
                   <div className="bg-white/5 p-4 rounded-lg mt-4 transition-all duration-300 hover:bg-white/10">
-                    <p className="text-white/90 italic">Crystal Seed Tarot's reply:</p>
+                    <p className="text-white/90 italic">
+                      Crystal Seed Tarot's reply:
+                    </p>
                     <p className="text-white/80 mt-2">{review.reply}</p>
                   </div>
                 )}
@@ -310,5 +361,5 @@ export default function Reviews() {
         </div>
       </section>
     </div>
-  )
-} 
+  );
+}

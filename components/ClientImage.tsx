@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { BLOG_DEFAULTS } from '@/lib/contentful';
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { BLOG_DEFAULTS } from "@/lib/contentful";
 
 interface ClientImageProps {
   src: string | null | undefined;
@@ -19,23 +19,23 @@ export default function ClientImage({
   src,
   alt,
   fallbackSrc = BLOG_DEFAULTS.fallbackImage,
-  className = '',
+  className = "",
   fill = false,
   priority = false,
   width,
-  height
+  height,
 }: ClientImageProps) {
   const [imgSrc, setImgSrc] = useState<string>(src || fallbackSrc);
   const [hasError, setHasError] = useState(false);
 
   // Log debug info to console only
   useEffect(() => {
-    if (process.env.NODE_ENV === 'development') {
-      console.group('Image Debug Info:');
-      console.log('Alt text:', alt);
-      console.log('Original path:', src || '(none)');
-      console.log('Using path:', imgSrc);
-      console.log('Fallback path:', fallbackSrc);
+    if (process.env.NODE_ENV === "development") {
+      console.group("Image Debug Info:");
+      console.log("Alt text:", alt);
+      console.log("Original path:", src || "(none)");
+      console.log("Using path:", imgSrc);
+      console.log("Fallback path:", fallbackSrc);
       console.groupEnd();
     }
   }, [alt, src, imgSrc, fallbackSrc]);
@@ -54,20 +54,13 @@ export default function ClientImage({
     alt,
     className,
     onError: handleError,
-    priority
+    priority,
   };
 
   // Return either fill or sized image based on props
   return fill ? (
-    <Image 
-      {...imageProps}
-      fill
-    />
+    <Image {...imageProps} fill />
   ) : (
-    <Image 
-      {...imageProps}
-      width={width || 800}
-      height={height || 450}
-    />
+    <Image {...imageProps} width={width || 800} height={height || 450} />
   );
-} 
+}
