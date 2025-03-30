@@ -120,7 +120,6 @@ export default function Contact() {
           </div>
 
           <div className="mt-12 text-center">
-            <h2 className="text-2xl font-serif text-white mb-4">Follow Us</h2>
             <div className="flex justify-center space-x-4">
               <Button
                 asChild
