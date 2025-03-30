@@ -79,7 +79,7 @@ export function generateBlogImagePath(title: string): string {
 
   // Special case mapping based on slugs for more reliable matching
   const specialCaseImages: Record<string, string> = {
-    "be-nice-to-yourself-dmnit": "/images/Blog-Be-Nice-to-Yourself-D@mnit!.webp",
+    "be-nice-to-yourself-dmnit": "/images/Blog-Be-Nice-to-Yourself-D-mnit.webp",
     "accepting-the-totality-of-your-worth": "/images/Blog-Accepting-the-Totality-of-Your-Worth.webp",
     "the-irrational-fear-of-starting-over": "/images/Blog-The-Irrational-Fear-of-Starting-Over.webp",
   };
