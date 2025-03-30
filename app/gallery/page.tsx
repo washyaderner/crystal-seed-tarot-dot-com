@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import Image from "next/image"
+import Image from "next/image";
 
 const galleryItems = [
   {
@@ -16,7 +16,8 @@ const galleryItems = [
     caption: "14th B-day party, Lake Oswego, OR",
   },
   {
-    image: "/images/Gallery-The-Portland-Rosey's-Advertising-Awards-Portland-OR-2017.webp",
+    image:
+      "/images/Gallery-The-Portland-Rosey's-Advertising-Awards-Portland-OR-2017.webp",
     caption: "The Portland Rosey's 2017 – Advertising Awards – Portland, OR",
     isLandscape: true,
   },
@@ -25,20 +26,24 @@ const galleryItems = [
     caption: "Bachelorette Party, House Boat, Vancouver, WA",
   },
   {
-    image: "/images/Gallery-Next-Adventure-Employee-Party-2023-Portland-OR.webp",
+    image:
+      "/images/Gallery-Next-Adventure-Employee-Party-2023-Portland-OR.webp",
     caption: "Next Adventure\nEmployee Party 2023\nPortland, OR",
   },
   {
-    image: "/images/Gallery-Halloween-Event-2022-SDF-Collective-Gresham-OR.webp",
+    image:
+      "/images/Gallery-Halloween-Event-2022-SDF-Collective-Gresham-OR.webp",
     caption: "Halloween Event 2022\nSDF Collective\nGresham, OR",
   },
   {
-    image: "/images/Gallery-End-of-Year-Vendor-Party-Evergreen-Event-Center-2024.webp",
+    image:
+      "/images/Gallery-End-of-Year-Vendor-Party-Evergreen-Event-Center-2024.webp",
     caption: "2024 End of Year Vendor Party\nEvergreen Event Center",
     credit: "Photo credit: Dionne Krauss Photography",
   },
   {
-    image: "/images/Gallery-End-of-Year-Vendor-Party-Evergreen-Event-Center-Close-Up-2024.webp",
+    image:
+      "/images/Gallery-End-of-Year-Vendor-Party-Evergreen-Event-Center-Close-Up-2024.webp",
     caption: "2024 End of Year Vendor Party\nEvergreen Event Center",
     credit: "Photo credit: Dionne Krauss Photography",
   },
@@ -47,18 +52,21 @@ const galleryItems = [
     caption: "Goth Wedding at the Benson Hotel 2024",
     isLandscape: true,
   },
-]
+];
 
 export default function Gallery() {
   return (
     <div className="min-h-screen">
       <section className="py-16 bg-black/20 backdrop-blur-md">
-        <h1 className="text-4xl md:text-5xl font-serif text-white mb-4 text-center">Gallery</h1>
+        <h1 className="text-4xl md:text-5xl font-serif text-white mb-4 text-center">
+          Gallery
+        </h1>
 
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <p className="text-xl text-white/90">
-              Here are a few of the amazing parties and events I've done Tarot at over the years.
+              Here are a few of the amazing parties and events I've done Tarot
+              at over the years.
             </p>
           </div>
 
@@ -77,14 +85,19 @@ export default function Gallery() {
                   height={item.isLandscape ? 450 : 564}
                   className="rounded-lg mb-4 w-full h-auto object-cover transition-all duration-300 hover:brightness-110"
                 />
-                <p className="text-white/90 text-center whitespace-pre-line">{item.caption}</p>
-                {item.credit && <p className="text-white/70 text-sm text-center mt-2">{item.credit}</p>}
+                <p className="text-white/90 text-center whitespace-pre-line">
+                  {item.caption}
+                </p>
+                {item.credit && (
+                  <p className="text-white/70 text-sm text-center mt-2">
+                    {item.credit}
+                  </p>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
-
