@@ -269,13 +269,19 @@ Implement these safety practices:
 - Use sys.createdAt from Contentful as a fallback date when specific date fields are missing
 - Include proper error handling in API client code to prevent breaking the application when API issues occur
 - Add rehype-raw and remarkGfm plugins when using ReactMarkdown for better rendering support
+- In Next.js 14+, event handlers (like onError) must be in components with 'use client' directive
+- Use multi-tier fallback systems for images (specified → generated → default)
+- Reference images with paths relative to the /public directory (/images/filename.webp) not absolute paths
+- Create dedicated client components for interactive elements in Next.js to prevent "Cannot pass event handlers to Server Component" errors
+- Use standardized parameter objects (like BLOG_DEFAULTS) for consistent styling across components
+- Strip markdown symbols from excerpts and previews using utility functions
+- Format blog post titles in paths with consistent capitalization and hyphenation (Blog-Title-With-Dashes.webp)
 
 # Scratchpad
 
 # Current Project Status & Roadmap
 - Enhancing Crystal Seed Tarot website with improved UX and evergreen content
-- Working on blog post detail pages with improved layout and readability
-- Added Contentful CMS integration for easier content management
+- Completed blog system enhancements with consistent styling, SEO optimization, and image handling
 - Focus on making content more evergreen and responsive
 - Following a structured git workflow with feature branches → dev → main
 
@@ -297,7 +303,7 @@ Implement these safety practices:
 - Integrated Contentful CMS for blog content management
 - Added fallback mechanism for development without Contentful credentials
 
-# Current Task - Blog Detail & Contentful Integration
+# Current Task - Blog Enhancement Project (COMPLETED)
 [X] Review current blog post detail pages
 [X] Identify opportunities for improved layout and readability
 [X] Enhance blog post image display options
@@ -311,13 +317,49 @@ Implement these safety practices:
 [X] Update blog background to match site styling
 [X] Change blog banner to Northern Lights image
 [X] Fix Contentful integration to work without publishDate field
-[ ] Prepare PR details for merging to dev branch
+[X] Standardize blog card styling to match homepage cards
+[X] Add SEO meta tags and structured data for blog posts
+[X] Ensure consistent 16:9 image aspect ratio
+[X] Implement client-side image component with proper error handling
+[X] Strip markdown from excerpts for clean display
+[X] Create automatic image naming convention (Blog-{{blogName}}.webp)
+
+# Technical Learnings from Blog Enhancement
+
+## Image Handling in Next.js
+- Images should be referenced as paths relative to the /public directory (e.g., /images/filename.webp)
+- Never use absolute paths (like /Users/bruh/build/crystal-seed-tarot-dot-com/public/...)
+- Use consistent naming conventions (Blog-Title-With-Dashes.webp) for easier management
+- Always implement fallback images to handle missing files
+- A multi-tier fallback system works best (specified image → generated name → default fallback)
+
+## Component Architecture
+- Next.js requires 'use client' directive for any component with event handlers
+- onError and other event handlers must be in client components
+- Create dedicated client components for interactive elements to avoid server/client confusion
+- Use standardized parameter objects (BLOG_DEFAULTS) for consistent styling
+- Keep client components small and focused on interactive functionality
+
+## Debugging Approach
+- Favor console logging over visible debug elements in production code
+- useEffect hooks work well for debug logging without affecting the UI
+- Structure logging using console.group() for better readability
+- Remember process.env.NODE_ENV === 'development' to limit debug output in production
+
+## Markdown & Content Handling
+- Raw markdown symbols (#, *, _, etc.) must be stripped from excerpts
+- Use utility functions like cleanTextForMeta to prepare content for display
+- Ensure formatting is consistent between different views (card vs. detail page)
+- Consider using custom React Markdown renderers for consistent styling
+
+## SEO Optimizations
+- Add comprehensive meta tags for all content pages
+- Implement structured data (JSON-LD) for better search engine understanding
+- Use dynamic metadata generation based on page content
+- Include OpenGraph and Twitter card metadata for better social sharing
+- Add canonical URLs to prevent duplicate content issues
 
 # Upcoming Tasks
-- Test all blog detail enhancements in development environment
-- Create PR to merge feature/blog-detail into dev
-- Add more blog post content in Contentful
-- Configure Contentful preview/publish workflow
 - Consider additional feature improvements (possibly contact form or gallery)
 - Prepare for eventual production deployment from dev to main
 
