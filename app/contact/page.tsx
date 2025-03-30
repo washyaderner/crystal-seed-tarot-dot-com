@@ -51,16 +51,27 @@ export default function Contact() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/contact', {
+      // Use FormSubmit.co's AJAX endpoint
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      formData.append('message', data.message);
+      
+      // Add FormSubmit.co configuration
+      formData.append('_subject', `New Contact Form: ${data.name}`);
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+      
+      const response = await fetch('https://formsubmit.co/ajax/crystalseedtarot@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: formData
       });
-
+      
       const result = await response.json();
       
-      if (!response.ok) {
-        throw new Error(result.error || "Failed to send message");
+      if (result.success !== "true" && result.success !== true) {
+        throw new Error("Form submission failed");
       }
 
       // Success
