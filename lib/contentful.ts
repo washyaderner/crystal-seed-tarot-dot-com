@@ -8,6 +8,23 @@ const client = createClient({
   environment: "master", // Always use "master" environment to avoid environment confusion
 });
 
+// Map of blog slugs to custom publish dates
+// This can be used to override dates from Contentful
+const CUSTOM_PUBLISH_DATES: Record<string, string> = {
+  "better-practices-for-your-practice": "2025-02-23T12:00:00.000Z",
+};
+
+// Function to get publish date (custom if available, otherwise from Contentful)
+export function getPublishDate(slug: string, contentfulDate?: string): string {
+  // If we have a custom date for this slug, use it
+  if (CUSTOM_PUBLISH_DATES[slug]) {
+    return CUSTOM_PUBLISH_DATES[slug];
+  }
+  
+  // Otherwise use the date from Contentful or fallback to current date
+  return contentfulDate || new Date().toISOString();
+}
+
 // Fetch all blog posts
 export async function getAllBlogPosts(): Promise<ContentfulResponse> {
   try {
@@ -28,8 +45,8 @@ export async function getAllBlogPosts(): Promise<ContentfulResponse> {
       items: response.items.map((item) => ({
         fields: {
           ...(item.fields as BlogPost["fields"]),
-          // Ensure publishDate exists by using createdAt as fallback
-          publishDate: item.fields.publishDate || item.sys.createdAt,
+          // Use custom publish date if available, otherwise use the one from Contentful or sys.createdAt
+          publishDate: getPublishDate(item.fields.slug, item.fields.publishDate || item.sys.createdAt),
         },
         sys: {
           id: item.sys.id,
@@ -68,12 +85,12 @@ export async function getBlogPostBySlug(slug: string) {
 
     const item = response.items[0];
 
-    // Add fallback for publishDate
+    // Add fallback for publishDate and use custom date if available
     return {
       ...item,
       fields: {
         ...item.fields,
-        publishDate: item.fields.publishDate || item.sys.createdAt,
+        publishDate: getPublishDate(slug, item.fields.publishDate || item.sys.createdAt),
       },
     };
   } catch (error) {
@@ -95,7 +112,7 @@ export const mockBlogPosts: ContentfulResponse = {
         excerpt:
           "Learn how to improve your tarot practice with these essential tips.",
         featuredImage: undefined, // Changed from null to undefined to match type
-        publishDate: new Date().toISOString(),
+        publishDate: "2025-02-23T12:00:00.000Z", // Updated to February 23, 2025
       },
       sys: {
         id: "1",
