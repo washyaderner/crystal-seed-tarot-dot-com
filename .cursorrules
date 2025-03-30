@@ -281,7 +281,7 @@ Implement these safety practices:
 
 # Current Project Status & Roadmap
 - Enhancing Crystal Seed Tarot website with improved UX and evergreen content
-- Completed blog system enhancements with consistent styling, SEO optimization, and image handling
+- Implementing new blog system with Contentful integration
 - Focus on making content more evergreen and responsive
 - Following a structured git workflow with feature branches → dev → main
 
@@ -303,26 +303,47 @@ Implement these safety practices:
 - Integrated Contentful CMS for blog content management
 - Added fallback mechanism for development without Contentful credentials
 
-# Current Task - Blog Enhancement Project (COMPLETED)
-[X] Review current blog post detail pages
-[X] Identify opportunities for improved layout and readability
-[X] Enhance blog post image display options
-[X] Improve heading hierarchy and typography
-[X] Add related posts section to the bottom of blog posts
-[X] Make code changes and commit to feature/blog-detail branch
-[X] Add Contentful CMS integration for blog content
-[X] Create mock data system for development without Contentful
-[X] Implement error handling for Contentful API
-[X] Add proper markdown rendering with ReactMarkdown
-[X] Update blog background to match site styling
-[X] Change blog banner to Northern Lights image
-[X] Fix Contentful integration to work without publishDate field
-[X] Standardize blog card styling to match homepage cards
-[X] Add SEO meta tags and structured data for blog posts
-[X] Ensure consistent 16:9 image aspect ratio
-[X] Implement client-side image component with proper error handling
-[X] Strip markdown from excerpts for clean display
-[X] Create automatic image naming convention (Blog-{{blogName}}.webp)
+# Current Task - New Blog System Implementation
+[X] Setup and Dependencies
+  [X] Install Contentful and required dependencies
+  [X] Create TypeScript configuration for blog pages
+  [X] Set up Contentful client configuration
+
+[X] Blog Page Layout
+  [X] Create main blog page component (TypeScript)
+  [X] Implement responsive grid layout for blog cards
+  [X] Add consistent padding matching homepage card style
+  [X] Ensure 1:1 aspect ratio for blog preview images
+
+[X] Blog Card Component
+  [X] Create reusable blog card component
+  [X] Implement image handling with proper aspect ratio
+  [X] Add title and preview text display
+  [X] Set up link to full blog post
+
+[X] Blog Post Detail Page
+  [X] Create dynamic blog post page component
+  [X] Implement 16:9 aspect ratio for featured image
+  [X] Set up markdown rendering
+  [X] Add proper typography and spacing
+
+[X] Image Handling
+  [X] Implement image naming convention (Blog-{{blogName}}.webp)
+  [X] Set up fallback image system
+  [X] Add proper image optimization
+  [X] Ensure consistent image loading
+
+[X] Contentful Integration
+  [X] Set up Contentful content model
+  [X] Implement content fetching
+  [X] Add error handling
+  [X] Create development fallback system
+
+[X] Testing and Optimization
+  [X] Test responsive layouts
+  [X] Verify image aspect ratios
+  [X] Check markdown rendering
+  [X] Optimize performance
 
 # Technical Learnings from Blog Enhancement
 
