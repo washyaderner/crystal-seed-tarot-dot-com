@@ -35,7 +35,7 @@ export function BlogCard({
           <h2 className="text-xl font-serif text-white mb-2 group-hover:text-primary transition-colors">
             {title}
           </h2>
-          <p className="text-gray-300 text-sm mb-4 line-clamp-3">
+          <p className="text-white text-sm mb-4 line-clamp-3">
             {cleanExcerpt}
           </p>
           <time className="text-gray-400 text-sm">
