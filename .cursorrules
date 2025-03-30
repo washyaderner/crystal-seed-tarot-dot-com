@@ -282,6 +282,7 @@ Implement these safety practices:
 - Implement auto-mapping between blog titles and image filenames using standardized naming conventions
 - Generate excerpts from content when excerpt fields are missing
 - Use optional chaining (?.) when accessing fields that might not exist in API responses
+- Always check terminal output for the development server port, as it may change between sessions
 
 # Scratchpad
 
@@ -406,7 +407,8 @@ Implement these safety practices:
 - Markdown styling: Added custom component renderers for consistent typography
 
 # Technical Notes
-- Development server runs on port 3001 (port 3000 was in use)
+- Always check terminal output to determine the actual development server port
+- When running `npm run dev`, verify the port from the line "- Local: http://localhost:<PORT>"
 - Next.js upgraded from 14.2.16 to 14.2.26 to fix security vulnerabilities
 - Added react-markdown, remark-gfm, and rehype-raw for markdown support
 - Contentful integration uses preview API in development, published content in production
