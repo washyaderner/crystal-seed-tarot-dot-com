@@ -15,180 +15,139 @@ interface BlogPostPageProps {
   };
 }
 
+// This page will statically generate at build time
+// Increased revalidation time to reduce API calls
+export const revalidate = 3600; // Revalidate once per hour
+
 // Generate metadata for SEO
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
-  const post =
-    process.env.NODE_ENV === "development" && !process.env.CONTENTFUL_SPACE_ID
-      ? mockBlogPosts.items.find((item) => item.fields.slug === params.slug)
-      : await getBlogPostBySlug(params.slug);
+  try {
+    const post =
+      process.env.NODE_ENV === "development" && !process.env.CONTENTFUL_SPACE_ID
+        ? mockBlogPosts.items.find((item) => item.fields.slug === params.slug)
+        : await getBlogPostBySlug(params.slug);
 
-  if (!post) {
+    if (!post) {
+      return {
+        title: "Blog Post Not Found | Crystal Seed Tarot",
+        description: "The requested blog post could not be found.",
+      };
+    }
+
+    // Access fields correctly and add fallbacks
+    const fields = post.fields;
+    const title = fields.title || "Untitled Post";
+    const content = fields.content || "";
+    const excerpt =
+      fields.excerpt ||
+      (content ? cleanTextForMeta(content) : "No excerpt available");
+
+    // Generate image URL based on the blog title
+    const imageUrl = fields.featuredImage?.url || generateBlogImagePath(title);
+    const imageTitle = fields.featuredImage?.title || title;
+
     return {
-      title: "Blog Post Not Found | Crystal Seed Tarot",
-      description: "The requested blog post could not be found.",
-    };
-  }
-
-  // Access fields correctly and add fallbacks
-  const fields = post.fields;
-  const title = fields.title || "Untitled Post";
-  const content = fields.content || "";
-  const excerpt =
-    fields.excerpt ||
-    (content ? cleanTextForMeta(content) : "No excerpt available");
-
-  // Generate image URL based on the blog title
-  const imageUrl = fields.featuredImage?.url || generateBlogImagePath(title);
-  const imageTitle = fields.featuredImage?.title || title;
-
-  return {
-    title: `${title} | Crystal Seed Tarot Blog`,
-    description: excerpt,
-    openGraph: {
       title: `${title} | Crystal Seed Tarot Blog`,
       description: excerpt,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: imageTitle,
-        },
-      ],
-    },
-  };
+      openGraph: {
+        title: `${title} | Crystal Seed Tarot Blog`,
+        description: excerpt,
+        images: [
+          {
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+            alt: imageTitle,
+          },
+        ],
+      },
+    };
+  } catch (error) {
+    console.error("Error generating blog post metadata:", error);
+    return {
+      title: "Blog | Crystal Seed Tarot",
+      description: "Explore tarot insights and spiritual guidance from Crystal Seed Tarot.",
+    };
+  }
 }
 
-// This page will statically generate at build time
-export const revalidate = 60;
-
 export default async function BlogPost({ params }: BlogPostPageProps) {
-  const post =
-    process.env.NODE_ENV === "development" && !process.env.CONTENTFUL_SPACE_ID
-      ? mockBlogPosts.items.find((item) => item.fields.slug === params.slug)
-      : await getBlogPostBySlug(params.slug);
+  try {
+    const post =
+      process.env.NODE_ENV === "development" && !process.env.CONTENTFUL_SPACE_ID
+        ? mockBlogPosts.items.find((item) => item.fields.slug === params.slug)
+        : await getBlogPostBySlug(params.slug);
 
-  if (!post) {
-    notFound();
-  }
+    if (!post) {
+      notFound();
+    }
 
-  const { fields } = post;
+    const { fields } = post;
 
-  // Add fallbacks for any potentially missing fields
-  const title = fields.title || "Untitled Post";
-  const content = fields.content || "# No content available";
-  const publishDate = fields.publishDate || post.sys.createdAt;
+    // Add fallbacks for any potentially missing fields
+    const title = fields.title || "Untitled Post";
+    const content = fields.content || "# No content available";
+    const publishDate = fields.publishDate || post.sys.createdAt;
 
-  // Generate image URL based on the blog title
-  const imageUrl = fields.featuredImage?.url || generateBlogImagePath(title);
-  const imageTitle = fields.featuredImage?.title || title;
+    // Generate image URL based on the blog title
+    const imageUrl = fields.featuredImage?.url || generateBlogImagePath(title);
+    const imageTitle = fields.featuredImage?.title || title;
 
-  return (
-    <article className="min-h-screen">
-      <section className="py-16 bg-black/20 backdrop-blur-md">
-        <div className="container mx-auto px-4">
-          {/* Back to Blog link */}
-          <div className="max-w-3xl mx-auto">
-            <Link
-              href="/blog"
-              className="inline-flex items-center text-white hover:text-white/90 mb-8 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-2"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+    return (
+      <article className="min-h-screen">
+        <div className="bg-black/20 backdrop-blur-lg py-8">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              {/* Back to Blog link */}
+              <Link
+                href="/blog"
+                className="text-white hover:text-opacity-80 mb-4 inline-block transition duration-200"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
-                  clipRule="evenodd"
+                ← Back to Blog
+              </Link>
+
+              {/* Title */}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mt-4 mb-6">
+                {title}
+              </h1>
+
+              {/* Publish date */}
+              <p className="text-gray-300 mb-8">
+                {new Date(publishDate).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+
+              {/* Featured image */}
+              <div className="mb-8 rounded-md overflow-hidden aspect-video relative">
+                <Image
+                  src={imageUrl}
+                  alt={imageTitle}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  priority
                 />
-              </svg>
-              Back to Blog
-            </Link>
+              </div>
 
-            {/* Featured image with 16:9 aspect ratio */}
-            <div className="relative w-full aspect-video mb-8 rounded-lg overflow-hidden">
-              <Image
-                src={imageUrl}
-                alt={imageTitle}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-
-            {/* Blog content */}
-            <h1 className="text-4xl md:text-5xl font-serif text-white mb-4">
-              {title}
-            </h1>
-            <time className="text-gray-400 mb-8 block">
-              {new Date(publishDate).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
-
-            {/* Markdown content */}
-            <div className="prose prose-invert max-w-none">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-                components={{
-                  // Customize markdown components for better styling
-                  h2: ({ children }) => (
-                    <h2 className="text-3xl font-serif text-white mt-8 mb-4">
-                      {children}
-                    </h2>
-                  ),
-                  h3: ({ children }) => (
-                    <h3 className="text-2xl font-serif text-white mt-6 mb-3">
-                      {children}
-                    </h3>
-                  ),
-                  p: ({ children }) => (
-                    <p className="text-white mb-4 leading-relaxed">
-                      {children}
-                    </p>
-                  ),
-                  ul: ({ children }) => (
-                    <ul className="list-disc list-inside text-white mb-4">
-                      {children}
-                    </ul>
-                  ),
-                  ol: ({ children }) => (
-                    <ol className="list-decimal list-inside text-white mb-4">
-                      {children}
-                    </ol>
-                  ),
-                  li: ({ children }) => <li className="mb-2">{children}</li>,
-                  a: ({ href, children }) => (
-                    <a
-                      href={href}
-                      className="text-primary hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {children}
-                    </a>
-                  ),
-                  blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 border-primary pl-4 italic text-white my-4">
-                      {children}
-                    </blockquote>
-                  ),
-                }}
-              >
-                {content}
-              </ReactMarkdown>
+              {/* Blog content */}
+              <div className="prose prose-lg max-w-none text-white prose-headings:text-white prose-a:text-blue-300 hover:prose-a:text-blue-200 prose-strong:text-white">
+                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                  {content}
+                </ReactMarkdown>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-    </article>
-  );
+      </article>
+    );
+  } catch (error) {
+    // If there's an unexpected error, log it and fall back to 404
+    console.error("Error rendering blog post:", error);
+    notFound();
+  }
 }
