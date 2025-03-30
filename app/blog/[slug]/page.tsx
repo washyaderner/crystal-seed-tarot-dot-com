@@ -47,6 +47,15 @@ export async function generateMetadata({
     // Generate image URL based on the blog title
     const imageUrl = fields.featuredImage?.url || generateBlogImagePath(title);
     const imageTitle = fields.featuredImage?.title || title;
+    
+    // Debug logging - more detailed
+    console.log({
+      pageType: "Blog detail", 
+      title,
+      slug: params.slug,
+      imageUrl,
+      imageTitle
+    });
 
     return {
       title: `${title} | Crystal Seed Tarot Blog`,

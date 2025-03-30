@@ -75,6 +75,10 @@ export default async function Blog() {
                 // If the Contentful image exists, use that, otherwise generate a local path
                 const imageUrl =
                   post.fields.featuredImage?.url || generateBlogImagePath(title);
+                
+                // Debug logging
+                console.log(`Blog: ${title}, Image URL: ${imageUrl}`);
+                
                 const imageTitle = post.fields.featuredImage?.title || title;
 
                 // Generate excerpt with fallback

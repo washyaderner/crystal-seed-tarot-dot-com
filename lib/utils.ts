@@ -70,6 +70,25 @@ export function generateBlogImagePath(title: string): string {
     return "/images/blog-placeholder.jpg";
   }
 
-  // Return path with original formatting for local image lookup
-  return getBlogImagePath(title);
+  // Create a mapping of blog slugs to their file extensions
+  const blogImageExtensions: Record<string, string> = {
+    "when-being-a-good-person-goes-bad": "jpg",
+    // Add more mappings here as needed
+  };
+  
+  // Convert title to slug format for lookup
+  const slug = title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+    
+  // Use the mapped extension if available, otherwise default to webp
+  const extension = blogImageExtensions[slug] || "webp";
+  
+  // Debug logging
+  console.log(`Blog title: "${title}", Slug: "${slug}", Extension: ${extension}`);
+  
+  // Now get the path with the correct extension
+  return getBlogImagePath(title, extension);
 }
