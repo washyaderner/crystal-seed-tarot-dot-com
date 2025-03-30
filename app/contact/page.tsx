@@ -1,10 +1,55 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Mail, Phone, Facebook, Instagram } from "lucide-react";
 import ThumbTackIcon from "@/components/icons/ThumbTackIcon";
 import BashIcon from "@/components/icons/BashIcon";
+import { useState, FormEvent } from "react";
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
+    };
+
+    try {
+      // Send form data to the server
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      // Clear the form and show success message
+      e.currentTarget.reset();
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      setError("There was an error sending your message. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <div className="min-h-screen">
       <section className="py-16 bg-black/20 backdrop-blur-md">
@@ -62,61 +107,83 @@ export default function Contact() {
           </div>
 
           <div className="max-w-2xl mx-auto">
-            <form className="bg-white/10 backdrop-blur-md p-8 rounded-lg">
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-white mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
-                  required
-                />
+            {submitted ? (
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg text-center">
+                <h2 className="text-2xl font-serif text-white mb-4">Thank You!</h2>
+                <p className="text-white/90 mb-6">
+                  Your message has been sent successfully. I'll get back to you as soon as possible.
+                </p>
+                <Button 
+                  onClick={() => setSubmitted(false)}
+                  className="bg-transparent border border-white hover:bg-white/10"
+                >
+                  Send Another Message
+                </Button>
               </div>
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-white mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="phone" className="block text-white mb-2">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
-                />
-              </div>
-              <div className="mb-4">
-                <label htmlFor="message" className="block text-white mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
-                  required
-                ></textarea>
-              </div>
-              <Button
-                type="submit"
-                className="bg-transparent border border-white hover:bg-white/10"
-              >
-                Send Message
-              </Button>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-md p-8 rounded-lg">
+                {error && (
+                  <div className="mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded text-white">
+                    {error}
+                  </div>
+                )}
+                <div className="mb-4">
+                  <label htmlFor="name" className="block text-white mb-2">
+                    Name <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="email" className="block text-white mb-2">
+                    Email <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="phone" className="block text-white mb-2">
+                    Phone <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label htmlFor="message" className="block text-white mb-2">
+                    Message <span className="text-red-400">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="w-full p-2 bg-white/20 border border-white/40 rounded text-white"
+                    required
+                  ></textarea>
+                </div>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="bg-transparent border border-white hover:bg-white/10 disabled:opacity-50"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            )}
           </div>
 
           <div className="mt-12 text-center">
