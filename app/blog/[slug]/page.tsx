@@ -93,7 +93,7 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
           <div className="max-w-3xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center text-primary hover:text-primary/80 mb-8 transition-colors"
+              className="inline-flex items-center text-white hover:text-white/90 mb-8 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

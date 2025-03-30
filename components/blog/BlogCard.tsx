@@ -32,7 +32,7 @@ export function BlogCard({
 
         {/* Content container with consistent padding */}
         <div className="p-6">
-          <h2 className="text-xl font-serif text-white mb-2 group-hover:text-primary transition-colors">
+          <h2 className="text-xl font-serif text-white mb-2">
             {title}
           </h2>
           <p className="text-white text-sm mb-4 line-clamp-3">
