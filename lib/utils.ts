@@ -33,3 +33,37 @@ export function cleanTextForMeta(text: string, maxLength: number = 160): string 
   const lastSpace = cleanText.lastIndexOf(' ', maxLength);
   return cleanText.substring(0, lastSpace > 0 ? lastSpace : maxLength) + '...';
 }
+
+/**
+ * Converts a blog title to a standardized image filename
+ * Example: "My Blog Post" -> "Blog-My-Blog-Post.webp"
+ */
+export function getBlogImagePath(title: string, extension: string = 'webp'): string {
+  // Convert title to kebab case (lowercase with hyphens)
+  const baseFileName = title
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .trim()
+    .replace(/\s+/g, '-'); // Replace spaces with hyphens
+  
+  // Create filename with "Blog-" prefix and proper case (capitalize words)
+  const properCaseFileName = baseFileName
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('-');
+  
+  return `/images/Blog-${properCaseFileName}.${extension}`;
+}
+
+/**
+ * Generate a blog image path with fallbacks
+ * Tries multiple file extensions and falls back to placeholder if none exist
+ */
+export function generateBlogImagePath(title: string): string {
+  // If no title is provided, return the placeholder
+  if (!title) {
+    return '/images/blog-placeholder.jpg';
+  }
+  
+  // Return path with original formatting for local image lookup
+  return getBlogImagePath(title);
+}

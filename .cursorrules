@@ -279,6 +279,9 @@ Implement these safety practices:
 - Use standardized parameter objects (like BLOG_DEFAULTS) for consistent styling across components
 - Strip markdown symbols from excerpts and previews using utility functions
 - Format blog post titles in paths with consistent capitalization and hyphenation (Blog-Title-With-Dashes.webp)
+- Implement auto-mapping between blog titles and image filenames using standardized naming conventions
+- Generate excerpts from content when excerpt fields are missing
+- Use optional chaining (?.) when accessing fields that might not exist in API responses
 
 # Scratchpad
 

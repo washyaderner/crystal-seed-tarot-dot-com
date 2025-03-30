@@ -7,7 +7,7 @@ export interface BlogPost extends EntrySkeletonType {
     slug: string;
     content: string;
     excerpt: string;
-    featuredImage: {
+    featuredImage?: {
       url: string;
       title: string;
       description?: string;

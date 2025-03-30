@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { BlogCard } from "@/components/blog/BlogCard"
 import { getAllBlogPosts, mockBlogPosts } from "@/lib/contentful"
+import { generateBlogImagePath } from "@/lib/utils"
 
 // Generate metadata for SEO
 export const metadata: Metadata = {
@@ -37,20 +38,26 @@ export default async function Blog() {
           {/* Blog grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {sortedPosts.map((post) => {
-              // Add fallbacks for missing fields
-              const featuredImage = post.fields.featuredImage || {
-                url: '/images/blog-placeholder.jpg',
-                title: 'Default Blog Image',
-              };
+              // Get title with fallback
+              const title = post.fields.title || 'Untitled Post';
+              
+              // Generate image URL based on the blog title
+              // If the Contentful image exists, use that, otherwise generate a local path
+              const imageUrl = post.fields.featuredImage?.url || generateBlogImagePath(title);
+              const imageTitle = post.fields.featuredImage?.title || title;
+              
+              // Generate excerpt with fallback
+              const excerpt = post.fields.excerpt || 
+                (post.fields.content ? post.fields.content.substring(0, 150) + '...' : 'No excerpt available');
               
               return (
                 <BlogCard
                   key={post.sys.id}
-                  title={post.fields.title || 'Untitled Post'}
+                  title={title}
                   slug={post.fields.slug}
-                  excerpt={post.fields.excerpt || 'No excerpt available'}
-                  imageUrl={featuredImage.url}
-                  imageTitle={featuredImage.title}
+                  excerpt={excerpt}
+                  imageUrl={imageUrl}
+                  imageTitle={imageTitle}
                   publishDate={post.fields.publishDate || post.sys.createdAt}
                 />
               );

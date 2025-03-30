@@ -7,6 +7,7 @@ import rehypeRaw from "rehype-raw"
 import { getBlogPostBySlug, mockBlogPosts } from "@/lib/contentful"
 import { notFound } from "next/navigation"
 import type { BlogPost } from "@/types/blog"
+import { generateBlogImagePath, cleanTextForMeta } from "@/lib/utils"
 
 interface BlogPostPageProps {
   params: {
@@ -30,11 +31,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   // Access fields correctly and add fallbacks
   const fields = post.fields;
   const title = fields.title || 'Untitled Post';
-  const excerpt = fields.excerpt || 'No excerpt available';
-  const featuredImage = fields.featuredImage || {
-    url: '/images/blog-placeholder.jpg',
-    title: 'Default Blog Image',
-  };
+  const content = fields.content || '';
+  const excerpt = fields.excerpt || (content ? cleanTextForMeta(content) : 'No excerpt available');
+  
+  // Generate image URL based on the blog title
+  const imageUrl = fields.featuredImage?.url || generateBlogImagePath(title);
+  const imageTitle = fields.featuredImage?.title || title;
 
   return {
     title: `${title} | Crystal Seed Tarot Blog`,
@@ -43,10 +45,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       title: `${title} | Crystal Seed Tarot Blog`,
       description: excerpt,
       images: [{
-        url: featuredImage.url,
+        url: imageUrl,
         width: 1200,
         height: 630,
-        alt: featuredImage.title,
+        alt: imageTitle,
       }],
     },
   }
@@ -70,10 +72,10 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
   const title = fields.title || 'Untitled Post';
   const content = fields.content || '# No content available';
   const publishDate = fields.publishDate || post.sys.createdAt;
-  const featuredImage = fields.featuredImage || {
-    url: '/images/blog-placeholder.jpg',
-    title: 'Default Blog Image',
-  };
+  
+  // Generate image URL based on the blog title
+  const imageUrl = fields.featuredImage?.url || generateBlogImagePath(title);
+  const imageTitle = fields.featuredImage?.title || title;
 
   return (
     <article className="min-h-screen">
@@ -90,8 +92,8 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
           {/* Featured image with 16:9 aspect ratio */}
           <div className="relative w-full aspect-video mb-8 rounded-lg overflow-hidden">
             <Image
-              src={featuredImage.url}
-              alt={featuredImage.title}
+              src={imageUrl}
+              alt={imageTitle}
               fill
               className="object-cover"
               priority
