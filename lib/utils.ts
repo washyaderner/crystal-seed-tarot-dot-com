@@ -70,12 +70,25 @@ export function generateBlogImagePath(title: string): string {
     return "/images/blog-placeholder.jpg";
   }
 
-  // Check if this is the "When Being A Good Person Goes Bad" blog
-  // which we know has a .jpg extension - use case-insensitive comparison
-  if (title.toLowerCase() === "when being a good person goes bad".toLowerCase()) {
-    return getBlogImagePath(title, "jpg");
-  }
-
-  // For all other blogs, use .webp as the default
-  return getBlogImagePath(title);
+  // Create a mapping of blog slugs to their file extensions
+  const blogImageExtensions: Record<string, string> = {
+    "when-being-a-good-person-goes-bad": "jpg",
+    // Add more mappings here as needed
+  };
+  
+  // Convert title to slug format for lookup
+  const slug = title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+    
+  // Use the mapped extension if available, otherwise default to webp
+  const extension = blogImageExtensions[slug] || "webp";
+  
+  // Debug logging
+  console.log(`Blog title: "${title}", Slug: "${slug}", Extension: ${extension}`);
+  
+  // Now get the path with the correct extension
+  return getBlogImagePath(title, extension);
 }
