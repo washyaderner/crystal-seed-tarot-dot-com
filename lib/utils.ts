@@ -71,8 +71,8 @@ export function generateBlogImagePath(title: string): string {
   }
 
   // Check if this is the "When Being A Good Person Goes Bad" blog
-  // which we know has a .jpg extension
-  if (title === "When Being A Good Person Goes Bad") {
+  // which we know has a .jpg extension - use case-insensitive comparison
+  if (title.toLowerCase() === "when being a good person goes bad".toLowerCase()) {
     return getBlogImagePath(title, "jpg");
   }
 
