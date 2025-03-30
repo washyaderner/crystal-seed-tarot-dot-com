@@ -79,7 +79,9 @@ export function generateBlogImagePath(title: string): string {
 
   // Special case mapping based on slugs for more reliable matching
   const specialCaseImages: Record<string, string> = {
-    "be-nice-to-yourself-dmnit": "/images/Blog-Be-Nice-to-Yourself-D@mnit!.webp",
+    "be-nice-to-yourself-dmnit": "/images/Blog-Be-Nice-to-Yourself-D-mnit.webp",
+    "accepting-the-totality-of-your-worth": "/images/Blog-Accepting-the-Totality-of-Your-Worth.webp",
+    "the-irrational-fear-of-starting-over": "/images/Blog-The-Irrational-Fear-of-Starting-Over.webp",
   };
 
   // Check if we have a special case for this slug
@@ -88,18 +90,20 @@ export function generateBlogImagePath(title: string): string {
     return specialCaseImages[slug];
   }
 
-  // Create a mapping of blog slugs to their file extensions
-  const blogImageExtensions: Record<string, string> = {
-    "when-being-a-good-person-goes-bad": "jpg",
-    // Add more mappings here as needed
-  };
+  // For When Being A Good Person Goes Bad, use .jpg extension explicitly
+  if (slug === "when-being-a-good-person-goes-bad") {
+    console.log(`Using .jpg extension for slug "${slug}"`);
+    return `/images/Blog-When-Being-A-Good-Person-Goes-Bad.jpg`;
+  }
+
+  // For other blogs, use .webp as the default extension
+  console.log(`Using standard path generation for blog: "${title}", slug: "${slug}"`);
   
-  // Use the mapped extension if available, otherwise default to webp
-  const extension = blogImageExtensions[slug] || "webp";
-  
-  // Debug logging
-  console.log(`Blog title: "${title}", Slug: "${slug}", Extension: ${extension}`);
-  
-  // Now get the path with the correct extension
-  return getBlogImagePath(title, extension);
+  // Create filename with "Blog-" prefix and proper case (capitalize words)
+  const properCaseFileName = slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join("-");
+
+  return `/images/Blog-${properCaseFileName}.webp`;
 }
