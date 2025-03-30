@@ -41,8 +41,35 @@ export default async function Blog() {
   // Only sort if we have posts
   const sortedPosts = posts.length > 0 
     ? [...posts].sort((a, b) => {
+        // Get the dates
         const dateA = new Date(a.fields.publishDate || a.sys.createdAt);
         const dateB = new Date(b.fields.publishDate || b.sys.createdAt);
+        
+        // For Be Nice blog, ensure it's always last (oldest)
+        if (a.fields.slug && a.fields.slug.includes('be-nice-to-yourself')) {
+          return 1; // Put Be Nice last
+        }
+        if (b.fields.slug && b.fields.slug.includes('be-nice-to-yourself')) {
+          return -1; // Keep Be Nice last
+        }
+        
+        // For irrational fear blog, ensure it's second to last
+        if (a.fields.slug && a.fields.slug.includes('irrational-fear')) {
+          return 1; // Put Irrational Fear second to last
+        }
+        if (b.fields.slug && b.fields.slug.includes('irrational-fear')) {
+          return -1; // Keep Irrational Fear second to last
+        }
+        
+        // For accepting totality blog, ensure it's third to last
+        if (a.fields.slug && a.fields.slug.includes('accepting-the-totality')) {
+          return 1; // Put Accepting Totality third to last
+        }
+        if (b.fields.slug && b.fields.slug.includes('accepting-the-totality')) {
+          return -1; // Keep Accepting Totality third to last
+        }
+        
+        // Regular date-based sorting for other blogs
         return dateB.getTime() - dateA.getTime();
       })
     : [];
@@ -54,7 +81,7 @@ export default async function Blog() {
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">
             Blog
           </h1>
-
+          
           {/* Show message if no posts are available */}
           {sortedPosts.length === 0 && (
             <div className="text-center py-8">
@@ -75,6 +102,10 @@ export default async function Blog() {
                 // If the Contentful image exists, use that, otherwise generate a local path
                 const imageUrl =
                   post.fields.featuredImage?.url || generateBlogImagePath(title);
+                
+                // Debug logging
+                console.log(`Blog: ${title}, Image URL: ${imageUrl}`);
+                
                 const imageTitle = post.fields.featuredImage?.title || title;
 
                 // Generate excerpt with fallback
