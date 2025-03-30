@@ -70,19 +70,30 @@ export function generateBlogImagePath(title: string): string {
     return "/images/blog-placeholder.jpg";
   }
 
-  // Create a mapping of blog slugs to their file extensions
-  const blogImageExtensions: Record<string, string> = {
-    "when-being-a-good-person-goes-bad": "jpg",
-    // Add more mappings here as needed
-  };
-  
   // Convert title to slug format for lookup
   const slug = title
     .toLowerCase()
     .replace(/[^\w\s-]/g, "")
     .trim()
     .replace(/\s+/g, "-");
-    
+
+  // Special case mapping based on slugs for more reliable matching
+  const specialCaseImages: Record<string, string> = {
+    "be-nice-to-yourself-dmnit": "/images/Blog-Be-Nice-to-Yourself-D@mnit!.webp",
+  };
+
+  // Check if we have a special case for this slug
+  if (specialCaseImages[slug]) {
+    console.log(`Using special case image path for slug "${slug}": ${specialCaseImages[slug]}`);
+    return specialCaseImages[slug];
+  }
+
+  // Create a mapping of blog slugs to their file extensions
+  const blogImageExtensions: Record<string, string> = {
+    "when-being-a-good-person-goes-bad": "jpg",
+    // Add more mappings here as needed
+  };
+  
   // Use the mapped extension if available, otherwise default to webp
   const extension = blogImageExtensions[slug] || "webp";
   
