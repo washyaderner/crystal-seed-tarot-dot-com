@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     if (!process.env.RESEND_API_KEY) {
       console.log("RESEND_API_KEY not configured. Would send:");
       console.log({ 
-        from: 'Crystal Seed Tarot <hello@crystalseedtarot.com>',
+        from: 'onboarding@resend.dev',
         to: 'crystalseedtarot@gmail.com',
         subject: `New Contact Form: ${name}`,
         html: emailContent
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 
     // Send email via Resend
     const { data, error } = await resend.emails.send({
-      from: 'Crystal Seed Tarot <hello@crystalseedtarot.com>',
+      from: 'onboarding@resend.dev',
       to: ['crystalseedtarot@gmail.com'],
       subject: `New Contact Form: ${name}`,
       html: emailContent,
