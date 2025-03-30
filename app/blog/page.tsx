@@ -1,12 +1,57 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllBlogPosts, BLOG_DEFAULTS } from '@/lib/contentful';
-import { formatDate } from '@/lib/utils';
-import { useState } from 'react';
+import { formatDate, getCanonicalUrl, cleanTextForMeta, generateKeywords } from '@/lib/utils';
+import { Metadata } from 'next';
+import { generateWebsiteSchema, generateBlogBreadcrumbSchema } from '@/lib/schema';
+import Script from 'next/script';
 
 // This page will statically generate at build time
 // but will be revalidated every 60 seconds in production
 export const revalidate = 60;
+
+// Define metadata for the blog listing page
+export const metadata: Metadata = {
+  title: 'Blog | Crystal Seed Tarot',
+  description: cleanTextForMeta('Explore tarot readings, spiritual guidance, and personal growth insights from Crystal Seed Tarot. Discover practices to deepen your connection with tarot.'),
+  keywords: generateKeywords('Crystal Seed Tarot Blog', ['tarot blog', 'crystal seed tarot', 'tarot readings', 'spiritual guidance', 'tarot practices', 'tarot tips']),
+  openGraph: {
+    title: 'Crystal Seed Tarot Blog',
+    description: cleanTextForMeta('Explore tarot readings, spiritual guidance, and personal growth insights from Crystal Seed Tarot.'),
+    url: getCanonicalUrl('blog'),
+    siteName: 'Crystal Seed Tarot',
+    images: [
+      {
+        url: '/images/Blog-Northern-Lights-Banner.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Crystal Seed Tarot Blog',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Crystal Seed Tarot Blog',
+    description: cleanTextForMeta('Explore tarot readings, spiritual guidance, and personal growth insights from Crystal Seed Tarot.'),
+    images: ['/images/Blog-Northern-Lights-Banner.jpg'],
+    creator: '@crystalseedtarot',
+  },
+  alternates: {
+    canonical: getCanonicalUrl('blog'),
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 // Define a type for blog posts
 type BlogPost = {
@@ -25,9 +70,25 @@ type BlogPost = {
 export default async function BlogPage() {
   // Fetch blog posts from Contentful
   const blogPosts = await getAllBlogPosts() as BlogPost[];
+  
+  // Generate schemas
+  const websiteSchema = generateWebsiteSchema();
+  const breadcrumbSchema = generateBlogBreadcrumbSchema();
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 text-white/90">
+      {/* Add JSON-LD structured data */}
+      <Script
+        id="website-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      
       <div className="max-w-6xl mx-auto">
         <div>
           <h1 className="text-5xl font-bold mb-10 text-center text-white">Crystal Seed Tarot Blog</h1>

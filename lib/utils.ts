@@ -48,3 +48,116 @@ export function getExcerpt(content: string, maxLength: number = 150): string {
   return `${plainText.substring(0, lastSpace > 0 ? lastSpace : maxLength)}...`;
 }
 
+/**
+ * Calculate estimated reading time for content
+ * @param content - Text content to calculate reading time for
+ * @param wordsPerMinute - Reading speed (default: 200 words per minute)
+ * @returns Reading time in minutes (rounded up to nearest minute)
+ */
+export function getReadingTime(content: string, wordsPerMinute: number = 200): number {
+  if (!content) return 1;
+  
+  // Remove markdown and count words
+  const plainText = content.replace(/[#*_~`>]/g, '');
+  const wordCount = plainText.split(/\s+/).length;
+  
+  // Calculate reading time and round up to nearest minute (minimum 1 minute)
+  return Math.max(1, Math.ceil(wordCount / wordsPerMinute));
+}
+
+/**
+ * Clean text for use in meta tags by removing special characters and limiting length
+ * @param text - Text to clean
+ * @param maxLength - Maximum length (default: 160 for meta descriptions)
+ * @returns Cleaned text safe for meta tags
+ */
+export function cleanTextForMeta(text: string, maxLength: number = 160): string {
+  if (!text) return '';
+  
+  // Remove markdown syntax, HTML, and extra whitespace
+  const cleanText = text
+    .replace(/[#*_~`>[\]]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  
+  if (cleanText.length <= maxLength) return cleanText;
+  
+  // Find the last sentence or clause break before maxLength
+  const breakPoints = ['. ', '! ', '? ', '; '];
+  let bestBreakPoint = maxLength;
+  
+  for (const breakChar of breakPoints) {
+    const breakPos = cleanText.lastIndexOf(breakChar, maxLength);
+    if (breakPos > 0 && breakPos > bestBreakPoint - 30) {
+      bestBreakPoint = breakPos + 1;
+      break;
+    }
+  }
+  
+  // If no good break point found, find last space
+  if (bestBreakPoint === maxLength) {
+    const lastSpace = cleanText.lastIndexOf(' ', maxLength);
+    if (lastSpace > 0) {
+      bestBreakPoint = lastSpace;
+    }
+  }
+  
+  return cleanText.substring(0, bestBreakPoint).trim();
+}
+
+/**
+ * Generate a canonical URL for a page
+ * @param path - Path segment (without leading slash)
+ * @param baseUrl - Base URL of the site
+ * @returns Full canonical URL
+ */
+export function getCanonicalUrl(path: string, baseUrl?: string): string {
+  const siteUrl = baseUrl || process.env.NEXT_PUBLIC_BASE_URL || 'https://crystalseedtarot.com';
+  
+  // Ensure path doesn't start with a slash and base URL doesn't end with one
+  const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+  const cleanBase = siteUrl.endsWith('/') ? siteUrl.slice(0, -1) : siteUrl;
+  
+  return `${cleanBase}/${cleanPath}`;
+}
+
+/**
+ * Generate keywords from a title and additional tags
+ * @param title - Page title to extract keywords from
+ * @param additionalKeywords - Additional keywords to include
+ * @returns Array of keywords
+ */
+export function generateKeywords(title: string, additionalKeywords: string[] = []): string[] {
+  if (!title) return additionalKeywords;
+  
+  // Extract words from title, remove short words, and convert to lowercase
+  const titleWords = title
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(word => word.length > 3 && !['with', 'from', 'that', 'this', 'these', 'those', 'then'].includes(word))
+    .map(word => word.replace(/[^\w\s]/gi, ''));
+  
+  // Combine with additional keywords and remove duplicates
+  return Array.from(new Set([...additionalKeywords, ...titleWords]));
+}
+
+/**
+ * Format content for social sharing
+ * @param text - Text to format for social sharing
+ * @param maxLength - Maximum length (Twitter: ~280, Facebook: ~250)
+ * @returns Formatted text for social sharing
+ */
+export function formatSocialText(text: string, maxLength: number = 250): string {
+  const cleanText = cleanTextForMeta(text, maxLength);
+  
+  // Add hashtags for major keywords if space permits
+  const baseKeywords = ['tarot', 'crystalseedtarot', 'spirituality'];
+  const remainingLength = maxLength - cleanText.length;
+  
+  if (remainingLength > 30) {
+    return `${cleanText} ${baseKeywords.map(k => `#${k}`).join(' ')}`;
+  }
+  
+  return cleanText;
+}
+

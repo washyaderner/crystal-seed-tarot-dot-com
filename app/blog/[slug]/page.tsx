@@ -4,10 +4,12 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { Metadata, ResolvingMetadata } from 'next';
 import { getBlogPostBySlug, getRelatedBlogPosts, BLOG_DEFAULTS } from '@/lib/contentful';
-import { formatDate } from '@/lib/utils';
+import { formatDate, cleanTextForMeta, getCanonicalUrl, generateKeywords, getReadingTime } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import { generateBlogPostSchema, generateBlogBreadcrumbSchema, generateFAQSchemaFromContent } from '@/lib/schema';
+import Script from 'next/script';
 
 // This page will statically generate at build time
 // but will be revalidated every 60 seconds in production
@@ -41,14 +43,62 @@ export async function generateMetadata(
     };
   }
 
+  // Get the base URL from parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://crystalseedtarot.com';
+  
+  // Clean the description - remove markdown and limit length
+  const cleanDescription = cleanTextForMeta(post.excerpt || post.content, 160);
+
+  // Generate canonical URL
+  const url = getCanonicalUrl(`blog/${post.slug}`, baseUrl);
+  
+  // Generate keywords from title and defaults
+  const keywords = generateKeywords(post.title, ['tarot', 'crystal seed tarot', 'spiritual guidance', 'tarot reading']);
+  
+  // Calculate reading time
+  const readingTime = getReadingTime(post.content);
+  
   return {
     title: `${post.title} | Crystal Seed Tarot`,
-    description: post.excerpt,
+    description: cleanDescription,
+    keywords: keywords,
+    authors: post.author?.name ? [{ name: post.author.name }] : [{ name: 'Crystal Seed Tarot' }],
     openGraph: {
       title: post.title,
-      description: post.excerpt,
-      images: post.featuredImage ? [post.featuredImage] : undefined,
+      description: cleanDescription,
+      url,
+      siteName: 'Crystal Seed Tarot',
+      images: post.featuredImage 
+        ? [{ url: post.featuredImage, width: 1200, height: 675, alt: post.title }]
+        : previousImages,
+      locale: 'en_US',
+      type: 'article',
+      publishedTime: post.publishDate,
+      modifiedTime: post.publishDate, // Use same as publish date if no update date available
+      authors: post.author?.name ? [post.author.name] : ['Crystal Seed Tarot'],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: cleanDescription,
+      images: post.featuredImage ? [post.featuredImage] : [],
+      creator: '@crystalseedtarot',
+    },
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    metadataBase: new URL(baseUrl),
   };
 }
 
@@ -59,11 +109,41 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     notFound();
   }
 
+  // Calculate reading time
+  const readingTime = getReadingTime(post.content);
+
   // Get related posts
   const relatedPosts = await getRelatedBlogPosts(params.slug, 3) as BlogPost[];
-
+  
+  // Generate JSON-LD structured data
+  const blogPostSchema = generateBlogPostSchema(post);
+  const breadcrumbSchema = generateBlogBreadcrumbSchema(post);
+  
+  // Generate FAQ schema if the content has appropriate structure
+  const faqSchema = generateFAQSchemaFromContent(post.content);
+  
+  // We need to render each schema separately due to type issues
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 text-white/90">
+      {/* Add JSON-LD structured data */}
+      <Script
+        id="blog-post-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
+      />
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {faqSchema && (
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <Link href="/blog" className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors">
@@ -92,11 +172,15 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             <h1 className={`text-4xl md:text-5xl ${BLOG_DEFAULTS.titleStyle} mb-4 text-white`}>{post.title}</h1>
             
             {post.publishDate && (
-              <p className="text-purple-300 mb-8">
+              <p className="text-purple-300 mb-2">
                 {formatDate(post.publishDate)}
                 {post.author?.name && ` · By ${post.author.name}`}
               </p>
             )}
+            
+            <p className="text-purple-300/70 mb-8">
+              {readingTime} min read
+            </p>
             
             <div className="prose prose-lg prose-invert max-w-none">
               <ReactMarkdown 
