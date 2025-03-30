@@ -76,7 +76,7 @@ export const mockBlogPosts: ContentfulResponse = {
         content: '# Better Practices For Your Practice\n\nThis is a sample blog post...',
         excerpt: 'Learn how to improve your tarot practice with these essential tips.',
         featuredImage: {
-          url: '/images/Blog-Better-Practices-For-Your-Practice.webp',
+          url: '/images/blog-placeholder.jpg',
           title: 'Better Practices For Your Practice',
         },
         publishDate: new Date().toISOString(),
@@ -94,7 +94,7 @@ export const mockBlogPosts: ContentfulResponse = {
         content: '# Understanding Tarot Card Meanings\n\nTarot cards have rich symbolism that can guide your readings...',
         excerpt: 'Dive deep into the symbolism and meanings behind the major arcana cards.',
         featuredImage: {
-          url: '/images/Blog-Understanding-Tarot-Card-Meanings.webp',
+          url: '/images/blog-placeholder.jpg',
           title: 'Understanding Tarot Card Meanings',
         },
         publishDate: new Date(Date.now() - 86400000).toISOString(), // Yesterday
@@ -112,7 +112,7 @@ export const mockBlogPosts: ContentfulResponse = {
         content: '# Connecting with Your Intuition\n\nYour intuition is your most powerful tool in tarot reading...',
         excerpt: 'Learn techniques to deepen your connection with your intuitive abilities.',
         featuredImage: {
-          url: '/images/Blog-Connecting-With-Your-Intuition.webp',
+          url: '/images/blog-placeholder.jpg',
           title: 'Connecting with Your Intuition',
         },
         publishDate: new Date(Date.now() - 172800000).toISOString(), // 2 days ago

@@ -39,7 +39,7 @@ export default async function Blog() {
             {sortedPosts.map((post) => {
               // Add fallbacks for missing fields
               const featuredImage = post.fields.featuredImage || {
-                url: '/images/Blog-Default.webp',
+                url: '/images/blog-placeholder.jpg',
                 title: 'Default Blog Image',
               };
               

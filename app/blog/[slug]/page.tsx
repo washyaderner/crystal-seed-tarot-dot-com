@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const title = fields.title || 'Untitled Post';
   const excerpt = fields.excerpt || 'No excerpt available';
   const featuredImage = fields.featuredImage || {
-    url: '/images/Blog-Default.webp',
+    url: '/images/blog-placeholder.jpg',
     title: 'Default Blog Image',
   };
 
@@ -71,7 +71,7 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
   const content = fields.content || '# No content available';
   const publishDate = fields.publishDate || post.sys.createdAt;
   const featuredImage = fields.featuredImage || {
-    url: '/images/Blog-Default.webp',
+    url: '/images/blog-placeholder.jpg',
     title: 'Default Blog Image',
   };
 
