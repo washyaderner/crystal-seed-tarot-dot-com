@@ -130,7 +130,7 @@ export default async function BlogPage() {
                     {formatDate(post.publishDate)}
                   </p>
                 ) : null}
-                <p className={`${BLOG_DEFAULTS.textColor} mb-4 flex-1`}>{post.excerpt}</p>
+                <p className={`${BLOG_DEFAULTS.textColor} mb-4 flex-1`}>{cleanTextForMeta(post.excerpt)}</p>
                 <div className="mt-auto pt-4">
                   <span className={`${BLOG_DEFAULTS.textColor} inline-flex items-center transition-colors hover:brightness-125`}>
                     Read more
