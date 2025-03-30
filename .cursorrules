@@ -287,9 +287,11 @@ Implement these safety practices:
 # Scratchpad
 
 # Current Project Status & Roadmap
-- Enhancing Crystal Seed Tarot website with improved UX and evergreen content
-- Implementing new blog system with Contentful integration
-- Focus on making content more evergreen and responsive
+- Successfully implemented and deployed Crystal Seed Tarot website with Contentful-powered blog system
+- Fixed critical Contentful deployment issues for production
+- Enhanced blog formatting and user experience
+- Established robust error handling and fallback mechanisms
+- Ready for additional features and content updates
 - Following a structured git workflow with feature branches → dev → main
 
 # Completed Major Milestones
@@ -309,112 +311,87 @@ Implement these safety practices:
 - Replaced Twitter icon with Thumbtack icon and added Bash icon
 - Integrated Contentful CMS for blog content management
 - Added fallback mechanism for development without Contentful credentials
+- Fixed Contentful deployment issues for production
+- Improved blog post formatting with proper headers and paragraph spacing
+- Added robust error handling for Contentful API calls
 
-# Current Task - New Blog System Implementation
-[X] Setup and Dependencies
-  [X] Install Contentful and required dependencies
-  [X] Create TypeScript configuration for blog pages
-  [X] Set up Contentful client configuration
+# Production Deployment Success
+[X] Fixed Contentful Integration for Production
+  [X] Updated environment to consistently use "master" instead of "production"
+  [X] Added robust error handling to prevent build failures
+  [X] Implemented graceful fallbacks for missing content
+  [X] Fixed TypeScript errors in Contentful client
+  [X] Added empty state message when no blog posts are available
+  [X] Increased revalidation time to reduce API calls
 
-[X] Blog Page Layout
-  [X] Create main blog page component (TypeScript)
-  [X] Implement responsive grid layout for blog cards
-  [X] Add consistent padding matching homepage card style
-  [X] Ensure 1:1 aspect ratio for blog preview images
+[X] Fixed Blog Post Formatting
+  [X] Added proper Markdown rendering for headers
+  [X] Improved paragraph spacing with whitespace-pre-line
+  [X] Enhanced typography with custom component rendering
+  [X] Updated mock content with proper headings and spacing
 
-[X] Blog Card Component
-  [X] Create reusable blog card component
-  [X] Implement image handling with proper aspect ratio
-  [X] Add title and preview text display
-  [X] Set up link to full blog post
+[X] Workflow Improvements
+  [X] Updated documentation for dynamic port handling
+  [X] Added lessons learned about deployment issues
+  [X] Improved error handling approaches
 
-[X] Blog Post Detail Page
-  [X] Create dynamic blog post page component
-  [X] Implement 16:9 aspect ratio for featured image
-  [X] Set up markdown rendering
-  [X] Add proper typography and spacing
+# Technical Learnings from Recent Changes
 
-[X] Image Handling
-  [X] Implement image naming convention (Blog-{{blogName}}.webp)
-  [X] Set up fallback image system
-  [X] Add proper image optimization
-  [X] Ensure consistent image loading
+## Contentful Production Integration
+- Always use a consistent environment name ("master") instead of conditionally switching
+- Add credential checks before making API calls to prevent errors
+- Return empty arrays/null instead of throwing errors for more resilient systems
+- Implement graceful fallbacks for all potentially missing fields
+- Use type assertions (as any) when TypeScript doesn't match third-party library typing
+- Increase revalidation time for API-dependent pages to reduce calls
 
-[X] Contentful Integration
-  [X] Set up Contentful content model
-  [X] Implement content fetching
-  [X] Add error handling
-  [X] Create development fallback system
+## Blog Formatting Best Practices
+- Use `whitespace-pre-line` CSS property to respect newlines in markdown content
+- Implement custom component renderers for ReactMarkdown to ensure consistent styling
+- Add specialized styling for different heading levels (h1, h2, h3)
+- Ensure headers are properly formatted in markdown content (## for h2, etc.)
+- Add custom classes to prose elements for better control over typography
 
-[X] Testing and Optimization
-  [X] Test responsive layouts
-  [X] Verify image aspect ratios
-  [X] Check markdown rendering
-  [X] Optimize performance
-
-# Technical Learnings from Blog Enhancement
-
-## Image Handling in Next.js
-- Images should be referenced as paths relative to the /public directory (e.g., /images/filename.webp)
-- Never use absolute paths (like /Users/bruh/build/crystal-seed-tarot-dot-com/public/...)
-- Use consistent naming conventions (Blog-Title-With-Dashes.webp) for easier management
-- Always implement fallback images to handle missing files
-- A multi-tier fallback system works best (specified image → generated name → default fallback)
-
-## Component Architecture
-- Next.js requires 'use client' directive for any component with event handlers
-- onError and other event handlers must be in client components
-- Create dedicated client components for interactive elements to avoid server/client confusion
-- Use standardized parameter objects (BLOG_DEFAULTS) for consistent styling
-- Keep client components small and focused on interactive functionality
-
-## Debugging Approach
-- Favor console logging over visible debug elements in production code
-- useEffect hooks work well for debug logging without affecting the UI
-- Structure logging using console.group() for better readability
-- Remember process.env.NODE_ENV === 'development' to limit debug output in production
-
-## Markdown & Content Handling
-- Raw markdown symbols (#, *, _, etc.) must be stripped from excerpts
-- Use utility functions like cleanTextForMeta to prepare content for display
-- Ensure formatting is consistent between different views (card vs. detail page)
-- Consider using custom React Markdown renderers for consistent styling
-
-## SEO Optimizations
-- Add comprehensive meta tags for all content pages
-- Implement structured data (JSON-LD) for better search engine understanding
-- Use dynamic metadata generation based on page content
-- Include OpenGraph and Twitter card metadata for better social sharing
-- Add canonical URLs to prevent duplicate content issues
+## Development Workflow
+- Always check terminal output for accurate development server port
+- Look for "- Local: http://localhost:<PORT>" in the console output
+- Test with both valid and missing credentials to ensure robustness
+- Verify empty state messages appear correctly when content is missing
 
 # Upcoming Tasks
-- Consider additional feature improvements (possibly contact form or gallery)
-- Prepare for eventual production deployment from dev to main
+- Add additional content features (contact form, galleries, etc.)
+- Consider SEO improvements for better search engine visibility
+- Implement structured data for blog posts
+- Create more comprehensive blog post templates
+- Add social sharing capabilities
+- Consider analytics integration
 
-# Recent Observations
-- Grid layouts with responsive columns work well for showcasing multiple items
-- Evergreen content helps minimize future maintenance
-- Consistent styling (text color, backgrounds, effects) improves visual cohesion
-- Headless CMS like Contentful provides more flexibility for content management
-- Mock data systems are essential for smooth development workflow
-- Custom React components help maintain design consistency
+# Error Resolution Documentation
 
-# Recent Technical Challenges & Solutions
-- ReactMarkdown import errors: Fixed by using correct import syntax and adding necessary plugins
-- Contentful field mismatch: Implemented fallback to system metadata and added error handling
-- Next.js security vulnerability: Updated to latest version (14.2.26) to address critical issues
-- Background consistency: Removed solid backgrounds to allow site background to show through
-- Markdown styling: Added custom component renderers for consistent typography
+## Contentful Production Deployment Issues
+- Issue: Blog system failing in production environment but working in development
+- Root Cause: Environment switching between "master" and "production", errors not handled gracefully
+- Resolution: 
+  1. Used consistent "master" environment
+  2. Added robust error handling to return empty arrays/null instead of throwing errors
+  3. Implemented credential checking before API calls
+  4. Added graceful fallbacks for all potentially missing fields
+- Prevention: Always test both with and without credentials, implement proper error handling
 
-# Technical Notes
-- Always check terminal output to determine the actual development server port
-- When running `npm run dev`, verify the port from the line "- Local: http://localhost:<PORT>"
-- Next.js upgraded from 14.2.16 to 14.2.26 to fix security vulnerabilities
-- Added react-markdown, remark-gfm, and rehype-raw for markdown support
-- Contentful integration uses preview API in development, published content in production
-- System createdAt timestamp used as fallback when publishDate field is missing
-- All pages compile successfully with no errors
-- Environment variables (.env.local) used for Contentful configuration
+## Blog Formatting Issues
+- Issue: Headers and paragraphs not displaying properly in blog posts
+- Root Cause: ReactMarkdown not configured to handle newlines and custom styling
+- Resolution:
+  1. Added whitespace-pre-line to paragraph elements
+  2. Implemented custom component renderers for heading elements
+  3. Added proper markdown formatting to content (## for h2, etc.)
+- Prevention: Test markdown rendering with various content formats, implement custom renderers
+
+## TypeScript Errors in Contentful Client
+- Issue: TypeScript errors when querying content by slug
+- Root Cause: Contentful typing limitations with query parameters
+- Resolution: Used type assertion (as any) for query parameters
+- Prevention: Check third-party library typing documentation
 
 # Debugging and Reasoning Framework
 
