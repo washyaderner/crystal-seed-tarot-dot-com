@@ -1,4 +1,4 @@
-import { EntrySkeletonType } from 'contentful';
+import { EntrySkeletonType } from "contentful";
 
 // Blog post interface for Contentful content
 export interface BlogPost extends EntrySkeletonType {
@@ -16,7 +16,7 @@ export interface BlogPost extends EntrySkeletonType {
     author?: string;
     tags?: string[];
   };
-  contentTypeId: 'blogPost';
+  contentTypeId: "blogPost";
 }
 
 // Blog card props for the preview component
@@ -32,11 +32,11 @@ export interface BlogCardProps {
 // Contentful response type
 export interface ContentfulResponse {
   items: Array<{
-    fields: BlogPost['fields'];
+    fields: BlogPost["fields"];
     sys: {
       id: string;
       createdAt: string;
       updatedAt: string;
     };
   }>;
-} 
+}

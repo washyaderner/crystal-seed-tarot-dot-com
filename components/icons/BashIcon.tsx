@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface BashIconProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
@@ -19,7 +19,7 @@ export const BashIcon: React.FC<BashIconProps> = ({ className, ...props }) => {
     >
       {/* Circle background */}
       <circle cx="12" cy="12" r="10" fill="none" />
-      
+
       {/* B shape */}
       <path d="M9 8h4a2 2 0 0 1 0 4H9" strokeWidth="2" />
       <path d="M9 12h5a2 2 0 0 1 0 4H9V8" strokeWidth="2" />
@@ -27,4 +27,4 @@ export const BashIcon: React.FC<BashIconProps> = ({ className, ...props }) => {
   );
 };
 
-export default BashIcon; 
+export default BashIcon;
