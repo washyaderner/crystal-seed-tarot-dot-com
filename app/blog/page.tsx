@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getAllBlogPosts } from '@/lib/contentful';
 import { formatDate } from '@/lib/utils';
+import { useState } from 'react';
 
 // This page will statically generate at build time
 // but will be revalidated every 60 seconds in production
@@ -50,13 +51,15 @@ export default async function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1 flex flex-col"
               >
-                <div className="h-48 relative">
-                  <Image
-                    src={post.featuredImage || '/images/blog-placeholder.jpg'}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="aspect-square p-3">
+                  <div className="relative w-full h-full rounded-lg overflow-hidden">
+                    <Image
+                      src={post.featuredImage || '/images/blog-placeholder.jpg'}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
                   <h2 className="text-2xl font-bold mb-2">{post.title}</h2>

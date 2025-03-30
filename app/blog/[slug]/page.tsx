@@ -148,13 +148,15 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                   className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1"
                 >
                   {relatedPost.featuredImage && (
-                    <div className="h-40 relative">
-                      <Image
-                        src={relatedPost.featuredImage}
-                        alt={relatedPost.title}
-                        fill
-                        className="object-cover"
-                      />
+                    <div className="aspect-square p-3">
+                      <div className="relative w-full h-full rounded-lg overflow-hidden">
+                        <Image
+                          src={relatedPost.featuredImage}
+                          alt={relatedPost.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                     </div>
                   )}
                   <div className="p-4">
