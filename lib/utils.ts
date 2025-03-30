@@ -70,6 +70,12 @@ export function generateBlogImagePath(title: string): string {
     return "/images/blog-placeholder.jpg";
   }
 
-  // Return path with original formatting for local image lookup
+  // Check if this is the "When Being A Good Person Goes Bad" blog
+  // which we know has a .jpg extension
+  if (title === "When Being A Good Person Goes Bad") {
+    return getBlogImagePath(title, "jpg");
+  }
+
+  // For all other blogs, use .webp as the default
   return getBlogImagePath(title);
 }
