@@ -65,13 +65,20 @@ export default function Contact() {
       // Submit directly to FormSubmit.co's AJAX endpoint
       const response = await fetch('https://formsubmit.co/ajax/crystalseedtarot@gmail.com', {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
+      
+      if (!response.ok) {
+        throw new Error(`Form submission failed with status: ${response.status}`);
+      }
       
       const result = await response.json();
       
       if (result.success !== "true" && result.success !== true) {
-        throw new Error("Form submission failed");
+        throw new Error(result.message || "Form submission failed");
       }
       
       // Show success message without page reload
@@ -80,8 +87,7 @@ export default function Contact() {
       
     } catch (error) {
       console.error("Error submitting form:", error);
-      alert("There was an error sending your message. Please try again or email directly.");
-    } finally {
+      alert("There was an error sending your message. Please try emailing directly at crystalseedtarot@gmail.com");
       setIsSubmitting(false);
     }
     
