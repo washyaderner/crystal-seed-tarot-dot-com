@@ -5,11 +5,12 @@ import Image from "next/image";
 import { Mail, Phone, Facebook, Instagram } from "lucide-react";
 import ThumbTackIcon from "@/components/icons/ThumbTackIcon";
 import BashIcon from "@/components/icons/BashIcon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Toaster, toast } from "sonner";
+import { useSearchParams } from "next/navigation";
 
 // Form validation schema
 const formSchema = z.object({
@@ -35,8 +36,17 @@ const GlowingErrorMessage = ({ message }: { message: string }) => (
 );
 
 export default function Contact() {
+  const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  // Check if form was just submitted (will have name param in URL when FormSubmit redirects back)
+  useEffect(() => {
+    if (searchParams.has('name') && !submitted) {
+      setSubmitted(true);
+      toast.success('Message sent successfully! I\'ll be in touch soon.');
+    }
+  }, [searchParams, submitted]);
 
   const {
     register,
@@ -48,53 +58,23 @@ export default function Contact() {
     mode: "onBlur" // Validate on blur for better UX
   });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = (data: FormData) => {
+    // This is only for client-side validation
+    // The actual submission will be handled by the form's action attribute
     setIsSubmitting(true);
-    try {
-      // Use FormSubmit.co's AJAX endpoint
-      const formData = new FormData();
-      formData.append('name', data.name);
-      formData.append('email', data.email);
-      formData.append('phone', data.phone);
-      formData.append('message', data.message);
-      
-      // Add FormSubmit.co configuration
-      formData.append('_subject', `New Contact Form: ${data.name}`);
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
-      
-      const response = await fetch('https://formsubmit.co/ajax/crystalseedtarot@gmail.com', {
-        method: 'POST',
-        body: formData
-      });
-      
-      const result = await response.json();
-      
-      if (result.success !== "true" && result.success !== true) {
-        throw new Error("Form submission failed");
-      }
-
-      // Success
-      toast.success('Message sent successfully! I\'ll be in touch soon.');
-      reset();
-      setSubmitted(true);
-      
-      // Scroll to top of form container
-      const formContainer = document.querySelector('.form-container');
-      if (formContainer) {
-        formContainer.scrollIntoView({ behavior: 'smooth' });
-      }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
-      toast.error(`Failed to send message: ${errorMessage}`);
-      console.error("Error submitting form:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    
+    // We'll let the form submit normally after validation passes
+    // FormSubmit.co will handle the actual email delivery
   };
 
   const handleSendAnother = () => {
     setSubmitted(false);
+    reset();
+    // Remove the search params to avoid showing success again on reload
+    if (window.history && window.history.replaceState) {
+      const newUrl = window.location.pathname;
+      window.history.replaceState({}, '', newUrl);
+    }
   };
 
   return (
@@ -169,8 +149,13 @@ export default function Contact() {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="bg-white/10 backdrop-blur-md p-8 rounded-lg space-y-6">
-                {/* FormSubmit hidden fields for non-JS fallback */}
+              <form 
+                action="https://formsubmit.co/crystalseedtarot@gmail.com" 
+                method="POST"
+                onSubmit={handleSubmit(onSubmit)}
+                className="bg-white/10 backdrop-blur-md p-8 rounded-lg space-y-6"
+              >
+                {/* FormSubmit.co configuration */}
                 <input type="hidden" name="_subject" value="Contact Form Submission" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
@@ -184,6 +169,7 @@ export default function Contact() {
                     type="text"
                     id="name"
                     {...register("name")}
+                    name="name"
                     className={`w-full p-2 bg-white/20 border ${errors.name ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   />
                   {errors.name && (
@@ -198,6 +184,7 @@ export default function Contact() {
                     type="email"
                     id="email"
                     {...register("email")}
+                    name="email"
                     className={`w-full p-2 bg-white/20 border ${errors.email ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   />
                   {errors.email && (
@@ -212,6 +199,7 @@ export default function Contact() {
                     type="tel"
                     id="phone"
                     {...register("phone")}
+                    name="phone"
                     className={`w-full p-2 bg-white/20 border ${errors.phone ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   />
                   {errors.phone && (
@@ -225,6 +213,7 @@ export default function Contact() {
                   <textarea
                     id="message"
                     {...register("message")}
+                    name="message"
                     rows={4}
                     className={`w-full p-2 bg-white/20 border ${errors.message ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   ></textarea>
