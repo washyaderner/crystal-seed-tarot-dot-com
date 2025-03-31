@@ -1,0 +1,10 @@
+[Cursor] Fix Contentful deployment issues
+
+- Use consistent "master" environment instead of switching between "master" and "production"
+- Add better error handling to prevent build failures in production
+- Fix TypeScript errors related to Contentful typing
+- Implement graceful fallbacks for missing content
+- Add empty state message when blog posts cannot be loaded
+- Increase revalidation time from 60s to 3600s to reduce API calls
+- Add try/catch blocks for more robust error handling
+- Match revalidation time across blog pages for consistency 
