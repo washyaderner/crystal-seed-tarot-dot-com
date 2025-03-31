@@ -11,6 +11,9 @@ export function middleware(request: NextRequest) {
     "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'"
   );
 
+  // Add comment explaining CSP
+  console.log("Middleware applied CSP with 'unsafe-eval' enabled");
+
   return response;
 }
 

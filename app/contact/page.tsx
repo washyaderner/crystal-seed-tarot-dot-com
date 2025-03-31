@@ -222,6 +222,7 @@ export default function Contact() {
                     id="name"
                     {...register("name")}
                     name="name"
+                    autoComplete="name"
                     className={`w-full p-2 bg-white/20 border ${errors.name ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   />
                   {errors.name && (
@@ -237,6 +238,7 @@ export default function Contact() {
                     id="email"
                     {...register("email")}
                     name="email"
+                    autoComplete="email"
                     className={`w-full p-2 bg-white/20 border ${errors.email ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   />
                   {errors.email && (
@@ -252,6 +254,7 @@ export default function Contact() {
                     id="phone"
                     {...register("phone")}
                     name="phone"
+                    autoComplete="tel"
                     className={`w-full p-2 bg-white/20 border ${errors.phone ? "border-red-500 animate-pulse" : "border-white/40"} rounded text-white`}
                   />
                   {errors.phone && (
