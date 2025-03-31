@@ -1,0 +1,6 @@
+[Cursor] Fix blog post formatting issues
+
+- Add proper markdown rendering for headers
+- Ensure paragraphs have appropriate spacing with whitespace-pre-line
+- Improve typography with custom component rendering
+- Update sample blog content with proper header formatting 

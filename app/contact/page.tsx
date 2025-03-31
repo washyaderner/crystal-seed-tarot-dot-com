@@ -125,6 +125,7 @@ export default function Contact() {
                     alt="Holly Nicole laughing"
                     width={800}
                     height={800}
+                    priority
                     className="rounded-lg shadow-lg transition-all duration-300 hover:shadow-purple-500/30 hover:scale-[1.02] w-full h-auto"
                   />
                 </div>
