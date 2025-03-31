@@ -101,26 +101,26 @@ textarea.border-red-500:focus {
   outline: none;
 }
 
-/* Super Mario 1-up style animation */
+/* Super Mario 1-up style animation - now horizontal */
 @keyframes float-up {
   0% {
     opacity: 0;
-    transform: translateY(5px) scale(0.9);
+    transform: translateX(-10px) scale(0.9);
   }
   20% {
     opacity: 1;
-    transform: translateY(0) scale(1.1);
+    transform: translateX(0) scale(1.1);
   }
   30% {
-    transform: translateY(-5px) scale(1);
+    transform: translateX(5px) scale(1);
   }
   70% {
     opacity: 1;
-    transform: translateY(-35px);
+    transform: translateX(20px);
   }
   100% {
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateX(35px);
   }
 }
 

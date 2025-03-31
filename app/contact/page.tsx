@@ -39,7 +39,7 @@ const FloatingMessage = ({ show }: { show: boolean }) => {
   if (!show) return null;
   
   return (
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full">
+    <div className="absolute top-1/2 left-full ml-3 -translate-y-1/2">
       <div className="mario-float text-white font-bold px-4 py-2 rounded-full bg-green-500 shadow-lg border border-white/50">
         Message Sent!
       </div>
@@ -61,11 +61,20 @@ export default function Contact() {
     if (searchParams.has('name') && !submitted) {
       setSubmitted(true);
       setIsSubmitting(false);
+      
+      // Get the current scroll position and maintain it
+      if (typeof window !== 'undefined') {
+        const scrollY = window.scrollY;
+        setTimeout(() => window.scrollTo(0, scrollY), 100);
+      }
     }
   }, [searchParams, submitted]);
   
   // This function handles the 2-step form submission with animation
   const onSubmit = (data: FormData) => {
+    // Store current scroll position
+    const scrollY = window.scrollY;
+    
     // Prevent immediate form submission
     setIsSubmitting(true);
     
@@ -81,6 +90,13 @@ export default function Contact() {
     setTimeout(() => {
       // Hide animation
       setShowFloatingMsg(false);
+      
+      // Add a field to store the current scroll position
+      const scrollInput = document.createElement('input');
+      scrollInput.type = 'hidden';
+      scrollInput.name = 'scrollPosition';
+      scrollInput.value = scrollY.toString();
+      if (formRef.current) formRef.current.appendChild(scrollInput);
       
       // Submit the form
       if (formRef.current) {
