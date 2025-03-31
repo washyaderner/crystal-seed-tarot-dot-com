@@ -101,3 +101,44 @@ textarea.border-red-500:focus {
   outline: none;
 }
 
+/* Super Mario 1-up style animation */
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(-60px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+}
+
+.mario-float {
+  animation: float-up 1.5s ease-out;
+  white-space: nowrap;
+}
+
+/* Button flash animation */
+@keyframes button-flash {
+  0% {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.flash-animation {
+  animation: button-flash 0.5s ease-out;
+}
+

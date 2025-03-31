@@ -5,11 +5,10 @@ import Image from "next/image";
 import { Mail, Phone, Facebook, Instagram } from "lucide-react";
 import ThumbTackIcon from "@/components/icons/ThumbTackIcon";
 import BashIcon from "@/components/icons/BashIcon";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Toaster, toast } from "sonner";
 import { useSearchParams } from "next/navigation";
 
 // Form validation schema
@@ -35,18 +34,40 @@ const GlowingErrorMessage = ({ message }: { message: string }) => (
   <p className="mt-1 text-sm text-red-400 animate-pulse">{message}</p>
 );
 
+// Floating message component (Mario 1-up style)
+const FloatingMessage = ({ show }: { show: boolean }) => {
+  if (!show) return null;
+  
+  return (
+    <div className="absolute left-1/2 -translate-x-1/2 transform">
+      <div className="mario-float text-white font-bold px-4 py-2 rounded-full bg-green-500/80 shadow-lg border border-white/50">
+        Message Sent!
+      </div>
+    </div>
+  );
+};
+
 export default function Contact() {
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [showFloatingMsg, setShowFloatingMsg] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  // Check if form was just submitted (will have name param in URL when FormSubmit redirects back)
+  // Check if form was just submitted
   useEffect(() => {
     if (searchParams.has('name') && !submitted) {
       setSubmitted(true);
-      toast.success('Message sent successfully! I\'ll be in touch soon.');
+      // Show animation on redirect back from FormSubmit
+      triggerMessageAnimation();
     }
   }, [searchParams, submitted]);
+  
+  // Trigger the floating message animation
+  const triggerMessageAnimation = () => {
+    setShowFloatingMsg(true);
+    setTimeout(() => setShowFloatingMsg(false), 1500); // Hide after animation completes
+  };
 
   const {
     register,
@@ -60,11 +81,22 @@ export default function Contact() {
 
   const onSubmit = (data: FormData) => {
     // This is only for client-side validation
-    // The actual submission will be handled by the form's action attribute
     setIsSubmitting(true);
     
-    // We'll let the form submit normally after validation passes
-    // FormSubmit.co will handle the actual email delivery
+    // Flash the button
+    if (buttonRef.current) {
+      buttonRef.current.classList.add('flash-animation');
+      setTimeout(() => {
+        if (buttonRef.current) {
+          buttonRef.current.classList.remove('flash-animation');
+        }
+      }, 500);
+    }
+    
+    // Show the floating message animation (will be reset when we return from FormSubmit)
+    triggerMessageAnimation();
+    
+    // Let the form submit normally
   };
 
   const handleSendAnother = () => {
@@ -79,7 +111,6 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
-      <Toaster position="top-center" richColors />
       <section className="py-16 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">
@@ -221,14 +252,18 @@ export default function Contact() {
                     <GlowingErrorMessage message={errors.message.message || "Message is required"} />
                   )}
                 </div>
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="bg-transparent border border-white hover:bg-white/10 disabled:opacity-50"
-                >
-                  {isSubmitting && <Spinner />}
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
+                <div className="relative">
+                  <Button
+                    ref={buttonRef}
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-transparent border border-white hover:bg-white/10 disabled:opacity-50"
+                  >
+                    {isSubmitting && <Spinner />}
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </Button>
+                  <FloatingMessage show={showFloatingMsg} />
+                </div>
               </form>
             )}
           </div>
