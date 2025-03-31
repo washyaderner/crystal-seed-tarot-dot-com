@@ -34,24 +34,10 @@ const GlowingErrorMessage = ({ message }: { message: string }) => (
   <p className="mt-1 text-sm text-red-400 animate-pulse">{message}</p>
 );
 
-// Floating message component (Mario 1-up style)
-const FloatingMessage = ({ show }: { show: boolean }) => {
-  if (!show) return null;
-  
-  return (
-    <div className="absolute top-1/2 left-full ml-3 -translate-y-1/2">
-      <div className="mario-float text-white font-bold px-4 py-2 rounded-full bg-green-500 shadow-lg border border-white/50">
-        Message Sent!
-      </div>
-    </div>
-  );
-};
-
 export default function Contact() {
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [showFloatingMsg, setShowFloatingMsg] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -70,7 +56,7 @@ export default function Contact() {
     }
   }, [searchParams, submitted]);
   
-  // This function handles the 2-step form submission with animation
+  // This function handles the form submission
   const onSubmit = (data: FormData) => {
     // Store current scroll position
     const scrollY = window.scrollY;
@@ -83,29 +69,22 @@ export default function Contact() {
       buttonRef.current.classList.add('flash-animation');
     }
     
-    // Show the floating message animation
-    setShowFloatingMsg(true);
+    // Add a field to store the current scroll position
+    const scrollInput = document.createElement('input');
+    scrollInput.type = 'hidden';
+    scrollInput.name = 'scrollPosition';
+    scrollInput.value = scrollY.toString();
+    if (formRef.current) formRef.current.appendChild(scrollInput);
     
-    // Wait for animation to complete before submitting
+    // Submit the form after a small delay to show the button flash
     setTimeout(() => {
-      // Hide animation
-      setShowFloatingMsg(false);
-      
-      // Add a field to store the current scroll position
-      const scrollInput = document.createElement('input');
-      scrollInput.type = 'hidden';
-      scrollInput.name = 'scrollPosition';
-      scrollInput.value = scrollY.toString();
-      if (formRef.current) formRef.current.appendChild(scrollInput);
-      
-      // Submit the form
       if (formRef.current) {
         formRef.current.submit();
       } else {
         // Fallback - reset state if form submission fails
         setIsSubmitting(false);
       }
-    }, 1500);
+    }, 300);
     
     return false; // Prevent default form submission
   };
@@ -291,7 +270,6 @@ export default function Contact() {
                     ) : (
                       "Send Message"
                     )}
-                    <FloatingMessage show={showFloatingMsg} />
                   </Button>
                 </div>
               </form>
