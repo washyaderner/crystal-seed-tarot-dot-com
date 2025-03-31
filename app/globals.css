@@ -77,3 +77,47 @@
   z-index: 1;
 }
 
+/* Animation for form validation errors */
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Add box shadow glow for error fields */
+input.border-red-500:focus, 
+textarea.border-red-500:focus {
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25);
+  outline: none;
+}
+
+/* Button flash animation */
+@keyframes button-flash {
+  0% {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.flash-animation {
+  animation: button-flash 0.5s ease-out;
+}
+
