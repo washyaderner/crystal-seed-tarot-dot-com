@@ -10,13 +10,19 @@ export function middleware(request: NextRequest) {
   
   const cspDirectives = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel.app",
+    // Allow scripts from Vercel and form submission
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.live https://*.vercel.app",
+    "script-src-elem 'self' 'unsafe-inline' https://*.vercel.live https://*.vercel.app",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https:",
     "font-src 'self'",
-    "connect-src 'self' https://formsubmit.co https://vercel.live https://*.vercel.app",
-    "frame-src 'self' https://vercel.live",
-    isVercelPreview ? "worker-src 'self' blob:" : "worker-src 'self'"
+    // Allow connections to FormSubmit and Vercel services
+    "connect-src 'self' https://formsubmit.co https://*.vercel.live https://*.vercel.app",
+    // Allow Vercel live feedback iframe
+    "frame-src 'self' https://*.vercel.live https://*.vercel.app",
+    "worker-src 'self' blob:",
+    // Allow form submission
+    "form-action 'self' https://formsubmit.co"
   ].join('; ');
 
   // Add security headers

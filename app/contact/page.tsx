@@ -67,17 +67,26 @@ export default function Contact() {
         method: 'POST',
         body: formData,
         headers: {
-          'Accept': 'application/json'
-        }
+          'Accept': 'application/json',
+          'Origin': window.location.origin
+        },
+        mode: 'cors'
       });
       
       if (!response.ok) {
-        throw new Error(`Form submission failed with status: ${response.status}`);
+        const errorText = await response.text();
+        console.error('Form submission error:', {
+          status: response.status,
+          statusText: response.statusText,
+          error: errorText
+        });
+        throw new Error(`Form submission failed: ${response.statusText}`);
       }
       
       const result = await response.json();
       
       if (result.success !== "true" && result.success !== true) {
+        console.error('FormSubmit.co error:', result);
         throw new Error(result.message || "Form submission failed");
       }
       
@@ -85,9 +94,10 @@ export default function Contact() {
       setSubmitted(true);
       reset();
       
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting form:", error);
-      alert("There was an error sending your message. Please try emailing directly at crystalseedtarot@gmail.com");
+      alert(`There was an error sending your message. Please try emailing directly at crystalseedtarot@gmail.com\n\nError: ${error.message}`);
+    } finally {
       setIsSubmitting(false);
     }
     
