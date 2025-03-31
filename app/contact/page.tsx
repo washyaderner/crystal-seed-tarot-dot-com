@@ -80,6 +80,12 @@ export default function Contact() {
           statusText: response.statusText,
           error: errorText
         });
+        
+        // Check if it's an activation error
+        if (errorText.includes('needs Activation')) {
+          throw new Error("Form is being set up. Please email me directly at crystalseedtarot@gmail.com");
+        }
+        
         throw new Error(`Form submission failed: ${response.statusText}`);
       }
       
