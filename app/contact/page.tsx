@@ -14,7 +14,7 @@ import { z } from "zod";
 const formSchema = z.object({
   name: z.string().min(2, "Please enter at least 2 characters for your name"),
   email: z.string().email("Please enter a valid email address"),
-  phone: z.string().min(7, "Please enter a valid phone number"),
+  phone: z.string().optional(),
   message: z.string().min(10, "Please provide a message of at least 10 characters")
 });
 
@@ -54,7 +54,9 @@ export default function Contact() {
       const formData = new FormData();
       formData.append('name', data.name);
       formData.append('email', data.email);
-      formData.append('phone', data.phone);
+      if (data.phone) {
+        formData.append('phone', data.phone);
+      }
       formData.append('message', data.message);
       
       // Add FormSubmit.co configuration
@@ -235,7 +237,7 @@ export default function Contact() {
                 </div>
                 <div className="mb-4">
                   <label htmlFor="phone" className="block text-white mb-2">
-                    Phone <span className="text-red-400">*</span>
+                    Phone <span className="text-white/60">(Optional)</span>
                   </label>
                   <input
                     type="tel"
