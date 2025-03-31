@@ -5,11 +5,10 @@ import Image from "next/image";
 import { Mail, Phone, Facebook, Instagram } from "lucide-react";
 import ThumbTackIcon from "@/components/icons/ThumbTackIcon";
 import BashIcon from "@/components/icons/BashIcon";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useSearchParams } from "next/navigation";
 
 // Form validation schema
 const formSchema = z.object({
@@ -35,32 +34,13 @@ const GlowingErrorMessage = ({ message }: { message: string }) => (
 );
 
 export default function Contact() {
-  const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-
-  // Check if form was just submitted
-  useEffect(() => {
-    // If the URL contains the success param, show the thank you page
-    if (searchParams.has('name') && !submitted) {
-      setSubmitted(true);
-      setIsSubmitting(false);
-      
-      // Get the current scroll position and maintain it
-      if (typeof window !== 'undefined') {
-        const scrollY = window.scrollY;
-        setTimeout(() => window.scrollTo(0, scrollY), 100);
-      }
-    }
-  }, [searchParams, submitted]);
   
   // This function handles the form submission
-  const onSubmit = (data: FormData) => {
-    // Store current scroll position
-    const scrollY = window.scrollY;
-    
+  const onSubmit = async (data: FormData) => {
     // Prevent immediate form submission
     setIsSubmitting(true);
     
@@ -69,33 +49,47 @@ export default function Contact() {
       buttonRef.current.classList.add('flash-animation');
     }
     
-    // Add a field to store the current scroll position
-    const scrollInput = document.createElement('input');
-    scrollInput.type = 'hidden';
-    scrollInput.name = 'scrollPosition';
-    scrollInput.value = scrollY.toString();
-    if (formRef.current) formRef.current.appendChild(scrollInput);
-    
-    // Submit the form after a small delay to show the button flash
-    setTimeout(() => {
-      if (formRef.current) {
-        formRef.current.submit();
-      } else {
-        // Fallback - reset state if form submission fails
-        setIsSubmitting(false);
+    try {
+      // Create form data for AJAX submission
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      formData.append('message', data.message);
+      
+      // Add FormSubmit.co configuration
+      formData.append('_subject', 'Contact Form Submission');
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+      
+      // Submit directly to FormSubmit.co's AJAX endpoint
+      const response = await fetch('https://formsubmit.co/ajax/crystalseedtarot@gmail.com', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const result = await response.json();
+      
+      if (result.success !== "true" && result.success !== true) {
+        throw new Error("Form submission failed");
       }
-    }, 300);
+      
+      // Show success message without page reload
+      setSubmitted(true);
+      reset();
+      
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("There was an error sending your message. Please try again or email directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
     
     return false; // Prevent default form submission
   };
 
   const handleSendAnother = () => {
     setSubmitted(false);
-    // Remove the search params to avoid showing success again on reload
-    if (window.history && window.history.replaceState) {
-      const newUrl = window.location.pathname;
-      window.history.replaceState({}, '', newUrl);
-    }
   };
 
   const {
@@ -181,17 +175,9 @@ export default function Contact() {
             ) : (
               <form 
                 ref={formRef}
-                action="https://formsubmit.co/crystalseedtarot@gmail.com" 
-                method="POST"
                 onSubmit={handleSubmit(onSubmit)}
                 className="bg-white/10 backdrop-blur-md p-8 rounded-lg space-y-6"
               >
-                {/* FormSubmit.co configuration */}
-                <input type="hidden" name="_subject" value="Contact Form Submission" />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
-                
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-white mb-2">
                     Name <span className="text-red-400">*</span>
