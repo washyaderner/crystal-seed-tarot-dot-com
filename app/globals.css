@@ -105,24 +105,27 @@ textarea.border-red-500:focus {
 @keyframes float-up {
   0% {
     opacity: 0;
+    transform: translateY(10px);
+  }
+  15% {
+    opacity: 1;
     transform: translateY(0);
   }
-  10% {
+  70% {
     opacity: 1;
-  }
-  90% {
-    opacity: 1;
-    transform: translateY(-60px);
+    transform: translateY(-40px);
   }
   100% {
     opacity: 0;
-    transform: translateY(-80px);
+    transform: translateY(-60px);
   }
 }
 
 .mario-float {
-  animation: float-up 1.5s ease-out;
+  animation: float-up 2s ease-out;
   white-space: nowrap;
+  font-size: 16px;
+  z-index: 50;
 }
 
 /* Button flash animation */

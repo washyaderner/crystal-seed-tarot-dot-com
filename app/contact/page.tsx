@@ -39,8 +39,8 @@ const FloatingMessage = ({ show }: { show: boolean }) => {
   if (!show) return null;
   
   return (
-    <div className="absolute left-1/2 -translate-x-1/2 transform">
-      <div className="mario-float text-white font-bold px-4 py-2 rounded-full bg-green-500/80 shadow-lg border border-white/50">
+    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1">
+      <div className="mario-float text-white font-bold px-4 py-2 rounded-full bg-green-500/90 shadow-lg border border-white/50">
         Message Sent!
       </div>
     </div>
@@ -58,6 +58,8 @@ export default function Contact() {
   useEffect(() => {
     if (searchParams.has('name') && !submitted) {
       setSubmitted(true);
+      // Reset submitting state
+      setIsSubmitting(false);
       // Show animation on redirect back from FormSubmit
       triggerMessageAnimation();
     }
@@ -66,7 +68,7 @@ export default function Contact() {
   // Trigger the floating message animation
   const triggerMessageAnimation = () => {
     setShowFloatingMsg(true);
-    setTimeout(() => setShowFloatingMsg(false), 1500); // Hide after animation completes
+    setTimeout(() => setShowFloatingMsg(false), 2000); // Hide after animation completes (longer duration)
   };
 
   const {
@@ -95,6 +97,12 @@ export default function Contact() {
     
     // Show the floating message animation (will be reset when we return from FormSubmit)
     triggerMessageAnimation();
+    
+    // Reset isSubmitting after a delay as a fallback
+    // This ensures the button doesn't stay in "Sending..." state if redirect fails
+    setTimeout(() => {
+      setIsSubmitting(false);
+    }, 3000);
     
     // Let the form submit normally
   };
