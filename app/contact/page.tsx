@@ -78,6 +78,12 @@ export default function Contact() {
       toast.success('Message sent successfully! I\'ll be in touch soon.');
       reset();
       setSubmitted(true);
+      
+      // Scroll to top of form container
+      const formContainer = document.querySelector('.form-container');
+      if (formContainer) {
+        formContainer.scrollIntoView({ behavior: 'smooth' });
+      }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
       toast.error(`Failed to send message: ${errorMessage}`);
@@ -148,7 +154,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto form-container">
             {submitted ? (
               <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg text-center">
                 <h2 className="text-2xl font-serif text-white mb-4">Thank You!</h2>
@@ -164,6 +170,12 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="bg-white/10 backdrop-blur-md p-8 rounded-lg space-y-6">
+                {/* FormSubmit hidden fields for non-JS fallback */}
+                <input type="hidden" name="_subject" value="Contact Form Submission" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
+                
                 <div className="mb-4">
                   <label htmlFor="name" className="block text-white mb-2">
                     Name <span className="text-red-400">*</span>
