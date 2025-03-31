@@ -186,7 +186,7 @@ export default function Contact() {
               <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg text-center">
                 <h2 className="text-2xl font-serif text-white mb-4">Thank You!</h2>
                 <p className="text-white/90 mb-6">
-                  Your message has been sent successfully. I'll get back to you as soon as possible.
+                  I'll get back to you as soon as possible.
                 </p>
                 <Button 
                   onClick={handleSendAnother}
