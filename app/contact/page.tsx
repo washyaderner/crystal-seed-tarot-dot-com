@@ -39,8 +39,8 @@ const FloatingMessage = ({ show }: { show: boolean }) => {
   if (!show) return null;
   
   return (
-    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1">
-      <div className="mario-float text-white font-bold px-4 py-2 rounded-full bg-green-500/90 shadow-lg border border-white/50">
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full">
+      <div className="mario-float text-white font-bold px-4 py-2 rounded-full bg-green-500 shadow-lg border border-white/50">
         Message Sent!
       </div>
     </div>
@@ -53,22 +53,54 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [showFloatingMsg, setShowFloatingMsg] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   // Check if form was just submitted
   useEffect(() => {
+    // If the URL contains the success param, show the thank you page
     if (searchParams.has('name') && !submitted) {
       setSubmitted(true);
-      // Reset submitting state
       setIsSubmitting(false);
-      // Show animation on redirect back from FormSubmit
-      triggerMessageAnimation();
     }
   }, [searchParams, submitted]);
   
-  // Trigger the floating message animation
-  const triggerMessageAnimation = () => {
+  // This function handles the 2-step form submission with animation
+  const onSubmit = (data: FormData) => {
+    // Prevent immediate form submission
+    setIsSubmitting(true);
+    
+    // Flash the button
+    if (buttonRef.current) {
+      buttonRef.current.classList.add('flash-animation');
+    }
+    
+    // Show the floating message animation
     setShowFloatingMsg(true);
-    setTimeout(() => setShowFloatingMsg(false), 2000); // Hide after animation completes (longer duration)
+    
+    // Wait for animation to complete before submitting
+    setTimeout(() => {
+      // Hide animation
+      setShowFloatingMsg(false);
+      
+      // Submit the form
+      if (formRef.current) {
+        formRef.current.submit();
+      } else {
+        // Fallback - reset state if form submission fails
+        setIsSubmitting(false);
+      }
+    }, 1500);
+    
+    return false; // Prevent default form submission
+  };
+
+  const handleSendAnother = () => {
+    setSubmitted(false);
+    // Remove the search params to avoid showing success again on reload
+    if (window.history && window.history.replaceState) {
+      const newUrl = window.location.pathname;
+      window.history.replaceState({}, '', newUrl);
+    }
   };
 
   const {
@@ -80,42 +112,6 @@ export default function Contact() {
     resolver: zodResolver(formSchema),
     mode: "onBlur" // Validate on blur for better UX
   });
-
-  const onSubmit = (data: FormData) => {
-    // This is only for client-side validation
-    setIsSubmitting(true);
-    
-    // Flash the button
-    if (buttonRef.current) {
-      buttonRef.current.classList.add('flash-animation');
-      setTimeout(() => {
-        if (buttonRef.current) {
-          buttonRef.current.classList.remove('flash-animation');
-        }
-      }, 500);
-    }
-    
-    // Show the floating message animation (will be reset when we return from FormSubmit)
-    triggerMessageAnimation();
-    
-    // Reset isSubmitting after a delay as a fallback
-    // This ensures the button doesn't stay in "Sending..." state if redirect fails
-    setTimeout(() => {
-      setIsSubmitting(false);
-    }, 3000);
-    
-    // Let the form submit normally
-  };
-
-  const handleSendAnother = () => {
-    setSubmitted(false);
-    reset();
-    // Remove the search params to avoid showing success again on reload
-    if (window.history && window.history.replaceState) {
-      const newUrl = window.location.pathname;
-      window.history.replaceState({}, '', newUrl);
-    }
-  };
 
   return (
     <div className="min-h-screen">
@@ -189,6 +185,7 @@ export default function Contact() {
               </div>
             ) : (
               <form 
+                ref={formRef}
                 action="https://formsubmit.co/crystalseedtarot@gmail.com" 
                 method="POST"
                 onSubmit={handleSubmit(onSubmit)}
@@ -265,12 +262,18 @@ export default function Contact() {
                     ref={buttonRef}
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-transparent border border-white hover:bg-white/10 disabled:opacity-50"
+                    className="bg-transparent border border-white hover:bg-white/10 disabled:opacity-50 relative"
                   >
-                    {isSubmitting && <Spinner />}
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? (
+                      <>
+                        <Spinner />
+                        Sending...
+                      </>
+                    ) : (
+                      "Send Message"
+                    )}
+                    <FloatingMessage show={showFloatingMsg} />
                   </Button>
-                  <FloatingMessage show={showFloatingMsg} />
                 </div>
               </form>
             )}
