@@ -46,7 +46,7 @@ export default function Services() {
       <section className="py-16 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">
-            Our Services
+            Services
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto text-center mb-12">
             Discover the perfect reading or event package for your spiritual
