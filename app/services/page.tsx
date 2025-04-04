@@ -132,7 +132,7 @@ export default function Services() {
                   <div className="pt-4">
                     <Button asChild variant="outline">
                       <a href="#" className="inline-flex items-center">
-                        Register for Tarot Card Training Course
+                        Register For Class
                       </a>
                     </Button>
                   </div>
