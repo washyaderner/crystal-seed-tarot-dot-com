@@ -131,7 +131,7 @@ export default function Services() {
                   </p>
                   <div className="pt-4">
                     <Button asChild variant="outline">
-                      <a href="#" className="inline-flex items-center">
+                      <a href="/contact" className="inline-flex items-center">
                         Sign Up For Class
                       </a>
                     </Button>
