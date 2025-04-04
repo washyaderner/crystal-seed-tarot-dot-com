@@ -3,8 +3,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Mail, Phone, Facebook, Instagram } from "lucide-react";
-import ThumbTackIcon from "@/components/icons/ThumbTackIcon";
-import BashIcon from "@/components/icons/BashIcon";
 import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -319,38 +317,6 @@ export default function Contact() {
                   aria-label="Instagram"
                 >
                   <Instagram className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="icon"
-                className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
-              >
-                <a
-                  href="https://www.thumbtack.com/or/beaverton/tarot-card-readings/crystal-seed-tarot/service/89656832633660551"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white"
-                  aria-label="Thumbtack"
-                >
-                  <ThumbTackIcon className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="icon"
-                className="rounded-full bg-transparent border border-white/40 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/30"
-              >
-                <a
-                  href="https://www.thebash.com/tarot-card-reader/crystal-seed-tarot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white"
-                  aria-label="The Bash"
-                >
-                  <BashIcon className="h-5 w-5" />
                 </a>
               </Button>
             </div>
