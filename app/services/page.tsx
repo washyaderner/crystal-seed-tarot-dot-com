@@ -57,7 +57,7 @@ export default function Services() {
             {services.map((service) => (
               <Card
                 key={service.title}
-                className="frosted-card transform transition-all duration-300 hover:scale-105"
+                className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15"
               >
                 <CardContent className="p-4 md:p-6">
                   <h2 className="text-xl md:text-2xl font-serif text-white mb-3 md:mb-4">
@@ -79,7 +79,7 @@ export default function Services() {
 
           <div
             id="tarot-classes"
-            className="frosted-card p-4 md:p-8 rounded-lg mb-8 md:mb-16 transition-all duration-300 hover:scale-105"
+            className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-8 rounded-lg mb-8 md:mb-16 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20 hover:bg-white/15"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
@@ -141,7 +141,7 @@ export default function Services() {
             </div>
           </div>
 
-          <div className="frosted-card p-4 md:p-8 rounded-lg">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-8 rounded-lg">
             <h2 className="text-2xl md:text-3xl font-serif text-white mb-4 md:mb-6">
               Pricing and Booking Information
             </h2>
