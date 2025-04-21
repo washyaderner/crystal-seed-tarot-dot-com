@@ -43,33 +43,33 @@ const services = [
 export default function Services() {
   return (
     <div className="min-h-screen">
-      <section className="py-16 bg-black/20 backdrop-blur-md">
+      <section className="py-8 md:py-16 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-4 md:mb-8 text-center">
             Services
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto text-center mb-12">
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto text-center mb-8 md:mb-12">
             Discover the perfect reading or event package for your spiritual
             journey
           </p>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
+          <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8 md:mb-16">
             {services.map((service) => (
               <Card
                 key={service.title}
                 className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15"
               >
-                <CardContent className="p-6">
-                  <h2 className="text-2xl font-serif text-white mb-4">
+                <CardContent className="p-4 md:p-6">
+                  <h2 className="text-xl md:text-2xl font-serif text-white mb-3 md:mb-4">
                     {service.title}
                   </h2>
-                  <p className="text-white/80 mb-4">{service.description}</p>
-                  <p className="text-white font-semibold mb-4">
+                  <p className="text-sm md:text-base text-white/80 mb-3 md:mb-4">{service.description}</p>
+                  <p className="text-white font-semibold mb-3 md:mb-4">
                     {service.price}
                   </p>
-                  <ul className="list-disc list-inside text-white/80 mb-4">
+                  <ul className="list-disc list-inside text-sm md:text-base text-white/80 mb-2 md:mb-4">
                     {service.details.map((detail, index) => (
-                      <li key={index}>{detail}</li>
+                      <li key={index} className="mb-1">{detail}</li>
                     ))}
                   </ul>
                 </CardContent>
@@ -79,9 +79,9 @@ export default function Services() {
 
           <div
             id="tarot-classes"
-            className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-lg mb-16 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:bg-white/15"
+            className="bg-white/10 backdrop-blur-md border border-white/20 p-4 md:p-8 rounded-lg mb-8 md:mb-16 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 hover:bg-white/15"
           >
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
                 <Image
                   src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
@@ -89,15 +89,15 @@ export default function Services() {
                   fill
                   className="object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:brightness-110"
                 />
-                <p className="text-white/60 text-sm mt-2 absolute bottom-0 left-0 p-2">
+                <p className="text-white/60 text-xs md:text-sm mt-2 absolute bottom-0 left-0 p-2">
                   Photo credit: Dionne Krauss Photography
                 </p>
               </div>
               <div>
-                <h2 className="text-3xl font-serif text-white mb-4">
+                <h2 className="text-2xl md:text-3xl font-serif text-white mb-3 md:mb-4">
                   NEW!! Tarot Classes ONLINE!!!
                 </h2>
-                <div className="space-y-4 text-white/80">
+                <div className="space-y-3 md:space-y-4 text-sm md:text-base text-white/80">
                   <p>
                     It's finally here! My very first online Tarot course
                     presented through Kumara Academy!!! I have been wanting to
@@ -129,7 +129,7 @@ export default function Services() {
                     you register using the link below. Hope to see you in
                     class!!
                   </p>
-                  <div className="pt-4">
+                  <div className="pt-3 md:pt-4">
                     <Button asChild variant="outline">
                       <a href="/contact" className="inline-flex items-center">
                         Sign Up For Class
@@ -141,15 +141,15 @@ export default function Services() {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-lg">
-            <h2 className="text-3xl font-serif text-white mb-6">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 md:p-8 rounded-lg">
+            <h2 className="text-2xl md:text-3xl font-serif text-white mb-4 md:mb-6">
               Pricing and Booking Information
             </h2>
 
-            <h3 className="text-2xl font-serif text-white mb-4">
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
               What is a Tarot Reading?
             </h3>
-            <p className="text-white/80 mb-6">
+            <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               A Tarot reading is an amazing way to better understand yourself or
               things that are happening in your life. Tarot uses an elaborate
               deck consisting of 78 cards, which all have powerful imagery,
@@ -159,7 +159,7 @@ export default function Services() {
               what you are going through, and can give you helpful information
               to help you steer your next steps in life.
             </p>
-            <p className="text-white/80 mb-6">
+            <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               In a reading, we will both start out by taking some small steps to
               get grounded and reset our energies, and I will ask you to help me
               shuffle the cards by sending them your energy. I believe Tarot
@@ -168,10 +168,10 @@ export default function Services() {
               along with me. Two heads are better than one, after all.
             </p>
 
-            <h3 className="text-2xl font-serif text-white mb-4">
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
               Private Readings – $80/hour
             </h3>
-            <p className="text-white/80 mb-6">
+            <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               Get an overview of what is going on in your life at this time.
               Gain insight as to how you got here and where things could be
               stemming from. Receive validation as to what you have been
@@ -181,10 +181,10 @@ export default function Services() {
               be done in person or virtually.
             </p>
 
-            <h3 className="text-2xl font-serif text-white mb-4">
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
               Private Events – $110/hour
             </h3>
-            <p className="text-white/80 mb-6">
+            <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               I am available to provide Tarot services at private events
               (birthday parties, corporate events, theme parties, bachelorette
               parties, baby showers, school events, fundraisers, etc). I am more
@@ -194,18 +194,18 @@ export default function Services() {
               Can be done online or in person.
             </p>
 
-            <h3 className="text-2xl font-serif text-white mb-4">
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
               Tarot Lessons – $50/hour
             </h3>
-            <p className="text-white/80 mb-6">
+            <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               Get an overview of what Tarot is and the many systems within this
               amazing oracle. Written materials provided covering Major and
               Minor Arcana, resources, practices, layouts, reversals, and more.
               Can be done either in person or virtually.
             </p>
 
-            <h3 className="text-2xl font-serif text-white mb-4">Travel Fees</h3>
-            <p className="text-white/80 mb-6">
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">Travel Fees</h3>
+            <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               An additional travel fee will be requested for in-person events
               requiring more than 2 hours of travel time (roundtrip). Travel
               time is calculated at $30/hour. Gas is calculated at 0.67/mile
@@ -213,19 +213,19 @@ export default function Services() {
             </p>
           </div>
 
-          <div className="mt-8 text-center">
-            <h3 className="text-2xl font-serif text-white mb-2">
+          <div className="mt-6 md:mt-8 text-center">
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2">
               Payment Methods
             </h3>
-            <p className="text-xl text-white/90">
+            <p className="text-base md:text-lg lg:text-xl text-white/90">
               Apple Pay, Cash, Check, Credit card, PayPal, Square cash app,
               Venmo, and Zelle
             </p>
           </div>
 
-          <div className="mt-8 text-center">
-            <Button asChild variant="outline">
-              <Link href="/contact">Book a Service</Link>
+          <div className="mt-6 md:mt-8 text-center">
+            <Button asChild variant="outline" className="w-full md:w-auto">
+              <Link href="/contact" className="text-white">Book a Service</Link>
             </Button>
           </div>
         </div>
