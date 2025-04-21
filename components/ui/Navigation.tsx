@@ -38,7 +38,7 @@ export default function Navigation() {
   const inactiveLinkStyle = `text-white/70 ${baseLinkStyle}`;
 
   // Mobile menu items
-  const mobileMenuItemStyle = "py-4 text-center text-lg border-b border-white/10";
+  const mobileMenuItemStyle = "py-5 text-center text-lg border-b border-white/10";
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -88,7 +88,7 @@ export default function Navigation() {
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 z-50 bg-black/90 backdrop-blur-md flex flex-col pt-4 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden fixed inset-0 top-16 z-50 bg-black backdrop-blur-md flex flex-col pt-4 pb-8 animate-in slide-in-from-top duration-300">
           <ul className="flex flex-col w-full">
             {navLinks.map((link) => (
               <li key={link.href} className={mobileMenuItemStyle}>
@@ -97,7 +97,7 @@ export default function Navigation() {
                   className={
                     pathname === link.href 
                       ? "text-white font-extrabold text-xl"
-                      : "text-white/80 text-xl"
+                      : "text-white text-xl"
                   }
                   onClick={() => setIsMenuOpen(false)}
                 >
