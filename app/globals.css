@@ -143,6 +143,31 @@ textarea.border-red-500:focus {
   animation-name: slide-in-from-top;
 }
 
+/* Fix for frosted glass effect on mobile */
+.frosted-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.frosted-card:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(128, 0, 255, 0.3);
+}
+
+/* Mobile fallback when backdrop-filter isn't supported */
+@supports not (backdrop-filter: blur(10px)) {
+  .frosted-card {
+    background-color: rgba(30, 30, 30, 0.85);
+  }
+  
+  .frosted-card:hover {
+    background-color: rgba(40, 40, 40, 0.9);
+  }
+}
+
 /* Mobile responsiveness helpers */
 @media (max-width: 768px) {
   .md\:hidden {

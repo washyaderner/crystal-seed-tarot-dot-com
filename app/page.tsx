@@ -54,7 +54,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       {/* Hero Section - Simplified for Mobile */}
       <section className="flex-grow flex items-center justify-center text-white px-4 py-8 md:py-16">
-        <div className="text-center bg-black/20 backdrop-blur-md p-4 md:p-8 rounded-lg max-w-3xl transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-black/30">
+        <div className="text-center frosted-card p-4 md:p-8 rounded-lg max-w-3xl transform transition-all duration-2000 hover:scale-[1.02]">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif tracking-wide text-white mb-2 md:mb-3 drop-shadow-lg">
             Crystal Seed
             <br />
@@ -102,7 +102,7 @@ export default function Home() {
             Our Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+            <Card className="frosted-card transform transition-all duration-300 hover:scale-105">
               <CardContent className="p-4 md:p-6">
                 <div className="mb-3 md:mb-4">
                   <Image
@@ -123,7 +123,7 @@ export default function Home() {
                 <p className="text-white font-semibold">$80/hour</p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+            <Card className="frosted-card transform transition-all duration-300 hover:scale-105">
               <CardContent className="p-4 md:p-6">
                 <div className="mb-3 md:mb-4">
                   <Image
@@ -144,7 +144,7 @@ export default function Home() {
                 <p className="text-white font-semibold">$110/hour</p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+            <Card className="frosted-card transform transition-all duration-300 hover:scale-105">
               <CardContent className="p-4 md:p-6">
                 <div className="mb-3 md:mb-4">
                   <Image
@@ -185,7 +185,7 @@ export default function Home() {
           </h2>
 
           {/* Featured Update/Service - Stack on Mobile */}
-          <article className="bg-white/10 backdrop-blur-md p-4 md:p-6 rounded-lg transform transition duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 mb-8 md:mb-16">
+          <article className="frosted-card p-4 md:p-6 rounded-lg transform transition duration-300 hover:scale-105 mb-8 md:mb-16">
             <div className="flex flex-col md:flex-row gap-4 md:gap-6">
               <div className="w-full md:w-1/3">
                 <Image
@@ -221,7 +221,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-6 md:mb-12 text-white text-center">
             Latest Blog Post
           </h2>
-          <article className="bg-white/10 backdrop-blur-md p-4 md:p-6 rounded-lg transform transition duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+          <article className="frosted-card p-4 md:p-6 rounded-lg transform transition duration-300 hover:scale-105">
             <h3 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-white">
               {blogPosts[1].title}
             </h3>
@@ -262,7 +262,7 @@ export default function Home() {
               <Link
                 href="/reviews"
                 key={index}
-                className="bg-white/10 backdrop-blur-md p-4 md:p-6 rounded-lg flex flex-col h-full transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 group"
+                className="frosted-card p-4 md:p-6 rounded-lg flex flex-col h-full transform transition-all duration-300 hover:scale-105 group"
               >
                 <div className="flex-1">
                   <p className="text-white/90 mb-4 text-sm md:text-base lg:text-lg italic">
