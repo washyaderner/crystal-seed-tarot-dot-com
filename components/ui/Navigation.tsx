@@ -2,16 +2,53 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
-  console.log("Current pathname:", pathname);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on mobile when component mounts and on resize
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check on initial load
+    checkIfMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener("resize", checkIfMobile);
+    
+    // Clean up
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   // Define base and active link styles
   const baseLinkStyle =
     "transition-all duration-300 hover:text-white hover:tracking-wider hover:scale-110 origin-left";
   const activeLinkStyle = `text-white font-extrabold ${baseLinkStyle}`; // Bold text WITH animations
   const inactiveLinkStyle = `text-white/70 ${baseLinkStyle}`;
+
+  // Mobile menu items
+  const mobileMenuItemStyle = "py-4 text-center text-lg border-b border-white/10";
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/services", label: "Services" },
+    { href: "/gallery", label: "Gallery" },
+    { href: "/blog", label: "Blog" },
+    { href: "/reviews", label: "Reviews" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+  ];
 
   return (
     <nav className="container mx-auto px-4 py-4">
@@ -22,77 +59,55 @@ export default function Navigation() {
         >
           Crystal Seed Tarot
         </Link>
-        <ul className="flex space-x-6">
-          <li>
-            <Link
-              href="/"
-              className={pathname === "/" ? activeLinkStyle : inactiveLinkStyle}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/services"
-              className={
-                pathname === "/services" ? activeLinkStyle : inactiveLinkStyle
-              }
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/gallery"
-              className={
-                pathname === "/gallery" ? activeLinkStyle : inactiveLinkStyle
-              }
-            >
-              Gallery
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/blog"
-              className={
-                pathname === "/blog" ? activeLinkStyle : inactiveLinkStyle
-              }
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/reviews"
-              className={
-                pathname === "/reviews" ? activeLinkStyle : inactiveLinkStyle
-              }
-            >
-              Reviews
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className={
-                pathname === "/about" ? activeLinkStyle : inactiveLinkStyle
-              }
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className={
-                pathname === "/contact" ? activeLinkStyle : inactiveLinkStyle
-              }
-            >
-              Contact
-            </Link>
-          </li>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex space-x-6">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={
+                  pathname === link.href ? activeLinkStyle : inactiveLinkStyle
+                }
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden text-white p-2 focus:outline-none"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMenuOpen && (
+        <div className="md:hidden fixed inset-0 top-16 z-50 bg-black/90 backdrop-blur-md flex flex-col pt-4 animate-in slide-in-from-top duration-300">
+          <ul className="flex flex-col w-full">
+            {navLinks.map((link) => (
+              <li key={link.href} className={mobileMenuItemStyle}>
+                <Link
+                  href={link.href}
+                  className={
+                    pathname === link.href 
+                      ? "text-white font-extrabold text-xl"
+                      : "text-white/80 text-xl"
+                  }
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }

@@ -121,3 +121,44 @@ textarea.border-red-500:focus {
   animation: button-flash 0.5s ease-out;
 }
 
+/* Mobile menu animations */
+@keyframes slide-in-from-top {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation-duration: 300ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+.slide-in-from-top {
+  animation-name: slide-in-from-top;
+}
+
+/* Mobile responsiveness helpers */
+@media (max-width: 768px) {
+  .md\:hidden {
+    display: none;
+  }
+  
+  h1, h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  p {
+    font-size: 1rem !important;
+  }
+}
+
