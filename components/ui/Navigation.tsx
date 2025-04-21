@@ -86,9 +86,9 @@ export default function Navigation() {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown - Only this needs a solid black background */}
       {isMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 z-50 bg-black backdrop-blur-md flex flex-col pt-4 pb-8 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden fixed inset-0 top-16 z-50 bg-black flex flex-col pt-4 pb-8 animate-in slide-in-from-top duration-300">
           <ul className="flex flex-col w-full">
             {navLinks.map((link) => (
               <li key={link.href} className={mobileMenuItemStyle}>
