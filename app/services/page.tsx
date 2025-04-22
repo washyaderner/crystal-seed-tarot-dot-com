@@ -49,8 +49,7 @@ export default function Services() {
             Services
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto text-center mb-8 md:mb-12">
-            Discover the perfect reading or event package for your spiritual
-            journey
+            Tarot is one of the most rewarding, memorable experiences in any setting
           </p>
 
           <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8 md:mb-16">
