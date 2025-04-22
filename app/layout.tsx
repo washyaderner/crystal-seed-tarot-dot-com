@@ -1,6 +1,6 @@
 import type React from "react";
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Link from "next/link";
 import Navigation from "../components/ui/Navigation";
@@ -17,7 +17,13 @@ export const metadata: Metadata = {
   description:
     "A Crystal Clear Connection to Yourself - Helping connect you to yourself since 2008",
   generator: "v0.dev",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
