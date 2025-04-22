@@ -48,7 +48,7 @@ export default function Services() {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-4 md:mb-8 text-center">
             Services
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto text-center mb-8 md:mb-12">
+          <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto text-center mb-8 md:mb-12 whitespace-nowrap">
             Tarot is one of the most rewarding, memorable experiences in any setting
           </p>
 
