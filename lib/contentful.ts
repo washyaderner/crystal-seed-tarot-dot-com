@@ -106,6 +106,82 @@ export async function getBlogPostBySlug(slug: string) {
   }
 }
 
+// Fetch most recent blog post for homepage
+export async function getMostRecentBlogPost(): Promise<ContentfulResponse["items"][0] | null> {
+  try {
+    // Skip API call if credentials are missing (return null)
+    if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+      console.warn("Contentful credentials missing. Using mock blog post for homepage.");
+      // Return the first mock blog post
+      return mockBlogPosts.items[0];
+    }
+
+    const response = await client.getEntries<BlogPost>({
+      content_type: "blogPost",
+      limit: 10, // Get a few posts to select the most recent after sorting
+    });
+
+    if (response.items.length === 0) {
+      console.warn("No blog posts found. Using mock blog post for homepage.");
+      return mockBlogPosts.items[0];
+    }
+
+    // Process and sort posts to find the most recent one
+    const processedPosts = response.items.map((item) => ({
+      fields: {
+        ...(item.fields as BlogPost["fields"]),
+        publishDate: getPublishDate(item.fields.slug, item.fields.publishDate || item.sys.createdAt),
+      },
+      sys: {
+        id: item.sys.id,
+        createdAt: item.sys.createdAt,
+        updatedAt: item.sys.updatedAt,
+      },
+    }));
+
+    // Sort posts by date (newest first)
+    // Add special handling for certain posts like in blog page
+    const sortedPosts = processedPosts.sort((a, b) => {
+      const dateA = new Date(a.fields.publishDate || a.sys.createdAt);
+      const dateB = new Date(b.fields.publishDate || b.sys.createdAt);
+      
+      // For Be Nice blog, ensure it's always last (oldest)
+      if (a.fields.slug && a.fields.slug.includes('be-nice-to-yourself')) {
+        return 1; // Put Be Nice last
+      }
+      if (b.fields.slug && b.fields.slug.includes('be-nice-to-yourself')) {
+        return -1; // Keep Be Nice last
+      }
+      
+      // For irrational fear blog, ensure it's second to last
+      if (a.fields.slug && a.fields.slug.includes('irrational-fear')) {
+        return 1; // Put Irrational Fear second to last
+      }
+      if (b.fields.slug && b.fields.slug.includes('irrational-fear')) {
+        return -1; // Keep Irrational Fear second to last
+      }
+      
+      // For accepting totality blog, ensure it's third to last
+      if (a.fields.slug && a.fields.slug.includes('accepting-the-totality')) {
+        return 1; // Put Accepting Totality third to last
+      }
+      if (b.fields.slug && b.fields.slug.includes('accepting-the-totality')) {
+        return -1; // Keep Accepting Totality third to last
+      }
+      
+      // Regular date-based sorting for other blogs
+      return dateB.getTime() - dateA.getTime();
+    });
+
+    // Return the most recent post
+    return sortedPosts[0];
+  } catch (error) {
+    console.error("Error fetching most recent blog post:", error);
+    // Return mock blog post instead of throwing error to prevent build failures
+    return mockBlogPosts.items[0];
+  }
+}
+
 // Development fallback data
 export const mockBlogPosts: ContentfulResponse = {
   items: [

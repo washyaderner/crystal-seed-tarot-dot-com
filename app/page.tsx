@@ -2,8 +2,24 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { generateBlogImagePath } from "@/lib/utils";
+import { format } from "date-fns";
+import { getMostRecentBlogPost } from "@/lib/contentful";
+import { ContentfulResponse } from "@/types/blog";
 
-export default function Home() {
+// Revalidate homepage every hour
+export const revalidate = 3600;
+
+export default async function Home() {
+  // Try to get the most recent blog post
+  let mostRecentPost: ContentfulResponse["items"][0] | null = null;
+  try {
+    mostRecentPost = await getMostRecentBlogPost();
+  } catch (error) {
+    console.error("Error fetching most recent blog post for homepage:", error);
+  }
+
+  // Fallback blog data if API fetch fails
   const blogPosts = [
     {
       title: "NEW!! Tarot Classes ONLINE!!!",
@@ -177,67 +193,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Updates Section - Mobile Flex Fix */}
+      {/* Latest Blog Post Section */}
       <section className="py-12 md:py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-8 md:mb-12 text-white text-center">
-            Updates
-          </h2>
-
-          {/* Featured Update/Service - Stack on Mobile */}
-          <article className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-6 rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 mb-8 md:mb-16">
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-              <div className="w-full md:w-1/3">
-                <Image
-                  src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
-                  alt="Tarot Classes"
-                  width={300}
-                  height={300}
-                  className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
-                />
-              </div>
-              <div className="w-full md:w-2/3 mt-4 md:mt-0">
-                <h3 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-white">
-                  NEW!! Tarot Classes ONLINE!!!
-                </h3>
-                <p className="text-white text-sm md:text-base mb-4">
-                  I have put together Beginner's, Intermediate and Advanced
-                  Tarot courses which will be in a consistent rotation a few
-                  times a year. Each course is 4 weeks long—2 hour sessions once
-                  per week. I look forward to seeing you in class!
-                </p>
-                <div className="text-center md:text-left mt-4 md:mt-6">
-                  <Button asChild variant="outline">
-                    <Link href="/services#tarot-classes" className="text-white">
-                      Learn more
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </article>
-
           {/* Most Recent Blog Post */}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-6 md:mb-12 text-white text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-8 md:mb-12 text-white text-center">
             Latest Blog Post
           </h2>
           <article className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-6 rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-            <h3 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-white">
-              {blogPosts[1].title}
-            </h3>
-            <p className="text-white text-sm md:text-base mb-4">{blogPosts[1].excerpt}</p>
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-              <span className="text-white text-sm md:text-base">
-                {blogPosts[1].date} | by {blogPosts[1].author}
-              </span>
-              <Button asChild variant="outline" size="sm">
-                <Link
-                  href={`/blog/${blogPosts[1].slug}`}
-                  className="text-white"
-                >
-                  Read more
-                </Link>
-              </Button>
+            {/* Blog image on top for better prominence */}
+            <div className="mb-6">
+              <div className="relative w-full aspect-video md:aspect-[16/9] overflow-hidden rounded-lg">
+                <Image
+                  src={
+                    mostRecentPost?.fields.featuredImage?.url ||
+                    generateBlogImagePath(
+                      mostRecentPost?.fields.title || blogPosts[1].title
+                    )
+                  }
+                  alt={
+                    mostRecentPost?.fields.featuredImage?.title ||
+                    mostRecentPost?.fields.title ||
+                    blogPosts[1].title
+                  }
+                  fill
+                  className="object-cover transition-all duration-300 hover:brightness-110"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Blog content */}
+            <div>
+              <h3 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-white">
+                {mostRecentPost?.fields.title || blogPosts[1].title}
+              </h3>
+              <p className="text-white text-sm md:text-base mb-4">
+                {mostRecentPost?.fields.excerpt || blogPosts[1].excerpt}
+              </p>
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <span className="text-white text-sm md:text-base">
+                  {mostRecentPost
+                    ? format(
+                        new Date(
+                          mostRecentPost.fields.publishDate ||
+                            mostRecentPost.sys.createdAt
+                        ),
+                        "MMMM d, yyyy"
+                      )
+                    : blogPosts[1].date}{" "}
+                  | by {mostRecentPost?.fields.author || blogPosts[1].author}
+                </span>
+                <Button asChild variant="outline" size="sm">
+                  <Link
+                    href={`/blog/${
+                      mostRecentPost?.fields.slug || blogPosts[1].slug
+                    }`}
+                    className="text-white"
+                  >
+                    Read more
+                  </Link>
+                </Button>
+              </div>
             </div>
           </article>
 

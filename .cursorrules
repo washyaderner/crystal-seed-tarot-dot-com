@@ -315,6 +315,28 @@ Implement these safety practices:
 - Improved blog post formatting with proper headers and paragraph spacing
 - Added robust error handling for Contentful API calls
 
+# Current Task: April Adjustments Feature Branch
+
+## Task Overview
+Creating a new feature branch for April adjustments to the Crystal Seed Tarot website.
+
+## Progress
+[X] Create feature branch named "feature/april-adjustments"
+[X] Push branch to GitHub
+[X] Add blog image to homepage's "Latest Blog Post" section
+  [X] Created getMostRecentBlogPost function in contentful.ts
+  [X] Updated homepage to fetch and display most recent blog post
+  [X] Added responsive image with proper aspect ratio (16:9 on mobile, 1:1 on desktop)
+  [X] Added proper fallbacks when Contentful API isn't available
+[X] Improve blog image presentation on homepage
+  [X] Moved image above blog content for better visibility
+  [X] Made image full-width to increase prominence
+  [X] Used aspect-video (16:9) on all screen sizes for consistency
+  [X] Added priority loading for better page performance
+[X] Remove "Updates" section with Tarot Classes Online
+[ ] Test changes
+[ ] Prepare for PR to dev branch
+
 # Production Deployment Success
 [X] Fixed Contentful Integration for Production
   [X] Updated environment to consistently use "master" instead of "production"
