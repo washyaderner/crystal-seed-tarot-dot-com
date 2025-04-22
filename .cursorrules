@@ -328,30 +328,23 @@ Implement these safety practices:
 - Improved blog post formatting with proper headers and paragraph spacing
 - Added robust error handling for Contentful API calls
 
-# Current Task: Cleanup Feature Branch
+# Current Task: Spring Cleaning Feature Branch
 
 ## Task Overview
-Creating a new feature branch for code cleanup and optimizations to the Crystal Seed Tarot website.
+Creating a new feature branch for spring cleaning and optimizations to the Crystal Seed Tarot website.
 
 ## Progress
-[X] Create feature branch named "feature/cleanup"
+[X] Create feature branch named "feature/spring-cleaning"
 [X] Push branch to GitHub
-[X] Create Events page
-  [X] Added new tab in the navigation bar
-  [X] Created basic page structure with similar design to blog posts
-  [X] Added support for event listings with images, date, location and description
-  [X] Implemented responsive layout consistent with the site design
-[X] Add sample event data for testing
-  [X] Added Ghost Week event with properly formatted markdown content
-  [X] Configured ReactMarkdown to display event content with proper styling
-  [X] Added appropriate headers to improve content structure
-  [X] Updated button text to "Book a reading" for consistency
-[X] Added new "Be Love Fed!" event
-  [X] Added event at the top of the listing with proper date and location
-  [X] Used markdown formatting with headers and bullet points
-  [X] Added custom "Reserve a reading" button text
-  [X] Included image from public folder (Events-Be-Love-Fed.jpg)
-[X] Test changes
+[X] Fix viewport metadata warnings across site
+  [X] Updated app/layout.tsx to separate viewport configuration from metadata
+  [X] Used the new viewport export pattern recommended by Next.js
+[X] Update Services page
+  [X] Changed subheading text to "Tarot is one of the most rewarding, memorable experiences in any setting"
+[ ] Add custom focus and hover states to interactive elements
+[ ] Improve error handling for form submissions
+[ ] Standardize responsive design breakpoints
+[ ] Test site performance and make optimizations
 [ ] Prepare for PR to dev branch
 
 # Completed Tasks

@@ -311,7 +311,7 @@ export default function Reviews() {
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-2 text-center">
             Client Reviews
           </h1>
-          <p className="text-center text-white/80 max-w-2xl mx-auto mb-12">
+          <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto text-center mb-8 md:mb-12">
             Read what clients have to say about their experiences with Crystal
             Seed Tarot's readings, events, and services.
           </p>
