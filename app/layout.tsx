@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   description:
     "A Crystal Clear Connection to Yourself - Helping connect you to yourself since 2008",
   generator: "v0.dev",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover",
 };
 
 export default function RootLayout({
@@ -39,10 +40,10 @@ export default function RootLayout({
           <main className="flex-1 relative z-10">{children}</main>
 
           {/* Footer section */}
-          <footer className="bg-black/40 backdrop-blur-md border-t border-white/20 py-8 mt-auto relative z-20">
+          <footer className="bg-black/40 backdrop-blur-md border-t border-white/20 py-6 md:py-8 mt-auto relative z-20">
             <div className="container mx-auto px-4">
               <div className="flex justify-center items-center">
-                <p className="text-white/80 text-sm">
+                <p className="text-white/80 text-xs md:text-sm text-center">
                   &copy; {new Date().getFullYear()} Crystal Seed Tarot. All
                   rights reserved.
                 </p>
