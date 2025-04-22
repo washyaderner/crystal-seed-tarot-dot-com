@@ -1,0 +1,158 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { format } from "date-fns";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+
+// Generate metadata for SEO
+export const metadata: Metadata = {
+  title: "Events | Crystal Seed Tarot",
+  description: "Upcoming events, workshops, and gatherings with Crystal Seed Tarot.",
+  openGraph: {
+    title: "Events | Crystal Seed Tarot",
+    description: "Upcoming events, workshops, and gatherings with Crystal Seed Tarot.",
+  },
+};
+
+// Sample event data structure - this could be replaced with a CMS similar to blog posts
+interface Event {
+  id: string;
+  title: string;
+  description: string;
+  date: Date;
+  location: string;
+  imageUrl: string;
+  linkUrl?: string;
+}
+
+export default function Events() {
+  // Sample events - to be replaced with real data
+  const events: Event[] = [
+    {
+      id: "2",
+      title: "Be Love Fed!",
+      description: "Love is the essence that nourishes us—in the air we breathe, the connections we share, and the gifts we give. Be Love Fed is your invitation to gather in a space where love flows freely, where you're reminded of your wholeness, and where community becomes medicine. Join me, Holly Cole of Crystal Seed Tarot, alongside WReN: Wellness ReSource Network and a vibrant roster of local practitioners for a day of soulful exploration and healing.\n\n## About the Event\n\nPresented by WReN: Wellness ReSource Network, this one‑day fair combines immersive sound healing, handcrafted herbal elixirs, and a heart‑centered marketplace. Wander through our Sound Healing Chamber, sip botanical tonics at the Elixir & Tea Bar, and discover organic skincare, crystal therapies, and more from soul-aligned vendors. Whether you're a seasoned seeker or new to holistic wellness, there's something here to nourish your body, mind, and spirit.\n\n## Tarot Readings with Holly Cole\n\nI'll be offering intuitive tarot sessions throughout the day. Receive personalized guidance, clarity, and inspiration as we explore your next steps together. To reserve your reading, email me at crystalseedtarot@gmail.com—or simply stop by the Crystal Seed Tarot booth between sessions.\n\n## Experience Highlights\n\n- **Opening Circle & Community Blessing** at 11 am\n- **Sound Healing Chamber** open all day—drop in anytime\n- **Elixir & Tea Bar** by Fehu Farm Apothecary & Natalie Olson\n- **Local Wellness Vendors** featuring herbal crafts, oracle cards, bodywork, and more\n- **Closing Circle & Angel Wash** at 5:30 pm\n\nCome to explore, to shop, to heal—or simply to be. You belong here. Let yourself be fed.",
+      date: new Date("2025-05-03"),
+      location: "133 SE Madison St, Portland, OR",
+      imageUrl: "/images/Events-Be-Love-Fed.jpg",
+      linkUrl: "/contact",
+    },
+    {
+      id: "1",
+      title: "Ghost Week!",
+      description: "Join me for the first ever VIRTUAL  \nOregon Ghost Conference!\n\nIt's March which means it's time for my favorite event of the year: The Oregon Ghost Conference! The OGC is the biggest annual paranormal event in the state, going on since 2011. Although the event had to be cancelled last year due to Covid, this year they have decided to move the event online and do a VIRTUAL Oregon Ghost Conference and I could not be more excited! **(See information below for booking a reading with me)**\n\n## About the Oregon Ghost Conference\n\nIf you've never been to the OGC, it's a 3 day long round-the-clock event which takes place at the Seaside Convention Center. There is always an amazing array of guest speakers who give presentations on everything from paranormal experiences, to spirit communication, haunted history, and pretty much anything you could imagine in the realm of the paranormal and metaphysical. The entire convention center is PACKED with paranormal teams, psychics, readers, artists, pop-up shops selling creepy-jewelry, dowsing rods, crystals, oils, and anything one might need in their witchcraft pantry. Each day is also filled with break-out classes taking place in the spacious classrooms outlining the entire convention center. Here, you can take any class from How to Read Tarot Cards to Practicums on the best tools and tech gadgets to use for ghost hunting. There are usually a couple of bigger events in the evenings also for which you can purchase tickets; gallery readings with psychic mediums and real actual ghost hunts at the most haunted locations in town!\n\n## This Year's Virtual Format\n\nGranted, this year will be different. We won't be able to ghost hunt in person together, or casually stroll through the rows of eclectic vendors, but we can still have a Ghost Conference….of sorts! Rocky and his team are putting together an entire week of virtual events with many of participants of the OGC from years past, including yours truly. You can find an official line up of virtual events, including guest speakers, private readings, and even virtual classes at the link below.\n\n## Book a Reading with Me\n\n**I will be doing $30 30-minute readings during this year's first ever virtual Oregon Ghost Conference, this year titled \"Ghost Week\", in the evenings from 3/21/21 – 3/25/21, and all day on 3/26/21 – 3/28/21. If you'd like to book a reading with me, you can contact me at: crystalseedtarot@gmail.com**",
+      date: new Date("2021-03-08"),
+      location: "Virtual - Oregon Ghost Conference",
+      imageUrl: "/images/Blog-Ghost-Week-2021.webp",
+      linkUrl: "/contact",
+    }
+  ];
+
+  return (
+    <div className="min-h-screen">
+      <section className="py-16 bg-black/20 backdrop-blur-md">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-serif text-white mb-8 text-center">
+            Upcoming Events
+          </h1>
+          
+          {/* Show message if no events are available */}
+          {events.length === 0 && (
+            <div className="text-center py-8">
+              <p className="text-white text-xl">
+                I'm currently planning new events! Check back soon for updates or contact me for private bookings.
+              </p>
+              <div className="mt-8">
+                <Button asChild variant="outline">
+                  <Link href="/contact" className="text-white">
+                    Contact me →
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Events feed */}
+          {events.length > 0 && (
+            <div className="space-y-12 max-w-4xl mx-auto">
+              {events.map((event) => (
+                <article 
+                  key={event.id}
+                  className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-6 rounded-lg transform transition duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15"
+                >
+                  {/* Event image */}
+                  <div className="mb-6">
+                    <div className="relative w-full aspect-video md:aspect-[16/9] overflow-hidden rounded-lg">
+                      <Image
+                        src={event.imageUrl}
+                        alt={event.title}
+                        fill
+                        className="object-cover transition-all duration-300 hover:brightness-110"
+                        sizes="(max-width: 768px) 100vw, 800px"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Event content */}
+                  <div>
+                    <h1 className="text-3xl md:text-4xl font-serif mb-3 md:mb-4 text-white">
+                      {event.title}
+                    </h1>
+                    <div className="flex flex-col md:flex-row gap-2 md:gap-4 mb-6">
+                      <span className="text-white text-sm md:text-base font-bold">
+                        <strong>Date:</strong> {format(event.date, "MMMM d, yyyy")}
+                      </span>
+                      <span className="text-white text-sm md:text-base font-bold">
+                        <strong>Location:</strong> {event.location}
+                      </span>
+                    </div>
+                    <div className="text-white text-sm md:text-base mb-6 prose prose-lg max-w-none text-white prose-headings:text-white prose-a:text-blue-300 hover:prose-a:text-blue-200 prose-strong:text-white">
+                      <ReactMarkdown 
+                        remarkPlugins={[remarkGfm]} 
+                        rehypePlugins={[rehypeRaw]}
+                        components={{
+                          // Ensure headers get proper styling and stand out
+                          h1: ({node, ...props}) => <h1 className="text-2xl font-serif mb-4 mt-6" {...props} />,
+                          h2: ({node, ...props}) => <h2 className="text-xl font-serif mb-3 mt-5" {...props} />,
+                          h3: ({node, ...props}) => <h3 className="text-lg font-serif mb-2 mt-4" {...props} />,
+                          // Ensure paragraphs render with proper spacing
+                          p: ({node, ...props}) => <p className="mb-4 whitespace-pre-line" {...props} />
+                        }}
+                      >
+                        {event.description}
+                      </ReactMarkdown>
+                    </div>
+                    <div className="flex justify-end">
+                      {event.linkUrl ? (
+                        <Button asChild variant="outline" size="sm">
+                          <Link
+                            href={event.linkUrl}
+                            className="text-white"
+                          >
+                            {event.id === "2" ? "Reserve a reading" : "Learn more & RSVP"}
+                          </Link>
+                        </Button>
+                      ) : (
+                        <Button asChild variant="outline" size="sm">
+                          <Link
+                            href="/contact"
+                            className="text-white"
+                          >
+                            Book a reading
+                          </Link>
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  );
+} 

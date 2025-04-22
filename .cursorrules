@@ -105,8 +105,17 @@ Simply provide a direct, concise answer to their question and wait for further i
 ## PR Instructions Checklist
 Every time we talk about doing a pull request, do not execute any commands to start the process, as the user will be doing it on GitHub manually every time. Instead, provide the following information in a clear, organized format:
 
+IMPORTANT: Before discussing PR details, always verify and explicitly confirm that:
+1. All changes have been committed to the feature branch
+2. All commits have been pushed to GitHub
+
+Then provide PR information:
 1. Which branch needs to be base, which is compare?
 2. What's the title? (Always include "[Cursor] " prefix)
+   - Present the title in a copyable markdown code box for easy copying:
+   ```
+   [Cursor] Feature Description
+   ```
 3. What's the complete description to copy/paste?
 4. Are we doing squash and merge or regular merge?
 5. Should the branch be deleted after merging?
@@ -229,7 +238,11 @@ This creates a knowledge base for common issues and their solutions, helping pre
 # Content Standardization
 
 If the project involves content management:
-- Standardize on a single content format (Markdown recommended)
+- Standardize on a single content format (Markdown ATX recommended)
+  - Always use ATX-style headers with hash symbols (# Header 1, ## Header 2)
+  - Never use Setext-style headers with underlines (======= or --------)
+  - Use proper nesting of headers (# → ## → ###) without skipping levels
+  - Space after the hash symbols (# Title, not #Title)
 - Create style guides for content creation
 - Implement validation utilities for content checking
 - Document content requirements for each component
@@ -315,18 +328,41 @@ Implement these safety practices:
 - Improved blog post formatting with proper headers and paragraph spacing
 - Added robust error handling for Contentful API calls
 
-# Current Task: April Adjustments Feature Branch
+# Current Task: Cleanup Feature Branch
 
 ## Task Overview
-Creating a new feature branch for April adjustments to the Crystal Seed Tarot website.
+Creating a new feature branch for code cleanup and optimizations to the Crystal Seed Tarot website.
 
 ## Progress
+[X] Create feature branch named "feature/cleanup"
+[X] Push branch to GitHub
+[X] Create Events page
+  [X] Added new tab in the navigation bar
+  [X] Created basic page structure with similar design to blog posts
+  [X] Added support for event listings with images, date, location and description
+  [X] Implemented responsive layout consistent with the site design
+[X] Add sample event data for testing
+  [X] Added Ghost Week event with properly formatted markdown content
+  [X] Configured ReactMarkdown to display event content with proper styling
+  [X] Added appropriate headers to improve content structure
+  [X] Updated button text to "Book a reading" for consistency
+[X] Added new "Be Love Fed!" event
+  [X] Added event at the top of the listing with proper date and location
+  [X] Used markdown formatting with headers and bullet points
+  [X] Added custom "Reserve a reading" button text
+  [X] Included image from public folder (Events-Be-Love-Fed.jpg)
+[X] Test changes
+[ ] Prepare for PR to dev branch
+
+# Completed Tasks
+
+## April Adjustments Feature Branch
 [X] Create feature branch named "feature/april-adjustments"
 [X] Push branch to GitHub
 [X] Add blog image to homepage's "Latest Blog Post" section
   [X] Created getMostRecentBlogPost function in contentful.ts
   [X] Updated homepage to fetch and display most recent blog post
-  [X] Added responsive image with proper aspect ratio (16:9 on mobile, 1:1 on desktop)
+  [X] Added responsive image with proper aspect ratio (16:9 on mobile, 16:9 on desktop)
   [X] Added proper fallbacks when Contentful API isn't available
 [X] Improve blog image presentation on homepage
   [X] Moved image above blog content for better visibility
@@ -334,8 +370,9 @@ Creating a new feature branch for April adjustments to the Crystal Seed Tarot we
   [X] Used aspect-video (16:9) on all screen sizes for consistency
   [X] Added priority loading for better page performance
 [X] Remove "Updates" section with Tarot Classes Online
-[ ] Test changes
-[ ] Prepare for PR to dev branch
+[X] Test changes
+[X] Prepare for PR to dev branch
+[X] Merge PR to dev branch
 
 # Production Deployment Success
 [X] Fixed Contentful Integration for Production
