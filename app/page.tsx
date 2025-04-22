@@ -223,7 +223,7 @@ export default async function Home() {
                 />
               </div>
             </div>
-            
+
             {/* Blog content */}
             <div>
               <h3 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-white">
@@ -243,7 +243,7 @@ export default async function Home() {
                         "MMMM d, yyyy"
                       )
                     : blogPosts[1].date}{" "}
-                  | by {mostRecentPost?.fields.author || blogPosts[1].author || "Holly Cole"}
+                  | by {mostRecentPost?.fields.author || blogPosts[1].author}
                 </span>
                 <Button asChild variant="outline" size="sm">
                   <Link
