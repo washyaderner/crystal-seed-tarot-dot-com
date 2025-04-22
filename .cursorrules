@@ -339,6 +339,8 @@ Creating a new feature branch for spring cleaning and optimizations to the Cryst
 [X] Fix viewport metadata warnings across site
   [X] Updated app/layout.tsx to separate viewport configuration from metadata
   [X] Used the new viewport export pattern recommended by Next.js
+[X] Update Services page
+  [X] Changed subheading text to "Tarot is one of the most rewarding, memorable experiences in any setting"
 [ ] Add custom focus and hover states to interactive elements
 [ ] Improve error handling for form submissions
 [ ] Standardize responsive design breakpoints
