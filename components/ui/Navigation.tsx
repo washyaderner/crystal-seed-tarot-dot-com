@@ -43,6 +43,7 @@ export default function Navigation() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
+    { href: "/events", label: "Events" },
     { href: "/gallery", label: "Gallery" },
     { href: "/blog", label: "Blog" },
     { href: "/reviews", label: "Reviews" },
