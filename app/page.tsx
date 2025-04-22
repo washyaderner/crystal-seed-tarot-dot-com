@@ -2,8 +2,24 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { generateBlogImagePath } from "@/lib/utils";
+import { format } from "date-fns";
+import { getMostRecentBlogPost } from "@/lib/contentful";
+import { ContentfulResponse } from "@/types/blog";
 
-export default function Home() {
+// Revalidate homepage every hour
+export const revalidate = 3600;
+
+export default async function Home() {
+  // Try to get the most recent blog post
+  let mostRecentPost: ContentfulResponse["items"][0] | null = null;
+  try {
+    mostRecentPost = await getMostRecentBlogPost();
+  } catch (error) {
+    console.error("Error fetching most recent blog post for homepage:", error);
+  }
+
+  // Fallback blog data if API fetch fails
   const blogPosts = [
     {
       title: "NEW!! Tarot Classes ONLINE!!!",
@@ -52,113 +68,110 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Hero Section - Simplified for Mobile */}
-      <section className="flex-grow flex items-center justify-center text-white px-4 py-8 md:py-16">
-        <div className="text-center bg-black/20 backdrop-blur-md md:frosted-card p-4 md:p-8 rounded-lg max-w-3xl transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-black/30">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif tracking-wide text-white mb-2 md:mb-3 drop-shadow-lg">
+      <section className="flex-grow flex items-center justify-center text-white px-4 py-16">
+        <div className="text-center bg-black/20 backdrop-blur-md p-8 rounded-lg max-w-3xl transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-black/30">
+          <h1 className="text-4xl md:text-5xl font-serif tracking-wide text-white mb-3 drop-shadow-lg">
             Crystal Seed
             <br />
             Tarot & Healing
           </h1>
 
-          <p className="text-lg md:text-xl lg:text-2xl text-white mb-4 md:mb-6 drop-shadow-lg">
+          <p className="text-xl md:text-2xl text-white mb-6 drop-shadow-lg">
             Helping connect you to yourself since 2008
           </p>
 
-          <div className="mb-4 md:mb-6">
+          <div className="mb-6">
             <Image
               src="/images/Home-Shuffle.png"
               alt="Crystal Seed Tarot"
               width={600}
               height={600}
               className="mx-auto rounded-lg shadow-lg transition-all duration-2000 hover:brightness-110"
-              priority // Optimize LCP
             />
           </div>
 
-          <div className="mb-4 md:mb-6">
-            <h3 className="text-lg md:text-xl lg:text-2xl font-medium text-white mb-1 md:mb-2 drop-shadow-lg">
+          <div className="mb-6">
+            <h3 className="text-xl md:text-2xl font-medium text-white mb-2 drop-shadow-lg">
               Tarot Services:
             </h3>
-            <p className="text-base md:text-lg lg:text-xl text-white drop-shadow-lg">
+            <p className="text-lg md:text-xl text-white drop-shadow-lg">
               private bookings, party readings,
-              <br className="hidden md:block" />
+              <br />
               private lessons, classes, events, & more
             </p>
           </div>
 
-          <Button asChild variant="outline" size="lg" className="mt-2 md:mt-4">
-            <Link href="/contact" className="text-base md:text-lg px-6 md:px-8 py-2 md:py-3 text-white">
+          <Button asChild variant="outline" size="lg" className="mt-4">
+            <Link href="/contact" className="text-lg px-8 py-3 text-white">
               Check Availability
             </Link>
           </Button>
         </div>
       </section>
 
-      {/* Services Section - Mobile Grid Fix */}
-      <section className="py-12 md:py-24 bg-black/20 backdrop-blur-md">
+      <section className="py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif text-center mb-8 md:mb-16 text-white">
+          <h2 className="text-3xl md:text-4xl font-serif text-center mb-16 text-white">
             Our Services
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-              <CardContent className="p-4 md:p-6">
-                <div className="mb-3 md:mb-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+              <CardContent className="p-6">
+                <div className="mb-4">
                   <Image
                     src="/images/Services-Tarot-Readings-10-Card-Spread.webp"
                     alt="Private Tarot Reading"
                     width={300}
                     height={200}
-                    className="rounded-lg w-full h-40 md:h-48 object-cover transition-all duration-300 hover:brightness-110"
+                    className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
                   />
                 </div>
-                <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
+                <h3 className="text-xl font-serif mb-4 text-white">
                   Private Readings
                 </h3>
-                <p className="text-white text-sm md:text-base mb-3 md:mb-4">
+                <p className="text-white mb-4">
                   Gain insights into your life's journey and receive guidance
                   for better outcomes. Available in-person or virtually.
                 </p>
                 <p className="text-white font-semibold">$80/hour</p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-              <CardContent className="p-4 md:p-6">
-                <div className="mb-3 md:mb-4">
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+              <CardContent className="p-6">
+                <div className="mb-4">
                   <Image
                     src="/images/Home-Private-Events.webp"
                     alt="Tarot at Private Events"
                     width={300}
                     height={200}
-                    className="rounded-lg w-full h-40 md:h-48 object-cover transition-all duration-300 hover:brightness-110"
+                    className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
                   />
                 </div>
-                <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
+                <h3 className="text-xl font-serif mb-4 text-white">
                   Private Events
                 </h3>
-                <p className="text-white text-sm md:text-base mb-3 md:mb-4">
+                <p className="text-white mb-4">
                   Tarot services for various events, customized to fit your
                   theme and group size. Available online or in-person.
                 </p>
                 <p className="text-white font-semibold">$110/hour</p>
               </CardContent>
             </Card>
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-              <CardContent className="p-4 md:p-6">
-                <div className="mb-3 md:mb-4">
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+              <CardContent className="p-6">
+                <div className="mb-4">
                   <Image
                     src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
                     alt="Tarot Lessons"
                     width={300}
                     height={200}
-                    className="rounded-lg w-full h-40 md:h-48 object-cover transition-all duration-300 hover:brightness-110"
+                    className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
                   />
                 </div>
-                <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
+                <h3 className="text-xl font-serif mb-4 text-white">
                   Tarot Lessons
                 </h3>
-                <p className="text-white text-sm md:text-base mb-3 md:mb-4">
+                <p className="text-white mb-4">
                   Learn the art of Tarot with comprehensive lessons covering
                   various aspects of this ancient oracle. In-person or virtual
                   options available.
@@ -167,7 +180,7 @@ export default function Home() {
               </CardContent>
             </Card>
           </div>
-          <div className="text-center mt-6 md:mt-8">
+          <div className="text-center mt-8">
             <Button asChild variant="outline" size="default">
               <Link href="/services" className="text-white">
                 View full service details →
@@ -177,71 +190,72 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Updates Section - Mobile Flex Fix */}
-      <section className="py-12 md:py-24 bg-black/20 backdrop-blur-md">
+      <section className="py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-8 md:mb-12 text-white text-center">
-            Updates
-          </h2>
-
-          {/* Featured Update/Service - Stack on Mobile */}
-          <article className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-6 rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 mb-8 md:mb-16">
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-              <div className="w-full md:w-1/3">
-                <Image
-                  src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
-                  alt="Tarot Classes"
-                  width={300}
-                  height={300}
-                  className="rounded-lg w-full h-48 object-cover transition-all duration-300 hover:brightness-110"
-                />
-              </div>
-              <div className="w-full md:w-2/3 mt-4 md:mt-0">
-                <h3 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-white">
-                  NEW!! Tarot Classes ONLINE!!!
-                </h3>
-                <p className="text-white text-sm md:text-base mb-4">
-                  I have put together Beginner's, Intermediate and Advanced
-                  Tarot courses which will be in a consistent rotation a few
-                  times a year. Each course is 4 weeks long—2 hour sessions once
-                  per week. I look forward to seeing you in class!
-                </p>
-                <div className="text-center md:text-left mt-4 md:mt-6">
-                  <Button asChild variant="outline">
-                    <Link href="/services#tarot-classes" className="text-white">
-                      Learn more
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </article>
-
           {/* Most Recent Blog Post */}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif mb-6 md:mb-12 text-white text-center">
+          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white text-center">
             Latest Blog Post
           </h2>
-          <article className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-6 rounded-lg transform transition duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
-            <h3 className="text-xl md:text-2xl font-serif mb-3 md:mb-4 text-white">
-              {blogPosts[1].title}
-            </h3>
-            <p className="text-white text-sm md:text-base mb-4">{blogPosts[1].excerpt}</p>
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-              <span className="text-white text-sm md:text-base">
-                {blogPosts[1].date} | by {blogPosts[1].author}
-              </span>
-              <Button asChild variant="outline" size="sm">
-                <Link
-                  href={`/blog/${blogPosts[1].slug}`}
-                  className="text-white"
-                >
-                  Read more
-                </Link>
-              </Button>
+          <article className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition duration-300 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+            {/* Blog image on top for better prominence */}
+            <div className="mb-6">
+              <div className="relative w-full aspect-video md:aspect-[16/9] overflow-hidden rounded-lg">
+                <Image
+                  src={
+                    mostRecentPost?.fields.featuredImage?.url ||
+                    generateBlogImagePath(
+                      mostRecentPost?.fields.title || blogPosts[1].title
+                    )
+                  }
+                  alt={
+                    mostRecentPost?.fields.featuredImage?.title ||
+                    mostRecentPost?.fields.title ||
+                    blogPosts[1].title
+                  }
+                  fill
+                  className="object-cover transition-all duration-300 hover:brightness-110"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  priority
+                />
+              </div>
+            </div>
+            
+            {/* Blog content */}
+            <div>
+              <h3 className="text-2xl font-serif mb-4 text-white">
+                {mostRecentPost?.fields.title || blogPosts[1].title}
+              </h3>
+              <p className="text-white mb-4">
+                {mostRecentPost?.fields.excerpt || blogPosts[1].excerpt}
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-white">
+                  {mostRecentPost
+                    ? format(
+                        new Date(
+                          mostRecentPost.fields.publishDate ||
+                            mostRecentPost.sys.createdAt
+                        ),
+                        "MMMM d, yyyy"
+                      )
+                    : blogPosts[1].date}{" "}
+                  | by {mostRecentPost?.fields.author || blogPosts[1].author || "Holly Cole"}
+                </span>
+                <Button asChild variant="outline" size="sm">
+                  <Link
+                    href={`/blog/${
+                      mostRecentPost?.fields.slug || blogPosts[1].slug
+                    }`}
+                    className="text-white"
+                  >
+                    Read more
+                  </Link>
+                </Button>
+              </div>
             </div>
           </article>
 
-          <div className="mt-6 md:mt-8 text-center">
+          <div className="mt-8 text-center">
             <Button asChild variant="outline">
               <Link href="/blog" className="text-white">
                 View all blog posts →
@@ -251,34 +265,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section - Mobile Grid Fix */}
-      <section className="py-12 md:py-24 bg-black/20 backdrop-blur-md">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif text-center mb-8 md:mb-12 text-white">
+      <section className="py-24 bg-black/20 backdrop-blur-md">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-serif mb-12 text-white">
             What Our Clients Say
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <Link
-                href="/reviews"
-                key={index}
-                className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-6 rounded-lg flex flex-col h-full transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 group"
-              >
-                <div className="flex-1">
-                  <p className="text-white/90 mb-4 text-sm md:text-base lg:text-lg italic">
+              <Link key={index} href="/reviews" className="block">
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15 h-full flex flex-col">
+                  <blockquote className="text-lg text-white italic mb-4 flex-grow">
                     "{testimonial.quote}"
-                  </p>
+                  </blockquote>
+                  <cite className="text-white font-semibold not-italic">
+                    — {testimonial.name}
+                  </cite>
                 </div>
-                <p className="text-white font-medium text-right text-sm md:text-base">
-                  - {testimonial.name}
-                </p>
               </Link>
             ))}
           </div>
-          <div className="text-center mt-8">
+          <div className="mt-8">
             <Button asChild variant="outline">
               <Link href="/reviews" className="text-white">
-                Read more reviews →
+                Read more reviews
               </Link>
             </Button>
           </div>
