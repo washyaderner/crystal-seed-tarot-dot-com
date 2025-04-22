@@ -193,6 +193,7 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Latest Blog Post Section */}
       <section className="py-12 md:py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Most Recent Blog Post */}
