@@ -343,8 +343,12 @@ Working on end-of-April updates to enhance the Crystal Seed Tarot website with a
 [X] Create and switch to feature/end-of-april-updates branch
 [X] Identify specific tasks for this update
   [X] Update private readings pricing from $80/hour to $90/hour
+  [X] Move Tarot Classes card from services page to events page
 [ ] Implement the updates
   [X] Updated private readings pricing in both locations in the services page
+  [X] Moved Tarot Classes card to events page between the two existing events
+  [X] Added proper sorting to events page to show upcoming events first
+  [X] Updated "Sign Up For Class" button for Tarot Classes event
 [ ] Test changes
 [ ] Prepare for PR to dev branch
 
