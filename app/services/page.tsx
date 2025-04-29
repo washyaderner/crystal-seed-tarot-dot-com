@@ -8,7 +8,7 @@ const services = [
     title: "Private Readings",
     description:
       "Get an overview of what is going on in your life at this time. Gain insight as to how you got here and where things could be stemming from. Receive validation as to what you have been through, and confirmation of where you could be headed.",
-    price: "$80/hour",
+    price: "$90/hour",
     details: [
       "Can be done in person or virtually",
       "Provides a 'heads up' on areas to work on",
@@ -169,7 +169,7 @@ export default function Services() {
             </p>
 
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
-              Private Readings – $80/hour
+              Private Readings – $90/hour
             </h3>
             <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               Get an overview of what is going on in your life at this time.
