@@ -341,8 +341,10 @@ Working on end-of-April updates to enhance the Crystal Seed Tarot website with a
 
 ## Progress
 [X] Create and switch to feature/end-of-april-updates branch
-[ ] Identify specific tasks for this update
+[X] Identify specific tasks for this update
+  [X] Update private readings pricing from $80/hour to $90/hour
 [ ] Implement the updates
+  [X] Updated private readings pricing in both locations in the services page
 [ ] Test changes
 [ ] Prepare for PR to dev branch
 
