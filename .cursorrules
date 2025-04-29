@@ -306,6 +306,8 @@ Implement these safety practices:
 - Established robust error handling and fallback mechanisms
 - Ready for additional features and content updates
 - Following a structured git workflow with feature branches → dev → main
+- Recently added Events page with sample events
+- Standardized UI components and styling across pages
 
 # Completed Major Milestones
 - Updated "What Our Clients Say" section to display 3 testimonials in a responsive grid
@@ -327,13 +329,33 @@ Implement these safety practices:
 - Fixed Contentful deployment issues for production
 - Improved blog post formatting with proper headers and paragraph spacing
 - Added robust error handling for Contentful API calls
+- Created Events page with sample events (Be Love Fed and Ghost Week)
+- Improved homepage layout with latest blog post integration
+- Standardized subheading styles across services, gallery, and reviews pages
+- Fixed text overflow issues with whitespace-nowrap and responsive text sizing
 
-# Current Task: Spring Cleaning Feature Branch
+# Current Task: End of April Updates
 
 ## Task Overview
-Creating a new feature branch for spring cleaning and optimizations to the Crystal Seed Tarot website.
+Working on end-of-April updates to enhance the Crystal Seed Tarot website with additional improvements.
 
 ## Progress
+[X] Create and switch to feature/end-of-april-updates branch
+[X] Identify specific tasks for this update
+  [X] Update private readings pricing from $80/hour to $90/hour
+  [X] Move Tarot Classes card from services page to events page
+[X] Implement the updates
+  [X] Updated private readings pricing in both locations in the services page
+  [X] Moved Tarot Classes card to events page between the two existing events
+  [X] Added proper sorting to events page to show upcoming events first
+  [X] Updated "Sign Up For Class" button for Tarot Classes event
+[X] Test changes
+  [X] Verified on local development server
+[X] Prepare for PR to dev branch
+
+# Previous Completed Tasks
+
+## Spring Cleaning Feature Branch
 [X] Create feature branch named "feature/spring-cleaning"
 [X] Push branch to GitHub
 [X] Fix viewport metadata warnings across site
@@ -341,13 +363,39 @@ Creating a new feature branch for spring cleaning and optimizations to the Cryst
   [X] Used the new viewport export pattern recommended by Next.js
 [X] Update Services page
   [X] Changed subheading text to "Tarot is one of the most rewarding, memorable experiences in any setting"
-[ ] Add custom focus and hover states to interactive elements
-[ ] Improve error handling for form submissions
-[ ] Standardize responsive design breakpoints
-[ ] Test site performance and make optimizations
-[ ] Prepare for PR to dev branch
+[X] Update text styling for services subheading
+  [X] Added whitespace-nowrap to prevent wrapping
+  [X] Adjusted text size for better responsiveness (text-base/md:text-lg/lg:text-xl)
+  [X] Increased max-width from max-w-2xl to max-w-3xl
+  [X] Fixed missing period in the subheading text
+[X] Standardize subheading style on reviews page
+  [X] Updated to match services and gallery page styling
+  [X] Applied consistent text sizing and spacing
+[X] Test changes
+[X] Prepare for PR to dev branch
+[X] Merge PR to dev branch
 
-# Completed Tasks
+## Cleanup Feature Branch
+[X] Create feature branch named "feature/cleanup" 
+[X] Push branch to GitHub
+[X] Create Events page
+  [X] Added new tab in the navigation bar
+  [X] Created basic page structure with similar design to blog posts
+  [X] Added support for event listings with images, date, location and description
+  [X] Implemented responsive layout consistent with the site design
+[X] Add sample event data for testing
+  [X] Added Ghost Week event with properly formatted markdown content
+  [X] Configured ReactMarkdown to display event content with proper styling
+  [X] Added appropriate headers to improve content structure
+  [X] Updated button text to "Book a reading" for consistency
+[X] Added new "Be Love Fed!" event
+  [X] Added event at the top of the listing with proper date and location
+  [X] Used markdown formatting with headers and bullet points
+  [X] Added custom "Reserve a reading" button text
+  [X] Included image from public folder (Events-Be-Love-Fed.jpg)
+[X] Test changes
+[X] Prepare for PR to dev branch
+[X] Merge PR to dev branch
 
 ## April Adjustments Feature Branch
 [X] Create feature branch named "feature/april-adjustments"
@@ -410,8 +458,14 @@ Creating a new feature branch for spring cleaning and optimizations to the Cryst
 - Test with both valid and missing credentials to ensure robustness
 - Verify empty state messages appear correctly when content is missing
 
+## UI Consistency
+- Use consistent text sizing across similar components (text-base/md:text-lg/lg:text-xl)
+- Apply whitespace-nowrap for single-line headings when needed
+- Maintain consistent max-width values for text containers (max-w-3xl)
+- Keep paragraph styling consistent across all pages for unified presentation
+
 # Upcoming Tasks
-- Add additional content features (contact form, galleries, etc.)
+- Add additional content features (contact form enhancements, galleries)
 - Consider SEO improvements for better search engine visibility
 - Implement structured data for blog posts
 - Create more comprehensive blog post templates

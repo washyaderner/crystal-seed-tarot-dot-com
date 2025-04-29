@@ -41,6 +41,15 @@ export default function Events() {
       linkUrl: "/contact",
     },
     {
+      id: "3",
+      title: "NEW!! Tarot Classes ONLINE!!!",
+      description: "It's finally here! My very first online Tarot course presented through Kumara Academy!!! I have been wanting to get the opportunity to do online courses for years, so this is a long time coming and I am very excited!\n\n## Course Details\n\nThis online beginner's Tarot course will be 4 weeks long with classes occurring every Sunday in February from 4:00 – 6:00 pm. No matter what level you are at with Tarot, this course will help you understand the full meanings of the cards, and how to work with them all together in a spread.\n\n## What's Included\n\nThere will be lots of hands on practice through the magic of breakout rooms, class material you get to keep and refer to whenever you'd like, and each class will be recorded and posted so you can watch them later in case you aren't able to make a class.\n\n## Future Classes\n\nThe best part is: this will be one of a series of three Tarot classes I'll be doing through Kumara this year! So the intermediate and advanced courses will be coming later in the year! If you start your Tarot journey with me now, you'll be able to proceed with the rest of the courses later in the year!\n\n## Registration\n\nClasses start on 02/02/25. There is a coupon code also if you register using the link below. Hope to see you in class!!",
+      date: new Date("2025-02-02"),
+      location: "Online - Kumara Academy",
+      imageUrl: "/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp",
+      linkUrl: "/contact",
+    },
+    {
       id: "1",
       title: "Ghost Week!",
       description: "Join me for the first ever VIRTUAL  \nOregon Ghost Conference!\n\nIt's March which means it's time for my favorite event of the year: The Oregon Ghost Conference! The OGC is the biggest annual paranormal event in the state, going on since 2011. Although the event had to be cancelled last year due to Covid, this year they have decided to move the event online and do a VIRTUAL Oregon Ghost Conference and I could not be more excited! **(See information below for booking a reading with me)**\n\n## About the Oregon Ghost Conference\n\nIf you've never been to the OGC, it's a 3 day long round-the-clock event which takes place at the Seaside Convention Center. There is always an amazing array of guest speakers who give presentations on everything from paranormal experiences, to spirit communication, haunted history, and pretty much anything you could imagine in the realm of the paranormal and metaphysical. The entire convention center is PACKED with paranormal teams, psychics, readers, artists, pop-up shops selling creepy-jewelry, dowsing rods, crystals, oils, and anything one might need in their witchcraft pantry. Each day is also filled with break-out classes taking place in the spacious classrooms outlining the entire convention center. Here, you can take any class from How to Read Tarot Cards to Practicums on the best tools and tech gadgets to use for ghost hunting. There are usually a couple of bigger events in the evenings also for which you can purchase tickets; gallery readings with psychic mediums and real actual ghost hunts at the most haunted locations in town!\n\n## This Year's Virtual Format\n\nGranted, this year will be different. We won't be able to ghost hunt in person together, or casually stroll through the rows of eclectic vendors, but we can still have a Ghost Conference….of sorts! Rocky and his team are putting together an entire week of virtual events with many of participants of the OGC from years past, including yours truly. You can find an official line up of virtual events, including guest speakers, private readings, and even virtual classes at the link below.\n\n## Book a Reading with Me\n\n**I will be doing $30 30-minute readings during this year's first ever virtual Oregon Ghost Conference, this year titled \"Ghost Week\", in the evenings from 3/21/21 – 3/25/21, and all day on 3/26/21 – 3/28/21. If you'd like to book a reading with me, you can contact me at: crystalseedtarot@gmail.com**",
@@ -50,6 +59,19 @@ export default function Events() {
       linkUrl: "/contact",
     }
   ];
+  
+  // Sort events by date in ascending order (upcoming events first)
+  const sortedEvents = [...events].sort((a, b) => {
+    const now = new Date();
+    
+    // If both are in the past or both are in the future, sort by date (ascending)
+    if ((a.date < now && b.date < now) || (a.date >= now && b.date >= now)) {
+      return a.date.getTime() - b.date.getTime();
+    }
+    
+    // If one is in the future and one is in the past, future events come first
+    return a.date >= now ? -1 : 1;
+  });
 
   return (
     <div className="min-h-screen">
@@ -60,7 +82,7 @@ export default function Events() {
           </h1>
           
           {/* Show message if no events are available */}
-          {events.length === 0 && (
+          {sortedEvents.length === 0 && (
             <div className="text-center py-8">
               <p className="text-white text-xl">
                 I'm currently planning new events! Check back soon for updates or contact me for private bookings.
@@ -76,9 +98,9 @@ export default function Events() {
           )}
 
           {/* Events feed */}
-          {events.length > 0 && (
+          {sortedEvents.length > 0 && (
             <div className="space-y-12 max-w-4xl mx-auto">
-              {events.map((event) => (
+              {sortedEvents.map((event) => (
                 <article 
                   key={event.id}
                   className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-6 rounded-lg transform transition duration-300 hover:scale-[1.01] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15"
@@ -132,7 +154,7 @@ export default function Events() {
                             href={event.linkUrl}
                             className="text-white"
                           >
-                            {event.id === "2" ? "Reserve a reading" : "Learn more & RSVP"}
+                            {event.id === "2" ? "Reserve a reading" : event.id === "3" ? "Sign Up For Class" : "Learn more & RSVP"}
                           </Link>
                         </Button>
                       ) : (
