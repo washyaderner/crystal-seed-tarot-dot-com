@@ -358,6 +358,11 @@ Working on end-of-April updates to enhance the Crystal Seed Tarot website with a
 ## Spring Cleaning Feature Branch
 [X] Create feature branch named "feature/spring-cleaning"
 [X] Push branch to GitHub
+[X] Fix viewport metadata warnings across site
+  [X] Updated app/layout.tsx to separate viewport configuration from metadata
+  [X] Used the new viewport export pattern recommended by Next.js
+[X] Update Services page
+  [X] Changed subheading text to "Tarot is one of the most rewarding, memorable experiences in any setting"
 [X] Update text styling for services subheading
   [X] Added whitespace-nowrap to prevent wrapping
   [X] Adjusted text size for better responsiveness (text-base/md:text-lg/lg:text-xl)
@@ -368,6 +373,7 @@ Working on end-of-April updates to enhance the Crystal Seed Tarot website with a
   [X] Applied consistent text sizing and spacing
 [X] Test changes
 [X] Prepare for PR to dev branch
+[X] Merge PR to dev branch
 
 ## Cleanup Feature Branch
 [X] Create feature branch named "feature/cleanup" 
