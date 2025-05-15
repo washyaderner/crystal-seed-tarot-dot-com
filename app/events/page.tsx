@@ -32,6 +32,15 @@ export default function Events() {
   // Sample events - to be replaced with real data
   const events: Event[] = [
     {
+      id: "4",
+      title: "McMenamins 25th Annual UFO Festival",
+      description: "I'm thrilled to announce that I'll be offering tarot readings at the 25th Annual McMenamins UFO Festival in McMinnville, Oregon! Join me for this cosmic celebration where the veil between worlds feels just a little thinner.\n\n## About the Festival\n\nThe UFO Festival began 25 years ago to commemorate the famous 1950 Trent sighting, when a local McMinnville couple spotted a flying disc over their farm and made national news. Now in its quarter-century milestone year, this event has become one of the most beloved gatherings for both skeptics and believers alike.\n\nThis year's festival features renowned UAP experts, an alien parade, street fair, live music, costume contests, and much more. The entire downtown transforms into a celebration of cosmic curiosity and extraterrestrial wonder!\n\n## Tarot Readings with Crystal Seed Tarot\n\nI'll be offering intuitive tarot readings throughout both days of the festival:\n- **Friday, May 16th**: 3:00 PM - 8:00 PM\n- **Saturday, May 17th**: 10:00 AM - 6:00 PM\n\nMy readings at this special event blend cosmic awareness with practical guidance, perfect for those seeking answers about their path forward or connections to something beyond our ordinary understanding. Whether you're a festival regular or a curious first-timer, a tarot reading can provide unexpected insights during this unique weekend of cosmic exploration.\n\n## Booking Information\n\nReadings will be available on a first-come, first-served basis during the festival. If you'd like to reserve a specific time slot in advance, please contact me at crystalseedtarot@gmail.com with \"UFO Festival Reading\" in the subject line.\n\nLook for my booth among the vendors along 3rd Street in downtown McMinnville. I can't wait to explore the cosmic currents with you at this extraordinary gathering!",
+      date: new Date("2025-05-16"),
+      location: "McMenamins Hotel Oregon, 310 NE Evans St, McMinnville, OR",
+      imageUrl: "/images/Events-UFO-Fest.JPG",
+      linkUrl: "/contact",
+    },
+    {
       id: "2",
       title: "Be Love Fed!",
       description: "Love is the essence that nourishes us—in the air we breathe, the connections we share, and the gifts we give. Be Love Fed is your invitation to gather in a space where love flows freely, where you're reminded of your wholeness, and where community becomes medicine. Join me, Holly Cole of Crystal Seed Tarot, alongside WReN: Wellness ReSource Network and a vibrant roster of local practitioners for a day of soulful exploration and healing.\n\n## About the Event\n\nPresented by WReN: Wellness ReSource Network, this one‑day fair combines immersive sound healing, handcrafted herbal elixirs, and a heart‑centered marketplace. Wander through our Sound Healing Chamber, sip botanical tonics at the Elixir & Tea Bar, and discover organic skincare, crystal therapies, and more from soul-aligned vendors. Whether you're a seasoned seeker or new to holistic wellness, there's something here to nourish your body, mind, and spirit.\n\n## Tarot Readings with Holly Cole\n\nI'll be offering intuitive tarot sessions throughout the day. Receive personalized guidance, clarity, and inspiration as we explore your next steps together. To reserve your reading, email me at crystalseedtarot@gmail.com—or simply stop by the Crystal Seed Tarot booth between sessions.\n\n## Experience Highlights\n\n- **Opening Circle & Community Blessing** at 11 am\n- **Sound Healing Chamber** open all day—drop in anytime\n- **Elixir & Tea Bar** by Fehu Farm Apothecary & Natalie Olson\n- **Local Wellness Vendors** featuring herbal crafts, oracle cards, bodywork, and more\n- **Closing Circle & Angel Wash** at 5:30 pm\n\nCome to explore, to shop, to heal—or simply to be. You belong here. Let yourself be fed.",
@@ -154,7 +163,10 @@ export default function Events() {
                             href={event.linkUrl}
                             className="text-white"
                           >
-                            {event.id === "2" ? "Reserve a reading" : event.id === "3" ? "Sign Up For Class" : "Learn more & RSVP"}
+                            {event.id === "2" ? "Reserve a reading" : 
+                             event.id === "3" ? "Sign Up For Class" : 
+                             event.id === "4" ? "Book a festival reading" : 
+                             "Learn more & RSVP"}
                           </Link>
                         </Button>
                       ) : (
