@@ -8,7 +8,7 @@ const services = [
     title: "Private Readings",
     description:
       "Get an overview of what is going on in your life at this time. Gain insight as to how you got here and where things could be stemming from. Receive validation as to what you have been through, and confirmation of where you could be headed.",
-    price: "$80/hour",
+    price: "$90/hour",
     details: [
       "Can be done in person or virtually",
       "Provides a 'heads up' on areas to work on",
@@ -76,70 +76,6 @@ export default function Services() {
             ))}
           </div>
 
-          <div
-            id="tarot-classes"
-            className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-8 rounded-lg mb-8 md:mb-16 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20 hover:bg-white/15"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg">
-                <Image
-                  src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
-                  alt="Tarot cards being spread with candlelight"
-                  fill
-                  className="object-cover rounded-lg transition-all duration-300 hover:scale-105 hover:brightness-110"
-                />
-                <p className="text-white/60 text-xs md:text-sm mt-2 absolute bottom-0 left-0 p-2">
-                  Photo credit: Dionne Krauss Photography
-                </p>
-              </div>
-              <div>
-                <h2 className="text-2xl md:text-3xl font-serif text-white mb-3 md:mb-4">
-                  NEW!! Tarot Classes ONLINE!!!
-                </h2>
-                <div className="space-y-3 md:space-y-4 text-sm md:text-base text-white/80">
-                  <p>
-                    It's finally here! My very first online Tarot course
-                    presented through Kumara Academy!!! I have been wanting to
-                    get the opportunity to do online courses for years, so this
-                    is a long time coming and I am very excited!
-                  </p>
-                  <p>
-                    This online beginner's Tarot course will be 4 weeks long
-                    with classes occurring every Sunday in February from 4:00 –
-                    6:00 pm. No matter what level you are at with Tarot, this
-                    course will help you understand the full meanings of the
-                    cards, and how to work with them all together in a spread.
-                    There will be lots of hands on practice through the magic of
-                    breakout rooms, class material you get to keep and refer to
-                    whenever you'd like, and each class will be recorded and
-                    posted so you can watch them later in case you aren't able
-                    to make a class.
-                  </p>
-                  <p>
-                    The best part is: this will be one of a series of three
-                    Tarot classes I'll be doing through Kumara this year! So the
-                    intermediate and advanced courses will be coming later in
-                    the year! If you start your Tarot journey with me now,
-                    you'll be able to proceed with the rest of the courses later
-                    in the year!
-                  </p>
-                  <p>
-                    Classes start on 02/02/25. There is a coupon code also if
-                    you register using the link below. Hope to see you in
-                    class!!
-                  </p>
-                  <div className="pt-3 md:pt-4">
-                    <Button asChild variant="outline">
-                      <a href="/contact" className="inline-flex items-center">
-                        Sign Up For Class
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-8 rounded-lg">
             <h2 className="text-2xl md:text-3xl font-serif text-white mb-4 md:mb-6">
               Pricing and Booking Information
@@ -168,7 +104,7 @@ export default function Services() {
             </p>
 
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
-              Private Readings – $80/hour
+              Private Readings – $90/hour
             </h3>
             <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               Get an overview of what is going on in your life at this time.
