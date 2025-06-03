@@ -334,12 +334,22 @@ Implement these safety practices:
 - Standardized subheading styles across services, gallery, and reviews pages
 - Fixed text overflow issues with whitespace-nowrap and responsive text sizing
 
-# Current Task: End of April Updates
+# Current Task: June Fixes
 
 ## Task Overview
-Working on end-of-April updates to enhance the Crystal Seed Tarot website with additional improvements.
+Working on June fixes to improve and maintain the Crystal Seed Tarot website.
 
 ## Progress
+[X] Create and switch to feature/june-fixes branch
+[X] Push branch to GitHub
+[ ] Identify specific tasks for this update
+[ ] Implement the fixes
+[ ] Test changes
+[ ] Prepare for PR to dev branch
+
+# Previous Completed Tasks
+
+## End of April Updates Feature Branch
 [X] Create and switch to feature/end-of-april-updates branch
 [X] Identify specific tasks for this update
   [X] Update private readings pricing from $80/hour to $90/hour
@@ -352,65 +362,18 @@ Working on end-of-April updates to enhance the Crystal Seed Tarot website with a
 [X] Test changes
   [X] Verified on local development server
 [X] Prepare for PR to dev branch
-
-# Previous Completed Tasks
-
-## Spring Cleaning Feature Branch
-[X] Create feature branch named "feature/spring-cleaning"
-[X] Push branch to GitHub
-[X] Fix viewport metadata warnings across site
-  [X] Updated app/layout.tsx to separate viewport configuration from metadata
-  [X] Used the new viewport export pattern recommended by Next.js
-[X] Update Services page
-  [X] Changed subheading text to "Tarot is one of the most rewarding, memorable experiences in any setting"
-[X] Update text styling for services subheading
-  [X] Added whitespace-nowrap to prevent wrapping
-  [X] Adjusted text size for better responsiveness (text-base/md:text-lg/lg:text-xl)
-  [X] Increased max-width from max-w-2xl to max-w-3xl
-  [X] Fixed missing period in the subheading text
-[X] Standardize subheading style on reviews page
-  [X] Updated to match services and gallery page styling
-  [X] Applied consistent text sizing and spacing
-[X] Test changes
-[X] Prepare for PR to dev branch
 [X] Merge PR to dev branch
 
-## Cleanup Feature Branch
-[X] Create feature branch named "feature/cleanup" 
+## UFO Event Feature Branch
+[X] Create feature branch named "feature/ufo-event"
 [X] Push branch to GitHub
-[X] Create Events page
-  [X] Added new tab in the navigation bar
-  [X] Created basic page structure with similar design to blog posts
-  [X] Added support for event listings with images, date, location and description
-  [X] Implemented responsive layout consistent with the site design
-[X] Add sample event data for testing
-  [X] Added Ghost Week event with properly formatted markdown content
-  [X] Configured ReactMarkdown to display event content with proper styling
-  [X] Added appropriate headers to improve content structure
-  [X] Updated button text to "Book a reading" for consistency
-[X] Added new "Be Love Fed!" event
-  [X] Added event at the top of the listing with proper date and location
-  [X] Used markdown formatting with headers and bullet points
-  [X] Added custom "Reserve a reading" button text
-  [X] Included image from public folder (Events-Be-Love-Fed.jpg)
-[X] Test changes
-[X] Prepare for PR to dev branch
-[X] Merge PR to dev branch
-
-## April Adjustments Feature Branch
-[X] Create feature branch named "feature/april-adjustments"
-[X] Push branch to GitHub
-[X] Add blog image to homepage's "Latest Blog Post" section
-  [X] Created getMostRecentBlogPost function in contentful.ts
-  [X] Updated homepage to fetch and display most recent blog post
-  [X] Added responsive image with proper aspect ratio (16:9 on mobile, 16:9 on desktop)
-  [X] Added proper fallbacks when Contentful API isn't available
-[X] Improve blog image presentation on homepage
-  [X] Moved image above blog content for better visibility
-  [X] Made image full-width to increase prominence
-  [X] Used aspect-video (16:9) on all screen sizes for consistency
-  [X] Added priority loading for better page performance
-[X] Remove "Updates" section with Tarot Classes Online
+[X] Add UFO Festival event content
+  [X] Created comprehensive event description with festival background
+  [X] Added detailed tarot reading information and booking details
+  [X] Included proper dates, location, and contact information
+[X] Update event image to Events-UFO-Fest.JPG
+  [X] Replaced Events-UFO-Festival.webp with Events-UFO-Fest.JPG
+  [X] Verified image displays correctly on events page
 [X] Test changes
 [X] Prepare for PR to dev branch
 [X] Merge PR to dev branch
