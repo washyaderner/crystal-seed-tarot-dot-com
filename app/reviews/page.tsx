@@ -282,6 +282,13 @@ const reviews = [
 ];
 
 export default function Reviews() {
+  // Sort reviews by date in descending order (newest first)
+  const sortedReviews = [...reviews].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateB.getTime() - dateA.getTime();
+  });
+
   return (
     <div className="min-h-screen">
       <section className="py-16 bg-black/20 backdrop-blur-md relative overflow-hidden">
@@ -327,7 +334,7 @@ export default function Reviews() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {reviews.map((review, index) => (
+            {sortedReviews.map((review, index) => (
               <div
                 key={index}
                 className="bg-white/10 backdrop-blur-md p-6 rounded-lg transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15"
@@ -337,16 +344,6 @@ export default function Reviews() {
                 </h3>
                 <p className="text-white/70 text-sm mb-4">{review.date}</p>
                 <p className="text-white/90 mb-4">{review.body}</p>
-                {review.details && (
-                  <p className="text-white/70 text-sm mb-2">
-                    Details: {review.details}
-                  </p>
-                )}
-                {review.type && (
-                  <p className="text-white/70 text-sm mb-4">
-                    Type: {review.type}
-                  </p>
-                )}
                 {review.reply && (
                   <div className="bg-white/5 p-4 rounded-lg mt-4 transition-all duration-300 hover:bg-white/10">
                     <p className="text-white/90 italic">
