@@ -423,6 +423,32 @@ Implement these safety practices:
 - Maintain consistent max-width values for text containers (max-w-3xl)
 - Keep paragraph styling consistent across all pages for unified presentation
 
+# Current Task: COMPLETED - Advanced Tarot Course Event Added
+
+## Task Overview
+Successfully added the new Intermediate-Advanced Tarot Mastery 4-Week Certification Course as the top event on the events page, with direct registration link to Eventbrite.
+
+## Status - COMPLETED
+[X] Create and switch to feature/event-update branch
+[X] Push branch to GitHub
+[X] Review and streamline provided event content
+[X] Add new Advanced Tarot course as first event in array
+[X] Configure Eventbrite registration link
+[X] Update button text logic for new event
+[X] Test event display and ordering
+[X] Commit and push changes to GitHub
+
+## Summary
+Successfully added the Intermediate-Advanced Tarot Mastery certification course to the top of the events page. The course features:
+- 4-week live online format via Kumara Academy
+- September 6-27, 2025 schedule
+- Advanced reading techniques and certification
+- Early-bird discount promotion
+- Direct registration link to Eventbrite
+- Professional content formatting matching site style
+
+Branch ready for PR to dev with functional event system enhancements.
+
 # Upcoming Tasks
 - Add additional content features (contact form enhancements, galleries)
 - Consider SEO improvements for better search engine visibility
