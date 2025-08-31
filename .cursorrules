@@ -334,18 +334,14 @@ Implement these safety practices:
 - Standardized subheading styles across services, gallery, and reviews pages
 - Fixed text overflow issues with whitespace-nowrap and responsive text sizing
 
-# Current Task: June Fixes
+# Recently Completed: Mobile Menu Implementation
 
-## Task Overview
-Working on June fixes to improve and maintain the Crystal Seed Tarot website.
-
-## Progress
-[X] Create and switch to feature/june-fixes branch
-[X] Push branch to GitHub
-[ ] Identify specific tasks for this update
-[ ] Implement the fixes
-[ ] Test changes
-[ ] Prepare for PR to dev branch
+[X] Created dropdown-style mobile menu with hamburger icon
+[X] Fixed hamburger visibility issues with CSS media query overrides
+[X] Made menu fully opaque (solid black background)
+[X] Added white divider lines between menu items
+[X] Fixed background image jitter on mobile scroll
+[X] Ensured desktop navigation remains unchanged
 
 # Previous Completed Tasks
 
@@ -435,6 +431,8 @@ Working on June fixes to improve and maintain the Crystal Seed Tarot website.
 - Add social sharing capabilities
 - Consider analytics integration
 
+
+
 # Error Resolution Documentation
 
 ## Contentful Production Deployment Issues
@@ -463,6 +461,156 @@ Working on June fixes to improve and maintain the Crystal Seed Tarot website.
 - Prevention: Check third-party library typing documentation
 
 # Debugging and Reasoning Framework
+
+## Complete File Analysis - Read Everything First
+
+**CRITICAL RULE: Always read and understand the ENTIRE file before making any changes or suggestions.**
+
+### Why This Matters
+
+- **Context is Everything**: Code at the bottom of a file may affect changes at the top
+- **Existing Patterns**: Understanding the full codebase patterns prevents inconsistent implementations
+- **Hidden Dependencies**: Functions, imports, or configurations later in the file may be relevant
+- **Avoid Duplication**: Functionality you're about to implement may already exist elsewhere in the file
+- **Maintain Style**: Consistent coding patterns and conventions throughout the file
+- **Prevent Breaking Changes**: Understanding all existing functionality prevents accidental breaks
+
+### Required Process
+
+#### Before Making ANY Changes:
+
+1. **Read the ENTIRE file** from top to bottom
+2. **Understand the file's purpose** and overall structure
+3. **Identify all existing functions, classes, and patterns**
+4. **Note the coding style and conventions used**
+5. **Map out dependencies and imports**
+6. **Understand the data flow and architecture**
+
+#### When Analyzing Related Files:
+
+1. **Read configuration files completely** (package.json, tsconfig.json, etc.)
+2. **Understand component hierarchies** by reading parent and child components fully
+3. **Review utility files entirely** to understand available helper functions
+4. **Check type definitions completely** to understand data structures
+
+### Implementation Guidelines
+
+#### ✅ DO:
+
+- Read every line of the target file before suggesting changes
+- Scan through related files to understand the broader context
+- Look for existing patterns and follow them consistently
+- Identify reusable functions or components already present
+- Understand the file's role in the larger application architecture
+
+#### ❌ DON'T:
+
+- Make assumptions about file contents based on filename alone
+- Suggest adding functionality that already exists in the file
+- Propose changes that break existing patterns without justification
+- Ignore configuration or setup code at the top/bottom of files
+- Skip reading imports, exports, or type definitions
+
+### Verification Checklist
+
+Before providing any code suggestions, confirm:
+
+- [ ] I have read the complete file from start to finish
+- [ ] I understand how my changes fit into the existing code structure
+- [ ] I have identified any existing similar functionality
+- [ ] I am following the established patterns and conventions
+- [ ] My changes won't conflict with existing code later in the file
+- [ ] I have considered all imports and dependencies
+
+### Example Approach
+
+```
+1. First, let me read through the entire [filename] to understand its structure...
+2. I can see this file handles [purpose] and follows [patterns]...
+3. The existing code uses [conventions] and has [key functions/components]...
+4. Based on my complete analysis, here's how to implement [requested change]...
+```
+
+**Remember: Thorough file analysis prevents bugs, maintains consistency, and leads to better solutions. Never rush to implement without understanding the full context.**
+
+## Extended Thinking and Deep Analysis Rules
+
+When approaching complex problems, feature implementations, or architectural decisions, use extended thinking to provide thorough analysis and well-reasoned solutions.
+
+### When to Use Extended Thinking
+
+Use extended thinking for:
+
+- Complex feature implementations that require multiple steps
+- Architectural decisions with trade-offs
+- Debugging complex issues
+- Code refactoring decisions
+- Performance optimization strategies
+- Database schema changes
+- Security considerations
+- Integration planning
+
+### Extended Thinking Format
+
+When encountering complex problems, think through them step-by-step:
+
+```
+<thinking>
+Let me think about this carefully...
+
+1. Understanding the problem:
+   - What exactly is being asked?
+   - What are the constraints?
+   - What are the potential edge cases?
+
+2. Analyzing the current state:
+   - What exists currently?
+   - What are the limitations?
+   - What needs to change?
+
+3. Considering approaches:
+   - Option A: [describe approach, pros/cons]
+   - Option B: [describe approach, pros/cons]
+   - Option C: [describe approach, pros/cons]
+
+4. Evaluating trade-offs:
+   - Performance implications
+   - Maintainability
+   - Scalability
+   - Developer experience
+   - User experience
+
+5. Implementation considerations:
+   - What files need to be modified?
+   - What dependencies are required?
+   - What testing is needed?
+   - What migration steps are required?
+
+Based on this analysis, I recommend [chosen approach] because [reasoning].
+</thinking>
+```
+
+### Response Structure
+
+After extended thinking, provide:
+
+1. **Summary**: Brief explanation of the recommended approach
+2. **Implementation Plan**: Step-by-step breakdown
+3. **Code Changes**: Specific files and modifications needed
+4. **Considerations**: Important notes about the implementation
+5. **Testing Strategy**: How to verify the solution works
+
+### Example Usage
+
+For complex problems like "Update timestamp tracking for goals without requiring database changes", first analyze all relevant files, understand the current architecture, consider multiple approaches, evaluate trade-offs, then provide a concise, actionable plan.
+
+Always prioritize:
+
+- Code maintainability
+- Performance implications
+- User experience
+- Security considerations
+- Scalability
 
 ## Core Debugging Principles
 

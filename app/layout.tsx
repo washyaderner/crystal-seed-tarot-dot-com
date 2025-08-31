@@ -38,7 +38,7 @@ export default function RootLayout({
       >
         <div className="bg-blur"></div>
         <div className="content-wrapper flex flex-col min-h-screen">
-          <header className="sticky top-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
+          <header className="sticky top-0 z-40 bg-white/10 backdrop-blur-md border-b border-white/20 overflow-visible">
             <Navigation />
           </header>
 
