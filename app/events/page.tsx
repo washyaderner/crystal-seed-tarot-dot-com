@@ -78,17 +78,10 @@ export default function Events() {
     }
   ];
   
-  // Sort events by date in ascending order (upcoming events first)
+  // Sort events by date in descending order (newest/most recent events first)
   const sortedEvents = [...events].sort((a, b) => {
-    const now = new Date();
-    
-    // If both are in the past or both are in the future, sort by date (ascending)
-    if ((a.date < now && b.date < now) || (a.date >= now && b.date >= now)) {
-      return a.date.getTime() - b.date.getTime();
-    }
-    
-    // If one is in the future and one is in the past, future events come first
-    return a.date >= now ? -1 : 1;
+    // Sort by date in descending order (newest first)
+    return b.date.getTime() - a.date.getTime();
   });
 
   return (
