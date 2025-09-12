@@ -296,6 +296,11 @@ Implement these safety practices:
 - Generate excerpts from content when excerpt fields are missing
 - Use optional chaining (?.) when accessing fields that might not exist in API responses
 - Always check terminal output for the development server port, as it may change between sessions
+- When users paste large amounts of formatted text, suggest using plain text editors like Simplenote to strip formatting before pasting
+- Use search_replace tool for comprehensive content updates rather than asking users to manually edit files
+- Break down large content additions into logical sections with proper HTML structure (h2, h3, h4, p tags)
+- Always include pricing information with service descriptions using <strong> tags for emphasis
+- When implementing detailed service cards, ensure all content from user specifications is included without omission
 
 # Scratchpad
 
@@ -423,15 +428,37 @@ Implement these safety practices:
 - Maintain consistent max-width values for text containers (max-w-3xl)
 - Keep paragraph styling consistent across all pages for unified presentation
 
-# Current Task: Witch Service Updates
+# Recently Completed: Witch Service Implementation
 
-## Task Overview
-Working on witch service updates on the feature/witch-service branch.
-
-## Progress
 [X] Create and switch to feature/witch-service branch
 [X] Push branch to GitHub
-[ ] Implement witch service updates as specified
+[X] Implement comprehensive witch service updates
+  [X] Added "Rent-a-Witch Services" to main pricing card after Tarot Lessons
+  [X] Created detailed service descriptions card with complete content
+  [X] Updated travel fees to 2025 rates (0.70/mile, 50 miles and 2 hours threshold)
+  [X] Fixed event sorting to show newest events first (chronological order)
+  [X] Ensured travel fees only appear in main pricing card (removed duplication)
+  [X] Added complete service descriptions with pricing for all witch services
+[X] Committed all changes with comprehensive commit message
+[X] Pushed all commits to GitHub
+[X] Prepared PR information for feature/witch-service to dev
+[X] Merged feature branch to dev via GitHub PR
+[X] Switched to dev branch and pulled latest changes
+[X] Prepared PR information for dev to main (production deployment)
+
+# Current Status: Ready for Production Deployment
+
+## Dev to Main PR Status
+- All witch service changes successfully merged to dev branch
+- Dev branch updated with latest changes including Advanced Tarot Mastery event
+- PR information prepared for dev to main production deployment
+- Awaiting user to create PR on GitHub for production release
+
+## Recent Features Added to Production Queue
+1. **Comprehensive Rent-a-Witch Services** - Complete service offerings with detailed descriptions and pricing
+2. **Advanced Tarot Mastery Certification Course** - New event with curriculum details
+3. **Updated Travel Policies** - 2025 mileage rates and threshold updates
+4. **Improved Event Sorting** - Chronological display with newest events first
 
 # Upcoming Tasks
 - Add additional content features (contact form enhancements, galleries)
