@@ -4,12 +4,52 @@ import Image from "next/image";
 
 const reviews = [
   {
+    name: "Elizabeth S.",
+    date: "Oct 4, 2025",
+    body: "Holly was an absolute delight to have at our wedding weekend welcome dinner, and my spouse and I are SO glad we decided to book her to read tarot for us and our guests! Her in-depth, expert tarot readings were thoughtful, personal, and heartfelt, and absolutely never rushed. Our guests (and us!!) came away from Holly's readings feeling inspired and revitalized—and with some conversational Holly knew exactly how to communicate with guests who already knew a ton about tarot, as well as those who knew absolutely nothing about it. She also went above and beyond by creating an attractive and atmospheric space at the table where she was set up, and was just overall so lovely to work with. We couldn't be happier with our choice to hire her for our party, and we highly recommend others do the same!",
+    type: "Tarot Card Reading",
+  },
+  {
+    name: "Ashly M.",
+    date: "Aug 5, 2025",
+    body: "Holly was wonderful! Very warm, kind, & professional. All of our guests were very impressed with her and her way of being. She had such an ease of making everyone feel comfortable before, during and after each reading. We definitely will ask to be at our next event. Thank you Holly!",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much Ashly! I so look forward to getting to see you all again! What an amazing family, friend group, and party! You guys have great taste in everything!",
+  },
+  {
+    name: "Cason W.",
+    date: "Jul 17, 2025",
+    body: "Crystal Seed Tarot was the perfect addition to my birthday celebration! I had never had a reading before and they walked me through everything and were so nice and sooooo great with the chaos of the party around! Then I added an extra two hours and no complaints or hesitation! 1,000% would hire again!! Vibes were 10/10!!!",
+    type: "Tarot Card Reading",
+    reply: "Thank you Cason! The vibes were amazing at your party! Hope we can connect again someday.",
+  },
+  {
+    name: "Melissa S.",
+    date: "Jun 9, 2025",
+    body: "Holly was great! We had her and another tarot reader for our daughter's high school graduation party. The teens really enjoyed talking with Holly and gaining some insights on their lives. We would definitely use Holly again.",
+    type: "Tarot Card Reading",
+  },
+  {
+    name: "Arin C.",
+    date: "Apr 21, 2025",
+    body: "Holly Cole was incredible!!! not only was she so kind she was so prepared and dressed to the nines for our event!! people left in tears and screaming that they loved her and knew what to do with their life now. we will definitely bring her back for any event we have and you should too! Thank you Holly for your kindness and positivity and greeting our customers and making them feel seen and heard! we had so much fun with you and you are so talented!",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much for this glowing feedback! Stop making me blush! I had such an amazing time getting to be part your event and connecting with all the fantastic people I got to read for. Can't wait to see you all again next time!!!",
+  },
+  {
     name: "Gina G.",
     date: "Jan 13, 2025",
     body: "Holly came to the house last night to read for me and my partner. Our experience was thoroughly positive. Holly's pre-event communications with me were engaging and positive. She was very kind and sensitive to my ADHD—I was late in responding several times and in answering the door for her! She was unbothered and validating each time and that gave me extra comfort with her. When she arrived, she set up beautifully and seamlessly—a total pro! She was genuinely engaged and spirited about our readings. She delivered information clearly and confidently, which inspired our trust. We both felt comfortable, open and vulnerable to share and receive. Overall, it was the very best experience we could have had with our readings and we are extremely grateful to Holly. I highly recommend hiring her for an awesome date night reading.",
     details:
       "Don't have prior experience • 2 people • 60 minutes • My home, venue, etc.",
     type: "Tarot Card Reading",
+  },
+  {
+    name: "Deanna P.",
+    date: "Dec 16, 2024",
+    body: "Holly was absolutely amazing! We hired her for a company holiday party and the feedback received throughout the event were all raving reviews. She was set up in a side room to separate from the loud music and party noise and repeatedly people would be seen leaving the room with huge smiles on their faces, rushing to discuss the reading with their friends. I would absolutely recommend. She has incredible talent.",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much Deanna! I had a wonderful time getting to meet and read for so many amazing people! Way to throw a fantastic party!",
   },
   {
     name: "Madison W.",
@@ -20,6 +60,35 @@ const reviews = [
     type: "Tarot Card Reading",
   },
   {
+    name: "Angela H.",
+    date: "Nov 20, 2024",
+    body: "So much fun! It was a great way to get to know your friends more and such a fun girls night!",
+    details:
+      "Tarot Card Reading • Palm Reading • Fortune Telling • Astrology Reading • Other (e.g., Crystal Ball/Pendulum) • Special Event / Party / Other • 1 - 20 guests • 31 - 50 years old • Don't need reader to provide table & chairs",
+    type: "Tarot and Psychic Reader Entertainment",
+  },
+  {
+    name: "Amy S.",
+    date: "Oct 31, 2024",
+    body: "Holly from Crystal Seed Tarot was absolutely amazing! She made everyone very comfortable, explained her process and even went the extra mile when some readings went long to make sure everyone who wanted to participate had a chance to have their cards read. Everyone at our function was impressed and had an incredible time. We can't recommend hiring Holly enough!",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much Amy! I had a blast getting to read for your office Halloween party! Love what a fun group of people you have! Thank you for having me!",
+  },
+  {
+    name: "Brittney L.",
+    date: "Sep 30, 2024",
+    body: "Holly was absolutely incredible! Not only did she match her set up to the vibe/theme of the bachelorette wedding weekend, her reading's were incredibly intimate and accurate for the whole party. Our entire party including the bride and maid of honor felt like their readings really brought up some deep personal experiences and current feelings. Most of our fellow ladies were in tears listening to each others reading, and Holly was incredibly sensitive and supportive to each of us. She guided us through every step, asked if we had questions, and made real connections with all of us. HIGHLY recommend her!!! Thank you again for a truly touching experience!",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much Brittney! I had a truly lovely authentic connection with each of you and am grateful for the time we got to share together. Thank you for including me in such a wonderful lifelong memory! I look forward to our paths crossing again in the future!\n-Holly",
+  },
+  {
+    name: "Elaine L.",
+    date: "Aug 14, 2024",
+    body: "Holly was extremely accommodating and a wonderful tarot reader! She did an amazing job at our wedding and folks were clamoring to get a reading from her. We really appreciate her going above and beyond (showing up to our event even though she was losing her voice!). Holly was an absolute hit at our wedding and we couldn't have imagined our day without her :)",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much Elaine and Bradley for having me at your fun, vibrant, and colorful wedding! I had a fantastic time getting to read for your guests. What a fun group of family and friends you have! Congrats again and all the best to you both & your future!",
+  },
+  {
     name: "Patrick W.",
     date: "Feb 15, 2024",
     body: "I reached out to Holly to ask about her working our company holiday party and she was extremely responsive and easy to work with. Once the party night arrived, Holly was ready to go at our agreed upon time and provided a great atmosphere and experience for our team. Everyone who received readings from her enjoyed their time. I hight recommend her services, and will be looking for an opportunity down the line to hire her again.",
@@ -28,12 +97,18 @@ const reviews = [
     type: "Tarot Card Reading",
   },
   {
-    name: "Angela H.",
-    date: "Nov 20, 2024",
-    body: "So much fun! It was a great way to get to know your friends more and such a fun girls night!",
-    details:
-      "Tarot Card Reading • Palm Reading • Fortune Telling • Astrology Reading • Other (e.g., Crystal Ball/Pendulum) • Special Event / Party / Other • 1 - 20 guests • 31 - 50 years old • Don't need reader to provide table & chairs",
-    type: "Tarot and Psychic Reader Entertainment",
+    name: "Briita V.",
+    date: "Dec 4, 2023",
+    body: "Holly was amazing. We had her come and do tarot readings for our wedding and we got nothing but rave reviews from everyone. She was also so quick to help us find another reader to come as well who was also so great! We felt energized by what she read off to us and ready for what's coming. Thanks again Holly!!",
+    type: "Tarot Card Reading",
+    reply: "Hi Briita! Thank you so much for your kind review! What an absolutely lovely wedding and fun people! So glad my friend and I (Li'l Wolf Tarot was the other reader, she's also on The Bash) we're able to be part of your magical day! Thank you again!",
+  },
+  {
+    name: "Dawn S.",
+    date: "Oct 16, 2023",
+    body: "Amazing how Holly can both read my mind about the past and present, while shining a light on pathways forward. She had such a calm, worldly and kind demeanor and I instantly felt comfortable and at ease around her. I received my reading quickly and it was very thorough. It helped me to see my situation from a different perspective, rather than trying to understand it through my own eyes. I have already recommended Holly to those who have asked me about a tarot reader, and I will continue to do so! Would definitely hire again. All my reception party guests raved about their readings and overall experience. Very impressive.",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much Dawn! I had such a wonderful time getting to be part of your wedding day! Lovely friends and family you all have, loved getting to read for everyone. Cheers to you guys and your new chapter!",
   },
   {
     name: "Amee C.",
@@ -50,6 +125,52 @@ const reviews = [
     details:
       "Palm Reading • Tarot Card Reading • Special Event / Party / Other • 21 - 50 guests • 31 years old and older • Need reader to provide table & chairs",
     type: "Tarot and Psychic Reader Entertainment",
+  },
+  {
+    name: "Erica E.",
+    date: "Sep 24, 2023",
+    body: "Holly did an amazing job making our party and unforgettable event. Everyone who met with her was super impressed and she even did readings for the kids, which they were fascinated by.",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much for your feedback, Erica! I absolutely loved getting to read for so many clever and precocious kids! Great party and group of awesome parents! Thank you for letting me a part of it!",
+  },
+  {
+    name: "Hilary U.",
+    date: "Jun 26, 2023",
+    body: "We had such a great experience with Holly! She came to my bachelorette party to give readings throughout the day to those who wanted one. She was punctual, professional, & personable. I especially appreciated how accommodating she was - I gave her a heads up beforehand that it was a pool party, and she was totally fine to set up poolside and roll with the vibe.",
+    type: "Tarot Card Reading",
+  },
+  {
+    name: "Jennifer S.",
+    date: "Jun 25, 2023",
+    body: "Holly was superb!",
+    type: "Tarot Card Reading",
+  },
+  {
+    name: "Connor C.",
+    date: "Feb 2, 2023",
+    body: "Holly is amazing! This was a last-minute holiday party for our staff to celebrate getting through the business winter season. Holly was super flexible, and accommodating. She brought a peaceful, fun energy to our party. More employees wanted a chance to talk with Holly, so she stayed longer than was asked. I appreciated her wiliness to stay and have fun with our employees. She was a hit! We will definitely have Holly again :)",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much for your positive feedback! I had such a blast getting to read for so many lovely people! What a fun, varied, and interesting group of people to get to work with! I would love to be part of your celebrations again in the future!",
+  },
+  {
+    name: "Lisa R.",
+    date: "Nov 20, 2022",
+    body: "Our teenagers loved their readings. They all said she was right on and they had a blast! Would definitely recommend Crystal Seed Tarot.",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much Lisa! Such an awesome group of young ladies to get to read for!",
+  },
+  {
+    name: "Bree R.",
+    date: "Jun 29, 2022",
+    body: "She was great and I plan on making an appointment with her when we get back home. She made the party enjoyable.",
+    type: "Tarot Card Reading",
+  },
+  {
+    name: "Cara M.",
+    date: "Mar 13, 2022",
+    body: "This was an awesome addition to our Barrister's Ball formal. She was professional, showed up early, was very personable, and gave great readings. Our event had over 350+ people and she was very accommodating for the max number of people possible. We will definitely reach out in the future for similar events, thank you!",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much for your feedback, Cara! I had a blast at the Barrister's Ball and look forward to working with you again in the future!",
   },
   {
     name: "Lisa R.",
@@ -118,6 +239,13 @@ const reviews = [
     type: "Tarot and Psychic Reader Entertainment",
     reply:
       "Thank you so much Suzanne! You have such lovely family and friends! I especially loved getting to read for the kids, so adorable!",
+  },
+  {
+    name: "Stephanie A.",
+    date: "Oct 30, 2021",
+    body: "I cannot say enough good things about Holly. She is amazing, to the extent I've hired her for a second party with a different group of friends. Holly was incredibly flexible in accommodating our time requested (8pm-10pm on a Fri evening) and was spot on in all our readings. She was funny, empathetic and totally in tune with each of the guests and their responses. I will be using her on my own in addition as she is truly gifted and was able to give me insight into a personal situation my therapist wasn't even able to provide. Overall, I would not hesitate to recommend her to both family and friends.",
+    type: "Tarot Card Reading",
+    reply: "Thank you so much, Stephanie, for your heart-felt comments! I truly loved getting to read for you and your friends and I look forward to getting to see you and read for you again soon!",
   },
   {
     name: "Veronica P.",
