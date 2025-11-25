@@ -7,6 +7,7 @@ import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { submitContactForm } from "./actions";
 
 // Form validation schema
 const formSchema = z.object({
@@ -48,52 +49,10 @@ export default function Contact() {
     }
     
     try {
-      // Create form data for AJAX submission
-      const formData = new FormData();
-      formData.append('name', data.name);
-      formData.append('email', data.email);
-      if (data.phone) {
-        formData.append('phone', data.phone);
-      }
-      formData.append('message', data.message);
+      const result = await submitContactForm(data);
       
-      // Add FormSubmit.co configuration
-      formData.append('_subject', 'Contact Form Submission');
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
-      
-      // Submit directly to FormSubmit.co's AJAX endpoint
-      const response = await fetch('https://formsubmit.co/ajax/crystalseedtarot@gmail.com', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json',
-          'Origin': window.location.origin
-        },
-        mode: 'cors'
-      });
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Form submission error:', {
-          status: response.status,
-          statusText: response.statusText,
-          error: errorText
-        });
-        
-        // Check if it's an activation error
-        if (errorText.includes('needs Activation')) {
-          throw new Error("Form is being set up. Please email me directly at crystalseedtarot@gmail.com");
-        }
-        
-        throw new Error(`Form submission failed: ${response.statusText}`);
-      }
-      
-      const result = await response.json();
-      
-      if (result.success !== "true" && result.success !== true) {
-        console.error('FormSubmit.co error:', result);
-        throw new Error(result.message || "Form submission failed");
+      if (!result.success) {
+        throw new Error(result.message);
       }
       
       // Show success message without page reload
