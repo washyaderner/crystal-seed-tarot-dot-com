@@ -63,7 +63,7 @@ export default function Services() {
             Tarot is one of the most rewarding, memorable experiences in any setting.
           </p>
 
-          <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8 md:mb-16">
+          <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 mb-8 md:mb-16 max-w-4xl mx-auto">
             {services.map((service) => (
               <Card
                 key={service.title}
