@@ -8,7 +8,7 @@ const services = [
     title: "Private Readings",
     description:
       "Get an overview of what is going on in your life at this time. Gain insight as to how you got here and where things could be stemming from. Receive validation as to what you have been through, and confirmation of where you could be headed.",
-    price: "$90/hour",
+    price: "$100/hour",
     details: [
       "Can be done in person or virtually",
       "Provides a 'heads up' on areas to work on",
@@ -16,10 +16,10 @@ const services = [
     ],
   },
   {
-    title: "Private Events",
+    title: "Private Events/Party Readings",
     description:
       "I am available to provide Tarot services at private events such as birthday parties, corporate events, theme parties, bachelorette parties, baby showers, school events, fundraisers, and more.",
-    price: "$110/hour",
+    price: "$120/hour",
     details: [
       "Readings catered to fit your event",
       "3 card readings for large-scale parties",
@@ -28,14 +28,25 @@ const services = [
     ],
   },
   {
-    title: "Tarot Lessons",
+    title: "Private Tarot Lessons",
     description:
       "Get an overview of what Tarot is and the many systems within this amazing oracle. Written materials provided covering Major and Minor Arcana, resources, practices, layouts, reversals, and more.",
-    price: "$50/hour",
+    price: "$60/hour",
     details: [
       "Can be done either in person or virtually",
       "Comprehensive written materials provided",
       "Learn about various Tarot systems",
+    ],
+  },
+  {
+    title: "Private Group Tarot Lessons",
+    description:
+      "Bring your friends together for a shared learning experience exploring the wisdom of Tarot. Enjoy the same comprehensive instruction as private lessons in a fun, collaborative group setting.",
+    price: "$100/hour",
+    details: [
+      "Perfect for friends who want to learn together",
+      "Comprehensive written materials provided",
+      "Can be done in person or virtually",
     ],
   },
 ];
@@ -52,7 +63,7 @@ export default function Services() {
             Tarot is one of the most rewarding, memorable experiences in any setting.
           </p>
 
-          <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8 md:mb-16">
+          <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 mb-8 md:mb-16 max-w-4xl mx-auto">
             {services.map((service) => (
               <Card
                 key={service.title}
@@ -104,7 +115,7 @@ export default function Services() {
             </p>
 
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
-              Private Readings – $90/hour
+              Private Readings – $100/hour
             </h3>
             <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               Get an overview of what is going on in your life at this time.
@@ -117,7 +128,7 @@ export default function Services() {
             </p>
 
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
-              Private Events – $110/hour
+              Private Events/Party Readings – $120/hour
             </h3>
             <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               I am available to provide Tarot services at private events
@@ -130,13 +141,25 @@ export default function Services() {
             </p>
 
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
-              Tarot Lessons – $50/hour
+              Private Tarot Lessons – $60/hour
             </h3>
             <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
               Get an overview of what Tarot is and the many systems within this
               amazing oracle. Written materials provided covering Major and
               Minor Arcana, resources, practices, layouts, reversals, and more.
               Can be done either in person or virtually.
+            </p>
+
+            <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">
+              Private Group Tarot Lessons – $100/hour
+            </h3>
+            <p className="text-sm md:text-base text-white/80 mb-4 md:mb-6">
+              Bring your friends together for a shared learning experience
+              exploring the wisdom of Tarot. Enjoy the same comprehensive
+              instruction as private lessons in a fun, collaborative group
+              setting. Written materials provided covering Major and Minor
+              Arcana, resources, practices, layouts, reversals, and more. Can be
+              done either in person or virtually.
             </p>
 
             <h3 className="text-xl md:text-2xl font-serif text-white mb-2 md:mb-4">

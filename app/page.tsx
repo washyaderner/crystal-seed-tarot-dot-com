@@ -111,13 +111,13 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Services Section - Mobile Grid Fix */}
+      {/* Services Section - 2x2 Grid */}
       <section className="py-12 md:py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif text-center mb-8 md:mb-16 text-white">
             Services Overview
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
             <Card className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
               <CardContent className="p-4 md:p-6">
                 <div className="mb-3 md:mb-4">
@@ -136,7 +136,7 @@ export default async function Home() {
                   Gain insights into your life's journey and receive guidance
                   for better outcomes. Available in-person or virtually.
                 </p>
-                <p className="text-white font-semibold">$80/hour</p>
+                <p className="text-white font-semibold">$100/hour</p>
               </CardContent>
             </Card>
             <Card className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
@@ -151,13 +151,13 @@ export default async function Home() {
                   />
                 </div>
                 <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
-                  Private Events
+                  Private Events/Party Readings
                 </h3>
                 <p className="text-white text-sm md:text-base mb-3 md:mb-4">
                   Tarot services for various events, customized to fit your
                   theme and group size. Available online or in-person.
                 </p>
-                <p className="text-white font-semibold">$110/hour</p>
+                <p className="text-white font-semibold">$120/hour</p>
               </CardContent>
             </Card>
             <Card className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
@@ -165,21 +165,42 @@ export default async function Home() {
                 <div className="mb-3 md:mb-4">
                   <Image
                     src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
-                    alt="Tarot Lessons"
+                    alt="Private Tarot Lessons"
                     width={300}
                     height={200}
                     className="rounded-lg w-full h-40 md:h-48 object-cover transition-all duration-300 hover:brightness-110"
                   />
                 </div>
                 <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
-                  Tarot Lessons
+                  Private Tarot Lessons
                 </h3>
                 <p className="text-white text-sm md:text-base mb-3 md:mb-4">
-                  Learn the art of Tarot with comprehensive lessons covering
-                  various aspects of this ancient oracle. In-person or virtual
-                  options available.
+                  One-on-one instruction covering the art of Tarot with
+                  comprehensive written materials. In-person or virtual options
+                  available.
                 </p>
-                <p className="text-white font-semibold">$50/hour</p>
+                <p className="text-white font-semibold">$60/hour</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15">
+              <CardContent className="p-4 md:p-6">
+                <div className="mb-3 md:mb-4">
+                  <Image
+                    src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
+                    alt="Private Group Tarot Lessons"
+                    width={300}
+                    height={200}
+                    className="rounded-lg w-full h-40 md:h-48 object-cover transition-all duration-300 hover:brightness-110"
+                  />
+                </div>
+                <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
+                  Private Group Tarot Lessons
+                </h3>
+                <p className="text-white text-sm md:text-base mb-3 md:mb-4">
+                  Bring your friends for a shared learning experience exploring
+                  Tarot together. In-person or virtual options available.
+                </p>
+                <p className="text-white font-semibold">$100/hour</p>
               </CardContent>
             </Card>
           </div>
