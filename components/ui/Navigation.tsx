@@ -31,9 +31,9 @@ export default function Navigation() {
           <Image
             src="/images/2025 Thumbtack Top Pro Badge.png"
             alt="2025 Thumbtack Top Pro"
-            width={56}
-            height={56}
-            className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]"
+            width={28}
+            height={28}
+            className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)] scale-[2.25]"
           />
         </Link>
 
