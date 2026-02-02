@@ -25,7 +25,7 @@ export default function Navigation() {
       <div className="flex justify-between items-center relative">
         <Link
           href="/"
-          className="text-2xl font-serif text-white transition-all duration-300 hover:scale-105 flex items-center gap-2"
+          className="text-2xl font-serif text-white transition-all duration-300 hover:scale-105 flex items-center gap-3"
         >
           Crystal Seed Tarot
           <Image
@@ -33,7 +33,7 @@ export default function Navigation() {
             alt="2025 Thumbtack Top Pro"
             width={28}
             height={28}
-            className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)] scale-[2.25]"
+            className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)] scale-[1.6875]"
           />
         </Link>
 
