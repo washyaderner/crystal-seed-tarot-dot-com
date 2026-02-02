@@ -132,6 +132,17 @@ export default function Contact() {
             I look forward to hearing from you!
           </h1>
 
+          {/* Thumbtack Top Pro Badge */}
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/images/2025 Thumbtack Top Pro Badge.png"
+              alt="2025 Thumbtack Top Pro"
+              width={100}
+              height={100}
+              className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]"
+            />
+          </div>
+
           <div className="max-w-2xl mx-auto mb-12">
             <p className="text-white/90 text-center mb-8">
               If you would like to schedule a reading, lesson, book an event, or

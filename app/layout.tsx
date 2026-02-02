@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import Navigation from "../components/ui/Navigation";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -48,7 +49,15 @@ export default function RootLayout({
           {/* Footer section */}
           <footer className="bg-black/40 backdrop-blur-md border-t border-white/20 py-6 md:py-8 mt-auto relative z-20">
             <div className="container mx-auto px-4">
-              <div className="flex justify-center items-center">
+              <div className="flex flex-col items-center gap-4">
+                {/* Thumbtack Badge */}
+                <Image
+                  src="/images/2025 Thumbtack Top Pro Badge.png"
+                  alt="2025 Thumbtack Top Pro"
+                  width={70}
+                  height={70}
+                  className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.4)]"
+                />
                 <p className="text-white/80 text-xs md:text-sm text-center">
                   &copy; {new Date().getFullYear()} Crystal Seed Tarot. All
                   rights reserved.

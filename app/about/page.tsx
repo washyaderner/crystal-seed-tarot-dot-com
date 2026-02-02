@@ -32,6 +32,17 @@ export default function About() {
           </h1>
 
           <div className="max-w-3xl mx-auto">
+            {/* Thumbtack Top Pro Badge */}
+            <div className="flex justify-center mb-6">
+              <Image
+                src="/images/2025 Thumbtack Top Pro Badge.png"
+                alt="2025 Thumbtack Top Pro"
+                width={120}
+                height={120}
+                className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]"
+              />
+            </div>
+
             {/* Single card with all content */}
             <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg shadow-inner border border-white/5 transition-all duration-300 hover:bg-white/15">
               {/* First image */}
