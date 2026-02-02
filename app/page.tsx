@@ -111,6 +111,21 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Thumbtack Badge Section - Between Hero and Services */}
+      <section className="py-8 md:py-12 bg-black/20 backdrop-blur-md">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center items-center">
+            <Image
+              src="/images/2025 Thumbtack Top Pro Badge.png"
+              alt="2025 Thumbtack Top Pro"
+              width={320}
+              height={320}
+              className="transition-all duration-300 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.6)]"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Services Section - 2x2 Grid */}
       <section className="py-12 md:py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
