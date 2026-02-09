@@ -426,18 +426,22 @@ export default function Reviews() {
             <Image
               src="/images/Services-Tarot-Readings-10-Card-Spread.webp"
               alt=""
-              width={300}
-              height={300}
+              width={150}
+              height={150}
               className="opacity-30"
+              sizes="150px"
+              loading="lazy"
             />
           </div>
           <div className="absolute right-10 bottom-5 rotate-[10deg]">
             <Image
               src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
               alt=""
-              width={280}
-              height={280}
+              width={150}
+              height={150}
               className="opacity-30"
+              sizes="150px"
+              loading="lazy"
             />
           </div>
         </div>

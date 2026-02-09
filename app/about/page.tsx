@@ -10,18 +10,22 @@ export default function About() {
             <Image
               src="/images/Services-Tarot-Readings-10-Card-Spread.webp"
               alt=""
-              width={300}
-              height={300}
+              width={150}
+              height={150}
               className="opacity-30"
+              sizes="150px"
+              loading="lazy"
             />
           </div>
           <div className="absolute right-10 top-20 rotate-[15deg]">
             <Image
               src="/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp"
               alt=""
-              width={280}
-              height={280}
+              width={150}
+              height={150}
               className="opacity-30"
+              sizes="150px"
+              loading="lazy"
             />
           </div>
         </div>
@@ -32,17 +36,6 @@ export default function About() {
           </h1>
 
           <div className="max-w-3xl mx-auto">
-            {/* Thumbtack Top Pro Badge */}
-            <div className="flex justify-center mb-6">
-              <Image
-                src="/images/2025 Thumbtack Top Pro Badge.png"
-                alt="2025 Thumbtack Top Pro"
-                width={120}
-                height={120}
-                className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]"
-              />
-            </div>
-
             {/* Single card with all content */}
             <div className="bg-white/10 backdrop-blur-md p-8 rounded-lg shadow-inner border border-white/5 transition-all duration-300 hover:bg-white/15">
               {/* First image */}
@@ -50,9 +43,10 @@ export default function About() {
                 <Image
                   src="/images/About-Holly-Kyle-Reading.jpeg"
                   alt="Holly Nicole performing a tarot reading"
-                  width={1200}
-                  height={900}
+                  width={768}
+                  height={576}
                   className="rounded-lg shadow-lg transition-all duration-300 hover:shadow-purple-500/30 hover:scale-[1.02] w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, 768px"
                   priority
                 />
               </div>

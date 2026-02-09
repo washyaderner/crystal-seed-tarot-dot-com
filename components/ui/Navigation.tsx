@@ -29,11 +29,13 @@ export default function Navigation() {
         >
           Crystal Seed Tarot
           <Image
-            src="/images/2025 Thumbtack Top Pro Badge.png"
+            src="/images/2025 Thumbtack Top Pro Badge.webp"
             alt="2025 Thumbtack Top Pro"
-            width={28}
-            height={28}
+            width={48}
+            height={48}
             className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)] scale-[1.6875]"
+            sizes="48px"
+            loading="lazy"
           />
         </Link>
 

@@ -82,7 +82,6 @@
   background-position: center;
   background-repeat: no-repeat;
   filter: blur(10px);
-  will-change: transform;
   transform: translateZ(0); /* Force GPU acceleration */
 }
 
@@ -98,23 +97,6 @@
 .content-wrapper {
   position: relative;
   z-index: 1;
-}
-
-/* Animation for form validation errors */
-@keyframes pulse {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
-}
-
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Add box shadow glow for error fields */
@@ -144,35 +126,13 @@ textarea.border-red-500:focus {
   animation: button-flash 0.5s ease-out;
 }
 
-/* Mobile menu animations */
-@keyframes slide-in-from-top {
-  0% {
-    transform: translateY(-10%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-in {
-  animation-duration: 300ms;
-  animation-timing-function: ease-out;
-  animation-fill-mode: both;
-}
-
-.slide-in-from-top {
-  animation-name: slide-in-from-top;
-}
-
 /* Desktop frosted glass effect */
 .frosted-card {
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .frosted-card:hover {
@@ -180,50 +140,14 @@ textarea.border-red-500:focus {
   box-shadow: 0 4px 20px rgba(128, 0, 255, 0.3);
 }
 
-/* Mobile responsiveness helpers */
-@media (max-width: 767px) {
-  /* Force mobile menu to display */
-  .md\:hidden {
-    display: block !important;
+/* Frosted glass fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  .frosted-card {
+    background-color: rgba(30, 30, 30, 0.85);
   }
-  
-  /* Force desktop menu to hide */
-  .hidden.md\:flex {
-    display: none !important;
-  }
-  
-  h1, h2 {
-    font-size: 1.75rem !important;
-  }
-  
-  h3 {
-    font-size: 1.5rem !important;
-  }
-  
-  p {
-    font-size: 1rem !important;
-  }
-  
-  /* Mobile-specific frosted glass fallback */
-  @supports not (backdrop-filter: blur(10px)) {
-    .frosted-card {
-      background-color: rgba(30, 30, 30, 0.85);
-    }
-    
-    .frosted-card:hover {
-      background-color: rgba(40, 40, 40, 0.9);
-    }
-  }
-}
 
-/* Ensure desktop view works correctly */
-@media (min-width: 768px) {
-  .md\:hidden {
-    display: none !important;
-  }
-  
-  .hidden.md\:flex {
-    display: flex !important;
+  .frosted-card:hover {
+    background-color: rgba(40, 40, 40, 0.9);
   }
 }
 

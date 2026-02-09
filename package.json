@@ -45,7 +45,6 @@
     "contentful": "^11.5.11",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "8.5.1",
-    "framer-motion": "^12.23.9",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "next": "14.2.35",
@@ -57,7 +56,6 @@
     "react-hook-form": "^7.55.0",
     "react-markdown": "^10.1.0",
     "react-resizable-panels": "^2.1.7",
-    "recharts": "2.15.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "sonner": "^1.7.4",
@@ -72,6 +70,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }

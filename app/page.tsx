@@ -83,12 +83,14 @@ export default async function Home() {
 
           <div className="mb-4 md:mb-6">
             <Image
-              src="/images/Home-Shuffle.png"
+              src="/images/Home-Shuffle.webp"
               alt="Crystal Seed Tarot"
-              width={600}
-              height={600}
+              width={400}
+              height={400}
+              sizes="(max-width: 768px) 80vw, 400px"
               className="mx-auto rounded-lg shadow-lg transition-all duration-2000 hover:brightness-110"
-              priority // Optimize LCP
+              quality={60}
+              priority
             />
           </div>
 
@@ -116,11 +118,13 @@ export default async function Home() {
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center">
             <Image
-              src="/images/2025 Thumbtack Top Pro Badge.png"
+              src="/images/2025 Thumbtack Top Pro Badge.webp"
               alt="2025 Thumbtack Top Pro"
-              width={320}
-              height={320}
+              width={200}
+              height={200}
               className="transition-all duration-300 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.6)]"
+              sizes="200px"
+              loading="lazy"
             />
           </div>
         </div>
@@ -142,6 +146,8 @@ export default async function Home() {
                     width={300}
                     height={200}
                     className="rounded-lg w-full h-40 md:h-48 object-cover transition-all duration-300 hover:brightness-110"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
@@ -163,6 +169,8 @@ export default async function Home() {
                     width={300}
                     height={200}
                     className="rounded-lg w-full h-40 md:h-48 object-cover transition-all duration-300 hover:brightness-110"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
@@ -184,6 +192,8 @@ export default async function Home() {
                     width={300}
                     height={200}
                     className="rounded-lg w-full h-40 md:h-48 object-cover transition-all duration-300 hover:brightness-110"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
@@ -206,6 +216,8 @@ export default async function Home() {
                     width={300}
                     height={200}
                     className="rounded-lg w-full h-40 md:h-48 object-cover transition-all duration-300 hover:brightness-110"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="text-lg md:text-xl font-serif mb-2 md:mb-4 text-white">
@@ -255,7 +267,6 @@ export default async function Home() {
                   fill
                   className="object-cover transition-all duration-300 hover:brightness-110"
                   sizes="(max-width: 768px) 100vw, 800px"
-                  priority
                 />
               </div>
             </div>
