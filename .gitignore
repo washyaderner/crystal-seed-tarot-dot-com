@@ -44,6 +44,7 @@ tools/credentials/credentials.json
 tools/credentials/service-account.json
 tools/data/last_scan.json
 tools/data/manual_review.json
+tools/data/scan.log
 
 # IDE
 .vscode/

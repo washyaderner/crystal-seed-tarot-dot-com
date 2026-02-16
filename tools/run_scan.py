@@ -14,8 +14,8 @@ from google.oauth2.credentials import Credentials
 
 from config import MANUAL_REVIEW_FILE, OAUTH_TOKEN_FILE, SCOPES, DATA_DIR
 from email_classifier import classify_email
-from gmail_scanner import scan_emails
-from sheets_manager import add_contact, get_all_emails
+from gmail_scanner import scan_emails, scan_for_unsubscribes
+from sheets_manager import add_contact, get_all_emails, remove_contact, is_subscribed
 
 
 def load_credentials() -> Credentials:
@@ -154,6 +154,28 @@ def main():
 
     if flagged_review > 0:
         print(f"\n  Review flagged emails: {MANUAL_REVIEW_FILE}")
+
+    # Step 5: Check for unsubscribe requests
+    print("\nChecking for unsubscribe requests...")
+    unsub_emails = scan_for_unsubscribes(creds)
+    unsubscribed = 0
+
+    for unsub in unsub_emails:
+        email_addr = unsub["sender_email"]
+        if is_subscribed(creds, email_addr):
+            if dry_run:
+                print(f"  Would unsubscribe: {email_addr} ('{unsub['subject']}')")
+                unsubscribed += 1
+            else:
+                remove_contact(creds, email_addr)
+                print(f"  Unsubscribed: {email_addr} ('{unsub['subject']}')")
+                unsubscribed += 1
+
+    if unsubscribed:
+        action = "Would unsubscribe" if dry_run else "Unsubscribed"
+        print(f"  {action}: {unsubscribed}")
+    else:
+        print("  No unsubscribe requests found.")
 
 
 if __name__ == "__main__":

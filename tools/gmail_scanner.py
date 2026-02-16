@@ -164,3 +164,71 @@ def scan_emails(creds: Credentials, max_results: int = 100) -> list[dict]:
 
     print(f"Processed {len(new_emails)} new emails.")
     return new_emails
+
+
+UNSUBSCRIBE_PATTERNS = re.compile(
+    r"\b(unsubscribe|remove me|stop emailing|opt out|take me off|"
+    r"don'?t (want|need) (any ?more|these) emails?|"
+    r"please remove|no longer wish|stop sending)\b",
+    re.IGNORECASE,
+)
+
+
+def scan_for_unsubscribes(creds: Credentials, max_results: int = 50) -> list[dict]:
+    """Scan Gmail for incoming emails that look like unsubscribe requests.
+
+    Returns a list of dicts with sender_email, sender_name, subject, snippet.
+    """
+    service = _get_service(creds)
+    state = _load_scan_state()
+    after_date = state.get("last_scan")
+
+    # Search for emails containing unsubscribe-like language
+    query = "in:inbox {unsubscribe remove opt-out}"
+    if after_date:
+        query += f" after:{after_date}"
+
+    results = (
+        service.users()
+        .messages()
+        .list(userId="me", q=query, maxResults=max_results)
+        .execute()
+    )
+
+    messages = results.get("messages", [])
+    if not messages:
+        return []
+
+    unsubscribes = []
+    for msg_ref in messages:
+        msg = (
+            service.users()
+            .messages()
+            .get(userId="me", id=msg_ref["id"], format="full")
+            .execute()
+        )
+
+        headers = msg.get("payload", {}).get("headers", [])
+        sender_name, sender_email = _extract_sender(headers)
+        subject = _extract_subject(headers)
+        snippet = _extract_body_snippet(msg.get("payload", {}))
+        if not snippet:
+            snippet = msg.get("snippet", "")
+
+        # Skip emails FROM Holly (outgoing)
+        if "crystalseedtarot" in sender_email or "hollymcole" in sender_email:
+            continue
+
+        # Check if the subject or body actually matches unsubscribe intent
+        text = f"{subject} {snippet}"
+        if UNSUBSCRIBE_PATTERNS.search(text):
+            unsubscribes.append(
+                {
+                    "sender_email": sender_email,
+                    "sender_name": sender_name,
+                    "subject": subject,
+                    "snippet": snippet[:200],
+                }
+            )
+
+    return unsubscribes
