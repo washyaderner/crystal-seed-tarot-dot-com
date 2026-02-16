@@ -41,6 +41,7 @@ __pycache__/
 # Email list tool credentials & data
 tools/credentials/token.json
 tools/credentials/credentials.json
+tools/credentials/service-account.json
 tools/data/last_scan.json
 tools/data/manual_review.json
 
