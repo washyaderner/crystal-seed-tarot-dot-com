@@ -109,6 +109,8 @@ Respond ONLY with valid JSON.`;
 // Check for unsubscribe intent in email text
 const UNSUB_PATTERN = /\b(unsubscribe|remove me|stop emailing|opt out|take me off|don'?t (want|need) (any ?more|these) emails?|please remove|no longer wish|stop sending)\b/i;
 
+export const maxDuration = 60;
+
 export async function GET(request: NextRequest) {
   if (!verifyCron(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -150,7 +152,7 @@ export async function GET(request: NextRequest) {
     const msgList = await gmail.users.messages.list({
       userId: "me",
       q: query,
-      maxResults: 50,
+      maxResults: 10,
     });
     const messages = msgList.data.messages || [];
     addLog(`Gmail messages found: ${messages.length}`);
