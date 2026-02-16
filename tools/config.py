@@ -37,6 +37,7 @@ GMAIL_EXCLUDE_SENDERS = [
     "support@google",
     "support@apple",
     "account-security",
+    "txt.voice.google.com",
 ]
 
 GMAIL_EXCLUDE_QUERY_PARTS = [
@@ -49,6 +50,7 @@ GMAIL_EXCLUDE_QUERY_PARTS = [
     "category:updates",
     "category:forums",
     "unsubscribe",  # mass emails that already have unsubscribe
+    "from:txt.voice.google.com",  # Google Voice notifications
 ]
 
 # AI Classification

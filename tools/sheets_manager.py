@@ -164,6 +164,7 @@ def create_sheet_with_headers(creds: Credentials) -> str:
     )
 
     sheet_id = spreadsheet["spreadsheetId"]
+    grid_id = spreadsheet["sheets"][0]["properties"]["sheetId"]
 
     # Add headers
     headers = [
@@ -192,7 +193,7 @@ def create_sheet_with_headers(creds: Credentials) -> str:
                 {
                     "repeatCell": {
                         "range": {
-                            "sheetId": 0,
+                            "sheetId": grid_id,
                             "startRowIndex": 0,
                             "endRowIndex": 1,
                         },
@@ -212,7 +213,7 @@ def create_sheet_with_headers(creds: Credentials) -> str:
                 {
                     "updateSheetProperties": {
                         "properties": {
-                            "sheetId": 0,
+                            "sheetId": grid_id,
                             "gridProperties": {"frozenRowCount": 1},
                         },
                         "fields": "gridProperties.frozenRowCount",
