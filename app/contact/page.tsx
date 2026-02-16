@@ -96,6 +96,13 @@ export default function Contact() {
         throw new Error(result.message || "Form submission failed");
       }
       
+      // Fire-and-forget: also add to email list sheet
+      fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: data.email, name: data.name }),
+      }).catch(() => {}); // silently ignore errors
+
       // Show success message without page reload
       setSubmitted(true);
       reset();

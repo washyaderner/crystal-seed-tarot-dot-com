@@ -38,6 +38,12 @@ venv/
 __pycache__/
 *.pyc
 
+# Email list tool credentials & data
+tools/credentials/token.json
+tools/credentials/credentials.json
+tools/data/last_scan.json
+tools/data/manual_review.json
+
 # IDE
 .vscode/
 .idea/
