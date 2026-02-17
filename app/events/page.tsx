@@ -26,11 +26,52 @@ interface Event {
   location: string;
   imageUrl: string;
   linkUrl?: string;
+  buttonText?: string;
 }
 
 export default function Events() {
   // Sample events - to be replaced with real data
   const events: Event[] = [
+    {
+      id: "9",
+      title: "Oregon Ghost Conference 2026",
+      description: "The Oregon Ghost Conference returns March 27–29, 2026 at the Seaside Convention Center! I'm excited to announce that I'll be there this year — tickets and the full schedule are coming soon.\n\nMore details about my specific events at the conference will follow in the coming weeks. Stay tuned!\n\nIf you've never been to the OGC, it's one of the biggest annual paranormal events in Oregon, featuring guest speakers, psychic readings, paranormal vendors, breakout classes, and evening ghost hunts at the most haunted locations in town. It's always an incredible weekend and I can't wait to be part of it again this year.",
+      date: new Date("2026-03-27"),
+      location: "Seaside Convention Center, Seaside, Oregon",
+      imageUrl: "/images/Events-Oregon Ghost Conference 2026.png",
+      linkUrl: "http://www.oregonghostconference.com/",
+      buttonText: "Visit Conference Site",
+    },
+    {
+      id: "8",
+      title: "The Empowered Empath (4-Week Course)",
+      description: "A brand-new **4-week course** designed to help you understand and thrive as an Empath!\n\n## Course Schedule\n\n**Saturdays**: February 28, March 7, 14 & 21, 2026\n**3:00 PM – 5:00 PM PST** | Online via Zoom\n\nVideo playback will be available for anyone who can't attend a live session.\n\n## What You'll Learn\n\nThis course goes deep into what it means to live as an Empath in today's world. We'll cover:\n\n- Empathy in relationships — navigating connection without losing yourself\n- How empathic energy manifests in daily life\n- Building and maintaining healthy empathy boundaries\n- Practical tools, checklists, and journal prompts you can use every day\n\n## Pricing\n\n**$144** for the full 4-week course.\n\nUse discount code **Insta25** or **FB25** for **$25 off**!\n\n## Registration\n\nSpaces are limited — reserve your spot today!",
+      date: new Date("2026-02-28T15:00:00-08:00"),
+      location: "Online",
+      imageUrl: "/images/Events-Empowered-Empath.jpeg",
+      linkUrl: "https://www.eventbrite.com/e/the-empowered-empath-understanding-thriving-as-an-empath-tickets-1982605808343?aff=oddtdtcreator",
+      buttonText: "Register for Course",
+    },
+    {
+      id: "7",
+      title: "FREE TALK: The Empowered Empath",
+      description: "Join me for a **free 1-hour talk and open discussion** about what it truly means to be an Empath — and how to turn your sensitivity into your greatest strength.\n\n## What We'll Cover\n\n- What it really means to be an Empath\n- Why Empaths often feel drained and overwhelmed\n- How to reframe empathy as a powerful strength\n- Protection tools and techniques to shield your energy\n- **Live Q&A** — bring your questions!\n\n## Special Offer\n\nAll attendees will receive an **exclusive $28 discount** toward the full 4-week Empowered Empath course starting February 28th.\n\n## Event Details\n\n**Monday, February 23, 2026**\n**6:00 PM PST** | Online\n\nThis talk is completely free — come learn, share, and connect with fellow Empaths!",
+      date: new Date("2026-02-23T18:00:00-08:00"),
+      location: "Online",
+      imageUrl: "/images/Events-Empowered-Empath.jpeg",
+      linkUrl: "https://www.eventbrite.com/e/free-talk-the-empowered-empading-thriving-as-an-empath-tickets-1982735831245?aff=oddtdtcreator",
+      buttonText: "Register for Free",
+    },
+    {
+      id: "6",
+      title: "Psychic Development Practice Session",
+      description: "Join me for a **free monthly Psychic Development Practice Session** through Kumara Academy!\n\nThis is an open, supportive space for anyone looking to strengthen their intuitive and psychic abilities. Whether you read Tarot, Oracle cards, use pendulums, or work with any other divination modality — you're welcome here.\n\n## What to Expect\n\n- Practice readings with other students and readers\n- Receive a free reading from a fellow practitioner\n- Share techniques and learn from each other\n- All skill levels welcome — beginners and seasoned readers alike\n\n## What to Bring\n\nBring your Tarot or Oracle cards, pendulum, runes, or whatever divination tools you work with. If you don't have tools yet, that's okay too — come receive a reading and soak in the experience!\n\n## Event Details\n\n**Thursday, February 19, 2026**\n**6:00 PM PST** | Online via Kumara Academy\n\nThis event is **completely free** — no registration fee!",
+      date: new Date("2026-02-19T18:00:00-08:00"),
+      location: "Online - Kumara Academy",
+      imageUrl: "/images/Events-Psychic-Practice-Feb-2026.jpg",
+      linkUrl: "https://lp.constantcontactpages.com/ev/reg/76330aa5-3c78-4fb5-8ca2-7276d17fe32a",
+      buttonText: "Register for Free",
+    },
     {
       id: "5",
       title: "Intermediate–Advanced Tarot Mastery 4-Week Certification Course!",
@@ -39,6 +80,7 @@ export default function Events() {
       location: "Online - Kumara Academy",
       imageUrl: "/images/Events-Intermediate-Advanced-Kumara.png",
       linkUrl: "https://www.eventbrite.com/e/intermediateadvanced-tarot-mastery-4-week-certification-course-tickets-1592932777819?aff=oddtdtcreator",
+      buttonText: "Register for Course",
     },
     {
       id: "4",
@@ -48,6 +90,7 @@ export default function Events() {
       location: "McMenamins Hotel Oregon, 310 NE Evans St, McMinnville, OR",
       imageUrl: "/images/Events-UFO-Fest.JPG",
       linkUrl: "/contact",
+      buttonText: "Book a festival reading",
     },
     {
       id: "2",
@@ -57,6 +100,7 @@ export default function Events() {
       location: "133 SE Madison St, Portland, OR",
       imageUrl: "/images/Events-Be-Love-Fed.jpg",
       linkUrl: "/contact",
+      buttonText: "Reserve a reading",
     },
     {
       id: "3",
@@ -66,6 +110,7 @@ export default function Events() {
       location: "Online - Kumara Academy",
       imageUrl: "/images/Services-Tarot-Classes-Evergreen-Spreading-Cards.webp",
       linkUrl: "/contact",
+      buttonText: "Sign Up For Class",
     },
     {
       id: "1",
@@ -75,12 +120,18 @@ export default function Events() {
       location: "Virtual - Oregon Ghost Conference",
       imageUrl: "/images/Blog-Ghost-Week-2021.webp",
       linkUrl: "/contact",
+      buttonText: "Learn more & RSVP",
     }
   ];
   
-  // Sort events by date in descending order (newest/most recent events first)
+  // Sort events: upcoming first (soonest at top), then past events (newest first)
+  const now = new Date();
   const sortedEvents = [...events].sort((a, b) => {
-    // Sort by date in descending order (newest first)
+    const aUpcoming = a.date >= now;
+    const bUpcoming = b.date >= now;
+    if (aUpcoming && bUpcoming) return a.date.getTime() - b.date.getTime();
+    if (aUpcoming) return -1;
+    if (bUpcoming) return 1;
     return b.date.getTime() - a.date.getTime();
   });
 
@@ -159,29 +210,14 @@ export default function Events() {
                       </ReactMarkdown>
                     </div>
                     <div className="flex justify-end">
-                      {event.linkUrl ? (
-                        <Button asChild variant="outline" size="sm">
-                          <Link
-                            href={event.linkUrl}
-                            className="text-white"
-                          >
-                            {event.id === "2" ? "Reserve a reading" : 
-                             event.id === "3" ? "Sign Up For Class" : 
-                             event.id === "4" ? "Book a festival reading" : 
-                             event.id === "5" ? "Register for Course" :
-                             "Learn more & RSVP"}
-                          </Link>
-                        </Button>
-                      ) : (
-                        <Button asChild variant="outline" size="sm">
-                          <Link
-                            href="/contact"
-                            className="text-white"
-                          >
-                            Book a reading
-                          </Link>
-                        </Button>
-                      )}
+                      <Button asChild variant="outline" size="sm">
+                        <Link
+                          href={event.linkUrl ?? "/contact"}
+                          className="text-white"
+                        >
+                          {event.buttonText ?? "Learn more & RSVP"}
+                        </Link>
+                      </Button>
                     </div>
                   </div>
                 </article>
