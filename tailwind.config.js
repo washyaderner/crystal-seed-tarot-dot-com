@@ -5,10 +5,11 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}",
-    "app/**/*.{ts,tsx}",
-    "components/**/*.{ts,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}",
   ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {

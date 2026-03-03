@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout:*)",
+      "Bash(git pull:*)",
+      "Bash(git push:*)",
+      "Bash(npm run build:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\n[Cursor] Update pricing and add Private Group Tarot Lessons service\n\n- Update all service prices:\n  - Private Readings: $90 → $100/hour\n  - Private Events/Party Readings: $110 → $120/hour\n  - Private Tarot Lessons \\(renamed from Tarot Lessons\\): $50 → $60/hour\n  - NEW: Private Group Tarot Lessons: $100/hour\n\n- Add new Private Group Tarot Lessons service with description\n- Change homepage Services Overview from 3-column to 2x2 grid layout\n- Update homepage with all 4 service cards and new prices\n- Keep Private Readings and Private Events descriptions unchanged on homepage\n- Update lesson service descriptions on homepage\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git fetch:*)",
+      "Bash(git commit:*)",
+      "Bash(git merge:*)",
+      "Bash(git branch:*)",
+      "Bash(python3 -m pip:*)",
+      "Bash(test:*)",
+      "Bash(cat:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(chmod:*)",
+      "Bash(python3:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm outdated)",
+      "Bash(npx lighthouse:*)",
+      "Bash(lsof:*)",
+      "Bash(curl:*)",
+      "Read(//private/tmp/**)",
+      "Bash(awk:*)",
+      "Bash(node:*)",
+      "Bash(npm run start:*)",
+      "Bash(identify:*)",
+      "Bash(sips:*)",
+      "Bash(npm install:*)",
+      "Bash(grep:*)",
+      "Bash(npx next info:*)",
+      "Bash(npx next:*)",
+      "Bash(lighthouse:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(git stash:*)",
+      "Bash(git status:*)"
+    ]
+  }
+}

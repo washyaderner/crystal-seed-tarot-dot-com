@@ -96,6 +96,13 @@ export default function Contact() {
         throw new Error(result.message || "Form submission failed");
       }
       
+      // Fire-and-forget: also add to email list sheet
+      fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: data.email, name: data.name }),
+      }).catch(() => {}); // silently ignore errors
+
       // Show success message without page reload
       setSubmitted(true);
       reset();
@@ -145,10 +152,11 @@ export default function Contact() {
                   <Image
                     src="/images/About-Holly-Nicole-Laughing-2022.jpeg"
                     alt="Holly Nicole laughing"
-                    width={800}
-                    height={800}
+                    width={600}
+                    height={600}
                     priority
                     className="rounded-lg shadow-lg transition-all duration-300 hover:shadow-purple-500/30 hover:scale-[1.02] w-full h-auto"
+                    sizes="(max-width: 672px) 100vw, 600px"
                   />
                 </div>
                 <div className="text-center w-full">

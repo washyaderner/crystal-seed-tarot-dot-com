@@ -81,9 +81,10 @@ export default function Gallery() {
                 <Image
                   src={item.image || "/placeholder.svg"}
                   alt={item.caption}
-                  width={item.isLandscape ? 800 : 564}
-                  height={item.isLandscape ? 450 : 564}
+                  width={item.isLandscape ? 700 : 400}
+                  height={item.isLandscape ? 394 : 400}
                   className="rounded-lg mb-4 w-full h-auto object-cover transition-all duration-300 hover:brightness-110"
+                  sizes={item.isLandscape ? "(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 66vw" : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"}
                 />
                 <p className="text-white/90 text-center whitespace-pre-line">
                   {item.caption}

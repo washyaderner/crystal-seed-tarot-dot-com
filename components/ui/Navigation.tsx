@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { NavLink } from "@/components/nav-link";
 import { MobileNav } from "@/components/mobile-nav";
@@ -24,9 +25,18 @@ export default function Navigation() {
       <div className="flex justify-between items-center relative">
         <Link
           href="/"
-          className="text-2xl font-serif text-white transition-all duration-300 hover:scale-105"
+          className="text-2xl font-serif text-white transition-all duration-300 hover:scale-105 flex items-center gap-3"
         >
           Crystal Seed Tarot
+          <Image
+            src="/images/2025 Thumbtack Top Pro Badge.webp"
+            alt="2025 Thumbtack Top Pro"
+            width={48}
+            height={48}
+            className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)] scale-[1.6875]"
+            sizes="48px"
+            loading="lazy"
+          />
         </Link>
 
         {/* Desktop Navigation */}

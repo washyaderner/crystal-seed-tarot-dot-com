@@ -1,5 +1,5 @@
 # dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.js
 
@@ -37,6 +37,14 @@ next-env.d.ts
 venv/
 __pycache__/
 *.pyc
+
+# Email list tool credentials & data
+tools/credentials/token.json
+tools/credentials/credentials.json
+tools/credentials/service-account.json
+tools/data/last_scan.json
+tools/data/manual_review.json
+tools/data/scan.log
 
 # IDE
 .vscode/

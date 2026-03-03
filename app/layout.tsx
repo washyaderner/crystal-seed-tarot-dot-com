@@ -3,13 +3,20 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import Navigation from "../components/ui/Navigation";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+});
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair-display",
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -17,6 +24,12 @@ export const metadata: Metadata = {
   description:
     "A Crystal Clear Connection to Yourself - Helping connect you to yourself since 2008",
   generator: "v0.dev",
+  metadataBase: new URL('https://crystalseedtarot.com'),
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Crystal Seed Tarot',
+  },
 };
 
 export const viewport: Viewport = {
@@ -33,6 +46,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head></head>
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
