@@ -116,16 +116,30 @@ export default async function Home() {
       {/* Thumbtack Badge Section - Between Hero and Services */}
       <section className="py-8 md:py-12 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center gap-8">
             <Image
               src="/images/2025 Thumbtack Top Pro Badge.webp"
               alt="2025 Thumbtack Top Pro"
-              width={200}
-              height={200}
+              width={132}
+              height={132}
               className="transition-all duration-300 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.6)]"
-              sizes="200px"
+              sizes="128px"
               loading="lazy"
             />
+            <a
+              href="https://www.gigsalad.com/crystal_seed_tarot_beaverton"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/images/gigsalad-top-performer-blue.svg"
+                alt="Top Performer on GigSalad"
+                width={116}
+                height={128}
+                className="transition-all duration-300 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(168,85,247,0.6)]"
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
       </section>

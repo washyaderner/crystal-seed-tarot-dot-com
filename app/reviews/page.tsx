@@ -455,14 +455,50 @@ export default function Reviews() {
             Seed Tarot's readings, events, and services.
           </p>
 
-          <div className="text-center mb-12 bg-gradient-to-r from-purple-500/20 via-white/20 to-purple-500/20 p-6 rounded-lg shadow-inner transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-gradient-to-r hover:from-purple-500/30 hover:via-white/30 hover:to-purple-500/30">
-            <h2 className="text-2xl font-serif text-white mb-2">
-              Achieved Top Pro Status On Thumbtack For 2025
-            </h2>
-            <p className="text-xl text-white/90">
-              Top Pros are among the highest-rated, most popular professionals
-              on Thumbtack.
-            </p>
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="flex items-center gap-4 bg-gradient-to-r from-purple-500/20 via-white/20 to-purple-500/20 p-6 rounded-lg shadow-inner transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-gradient-to-r hover:from-purple-500/30 hover:via-white/30 hover:to-purple-500/30">
+              <Image
+                src="/images/2025 Thumbtack Top Pro Badge.webp"
+                alt="2025 Thumbtack Top Pro"
+                width={80}
+                height={80}
+                className="shrink-0"
+                loading="lazy"
+              />
+              <div className="text-left">
+                <h2 className="text-2xl font-serif text-white mb-2">
+                  Achieved Top Pro Status On Thumbtack For 2025
+                </h2>
+                <p className="text-xl text-white/90">
+                  Top Pros are among the highest-rated, most popular professionals
+                  on Thumbtack.
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://www.gigsalad.com/crystal_seed_tarot_beaverton"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 bg-gradient-to-r from-purple-500/20 via-white/20 to-purple-500/20 p-6 rounded-lg shadow-inner transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-gradient-to-r hover:from-purple-500/30 hover:via-white/30 hover:to-purple-500/30"
+            >
+              <Image
+                src="/images/gigsalad-top-performer-blue.svg"
+                alt="Top Performer on GigSalad"
+                width={72}
+                height={80}
+                className="shrink-0"
+                loading="lazy"
+              />
+              <div className="text-left">
+                <h2 className="text-2xl font-serif text-white mb-2">
+                  Awarded Top Performer On GigSalad
+                </h2>
+                <p className="text-xl text-white/90">
+                  Top Performers are GigSalad's most responsive, highest-rated
+                  professionals - awarded monthly for outstanding service.
+                </p>
+              </div>
+            </a>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">

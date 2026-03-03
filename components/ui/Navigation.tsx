@@ -31,10 +31,18 @@ export default function Navigation() {
           <Image
             src="/images/2025 Thumbtack Top Pro Badge.webp"
             alt="2025 Thumbtack Top Pro"
-            width={48}
+            width={52}
+            height={52}
+            className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]"
+            sizes="52px"
+            loading="lazy"
+          />
+          <Image
+            src="/images/gigsalad-top-performer-blue.svg"
+            alt="Top Performer on GigSalad"
+            width={43}
             height={48}
-            className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)] scale-[1.6875]"
-            sizes="48px"
+            className="transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]"
             loading="lazy"
           />
         </Link>
