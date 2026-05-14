@@ -60,3 +60,5 @@ tools/data/scan.log
 .Trashes
 ehthumbs.db
 Thumbs.db 
+# Claude Code session-local settings (machine-specific paths, do not share)
+.claude/settings.local.json

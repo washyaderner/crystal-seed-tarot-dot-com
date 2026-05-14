@@ -33,6 +33,16 @@ export default function Events() {
   // Sample events - to be replaced with real data
   const events: Event[] = [
     {
+      id: "10",
+      title: "Tarot Foundations: 4-Week Beginner to Intermediate Course",
+      description: "**A 4-Week Live Course through Kumara Academy of Transformation**\n\nBuild a strong tarot foundation with emphasis on intuitive reading over rote memorization. Whether you're picking up your first deck or looking to deepen your understanding of the cards, this course will guide you from the basics into confident, intuitive readings.\n\n## Course Schedule\n\n**Sundays**: June 7, 14, 21 & 28, 2026\n**2:00 PM - 4:00 PM PDT** | Online via Zoom\n\nAll sessions are recorded, so if you can't make a live class you can watch the replay at your convenience.\n\n## What You'll Learn\n\n- Tarot history and origins\n- Deck structure: Major and Minor Arcana\n- Suits and numerology symbolism\n- The Fool's Journey\n- Reversed card reading techniques\n- 1-card and 3-card spreads\n- Intuitive interpretation and energetic awareness\n- Interactive partner practice in breakout rooms\n\n## What to Bring\n\nA Rider-Waite or similar tarot deck.\n\n## Pricing\n\n**$144** for the full 4-week course.\n\nUse code **InstaTarot15** or **FBTarot15** for **$15 off**!\n\n## Certification\n\nCertificate of Completion available upon request.\n\nSpaces are limited. Reserve your spot today!",
+      date: new Date("2026-06-07T14:00:00-07:00"),
+      location: "Online - Kumara Academy",
+      imageUrl: "/images/Events-Tarot-Foundations-Summer-2026.jpeg",
+      linkUrl: "https://www.eventbrite.com/e/the-tarot-path-a-4-week-beginner-to-intermediate-training-tickets-1989265106483?aff=oddtdtcreator",
+      buttonText: "Register for Course",
+    },
+    {
       id: "9",
       title: "Oregon Ghost Conference 2026",
       description: "The Oregon Ghost Conference returns March 27–29, 2026 at the Seaside Convention Center! I'm excited to announce that I'll be there this year — tickets and the full schedule are coming soon.\n\nMore details about my specific events at the conference will follow in the coming weeks. Stay tuned!\n\nIf you've never been to the OGC, it's one of the biggest annual paranormal events in Oregon, featuring guest speakers, psychic readings, paranormal vendors, breakout classes, and evening ghost hunts at the most haunted locations in town. It's always an incredible weekend and I can't wait to be part of it again this year.",
