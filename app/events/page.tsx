@@ -27,6 +27,7 @@ interface Event {
   imageUrl: string;
   linkUrl?: string;
   buttonText?: string;
+  imageAspect?: 'square' | 'landscape';
 }
 
 export default function Events() {
@@ -41,6 +42,7 @@ export default function Events() {
       imageUrl: "/images/Events-Tarot-Foundations-Summer-2026.jpeg",
       linkUrl: "https://www.eventbrite.com/e/the-tarot-path-a-4-week-beginner-to-intermediate-training-tickets-1989265106483?aff=oddtdtcreator",
       buttonText: "Register for Course",
+      imageAspect: "square",
     },
     {
       id: "9",
@@ -179,12 +181,12 @@ export default function Events() {
                 >
                   {/* Event image */}
                   <div className="mb-6">
-                    <div className="relative w-full aspect-video md:aspect-[16/9] overflow-hidden rounded-lg">
+                    <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: event.imageAspect === 'square' ? '1/1' : '16/9' }}>
                       <Image
                         src={event.imageUrl}
                         alt={event.title}
                         fill
-                        className="object-cover transition-all duration-300 hover:brightness-110"
+                        className={`${event.imageAspect === 'square' ? 'object-contain' : 'object-cover'} transition-all duration-300 hover:brightness-110`}
                         sizes="(max-width: 768px) 100vw, 800px"
                       />
                     </div>
