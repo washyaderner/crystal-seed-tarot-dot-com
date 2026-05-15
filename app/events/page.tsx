@@ -39,10 +39,9 @@ export default function Events() {
       description: "**A 4-Week Live Course through Kumara Academy of Transformation**\n\nBuild a strong tarot foundation with emphasis on intuitive reading over rote memorization. Whether you're picking up your first deck or looking to deepen your understanding of the cards, this course will guide you from the basics into confident, intuitive readings.\n\n## Course Schedule\n\n**Sundays**: June 7, 14, 21 & 28, 2026\n**2:00 PM - 4:00 PM PDT** | Online via Zoom\n\nAll sessions are recorded, so if you can't make a live class you can watch the replay at your convenience.\n\n## What You'll Learn\n\n- Tarot history and origins\n- Deck structure: Major and Minor Arcana\n- Suits and numerology symbolism\n- The Fool's Journey\n- Reversed card reading techniques\n- 1-card and 3-card spreads\n- Intuitive interpretation and energetic awareness\n- Interactive partner practice in breakout rooms\n\n## What to Bring\n\nA Rider-Waite or similar tarot deck.\n\n## Pricing\n\n**$144** for the full 4-week course.\n\nUse code **InstaTarot15** or **FBTarot15** for **$15 off**!\n\n## Certification\n\nCertificate of Completion available upon request.\n\nSpaces are limited. Reserve your spot today!",
       date: new Date("2026-06-07T14:00:00-07:00"),
       location: "Online - Kumara Academy",
-      imageUrl: "/images/Events-Tarot-Foundations-Summer-2026.jpeg",
+      imageUrl: "/images/Events-Tarot-Foundations-Summer-2026-banner.webp",
       linkUrl: "https://www.eventbrite.com/e/the-tarot-path-a-4-week-beginner-to-intermediate-training-tickets-1989265106483?aff=oddtdtcreator",
       buttonText: "Register for Course",
-      imageAspect: "square",
     },
     {
       id: "9",
