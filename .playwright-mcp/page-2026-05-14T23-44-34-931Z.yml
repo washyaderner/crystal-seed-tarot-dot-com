@@ -1,0 +1,446 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - navigation [ref=e5]:
+        - generic [ref=e6]:
+          - link "Crystal Seed Tarot 2025 Thumbtack Top Pro Top Performer on GigSalad" [ref=e7] [cursor=pointer]:
+            - /url: /
+            - text: Crystal Seed Tarot
+            - img "2025 Thumbtack Top Pro" [ref=e8]
+            - img "Top Performer on GigSalad" [ref=e9]
+          - list [ref=e10]:
+            - listitem [ref=e11]:
+              - link "Home" [ref=e12] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e13]:
+              - link "Services" [ref=e14] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e15]:
+              - link "Events" [ref=e16] [cursor=pointer]:
+                - /url: /events
+            - listitem [ref=e17]:
+              - link "Gallery" [ref=e18] [cursor=pointer]:
+                - /url: /gallery
+            - listitem [ref=e19]:
+              - link "Blog" [ref=e20] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e21]:
+              - link "Reviews" [ref=e22] [cursor=pointer]:
+                - /url: /reviews
+            - listitem [ref=e23]:
+              - link "About" [ref=e24] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e25]:
+              - link "Contact" [ref=e26] [cursor=pointer]:
+                - /url: /contact
+          - button "Open menu" [ref=e29] [cursor=pointer]:
+            - img [ref=e30]
+    - main [ref=e31]:
+      - generic [ref=e34]:
+        - heading "Upcoming Events" [level=1] [ref=e35]
+        - generic [ref=e36]:
+          - article [ref=e37]:
+            - 'img "Tarot Foundations: 4-Week Beginner to Intermediate Course" [ref=e40]'
+            - generic [ref=e41]:
+              - 'heading "Tarot Foundations: 4-Week Beginner to Intermediate Course" [level=1] [ref=e42]'
+              - generic [ref=e43]:
+                - generic [ref=e44]:
+                  - strong [ref=e45]: "Date:"
+                  - text: June 7, 2026
+                - generic [ref=e46]:
+                  - strong [ref=e47]: "Location:"
+                  - text: Online - Kumara Academy
+              - generic [ref=e48]:
+                - paragraph [ref=e49]:
+                  - strong [ref=e50]: A 4-Week Live Course through Kumara Academy of Transformation
+                - paragraph [ref=e51]: Build a strong tarot foundation with emphasis on intuitive reading over rote memorization. Whether you're picking up your first deck or looking to deepen your understanding of the cards, this course will guide you from the basics into confident, intuitive readings.
+                - heading "Course Schedule" [level=2] [ref=e52]
+                - paragraph [ref=e53]:
+                  - strong [ref=e54]: Sundays
+                  - text: ": June 7, 14, 21 & 28, 2026"
+                  - strong [ref=e55]: 2:00 PM - 4:00 PM PDT
+                  - text: "| Online via Zoom"
+                - paragraph [ref=e56]: All sessions are recorded, so if you can't make a live class you can watch the replay at your convenience.
+                - heading "What You'll Learn" [level=2] [ref=e57]
+                - list [ref=e58]:
+                  - listitem [ref=e59]: Tarot history and origins
+                  - listitem [ref=e60]: "Deck structure: Major and Minor Arcana"
+                  - listitem [ref=e61]: Suits and numerology symbolism
+                  - listitem [ref=e62]: The Fool's Journey
+                  - listitem [ref=e63]: Reversed card reading techniques
+                  - listitem [ref=e64]: 1-card and 3-card spreads
+                  - listitem [ref=e65]: Intuitive interpretation and energetic awareness
+                  - listitem [ref=e66]: Interactive partner practice in breakout rooms
+                - heading "What to Bring" [level=2] [ref=e67]
+                - paragraph [ref=e68]: A Rider-Waite or similar tarot deck.
+                - heading "Pricing" [level=2] [ref=e69]
+                - paragraph [ref=e70]:
+                  - strong [ref=e71]: $144
+                  - text: for the full 4-week course.
+                - paragraph [ref=e72]:
+                  - text: Use code
+                  - strong [ref=e73]: InstaTarot15
+                  - text: or
+                  - strong [ref=e74]: FBTarot15
+                  - text: for
+                  - strong [ref=e75]: $15 off
+                  - text: "!"
+                - heading "Certification" [level=2] [ref=e76]
+                - paragraph [ref=e77]: Certificate of Completion available upon request.
+                - paragraph [ref=e78]: Spaces are limited. Reserve your spot today!
+              - link "Register for Course" [ref=e80] [cursor=pointer]:
+                - /url: https://www.eventbrite.com/e/the-tarot-path-a-4-week-beginner-to-intermediate-training-tickets-1989265106483?aff=oddtdtcreator
+          - article [ref=e81]:
+            - img "Oregon Ghost Conference 2026" [ref=e84]
+            - generic [ref=e85]:
+              - heading "Oregon Ghost Conference 2026" [level=1] [ref=e86]
+              - generic [ref=e87]:
+                - generic [ref=e88]:
+                  - strong [ref=e89]: "Date:"
+                  - text: March 26, 2026
+                - generic [ref=e90]:
+                  - strong [ref=e91]: "Location:"
+                  - text: Seaside Convention Center, Seaside, Oregon
+              - generic [ref=e92]:
+                - paragraph [ref=e93]: The Oregon Ghost Conference returns March 27–29, 2026 at the Seaside Convention Center! I'm excited to announce that I'll be there this year — tickets and the full schedule are coming soon.
+                - paragraph [ref=e94]: More details about my specific events at the conference will follow in the coming weeks. Stay tuned!
+                - paragraph [ref=e95]: If you've never been to the OGC, it's one of the biggest annual paranormal events in Oregon, featuring guest speakers, psychic readings, paranormal vendors, breakout classes, and evening ghost hunts at the most haunted locations in town. It's always an incredible weekend and I can't wait to be part of it again this year.
+              - link "Visit Conference Site" [ref=e97] [cursor=pointer]:
+                - /url: http://www.oregonghostconference.com/
+          - article [ref=e98]:
+            - img "The Empowered Empath (4-Week Course)" [ref=e101]
+            - generic [ref=e102]:
+              - heading "The Empowered Empath (4-Week Course)" [level=1] [ref=e103]
+              - generic [ref=e104]:
+                - generic [ref=e105]:
+                  - strong [ref=e106]: "Date:"
+                  - text: February 28, 2026
+                - generic [ref=e107]:
+                  - strong [ref=e108]: "Location:"
+                  - text: Online
+              - generic [ref=e109]:
+                - paragraph [ref=e110]:
+                  - text: A brand-new
+                  - strong [ref=e111]: 4-week course
+                  - text: designed to help you understand and thrive as an Empath!
+                - heading "Course Schedule" [level=2] [ref=e112]
+                - paragraph [ref=e113]:
+                  - strong [ref=e114]: Saturdays
+                  - text: ": February 28, March 7, 14 & 21, 2026"
+                  - strong [ref=e115]: 3:00 PM – 5:00 PM PST
+                  - text: "| Online via Zoom"
+                - paragraph [ref=e116]: Video playback will be available for anyone who can't attend a live session.
+                - heading "What You'll Learn" [level=2] [ref=e117]
+                - paragraph [ref=e118]: "This course goes deep into what it means to live as an Empath in today's world. We'll cover:"
+                - list [ref=e119]:
+                  - listitem [ref=e120]: Empathy in relationships — navigating connection without losing yourself
+                  - listitem [ref=e121]: How empathic energy manifests in daily life
+                  - listitem [ref=e122]: Building and maintaining healthy empathy boundaries
+                  - listitem [ref=e123]: Practical tools, checklists, and journal prompts you can use every day
+                - heading "Pricing" [level=2] [ref=e124]
+                - paragraph [ref=e125]:
+                  - strong [ref=e126]: $144
+                  - text: for the full 4-week course.
+                - paragraph [ref=e127]:
+                  - text: Use discount code
+                  - strong [ref=e128]: Insta25
+                  - text: or
+                  - strong [ref=e129]: FB25
+                  - text: for
+                  - strong [ref=e130]: $25 off
+                  - text: "!"
+                - heading "Registration" [level=2] [ref=e131]
+                - paragraph [ref=e132]: Spaces are limited — reserve your spot today!
+              - link "Register for Course" [ref=e134] [cursor=pointer]:
+                - /url: https://www.eventbrite.com/e/the-empowered-empath-understanding-thriving-as-an-empath-tickets-1982605808343?aff=oddtdtcreator
+          - article [ref=e135]:
+            - 'img "FREE TALK: The Empowered Empath" [ref=e138]'
+            - generic [ref=e139]:
+              - 'heading "FREE TALK: The Empowered Empath" [level=1] [ref=e140]'
+              - generic [ref=e141]:
+                - generic [ref=e142]:
+                  - strong [ref=e143]: "Date:"
+                  - text: February 23, 2026
+                - generic [ref=e144]:
+                  - strong [ref=e145]: "Location:"
+                  - text: Online
+              - generic [ref=e146]:
+                - paragraph [ref=e147]:
+                  - text: Join me for a
+                  - strong [ref=e148]: free 1-hour talk and open discussion
+                  - text: about what it truly means to be an Empath — and how to turn your sensitivity into your greatest strength.
+                - heading "What We'll Cover" [level=2] [ref=e149]
+                - list [ref=e150]:
+                  - listitem [ref=e151]: What it really means to be an Empath
+                  - listitem [ref=e152]: Why Empaths often feel drained and overwhelmed
+                  - listitem [ref=e153]: How to reframe empathy as a powerful strength
+                  - listitem [ref=e154]: Protection tools and techniques to shield your energy
+                  - listitem [ref=e155]:
+                    - strong [ref=e156]: Live Q&A
+                    - text: — bring your questions!
+                - heading "Special Offer" [level=2] [ref=e157]
+                - paragraph [ref=e158]:
+                  - text: All attendees will receive an
+                  - strong [ref=e159]: exclusive $28 discount
+                  - text: toward the full 4-week Empowered Empath course starting February 28th.
+                - heading "Event Details" [level=2] [ref=e160]
+                - paragraph [ref=e161]:
+                  - strong [ref=e162]: Monday, February 23, 2026
+                  - strong [ref=e163]: 6:00 PM PST
+                  - text: "| Online"
+                - paragraph [ref=e164]: This talk is completely free — come learn, share, and connect with fellow Empaths!
+              - link "Register for Free" [ref=e166] [cursor=pointer]:
+                - /url: https://www.eventbrite.com/e/free-talk-the-empowered-empading-thriving-as-an-empath-tickets-1982735831245?aff=oddtdtcreator
+          - article [ref=e167]:
+            - img "Psychic Development Practice Session" [ref=e170]
+            - generic [ref=e171]:
+              - heading "Psychic Development Practice Session" [level=1] [ref=e172]
+              - generic [ref=e173]:
+                - generic [ref=e174]:
+                  - strong [ref=e175]: "Date:"
+                  - text: February 19, 2026
+                - generic [ref=e176]:
+                  - strong [ref=e177]: "Location:"
+                  - text: Online - Kumara Academy
+              - generic [ref=e178]:
+                - paragraph [ref=e179]:
+                  - text: Join me for a
+                  - strong [ref=e180]: free monthly Psychic Development Practice Session
+                  - text: through Kumara Academy!
+                - paragraph [ref=e181]: This is an open, supportive space for anyone looking to strengthen their intuitive and psychic abilities. Whether you read Tarot, Oracle cards, use pendulums, or work with any other divination modality — you're welcome here.
+                - heading "What to Expect" [level=2] [ref=e182]
+                - list [ref=e183]:
+                  - listitem [ref=e184]: Practice readings with other students and readers
+                  - listitem [ref=e185]: Receive a free reading from a fellow practitioner
+                  - listitem [ref=e186]: Share techniques and learn from each other
+                  - listitem [ref=e187]: All skill levels welcome — beginners and seasoned readers alike
+                - heading "What to Bring" [level=2] [ref=e188]
+                - paragraph [ref=e189]: Bring your Tarot or Oracle cards, pendulum, runes, or whatever divination tools you work with. If you don't have tools yet, that's okay too — come receive a reading and soak in the experience!
+                - heading "Event Details" [level=2] [ref=e190]
+                - paragraph [ref=e191]:
+                  - strong [ref=e192]: Thursday, February 19, 2026
+                  - strong [ref=e193]: 6:00 PM PST
+                  - text: "| Online via Kumara Academy"
+                - paragraph [ref=e194]:
+                  - text: This event is
+                  - strong [ref=e195]: completely free
+                  - text: — no registration fee!
+              - link "Register for Free" [ref=e197] [cursor=pointer]:
+                - /url: https://lp.constantcontactpages.com/ev/reg/76330aa5-3c78-4fb5-8ca2-7276d17fe32a
+          - article [ref=e198]:
+            - img "Intermediate–Advanced Tarot Mastery 4-Week Certification Course!" [ref=e201]
+            - generic [ref=e202]:
+              - heading "Intermediate–Advanced Tarot Mastery 4-Week Certification Course!" [level=1] [ref=e203]
+              - generic [ref=e204]:
+                - generic [ref=e205]:
+                  - strong [ref=e206]: "Date:"
+                  - text: September 5, 2025
+                - generic [ref=e207]:
+                  - strong [ref=e208]: "Location:"
+                  - text: Online - Kumara Academy
+              - generic [ref=e209]:
+                - paragraph [ref=e210]:
+                  - strong [ref=e211]: A 4-Week Kumara Academy Accredited Certification Course
+                - paragraph [ref=e212]:
+                  - text: Dive into the deeper wisdom of the Tarot and elevate your readings from good… to
+                  - strong [ref=e213]: transformational
+                  - text: . Whether you're looking to strengthen your intuitive flow or refine your professional practice, this is your chance to learn from a seasoned expert with over 17 years of Tarot experience.
+                - heading "Course Overview" [level=2] [ref=e214]
+                - paragraph [ref=e215]:
+                  - text: Take your Tarot practice to the next level in this
+                  - strong [ref=e216]: Kumara Academy Accredited Certification course
+                  - text: taught by professional Tarot reader
+                  - strong [ref=e217]: Holly Cole
+                  - text: ", who brings over"
+                  - strong [ref=e218]: 17 years of Tarot experience
+                  - text: and a gift for making complex spreads and symbolism come alive.
+                - paragraph [ref=e219]: While it's one thing to memorize the basic card meanings, it's another to weave them into insightful, accurate, and empowering readings. This 4-week live course will guide you through the deeper layers of Tarot interpretation and practical application—so you can step confidently into your power as a reader.
+                - heading "In this hands-on class, you will learn:" [level=2] [ref=e220]
+                - list [ref=e221]:
+                  - listitem [ref=e222]: Best practices for your personal or professional Tarot work
+                  - listitem [ref=e223]: Multiple methods to interpret reversed cards with nuance
+                  - listitem [ref=e224]: How to transform "unhappy ending" cards into empowering outcomes
+                  - listitem [ref=e225]: Recognizing patterns and themes that reveal the bigger picture
+                  - listitem [ref=e226]: Finding and telling the "storyline" in any reading
+                  - listitem [ref=e227]: Fresh, non-traditional interpretations for a modern age
+                - heading "Advanced Reading Techniques:" [level=2] [ref=e228]
+                - list [ref=e229]:
+                  - listitem [ref=e230]: 6 & 7 Card Couple's Reading
+                  - listitem [ref=e231]: 10 Card Celtic Cross
+                  - listitem [ref=e232]: 6 Card Mini–Celtic Cross
+                  - listitem [ref=e233]: 5 Card Situational Reading for decision-making
+                - heading "What's Included:" [level=2] [ref=e234]
+                - list [ref=e235]:
+                  - listitem [ref=e236]: Printable class materials for lifelong use
+                  - listitem [ref=e237]: Partner practice in every session and in between classes
+                  - listitem [ref=e238]: Real-life case study examples from Holly's own readings
+                  - listitem [ref=e239]:
+                    - strong [ref=e240]: Accredited Kumara Academy Certificate of Completion
+                  - listitem [ref=e241]:
+                    - strong [ref=e242]: Practitioners Certification
+                    - text: upon request
+                - heading "Course Schedule" [level=2] [ref=e243]
+                - paragraph [ref=e244]:
+                  - strong [ref=e245]: Saturdays
+                  - text: ", September 6, 13, 20 & 27, 2025"
+                  - strong [ref=e246]: 4 PM – 6 PM PDT
+                  - text: (Pacific) | Online via Zoom
+                - heading "Special Offers" [level=2] [ref=e247]
+                - paragraph [ref=e248]:
+                  - text: Use Early-Bird Discount Promo Code
+                  - strong [ref=e249]: EarlyBird
+                  - text: for
+                  - strong [ref=e250]: $25
+                  - text: off the regular course fee. Early-Bird offer expires August 31.
+                - paragraph [ref=e251]:
+                  - text: After August 31st, email
+                  - link "kumara.academy@gmail.com" [ref=e252] [cursor=pointer]:
+                    - /url: mailto:kumara.academy@gmail.com
+                  - text: for another discount code and to join the Kumara Academy email list for future course updates.
+                - heading "Important Details" [level=2] [ref=e253]
+                - list [ref=e254]:
+                  - listitem [ref=e255]:
+                    - strong [ref=e256]: Limited Attendance
+                    - text: "- Reserve your spot now!"
+                  - listitem [ref=e257]: Course will be recorded for those unable to attend live classes
+                  - listitem [ref=e258]: No refunds unless the course is canceled by the facilitator
+                  - listitem [ref=e259]:
+                    - text: Sponsored by
+                    - link "Kumara Academy of Transformation" [ref=e260] [cursor=pointer]:
+                      - /url: https://www.kumaraacademy.com/
+                - paragraph [ref=e261]:
+                  - strong [ref=e262]: Take the first step toward Tarot mastery and transform your readings forever!
+              - link "Register for Course" [ref=e264] [cursor=pointer]:
+                - /url: https://www.eventbrite.com/e/intermediateadvanced-tarot-mastery-4-week-certification-course-tickets-1592932777819?aff=oddtdtcreator
+          - article [ref=e265]:
+            - img "McMenamins 25th Annual UFO Festival" [ref=e268]
+            - generic [ref=e269]:
+              - heading "McMenamins 25th Annual UFO Festival" [level=1] [ref=e270]
+              - generic [ref=e271]:
+                - generic [ref=e272]:
+                  - strong [ref=e273]: "Date:"
+                  - text: May 15, 2025
+                - generic [ref=e274]:
+                  - strong [ref=e275]: "Location:"
+                  - text: McMenamins Hotel Oregon, 310 NE Evans St, McMinnville, OR
+              - generic [ref=e276]:
+                - paragraph [ref=e277]: I'm thrilled to announce that I'll be offering tarot readings at the 25th Annual McMenamins UFO Festival in McMinnville, Oregon! Join me for this cosmic celebration where the veil between worlds feels just a little thinner.
+                - heading "About the Festival" [level=2] [ref=e278]
+                - paragraph [ref=e279]: The UFO Festival began 25 years ago to commemorate the famous 1950 Trent sighting, when a local McMinnville couple spotted a flying disc over their farm and made national news. Now in its quarter-century milestone year, this event has become one of the most beloved gatherings for both skeptics and believers alike.
+                - paragraph [ref=e280]: This year's festival features renowned UAP experts, an alien parade, street fair, live music, costume contests, and much more. The entire downtown transforms into a celebration of cosmic curiosity and extraterrestrial wonder!
+                - heading "Tarot Readings with Crystal Seed Tarot" [level=2] [ref=e281]
+                - paragraph [ref=e282]: "I'll be offering intuitive tarot readings throughout both days of the festival:"
+                - list [ref=e283]:
+                  - listitem [ref=e284]:
+                    - strong [ref=e285]: Friday, May 16th
+                    - text: ": 3:00 PM - 8:00 PM"
+                  - listitem [ref=e286]:
+                    - strong [ref=e287]: Saturday, May 17th
+                    - text: ": 10:00 AM - 6:00 PM"
+                - paragraph [ref=e288]: My readings at this special event blend cosmic awareness with practical guidance, perfect for those seeking answers about their path forward or connections to something beyond our ordinary understanding. Whether you're a festival regular or a curious first-timer, a tarot reading can provide unexpected insights during this unique weekend of cosmic exploration.
+                - heading "Booking Information" [level=2] [ref=e289]
+                - paragraph [ref=e290]:
+                  - text: Readings will be available on a first-come, first-served basis during the festival. If you'd like to reserve a specific time slot in advance, please contact me at
+                  - link "crystalseedtarot@gmail.com" [ref=e291] [cursor=pointer]:
+                    - /url: mailto:crystalseedtarot@gmail.com
+                  - text: with "UFO Festival Reading" in the subject line.
+                - paragraph [ref=e292]: Look for my booth among the vendors along 3rd Street in downtown McMinnville. I can't wait to explore the cosmic currents with you at this extraordinary gathering!
+              - link "Book a festival reading" [ref=e294] [cursor=pointer]:
+                - /url: /contact
+          - article [ref=e295]:
+            - img "Be Love Fed!" [ref=e298]
+            - generic [ref=e299]:
+              - heading "Be Love Fed!" [level=1] [ref=e300]
+              - generic [ref=e301]:
+                - generic [ref=e302]:
+                  - strong [ref=e303]: "Date:"
+                  - text: May 2, 2025
+                - generic [ref=e304]:
+                  - strong [ref=e305]: "Location:"
+                  - text: 133 SE Madison St, Portland, OR
+              - generic [ref=e306]:
+                - paragraph [ref=e307]: "Love is the essence that nourishes us—in the air we breathe, the connections we share, and the gifts we give. Be Love Fed is your invitation to gather in a space where love flows freely, where you're reminded of your wholeness, and where community becomes medicine. Join me, Holly Cole of Crystal Seed Tarot, alongside WReN: Wellness ReSource Network and a vibrant roster of local practitioners for a day of soulful exploration and healing."
+                - heading "About the Event" [level=2] [ref=e308]
+                - paragraph [ref=e309]: "Presented by WReN: Wellness ReSource Network, this one‑day fair combines immersive sound healing, handcrafted herbal elixirs, and a heart‑centered marketplace. Wander through our Sound Healing Chamber, sip botanical tonics at the Elixir & Tea Bar, and discover organic skincare, crystal therapies, and more from soul-aligned vendors. Whether you're a seasoned seeker or new to holistic wellness, there's something here to nourish your body, mind, and spirit."
+                - heading "Tarot Readings with Holly Cole" [level=2] [ref=e310]
+                - paragraph [ref=e311]:
+                  - text: I'll be offering intuitive tarot sessions throughout the day. Receive personalized guidance, clarity, and inspiration as we explore your next steps together. To reserve your reading, email me at
+                  - link "crystalseedtarot@gmail.com" [ref=e312] [cursor=pointer]:
+                    - /url: mailto:crystalseedtarot@gmail.com
+                  - text: —or simply stop by the Crystal Seed Tarot booth between sessions.
+                - heading "Experience Highlights" [level=2] [ref=e313]
+                - list [ref=e314]:
+                  - listitem [ref=e315]:
+                    - strong [ref=e316]: Opening Circle & Community Blessing
+                    - text: at 11 am
+                  - listitem [ref=e317]:
+                    - strong [ref=e318]: Sound Healing Chamber
+                    - text: open all day—drop in anytime
+                  - listitem [ref=e319]:
+                    - strong [ref=e320]: Elixir & Tea Bar
+                    - text: by Fehu Farm Apothecary & Natalie Olson
+                  - listitem [ref=e321]:
+                    - strong [ref=e322]: Local Wellness Vendors
+                    - text: featuring herbal crafts, oracle cards, bodywork, and more
+                  - listitem [ref=e323]:
+                    - strong [ref=e324]: Closing Circle & Angel Wash
+                    - text: at 5:30 pm
+                - paragraph [ref=e325]: Come to explore, to shop, to heal—or simply to be. You belong here. Let yourself be fed.
+              - link "Reserve a reading" [ref=e327] [cursor=pointer]:
+                - /url: /contact
+          - article [ref=e328]:
+            - img "NEW!! Tarot Classes ONLINE!!!" [ref=e331]
+            - generic [ref=e332]:
+              - heading "NEW!! Tarot Classes ONLINE!!!" [level=1] [ref=e333]
+              - generic [ref=e334]:
+                - generic [ref=e335]:
+                  - strong [ref=e336]: "Date:"
+                  - text: February 1, 2025
+                - generic [ref=e337]:
+                  - strong [ref=e338]: "Location:"
+                  - text: Online - Kumara Academy
+              - generic [ref=e339]:
+                - paragraph [ref=e340]: It's finally here! My very first online Tarot course presented through Kumara Academy!!! I have been wanting to get the opportunity to do online courses for years, so this is a long time coming and I am very excited!
+                - heading "Course Details" [level=2] [ref=e341]
+                - paragraph [ref=e342]: This online beginner's Tarot course will be 4 weeks long with classes occurring every Sunday in February from 4:00 – 6:00 pm. No matter what level you are at with Tarot, this course will help you understand the full meanings of the cards, and how to work with them all together in a spread.
+                - heading "What's Included" [level=2] [ref=e343]
+                - paragraph [ref=e344]: There will be lots of hands on practice through the magic of breakout rooms, class material you get to keep and refer to whenever you'd like, and each class will be recorded and posted so you can watch them later in case you aren't able to make a class.
+                - heading "Future Classes" [level=2] [ref=e345]
+                - paragraph [ref=e346]: "The best part is: this will be one of a series of three Tarot classes I'll be doing through Kumara this year! So the intermediate and advanced courses will be coming later in the year! If you start your Tarot journey with me now, you'll be able to proceed with the rest of the courses later in the year!"
+                - heading "Registration" [level=2] [ref=e347]
+                - paragraph [ref=e348]: Classes start on 02/02/25. There is a coupon code also if you register using the link below. Hope to see you in class!!
+              - link "Sign Up For Class" [ref=e350] [cursor=pointer]:
+                - /url: /contact
+          - article [ref=e351]:
+            - img "Ghost Week!" [ref=e354]
+            - generic [ref=e355]:
+              - heading "Ghost Week!" [level=1] [ref=e356]
+              - generic [ref=e357]:
+                - generic [ref=e358]:
+                  - strong [ref=e359]: "Date:"
+                  - text: March 7, 2021
+                - generic [ref=e360]:
+                  - strong [ref=e361]: "Location:"
+                  - text: Virtual - Oregon Ghost Conference
+              - generic [ref=e362]:
+                - paragraph [ref=e363]:
+                  - text: Join me for the first ever VIRTUAL
+                  - text: Oregon Ghost Conference!
+                - paragraph [ref=e364]:
+                  - text: "It's March which means it's time for my favorite event of the year: The Oregon Ghost Conference! The OGC is the biggest annual paranormal event in the state, going on since 2011. Although the event had to be cancelled last year due to Covid, this year they have decided to move the event online and do a VIRTUAL Oregon Ghost Conference and I could not be more excited!"
+                  - strong [ref=e365]: (See information below for booking a reading with me)
+                - heading "About the Oregon Ghost Conference" [level=2] [ref=e366]
+                - paragraph [ref=e367]: If you've never been to the OGC, it's a 3 day long round-the-clock event which takes place at the Seaside Convention Center. There is always an amazing array of guest speakers who give presentations on everything from paranormal experiences, to spirit communication, haunted history, and pretty much anything you could imagine in the realm of the paranormal and metaphysical. The entire convention center is PACKED with paranormal teams, psychics, readers, artists, pop-up shops selling creepy-jewelry, dowsing rods, crystals, oils, and anything one might need in their witchcraft pantry. Each day is also filled with break-out classes taking place in the spacious classrooms outlining the entire convention center. Here, you can take any class from How to Read Tarot Cards to Practicums on the best tools and tech gadgets to use for ghost hunting. There are usually a couple of bigger events in the evenings also for which you can purchase tickets; gallery readings with psychic mediums and real actual ghost hunts at the most haunted locations in town!
+                - heading "This Year's Virtual Format" [level=2] [ref=e368]
+                - paragraph [ref=e369]: Granted, this year will be different. We won't be able to ghost hunt in person together, or casually stroll through the rows of eclectic vendors, but we can still have a Ghost Conference….of sorts! Rocky and his team are putting together an entire week of virtual events with many of participants of the OGC from years past, including yours truly. You can find an official line up of virtual events, including guest speakers, private readings, and even virtual classes at the link below.
+                - heading "Book a Reading with Me" [level=2] [ref=e370]
+                - paragraph [ref=e371]:
+                  - strong [ref=e372]:
+                    - text: "I will be doing $30 30-minute readings during this year's first ever virtual Oregon Ghost Conference, this year titled \"Ghost Week\", in the evenings from 3/21/21 – 3/25/21, and all day on 3/26/21 – 3/28/21. If you'd like to book a reading with me, you can contact me at:"
+                    - link "crystalseedtarot@gmail.com" [ref=e373] [cursor=pointer]:
+                      - /url: mailto:crystalseedtarot@gmail.com
+              - link "Learn more & RSVP" [ref=e375] [cursor=pointer]:
+                - /url: /contact
+    - contentinfo [ref=e376]:
+      - paragraph [ref=e379]: © 2026 Crystal Seed Tarot. All rights reserved.
+  - alert [ref=e380]

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Crystal Seed Tarot — Logo Variations</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; color: #e8e8e8; font-family: system-ui, sans-serif; padding: 3rem 2rem; }
+  h1 { text-align: center; font-size: 1.4rem; font-weight: 400; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+  .sub { text-align: center; color: #6b6b75; font-size: 0.85rem; margin-bottom: 3rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+  .card {
+    background: #141418;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #8b5cf6; }
+  .card img {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    /* checkered bg to show transparency */
+    background-image:
+      linear-gradient(45deg, #1a1a1e 25%, transparent 25%),
+      linear-gradient(-45deg, #1a1a1e 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #1a1a1e 75%),
+      linear-gradient(-45deg, transparent 75%, #1a1a1e 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    border-radius: 8px;
+  }
+  .label { margin-top: 1rem; font-size: 0.9rem; color: #8b5cf6; font-weight: 600; }
+  .note { color: #6b6b75; font-size: 0.75rem; margin-top: 0.25rem; }
+  .dark-toggle { text-align: center; margin-bottom: 2rem; }
+  .dark-toggle button {
+    background: #1e1e22; color: #e8e8e8; border: 1px solid #333; padding: 0.5rem 1.2rem;
+    border-radius: 6px; cursor: pointer; font-size: 0.8rem; margin: 0 0.25rem;
+  }
+  .dark-toggle button:hover { border-color: #8b5cf6; }
+  .dark-toggle button.active { border-color: #8b5cf6; background: #8b5cf620; }
+  body.light { background: #f5f5f5; color: #111; }
+  body.light .card { background: #fff; border-color: #ddd; }
+  body.light .card:hover { border-color: #8b5cf6; }
+  body.light .note { color: #999; }
+</style>
+</head>
+<body>
+  <h1>CRYSTAL SEED TAROT</h1>
+  <p class="sub">Logo Variations — Pick a direction</p>
+  <div class="dark-toggle">
+    <button class="active" onclick="setBg('dark')">Dark</button>
+    <button onclick="setBg('light')">Light</button>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <img src="logo_v1.png" alt="Variation 1">
+      <div class="label">v1</div>
+      <div class="note">Crystal point, seed loop, branching roots</div>
+    </div>
+    <div class="card">
+      <img src="logo_v2.png" alt="Variation 2">
+      <div class="label">v2</div>
+      <div class="note">Crystal, oval seed body, organic roots</div>
+    </div>
+    <div class="card">
+      <img src="logo_v3.png" alt="Variation 3">
+      <div class="label">v3</div>
+      <div class="note">Taller crystal, minimal seed, wispy roots</div>
+    </div>
+    <div class="card">
+      <img src="logo_v4.png" alt="Variation 4">
+      <div class="label">v4</div>
+      <div class="note">Crystal with leaf elements, seed and roots</div>
+    </div>
+  </div>
+  <script>
+    function setBg(mode) {
+      document.body.className = mode === 'light' ? 'light' : '';
+      document.querySelectorAll('.dark-toggle button').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

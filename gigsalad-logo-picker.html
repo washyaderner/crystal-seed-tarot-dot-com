@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GigSalad Badge Picker - Crystal Seed Tarot</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    .subtitle {
+      text-align: center;
+      color: #999;
+      margin-bottom: 40px;
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #16213e;
+      border: 2px solid #333;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .card:hover {
+      border-color: #a855f7;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    }
+    .card.selected {
+      border-color: #22c55e;
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    }
+    .card.selected::after {
+      content: "SELECTED";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #22c55e;
+      color: #000;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .badge-number {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #a855f7;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview-area {
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .preview-area.dark-bg {
+      background: #0a0a1a;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .preview-area.light-bg {
+      background: #f0f0f0;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .preview-area img {
+      max-height: 128px;
+      width: auto;
+    }
+    .badge-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .badge-desc {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .badge-variant {
+      font-size: 12px;
+      color: #a855f7;
+      font-weight: 500;
+    }
+    .badge-dimensions {
+      font-size: 11px;
+      color: #666;
+      margin-top: 4px;
+    }
+    .section-label {
+      max-width: 1200px;
+      margin: 0 auto 16px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #a855f7;
+      border-bottom: 1px solid #333;
+      padding-bottom: 8px;
+    }
+    .spacer { height: 32px; }
+    .recommendation {
+      max-width: 1200px;
+      margin: 40px auto 0;
+      background: #16213e;
+      border: 1px solid #a855f7;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .recommendation h2 {
+      font-size: 20px;
+      color: #a855f7;
+      margin-bottom: 12px;
+    }
+    .recommendation p {
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 8px;
+    }
+    .recommendation strong { color: #fff; }
+  </style>
+</head>
+<body>
+  <h1>GigSalad Badge Picker</h1>
+  <p class="subtitle">Click any badge to toggle selection. Dark background previews shown where relevant.</p>
+
+  <div class="section-label">Square Badges (128x128 or similar)</div>
+  <div class="grid">
+
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <span class="badge-number">1</span>
+      <div class="preview-area dark-bg">
+        <img src="https://www.gigsalad.com/images/svg/standalone/promokit-links/best-of/blue/best-of--blue.2.svg" alt="Best of GigSalad">
+      </div>
+      <div class="badge-name">Best of GigSalad</div>
+      <div class="badge-desc">Psychic Entertainment</div>
+      <div class="badge-variant">Blue variant</div>
+      <div class="badge-dimensions">128 x 128</div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <span class="badge-number">2</span>
+      <div class="preview-area dark-bg">
+        <img src="https://www.gigsalad.com/images/svg/standalone/promokit-links/top-performer/top-performer--blue.2.svg" alt="Top Performer Blue">
+      </div>
+      <div class="badge-name">Top Performer</div>
+      <div class="badge-desc">GigSalad Top Performer</div>
+      <div class="badge-variant">Blue variant</div>
+      <div class="badge-dimensions">116 x 128</div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <span class="badge-number">3</span>
+      <div class="preview-area dark-bg">
+        <img src="https://www.gigsalad.com/images/svg/standalone/promokit-links/top-performer/top-performer--white.2.svg" alt="Top Performer White">
+      </div>
+      <div class="badge-name">Top Performer</div>
+      <div class="badge-desc">GigSalad Top Performer</div>
+      <div class="badge-variant">White variant (for dark backgrounds)</div>
+      <div class="badge-dimensions">116 x 128</div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <span class="badge-number">4</span>
+      <div class="preview-area dark-bg">
+        <img src="https://www.gigsalad.com/images/svg/standalone/promokit-links/five-star-talent/talent--blue.2.svg" alt="Five Star Blue">
+      </div>
+      <div class="badge-name">Five-Star Talent</div>
+      <div class="badge-desc">Psychic Entertainment</div>
+      <div class="badge-variant">Blue variant</div>
+      <div class="badge-dimensions">128 x 128</div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <span class="badge-number">5</span>
+      <div class="preview-area dark-bg">
+        <img src="https://www.gigsalad.com/images/svg/standalone/promokit-links/five-star-talent/talent--white.2.svg" alt="Five Star White">
+      </div>
+      <div class="badge-name">Five-Star Talent</div>
+      <div class="badge-desc">Psychic Entertainment</div>
+      <div class="badge-variant">White variant (for dark backgrounds)</div>
+      <div class="badge-dimensions">128 x 128</div>
+    </div>
+
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="section-label">Wide Banners (300x100)</div>
+  <div class="grid">
+
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <span class="badge-number">6</span>
+      <div class="preview-area dark-bg">
+        <img src="https://www.gigsalad.com/images/svg/standalone/promokit-links/read-reviews/read-reviews--dark.2.svg" alt="Read Reviews Dark" style="max-height: 100px; max-width: 300px;">
+      </div>
+      <div class="badge-name">Read My Reviews</div>
+      <div class="badge-desc">Review link banner</div>
+      <div class="badge-variant">Dark variant</div>
+      <div class="badge-dimensions">300 x 100</div>
+    </div>
+
+    <div class="card" onclick="this.classList.toggle('selected')">
+      <span class="badge-number">7</span>
+      <div class="preview-area light-bg">
+        <img src="https://www.gigsalad.com/images/svg/standalone/promokit-links/read-reviews/read-reviews.2.svg" alt="Read Reviews Light" style="max-height: 100px; max-width: 300px;">
+      </div>
+      <div class="badge-name">Read My Reviews</div>
+      <div class="badge-desc">Review link banner</div>
+      <div class="badge-variant">Light variant (needs light background)</div>
+      <div class="badge-dimensions">300 x 100</div>
+    </div>
+
+  </div>
+
+  <div class="recommendation">
+    <h2>Kit's Recommendation</h2>
+    <p><strong>For the badge section next to Thumbtack:</strong> Badge <strong>#3 (Top Performer - White)</strong> or <strong>#5 (Five-Star Talent - White)</strong>. The site has a dark background with purple accents, so the white variants will pop without clashing. They're the same square-ish shape as the Thumbtack badge, so they'll sit side-by-side cleanly.</p>
+    <p><strong>Best of the two:</strong> I'd lean <strong>#3 (Top Performer - White)</strong> - "Top Performer" is a stronger trust signal than "Five-Star Talent" at a glance, and the shield shape pairs well with the Thumbtack badge.</p>
+    <p><strong>For the reviews page:</strong> Badge <strong>#6 (Read My Reviews - Dark)</strong> could work well on the /reviews page as a CTA linking to GigSalad reviews. Different shape so it doesn't compete with the square badges.</p>
+    <p><strong>Skip:</strong> The blue variants (#1, #2, #4) would clash with the site's purple palette. The light review banner (#7) won't work on dark backgrounds.</p>
+  </div>
+
+</body>
+</html>
