@@ -58,8 +58,9 @@ export async function generateMetadata({
     });
 
     return {
-      title: `${title} | Crystal Seed Tarot Blog`,
+      title: { absolute: `${title} | Crystal Seed Tarot Blog` },
       description: excerpt,
+      alternates: { canonical: `/blog/${params.slug}` },
       openGraph: {
         title: `${title} | Crystal Seed Tarot Blog`,
         description: excerpt,

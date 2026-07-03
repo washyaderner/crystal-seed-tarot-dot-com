@@ -6,13 +6,15 @@ import { ContentfulResponse } from "@/types/blog";
 
 // Generate metadata for SEO
 export const metadata: Metadata = {
-  title: "Blog | Crystal Seed Tarot",
+  title: "Blog",
   description:
     "Explore tarot insights, self-growth advice, and spiritual guidance from Crystal Seed Tarot.",
+  alternates: { canonical: "/blog" },
   openGraph: {
     title: "Blog | Crystal Seed Tarot",
     description:
       "Explore tarot insights, self-growth advice, and spiritual guidance from Crystal Seed Tarot.",
+    url: "/blog",
   },
 };
 

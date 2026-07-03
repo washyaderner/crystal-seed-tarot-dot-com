@@ -6,6 +6,19 @@ import { generateBlogImagePath } from "@/lib/utils";
 import { format } from "date-fns";
 import { getMostRecentBlogPost } from "@/lib/contentful";
 import { ContentfulResponse } from "@/types/blog";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  description:
+    "Tarot readings, party and event readings, and tarot lessons in Portland, OR and Vancouver, WA. A crystal clear connection to yourself since 2008.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Crystal Seed Tarot | Tarot Readings in Portland, OR",
+    description:
+      "Tarot readings, party and event readings, and tarot lessons in Portland, OR and Vancouver, WA.",
+    url: "/",
+  },
+};
 
 // Revalidate homepage every hour
 export const revalidate = 3600;
