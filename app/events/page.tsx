@@ -9,11 +9,13 @@ import rehypeRaw from "rehype-raw";
 
 // Generate metadata for SEO
 export const metadata: Metadata = {
-  title: "Events | Crystal Seed Tarot",
+  title: "Events",
   description: "Upcoming events, workshops, and gatherings with Crystal Seed Tarot.",
+  alternates: { canonical: "/events" },
   openGraph: {
     title: "Events | Crystal Seed Tarot",
     description: "Upcoming events, workshops, and gatherings with Crystal Seed Tarot.",
+    url: "/events",
   },
 };
 
@@ -194,9 +196,9 @@ export default function Events() {
                   
                   {/* Event content */}
                   <div>
-                    <h1 className="text-3xl md:text-4xl font-serif mb-3 md:mb-4 text-white">
+                    <h2 className="text-3xl md:text-4xl font-serif mb-3 md:mb-4 text-white">
                       {event.title}
-                    </h1>
+                    </h2>
                     <div className="flex flex-col md:flex-row gap-2 md:gap-4 mb-6">
                       <span className="text-white text-sm md:text-base font-bold">
                         <strong>Date:</strong> {format(event.date, "MMMM d, yyyy")}
@@ -211,7 +213,7 @@ export default function Events() {
                         rehypePlugins={[rehypeRaw]}
                         components={{
                           // Ensure headers get proper styling and stand out
-                          h1: ({node, ...props}) => <h1 className="text-2xl font-serif mb-4 mt-6" {...props} />,
+                          h1: ({node, ...props}) => <h3 className="text-2xl font-serif mb-4 mt-6" {...props} />,
                           h2: ({node, ...props}) => <h2 className="text-xl font-serif mb-3 mt-5" {...props} />,
                           h3: ({node, ...props}) => <h3 className="text-lg font-serif mb-2 mt-4" {...props} />,
                           // Ensure paragraphs render with proper spacing

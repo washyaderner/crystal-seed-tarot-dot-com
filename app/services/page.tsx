@@ -1,7 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Tarot Reading Services & Pricing",
+  description:
+    "Private tarot readings, party and event readings, and private tarot lessons with Crystal Seed Tarot. Serving Portland, Vancouver, and beyond.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Tarot Reading Services & Pricing | Crystal Seed Tarot",
+    description:
+      "Private tarot readings, party and event readings, and private tarot lessons.",
+    url: "/services",
+  },
+};
 
 const services = [
   {

@@ -1,4 +1,18 @@
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Holly",
+  description:
+    "Meet Holly, the reader behind Crystal Seed Tarot. Reading tarot since 2008 and helping people find a crystal clear connection to themselves.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Holly | Crystal Seed Tarot",
+    description:
+      "Meet Holly, the reader behind Crystal Seed Tarot. Reading tarot since 2008.",
+    url: "/about",
+  },
+};
 
 export default function About() {
   return (

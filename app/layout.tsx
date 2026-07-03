@@ -20,16 +20,66 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Crystal Seed Tarot",
+  title: {
+    default: "Crystal Seed Tarot | Tarot Readings in Portland, OR",
+    template: "%s | Crystal Seed Tarot",
+  },
   description:
-    "A Crystal Clear Connection to Yourself - Helping connect you to yourself since 2008",
+    "Tarot readings, party and event readings, and tarot lessons in Portland, OR and Vancouver, WA. A crystal clear connection to yourself since 2008.",
   generator: "v0.dev",
   metadataBase: new URL('https://crystalseedtarot.com'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
     siteName: 'Crystal Seed Tarot',
+    images: [
+      {
+        url: '/images/Background-Image-Evergreen-Spreading-Cards.webp',
+        alt: 'Tarot cards spread across a table',
+      },
+    ],
   },
+};
+
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://crystalseedtarot.com/#business",
+      name: "Crystal Seed Tarot",
+      url: "https://crystalseedtarot.com",
+      email: "crystalseedtarot@gmail.com",
+      description:
+        "Tarot readings, party and event readings, and tarot lessons. A crystal clear connection to yourself since 2008.",
+      foundingDate: "2008",
+      image:
+        "https://crystalseedtarot.com/images/Background-Image-Evergreen-Spreading-Cards.webp",
+      sameAs: [
+        "https://www.facebook.com/CrystalSeedTarot",
+        "https://www.instagram.com/crystal_seed_tarot",
+      ],
+      areaServed: [
+        { "@type": "City", name: "Portland" },
+        { "@type": "City", name: "Vancouver" },
+      ],
+      founder: { "@id": "https://crystalseedtarot.com/#holly" },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://crystalseedtarot.com/#holly",
+      name: "Holly Nicole",
+      jobTitle: "Tarot Reader",
+      worksFor: { "@id": "https://crystalseedtarot.com/#business" },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://crystalseedtarot.com/#website",
+      url: "https://crystalseedtarot.com",
+      name: "Crystal Seed Tarot",
+      publisher: { "@id": "https://crystalseedtarot.com/#business" },
+    },
+  ],
 };
 
 export const viewport: Viewport = {
@@ -46,7 +96,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head></head>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
