@@ -18,3 +18,18 @@ Commits: 3 since last ship
 Key changes:
 - New event entry with full course details, pricing ($144), discount codes, curriculum, and Eventbrite registration link
 - Custom flyer image (Holly's Kumara Academy design) added to public/images
+
+## 2026-07-03 08:50 | aa3e4ff
+
+SEO: unique titles/descriptions, canonicals, LocalBusiness schema, H1 hierarchy
+
+
+## 2026-07-03 08:59 | 5907a7a
+
+Add sitemap.xml + robots.txt (Next metadata routes)
+
+
+## 2026-07-03 09:00 | 2adf6e1
+
+Add /seo audit workspace: site profile + 2026-07-03 fix-pass record
+
