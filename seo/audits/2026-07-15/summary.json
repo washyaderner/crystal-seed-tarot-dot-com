@@ -1,0 +1,135 @@
+{
+ "site": "https://crystalseedtarot.com",
+ "resolvedFrom": null,
+ "date": "2026-07-15T19:53:45.305Z",
+ "crawled": 14,
+ "max": 150,
+ "seconds": 3,
+ "sitemap": {
+  "found": true,
+  "urlCount": 13,
+  "declaredInRobots": true
+ },
+ "robotsTxt": true,
+ "llmsTxt": false,
+ "llmsFullTxt": false,
+ "aiBots": {
+  "GPTBot": "allowed",
+  "OAI-SearchBot": "allowed",
+  "ClaudeBot": "allowed",
+  "anthropic-ai": "allowed",
+  "PerplexityBot": "allowed",
+  "Google-Extended": "allowed",
+  "CCBot": "allowed",
+  "Applebot-Extended": "allowed",
+  "Bytespider": "allowed",
+  "meta-externalagent": "allowed"
+ },
+ "counts": {
+  "html200": 13,
+  "indexable": 13,
+  "noindex": 0,
+  "broken": 1,
+  "redirectsHit": 0,
+  "avgMs": 606
+ },
+ "issues": {
+  "missingTitle": [],
+  "titleLength": [
+   {
+    "url": "https://crystalseedtarot.com/events",
+    "len": 27
+   },
+   {
+    "url": "https://crystalseedtarot.com/gallery",
+    "len": 28
+   },
+   {
+    "url": "https://crystalseedtarot.com/blog",
+    "len": 25
+   },
+   {
+    "url": "https://crystalseedtarot.com/blog/accepting-the-totality-of-your-worth",
+    "len": 62
+   },
+   {
+    "url": "https://crystalseedtarot.com/blog/the-irrational-fear-of-starting-over",
+    "len": 62
+   }
+  ],
+  "duplicateTitles": [],
+  "missingDescription": [],
+  "descriptionLength": [
+   {
+    "url": "https://crystalseedtarot.com/events",
+    "len": 67
+   },
+   {
+    "url": "https://crystalseedtarot.com/blog/be-nice-to-yourself-d-mnit",
+    "len": 162
+   },
+   {
+    "url": "https://crystalseedtarot.com/blog/accepting-the-totality-of-your-worth",
+    "len": 160
+   },
+   {
+    "url": "https://crystalseedtarot.com/blog/when-being-a-good-person-goes-bad",
+    "len": 163
+   },
+   {
+    "url": "https://crystalseedtarot.com/blog/the-irrational-fear-of-starting-over",
+    "len": 159
+   },
+   {
+    "url": "https://crystalseedtarot.com/blog/better-practices-for-your-practice",
+    "len": 163
+   }
+  ],
+  "duplicateDescriptions": [],
+  "missingCanonical": [],
+  "canonicalMismatch": [],
+  "noindexPages": [],
+  "noH1": [],
+  "multipleH1": [],
+  "thinPages": [
+   {
+    "url": "https://crystalseedtarot.com/",
+    "words": 260
+   },
+   {
+    "url": "https://crystalseedtarot.com/gallery",
+    "words": 116
+   },
+   {
+    "url": "https://crystalseedtarot.com/contact",
+    "words": 62
+   },
+   {
+    "url": "https://crystalseedtarot.com/blog",
+    "words": 160
+   }
+  ],
+  "imagesMissingAlt": [],
+  "brokenOrErrored": [
+   {
+    "url": "https://crystalseedtarot.com/cdn-cgi/l/email-protection",
+    "status": 404,
+    "error": null,
+    "inlinks": 2
+   }
+  ],
+  "sitemapOrphans": [],
+  "missingLang": 0
+ },
+ "coverage": {
+  "schemaPct": 100,
+  "schemaTypes": {
+   "LocalBusiness": 13,
+   "Person": 13,
+   "WebSite": 13
+  },
+  "ogCompletePct": 38,
+  "twitterCardPct": 100,
+  "canonicalPct": 100
+ }
+}

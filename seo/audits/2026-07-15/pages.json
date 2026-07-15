@@ -1,0 +1,519 @@
+[
+ {
+  "url": "https://crystalseedtarot.com/events",
+  "finalUrl": "https://crystalseedtarot.com/events",
+  "status": 200,
+  "ms": 87,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Events | Crystal Seed Tarot",
+  "description": "Upcoming events, workshops, and gatherings with Crystal Seed Tarot.",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/events",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "Upcoming Events",
+  "h2Count": 45,
+  "words": 2293,
+  "imgCount": 12,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": false,
+   "url": true,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": false
+  },
+  "externalLinks": 7,
+  "internalLinkCount": 9
+ },
+ {
+  "url": "https://crystalseedtarot.com/about",
+  "finalUrl": "https://crystalseedtarot.com/about",
+  "status": 200,
+  "ms": 95,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "About Holly | Crystal Seed Tarot",
+  "description": "Meet Holly, the reader behind Crystal Seed Tarot. Reading tarot since 2008 and helping people find a crystal clear connection to themselves.",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/about",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "About Crystal Seed Tarot",
+  "h2Count": 0,
+  "words": 321,
+  "imgCount": 5,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": false,
+   "url": true,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": false
+  },
+  "externalLinks": 0,
+  "internalLinkCount": 8
+ },
+ {
+  "url": "https://crystalseedtarot.com/",
+  "finalUrl": "https://crystalseedtarot.com/",
+  "status": 200,
+  "ms": 97,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Crystal Seed Tarot | Tarot Readings in Portland, OR",
+  "description": "Tarot readings, party and event readings, and tarot lessons in Portland, OR and Vancouver, WA. A crystal clear connection to yourself since 2008.",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "Crystal Seed Tarot & Healing",
+  "h2Count": 3,
+  "words": 260,
+  "imgCount": 10,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": false,
+   "url": true,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": false
+  },
+  "externalLinks": 1,
+  "internalLinkCount": 9
+ },
+ {
+  "url": "https://crystalseedtarot.com/services",
+  "finalUrl": "https://crystalseedtarot.com/services",
+  "status": 200,
+  "ms": 145,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Tarot Reading Services & Pricing | Crystal Seed Tarot",
+  "description": "Private tarot readings, party and event readings, and private tarot lessons with Crystal Seed Tarot. Serving Portland, Vancouver, and beyond.",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/services",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "Services",
+  "h2Count": 6,
+  "words": 1598,
+  "imgCount": 2,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": false,
+   "url": true,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": false
+  },
+  "externalLinks": 0,
+  "internalLinkCount": 8
+ },
+ {
+  "url": "https://crystalseedtarot.com/gallery",
+  "finalUrl": "https://crystalseedtarot.com/gallery",
+  "status": 200,
+  "ms": 158,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Gallery | Crystal Seed Tarot",
+  "description": "Photos from Crystal Seed Tarot readings, parties, and events around Portland and Vancouver. The settings, the spreads, and the moments.",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/gallery",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "Gallery",
+  "h2Count": 0,
+  "words": 116,
+  "imgCount": 12,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": false,
+   "url": true,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": false
+  },
+  "externalLinks": 0,
+  "internalLinkCount": 8
+ },
+ {
+  "url": "https://crystalseedtarot.com/contact",
+  "finalUrl": "https://crystalseedtarot.com/contact",
+  "status": 200,
+  "ms": 113,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Contact & Booking | Crystal Seed Tarot",
+  "description": "Book a tarot reading with Crystal Seed Tarot. Reach Holly at crystalseedtarot@gmail.com to schedule private readings, party and event readings, or lessons.",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/contact",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "I look forward to hearing from you!",
+  "h2Count": 0,
+  "words": 62,
+  "imgCount": 3,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": false,
+   "url": true,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": false
+  },
+  "externalLinks": 2,
+  "internalLinkCount": 9
+ },
+ {
+  "url": "https://crystalseedtarot.com/reviews",
+  "finalUrl": "https://crystalseedtarot.com/reviews",
+  "status": 200,
+  "ms": 234,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Reviews & Testimonials | Crystal Seed Tarot",
+  "description": "What clients say about their readings with Crystal Seed Tarot. Real reviews from private sessions, parties, and events.",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/reviews",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "Client Reviews",
+  "h2Count": 2,
+  "words": 4087,
+  "imgCount": 6,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": false,
+   "url": true,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": false
+  },
+  "externalLinks": 1,
+  "internalLinkCount": 8
+ },
+ {
+  "url": "https://crystalseedtarot.com/blog",
+  "finalUrl": "https://crystalseedtarot.com/blog",
+  "status": 200,
+  "ms": 304,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Blog | Crystal Seed Tarot",
+  "description": "Explore tarot insights, self-growth advice, and spiritual guidance from Crystal Seed Tarot.",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/blog",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "Blog",
+  "h2Count": 5,
+  "words": 160,
+  "imgCount": 7,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": false,
+   "url": true,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": false
+  },
+  "externalLinks": 0,
+  "internalLinkCount": 13
+ },
+ {
+  "url": "https://crystalseedtarot.com/blog/be-nice-to-yourself-d-mnit",
+  "finalUrl": "https://crystalseedtarot.com/blog/be-nice-to-yourself-d-mnit",
+  "status": 200,
+  "ms": 1491,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Be Nice to Yourself, D@mnit! | Crystal Seed Tarot Blog",
+  "description": "I will be the first to admit that years ago, I was a very reluctant hippy. (Writer’s note: I use the term “hippy” in the most loving, albeit somewhat sarcastic...",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/blog/be-nice-to-yourself-d-mnit",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "Be Nice to Yourself, D@mnit!",
+  "h2Count": 0,
+  "words": 1435,
+  "imgCount": 3,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": true,
+   "url": false,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": true
+  },
+  "externalLinks": 0,
+  "internalLinkCount": 8
+ },
+ {
+  "url": "https://crystalseedtarot.com/blog/accepting-the-totality-of-your-worth",
+  "finalUrl": "https://crystalseedtarot.com/blog/accepting-the-totality-of-your-worth",
+  "status": 200,
+  "ms": 1472,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Accepting the Totality of Your Worth | Crystal Seed Tarot Blog",
+  "description": "One question that I get asked a lot in Tarot is “How do I find my soulmate?” While I can’t tell you exactly where you’ll meet your significant other or when,...",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/blog/accepting-the-totality-of-your-worth",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "Accepting the Totality of Your Worth",
+  "h2Count": 0,
+  "words": 2000,
+  "imgCount": 3,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": true,
+   "url": false,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": true
+  },
+  "externalLinks": 0,
+  "internalLinkCount": 8
+ },
+ {
+  "url": "https://crystalseedtarot.com/blog/when-being-a-good-person-goes-bad",
+  "finalUrl": "https://crystalseedtarot.com/blog/when-being-a-good-person-goes-bad",
+  "status": 200,
+  "ms": 1453,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "When Being A Good Person Goes Bad | Crystal Seed Tarot Blog",
+  "description": "Recently I read for a woman who sat down for a 3 card reading. I was at a public event and had met her briefly when I read for her daughter a few hours earlier....",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/blog/when-being-a-good-person-goes-bad",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "When Being A Good Person Goes Bad",
+  "h2Count": 0,
+  "words": 4709,
+  "imgCount": 3,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": true,
+   "url": false,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": true
+  },
+  "externalLinks": 0,
+  "internalLinkCount": 8
+ },
+ {
+  "url": "https://crystalseedtarot.com/blog/the-irrational-fear-of-starting-over",
+  "finalUrl": "https://crystalseedtarot.com/blog/the-irrational-fear-of-starting-over",
+  "status": 200,
+  "ms": 1630,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "The Irrational Fear of Starting Over | Crystal Seed Tarot Blog",
+  "description": "I get it. You’re here. You’ve invested yourself, and your time, your precious energy into this thing. Insert person/relationship/endeavor here. You’ve spent...",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/blog/the-irrational-fear-of-starting-over",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "The Irrational Fear of Starting Over",
+  "h2Count": 0,
+  "words": 3414,
+  "imgCount": 3,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": true,
+   "url": false,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": true
+  },
+  "externalLinks": 0,
+  "internalLinkCount": 8
+ },
+ {
+  "url": "https://crystalseedtarot.com/cdn-cgi/l/email-protection",
+  "finalUrl": "https://crystalseedtarot.com/cdn-cgi/l/email-protection",
+  "status": 404,
+  "ms": 16,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": false
+ },
+ {
+  "url": "https://crystalseedtarot.com/blog/better-practices-for-your-practice",
+  "finalUrl": "https://crystalseedtarot.com/blog/better-practices-for-your-practice",
+  "status": 200,
+  "ms": 597,
+  "contentType": "text/html",
+  "redirectChain": [],
+  "error": null,
+  "inSitemap": true,
+  "title": "Better Practices for Your Practice | Crystal Seed Tarot Blog",
+  "description": "Introduction When we first begin studying and practicing Tarot, there can be an overwhelming amount of information we come across, and not all of it is good. We...",
+  "robotsMeta": "",
+  "canonical": "https://crystalseedtarot.com/blog/better-practices-for-your-practice",
+  "lang": "en",
+  "h1Count": 1,
+  "h1": "Better Practices for Your Practice",
+  "h2Count": 2,
+  "words": 5329,
+  "imgCount": 3,
+  "imgNoAlt": 0,
+  "schemaTypes": [
+   "LocalBusiness",
+   "Person",
+   "WebSite"
+  ],
+  "og": {
+   "title": true,
+   "description": true,
+   "image": true,
+   "url": false,
+   "type": false
+  },
+  "twitter": {
+   "card": true,
+   "image": true
+  },
+  "externalLinks": 0,
+  "internalLinkCount": 8
+ }
+]
