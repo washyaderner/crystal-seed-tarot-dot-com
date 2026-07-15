@@ -17,7 +17,7 @@
 | Provenance | Built on v0.dev (`<meta name="generator" content="v0.dev">`), `package.json name` still `my-v0-project` | homepage `<head>`, `package.json:2` |
 | PSI mobile | **perf 88, a11y 93, SEO 92, best-practices 100**; LCP **3.7s**, CLS 0.004, TBT 0 | `seo/audits/2026-07-15/psi-*.json` |
 | PSI desktop | perf 99; LCP 0.5s | same |
-| Design language | Static nebula background image + frosted-glass cards, serif headings, purple hover glows; **zero motion**, nothing tarot-specific | Playwright screenshots `/Users/studio/cst-mobile-*.jpeg` |
+| Design language | Static nebula background image + frosted-glass cards, serif headings, purple hover glows; **zero motion**, nothing tarot-specific | Playwright mobile crawl (390px), this session |
 | Business facts | Holly, reading since 2008; Portland OR + Vancouver WA; phone **(541) 635-2278**; crystalseedtarot@gmail.com; pays via Apple Pay/Venmo/PayPal/Facebook Pay/CC/Cash | live pages, this session |
 
 **One-line verdict:** technically clean foundation (the 2026-07-03 SEO pass fixed schema/canonicals/titles/sitemap to 100%) sitting under a generic, motionless template with thin content, no social-share images, a mobile LCP problem, and a handful of real security/trust holes. High ceiling, currently unrealized.
@@ -327,4 +327,4 @@ Reading as a skeptic hired to find what's wrong with this plan:
 5. **Handoff-readiness:** a fresh session can open this doc, read §9, pick a phase, and every action links to a receipt. Effort is calibrated. Decisions that block work are isolated in §11. **Verdict: handoff-ready.**
 6. **Biggest thing a reader should not miss:** two live pages are actively misleading — fake testimonials (H1) and a "Upcoming Events" page full of past events (H11). If nothing else ships, those two + V1 are the 30-minute integrity pass.
 
-*End of master plan. Companion evidence: `seo/audits/2026-07-15/AUDIT.md`, screenshots at `/Users/studio/cst-mobile-*.jpeg`, content pack at `/Users/studio/Build/crystal-seed-reimagined/_shared/content.json`.*
+*End of master plan. Companion evidence: `seo/audits/2026-07-15/AUDIT.md` (crawl + PSI raw data), content pack at `/Users/studio/Build/crystal-seed-reimagined/_shared/content.json`, three live demos at cst-candlelit / cst-cinematic / cst-mystic.pages.dev.*
