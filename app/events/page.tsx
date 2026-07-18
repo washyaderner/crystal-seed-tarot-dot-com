@@ -36,6 +36,17 @@ export default function Events() {
   // Sample events - to be replaced with real data
   const events: Event[] = [
     {
+      id: "11",
+      title: "The Magic of Tarot: Beginner's Class at Sinister Coffee",
+      description: "**A Beginner's Tarot Class with Holly Cole** — in person at Sinister Coffee & Creamery in downtown Portland.\n\nTake a journey through the cards with expert tarot reader Holly Cole. With twenty years of reading experience, Holly breaks down the systems of Tarot to make them easy to understand.\n\n## What You'll Learn\n\n- The suits and numerology\n- An overview of reversals\n- How to work with both sides of the deck\n- How to give a 3-card reading\n- Hands-on partner practice\n\n## Details\n\n**Saturday, August 15, 2026** | 2:00 to 4:00 PM\n**Sinister Coffee & Creamery** — 301 SW Morrison St, Portland, OR 97204\n**$30** — prepay online or pay at the door\n\nLimited space, so claim your spot today!",
+      date: new Date("2026-08-15T14:00:00-07:00"),
+      location: "Sinister Coffee & Creamery, 301 SW Morrison St, Portland, OR",
+      imageUrl: "/images/Events-Magic-of-Tarot-Sinister.png",
+      linkUrl: "/events/magic-of-tarot",
+      buttonText: "Sign Up & Details",
+      imageAspect: "square",
+    },
+    {
       id: "10",
       title: "Tarot Foundations: 4-Week Beginner to Intermediate Course",
       description: "**A 4-Week Live Course through Kumara Academy of Transformation**\n\nBuild a strong tarot foundation with emphasis on intuitive reading over rote memorization. Whether you're picking up your first deck or looking to deepen your understanding of the cards, this course will guide you from the basics into confident, intuitive readings.\n\n## Course Schedule\n\n**Sundays**: June 7, 14, 21 & 28, 2026\n**2:00 PM - 4:00 PM PDT** | Online via Zoom\n\nAll sessions are recorded, so if you can't make a live class you can watch the replay at your convenience.\n\n## What You'll Learn\n\n- Tarot history and origins\n- Deck structure: Major and Minor Arcana\n- Suits and numerology symbolism\n- The Fool's Journey\n- Reversed card reading techniques\n- 1-card and 3-card spreads\n- Intuitive interpretation and energetic awareness\n- Interactive partner practice in breakout rooms\n\n## What to Bring\n\nA Rider-Waite or similar tarot deck.\n\n## Pricing\n\n**$144** for the full 4-week course.\n\nUse code **InstaTarot15** or **FBTarot15** for **$15 off**!\n\n## Certification\n\nCertificate of Completion available upon request.\n\nSpaces are limited. Reserve your spot today!",
