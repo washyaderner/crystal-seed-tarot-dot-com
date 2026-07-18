@@ -130,8 +130,8 @@ function attendeeText(name: string) {
 /** New signup: emails Holly (subject names Sinister Coffee + count) and auto-confirms the attendee. */
 export async function notifySignup(name: string, email: string, count: number, prepay: boolean) {
   await formSubmit({
-    Name: name,
-    Email: email,
+    name,
+    email, // lowercase: FormSubmit keys reply-to + autoresponse off this field
     Prepay: prepay ? "Yes (started checkout)" : "No — paying at the door",
     "Attending so far": String(count),
     _replyto: email,
@@ -144,8 +144,8 @@ export async function notifySignup(name: string, email: string, count: number, p
 /** Prepayment received: confirm to the attendee + let Holly know it's paid. */
 export async function notifyPaid(name: string, email: string) {
   await formSubmit({
-    Name: name,
-    Email: email,
+    name,
+    email,
     Prepay: "PAID $30",
     _subject: `Prepaid: ${EVENT.title} at Sinister Coffee — ${name}`,
     _template: "table",
