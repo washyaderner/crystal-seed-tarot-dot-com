@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { EVENT } from "../event";
-import { markPrepaid, sendMail } from "@/lib/signups";
+import { markPrepaid, notifyPaid } from "@/lib/signups";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: `You're all set — ${EVENT.title}`, robots: { index: false } };
@@ -32,15 +32,7 @@ export default async function Confirmed({
   if (paid && email) {
     try {
       await markPrepaid(email);
-      await sendMail(
-        email,
-        `Payment received — ${EVENT.title} at ${EVENT.venue}`,
-        `<div style="font-family:Georgia,serif;color:#2a2036;">
-          <p>Thank you — your $${EVENT.price} prepayment for <strong>${EVENT.title}</strong> is received and your spot is confirmed.</p>
-          <p>${EVENT.dateLabel}, ${EVENT.timeLabel}<br>${EVENT.venue}, ${EVENT.address}</p>
-          <p>See you there!<br>— Holly Cole, Crystal Seed Tarot</p>
-        </div>`
-      );
+      await notifyPaid(session?.metadata?.name || "there", email);
     } catch (e) {
       console.error("confirm handling failed:", e);
     }

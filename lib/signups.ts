@@ -95,25 +95,62 @@ export async function markPrepaid(email: string): Promise<boolean> {
   return false;
 }
 
-// ---------- email (Gmail API via OAuth2 — same mechanism as the site's cron; sends as crystalseedtarot@gmail.com) ----------
-function gmailClient() {
-  const oauth2 = new google.auth.OAuth2(process.env.GMAIL_CLIENT_ID, process.env.GMAIL_CLIENT_SECRET);
-  oauth2.setCredentials({ refresh_token: process.env.GMAIL_REFRESH_TOKEN });
-  return google.gmail({ version: "v1", auth: oauth2 });
+// ---------- email (FormSubmit.co — the same no-credential service the site's contact form uses) ----------
+// One POST both notifies Holly (the target inbox) and auto-responds to the attendee (_autoresponse).
+const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://crystalseedtarot.com";
+
+async function formSubmit(fields: Record<string, string>) {
+  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(EVENT.notifyEmail)}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Origin: SITE_URL,
+      Referer: `${SITE_URL}${EVENT.path}`,
+    },
+    body: JSON.stringify({ _captcha: "false", ...fields }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || (data.success !== "true" && data.success !== true)) {
+    throw new Error(`FormSubmit failed: ${data.message || res.status}`);
+  }
 }
 
-export async function sendMail(to: string, subject: string, html: string) {
-  const sender = process.env.GMAIL_SENDER || EVENT.notifyEmail;
-  const mime = [
-    `From: Crystal Seed Tarot <${sender}>`,
-    `To: ${to}`,
-    `Reply-To: ${EVENT.notifyEmail}`,
-    `Subject: ${subject}`,
-    "MIME-Version: 1.0",
-    "Content-Type: text/html; charset=utf-8",
-    "",
-    html,
-  ].join("\r\n");
-  const raw = Buffer.from(mime).toString("base64url");
-  await gmailClient().users.messages.send({ userId: "me", requestBody: { raw } });
+function attendeeText(name: string) {
+  return (
+    `Hi ${name},\n\n` +
+    `You're signed up for ${EVENT.title} — a beginner's tarot class with Holly Cole.\n\n` +
+    `  When:  ${EVENT.dateLabel}, ${EVENT.timeLabel}\n` +
+    `  Where: ${EVENT.venue}, ${EVENT.address}\n` +
+    `  Cost:  $${EVENT.price} (pay at the door, or prepay online)\n\n` +
+    `Limited space, so thanks for claiming your spot. See you there!\n\n` +
+    `— Holly Cole, Crystal Seed Tarot`
+  );
+}
+
+/** New signup: emails Holly (subject names Sinister Coffee + count) and auto-confirms the attendee. */
+export async function notifySignup(name: string, email: string, count: number, prepay: boolean) {
+  await formSubmit({
+    Name: name,
+    Email: email,
+    Prepay: prepay ? "Yes (started checkout)" : "No — paying at the door",
+    "Attending so far": String(count),
+    _replyto: email,
+    _subject: `New signup: ${EVENT.title} at Sinister Coffee — ${count} attending`,
+    _template: "table",
+    _autoresponse: attendeeText(name),
+  });
+}
+
+/** Prepayment received: confirm to the attendee + let Holly know it's paid. */
+export async function notifyPaid(name: string, email: string) {
+  await formSubmit({
+    Name: name,
+    Email: email,
+    Prepay: "PAID $30",
+    _subject: `Prepaid: ${EVENT.title} at Sinister Coffee — ${name}`,
+    _template: "table",
+    _autoresponse:
+      `Hi ${name},\n\nYour $${EVENT.price} prepayment for ${EVENT.title} is received and your spot is confirmed.\n\n` +
+      `  ${EVENT.dateLabel}, ${EVENT.timeLabel}\n  ${EVENT.venue}, ${EVENT.address}\n\nSee you there!\n— Holly Cole, Crystal Seed Tarot`,
+  });
 }
