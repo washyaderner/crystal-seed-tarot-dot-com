@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+// Post-conversion confirmation page: never a search result. Matches the
+// existing treatment on app/events/magic-of-tarot/confirmed/page.tsx, and it
+// is what keeps this page out of the auto-derived sitemap (see app/sitemap.ts).
+export const metadata = { robots: { index: false } };
+
 export default function ThankYou() {
   return (
     <div className="min-h-screen">
