@@ -68,3 +68,13 @@ chore: WIP sync snapshot 2026-07-08
 
 chore: WIP sync snapshot 2026-07-08
 
+
+## 2026-07-18 14:40 | ffa3712
+
+Fix FormSubmit autoresponse: use lowercase email field for attendee confirmation
+
+
+## 2026-07-22 11:25 | 1ef211e
+
+fix(seo): derive sitemap routes from app/, add the Magic of Tarot class page
+
