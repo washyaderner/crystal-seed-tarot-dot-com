@@ -7,6 +7,12 @@ export const metadata: Metadata = {
     "What clients say about their readings with Crystal Seed Tarot. Real reviews from private sessions, parties, and events.",
   alternates: { canonical: "/reviews" },
   openGraph: {
+    images: [
+      {
+        url: "/images/Background-Image-Evergreen-Spreading-Cards.webp",
+        alt: "Crystal Seed Tarot",
+      },
+    ],
     title: "Reviews & Testimonials | Crystal Seed Tarot",
     description:
       "What clients say about their readings with Crystal Seed Tarot.",

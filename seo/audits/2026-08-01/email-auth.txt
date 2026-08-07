@@ -1,0 +1,10 @@
+== email-auth: crystalseedtarot.com ==
+PASS  MX: 5 alt1.aspmx.l.google.com. 5 alt2.aspmx.l.google.com. 1 aspmx.l.google.com. 10 alt3.aspmx.l.google.com. 10 alt4.aspmx.l.google.com. 
+PASS  SPF: "v=spf1 include:_spf.google.com -all"
+INFO  SPF includes: 1
+FAIL  DMARC: no record at _dmarc.crystalseedtarot.com
+WARN  DKIM: none of the common selectors resolved (platforms use custom selectors; verify in the sender's dashboard before calling this a failure)
+INFO  BIMI: none (optional; needs DMARC enforcement)
+INFO  MTA-STS: none (optional)
+INFO  TLS-RPT: none (optional)
+== verdict: FAIL (1 fail, 1 warn) ==

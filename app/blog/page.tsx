@@ -11,6 +11,12 @@ export const metadata: Metadata = {
     "Explore tarot insights, self-growth advice, and spiritual guidance from Crystal Seed Tarot.",
   alternates: { canonical: "/blog" },
   openGraph: {
+    images: [
+      {
+        url: "/images/Background-Image-Evergreen-Spreading-Cards.webp",
+        alt: "Crystal Seed Tarot",
+      },
+    ],
     title: "Blog | Crystal Seed Tarot",
     description:
       "Explore tarot insights, self-growth advice, and spiritual guidance from Crystal Seed Tarot.",

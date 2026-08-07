@@ -13,6 +13,12 @@ export const metadata: Metadata = {
     "Tarot readings, party and event readings, and tarot lessons in Portland, OR and Vancouver, WA. A crystal clear connection to yourself since 2008.",
   alternates: { canonical: "/" },
   openGraph: {
+    images: [
+      {
+        url: "/images/Background-Image-Evergreen-Spreading-Cards.webp",
+        alt: "Crystal Seed Tarot",
+      },
+    ],
     title: "Crystal Seed Tarot | Tarot Readings in Portland, OR",
     description:
       "Tarot readings, party and event readings, and tarot lessons in Portland, OR and Vancouver, WA.",

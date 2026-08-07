@@ -7,6 +7,12 @@ export const metadata: Metadata = {
     "Meet Holly, the reader behind Crystal Seed Tarot. Reading tarot since 2008 and helping people find a crystal clear connection to themselves.",
   alternates: { canonical: "/about" },
   openGraph: {
+    images: [
+      {
+        url: "/images/Background-Image-Evergreen-Spreading-Cards.webp",
+        alt: "Crystal Seed Tarot",
+      },
+    ],
     title: "About Holly | Crystal Seed Tarot",
     description:
       "Meet Holly, the reader behind Crystal Seed Tarot. Reading tarot since 2008.",
@@ -56,7 +62,7 @@ export default function About() {
               <div className="mb-8">
                 <Image
                   src="/images/About-Holly-Kyle-Reading.jpeg"
-                  alt="Holly Nicole performing a tarot reading"
+                  alt="Holly Cole performing a tarot reading"
                   width={768}
                   height={576}
                   className="rounded-lg shadow-lg transition-all duration-300 hover:shadow-purple-500/30 hover:scale-[1.02] w-full h-auto"

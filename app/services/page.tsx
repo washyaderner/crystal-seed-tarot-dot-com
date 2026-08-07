@@ -10,6 +10,12 @@ export const metadata: Metadata = {
     "Private tarot readings, party and event readings, and private tarot lessons with Crystal Seed Tarot. Serving Portland, Vancouver, and beyond.",
   alternates: { canonical: "/services" },
   openGraph: {
+    images: [
+      {
+        url: "/images/Background-Image-Evergreen-Spreading-Cards.webp",
+        alt: "Crystal Seed Tarot",
+      },
+    ],
     title: "Tarot Reading Services & Pricing | Crystal Seed Tarot",
     description:
       "Private tarot readings, party and event readings, and private tarot lessons.",

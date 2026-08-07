@@ -68,7 +68,7 @@ const businessSchema = {
     {
       "@type": "Person",
       "@id": "https://crystalseedtarot.com/#holly",
-      name: "Holly Nicole",
+      name: "Holly Cole",
       jobTitle: "Tarot Reader",
       worksFor: { "@id": "https://crystalseedtarot.com/#business" },
     },

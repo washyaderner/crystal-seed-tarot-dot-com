@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   description: "Upcoming events, workshops, and gatherings with Crystal Seed Tarot.",
   alternates: { canonical: "/events" },
   openGraph: {
+    images: [
+      {
+        url: "/images/Background-Image-Evergreen-Spreading-Cards.webp",
+        alt: "Crystal Seed Tarot",
+      },
+    ],
     title: "Events | Crystal Seed Tarot",
     description: "Upcoming events, workshops, and gatherings with Crystal Seed Tarot.",
     url: "/events",

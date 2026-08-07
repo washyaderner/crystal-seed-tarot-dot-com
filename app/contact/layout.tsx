@@ -7,6 +7,12 @@ export const metadata: Metadata = {
     "Book a tarot reading with Crystal Seed Tarot. Reach Holly at crystalseedtarot@gmail.com to schedule private readings, party and event readings, or lessons.",
   alternates: { canonical: "/contact" },
   openGraph: {
+    images: [
+      {
+        url: "/images/Background-Image-Evergreen-Spreading-Cards.webp",
+        alt: "Crystal Seed Tarot",
+      },
+    ],
     title: "Contact & Booking | Crystal Seed Tarot",
     description:
       "Book a tarot reading, party or event reading, or tarot lessons with Crystal Seed Tarot.",

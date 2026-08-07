@@ -7,6 +7,12 @@ export const metadata: Metadata = {
     "Photos from Crystal Seed Tarot readings, parties, and events around Portland and Vancouver. The settings, the spreads, and the moments.",
   alternates: { canonical: "/gallery" },
   openGraph: {
+    images: [
+      {
+        url: "/images/Background-Image-Evergreen-Spreading-Cards.webp",
+        alt: "Crystal Seed Tarot",
+      },
+    ],
     title: "Gallery | Crystal Seed Tarot",
     description:
       "Photos from Crystal Seed Tarot readings, parties, and events around Portland and Vancouver.",

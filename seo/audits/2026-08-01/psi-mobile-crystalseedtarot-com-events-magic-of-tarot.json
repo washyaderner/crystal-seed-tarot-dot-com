@@ -1,0 +1,25 @@
+{
+ "url": "https://crystalseedtarot.com/events/magic-of-tarot",
+ "strategy": "mobile",
+ "date": "2026-08-01T13:53:00.771Z",
+ "scores": {
+  "performance": 93,
+  "seo": 100,
+  "accessibility": 96,
+  "bestPractices": 100
+ },
+ "lab": {
+  "LCP": "3.0 s",
+  "FCP": "0.9 s",
+  "CLS": "0.004",
+  "TBT": "20 ms",
+  "SI": "3.6 s"
+ },
+ "field": null,
+ "opportunities": [
+  {
+   "title": "Reduce unused CSS",
+   "savingsMs": 150
+  }
+ ]
+}

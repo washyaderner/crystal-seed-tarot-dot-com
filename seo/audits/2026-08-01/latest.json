@@ -1,0 +1,8 @@
+{"domain":"crystalseedtarot.com","date":"2026-08-01","mode":"report","baseline":true,"prior_latest_json_existed":false,
+ "scores":{"tech":89,"content":54,"local":9,"authority":33,"geo":20,"voice":9,"perf":94,"cro":44,"email":55,"social":24,"overall":49},
+ "kpis":{"pages_crawled":15,"indexable":14,"psi_mobile_home":88,"psi_mobile_services":95,"psi_mobile_contact":96,"psi_mobile_events_magic_of_tarot":93,"cwv_field_pass":null,"reviews_total":null,"review_velocity_30d":null,"gbp_categories":null,"ai_citations_won":0,"email_auth":"fail","og_coverage_pct":43},
+ "open_actions":{"auto":7,"draft":3,"russ":5},
+ "top_action":"Get a yes/no from Holly: does a Google Business Profile exist under any of her emails. Unblocks Local/Voice/GEO simultaneously; zero appearances across 12 category WebSearch queries this cycle confirm it is still the single biggest open item.",
+ "carried_open_issues_2026-07-15":{"og_image":"improved_partial","dmarc":"unchanged","llms_txt":"unchanged","mobile_lcp_home":"unchanged","thin_pages":"unchanged_still_5","gbp":"unchanged_now_negatively_evidenced"},
+ "new_finding_2026-08-01":"entity_name_city_conflict_holly_nicole_vs_holly_cole_beaverton_vs_portland",
+ "note":"No prior latest.json existed for this site; this run is the first structured baseline. Scores are not a delta vs 7/15's informal ~63/100 prose figure (see AUDIT.md for why the methodology differs)."}

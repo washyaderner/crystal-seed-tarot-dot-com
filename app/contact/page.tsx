@@ -151,7 +151,7 @@ export default function Contact() {
                 <div className="w-full mb-6">
                   <Image
                     src="/images/About-Holly-Nicole-Laughing-2022.jpeg"
-                    alt="Holly Nicole laughing"
+                    alt="Holly Cole laughing"
                     width={600}
                     height={600}
                     priority
