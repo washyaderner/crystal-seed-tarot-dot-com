@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
+import { listSheetUrl } from "@/lib/signups";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -28,7 +29,8 @@ export async function POST(request: NextRequest) {
         `Name:  ${name}\n` +
         `Email: ${email}\n` +
         (phone ? `Phone: ${phone}\n` : "") +
-        `\nMessage:\n${message}`,
+        `\nMessage:\n${message}\n\n` +
+        `${email} has been added to your email list (Google Sheet):\n${listSheetUrl()}`,
       replyTo: email,
     });
 

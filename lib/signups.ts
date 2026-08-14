@@ -31,6 +31,11 @@ export function subToken(email: string) {
   return createHmac("sha256", secret).update(email.toLowerCase()).digest("hex");
 }
 
+/** Direct link to the email-list Google Sheet, for Holly-facing notifications. */
+export function listSheetUrl() {
+  return `https://docs.google.com/spreadsheets/d/${sheetId()}/edit`;
+}
+
 async function allRows(): Promise<string[][]> {
   const res = await sheetsClient().spreadsheets.values.get({
     spreadsheetId: sheetId(),
@@ -124,7 +129,8 @@ export async function notifySignup(name: string, email: string, count: number, p
       `  Prepay: ${prepay ? "Yes (started checkout)" : "No — paying at the door"}\n\n` +
       `Attending so far: ${count}\n\n` +
       `${EVENT.title} — ${EVENT.dateLabel}, ${EVENT.timeLabel}\n` +
-      `${EVENT.venue}, ${EVENT.address}`,
+      `${EVENT.venue}, ${EVENT.address}\n\n` +
+      `${email} has been added to your email list (Google Sheet):\n${listSheetUrl()}`,
     replyTo: email,
   });
   try {
@@ -147,7 +153,8 @@ export async function notifyPaid(name: string, email: string) {
       subject: `Prepaid: ${EVENT.title} at Sinister Coffee — ${name}`,
       text:
         `${name} <${email}> prepaid $${EVENT.price} for ${EVENT.title}.\n\n` +
-        `${EVENT.dateLabel}, ${EVENT.timeLabel}\n${EVENT.venue}, ${EVENT.address}`,
+        `${EVENT.dateLabel}, ${EVENT.timeLabel}\n${EVENT.venue}, ${EVENT.address}\n\n` +
+        `Email list (Google Sheet):\n${listSheetUrl()}`,
       replyTo: email,
     });
   } catch (e) {
