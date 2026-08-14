@@ -1,6 +1,7 @@
 import { google } from "googleapis";
 import { createHmac } from "crypto";
 import { EVENT } from "@/app/events/magic-of-tarot/event";
+import { sendEmail } from "@/lib/email";
 
 // Class signups are stored in the SAME Google Sheet the site's newsletter uses
 // (so attendees land on Holly's list), tagged with EVENT.tag for counting.
@@ -95,25 +96,7 @@ export async function markPrepaid(email: string): Promise<boolean> {
   return false;
 }
 
-// ---------- email (FormSubmit.co — the same no-credential service the site's contact form uses) ----------
-// One POST both notifies Holly (the target inbox) and auto-responds to the attendee (_autoresponse).
-const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://crystalseedtarot.com";
-
-async function formSubmit(fields: Record<string, string>) {
-  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(EVENT.notifyEmail)}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Origin: SITE_URL,
-      Referer: `${SITE_URL}${EVENT.path}`,
-    },
-    body: JSON.stringify({ _captcha: "false", ...fields }),
-  });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok || (data.success !== "true" && data.success !== true)) {
-    throw new Error(`FormSubmit failed: ${data.message || res.status}`);
-  }
-}
+// ---------- email (first-party Gmail SMTP as crystalseedtarot@gmail.com — see lib/email.ts) ----------
 
 function attendeeText(name: string) {
   return (
@@ -127,30 +110,56 @@ function attendeeText(name: string) {
   );
 }
 
-/** New signup: emails Holly (subject names Sinister Coffee + count) and auto-confirms the attendee. */
+/** New signup: emails Holly (subject names Sinister Coffee + count) and confirms the attendee.
+ *  Holly's notification throws on failure (the caller logs it); the attendee
+ *  confirmation is isolated so one lane failing never kills the other. */
 export async function notifySignup(name: string, email: string, count: number, prepay: boolean) {
-  await formSubmit({
-    name,
-    email, // lowercase: FormSubmit keys reply-to + autoresponse off this field
-    Prepay: prepay ? "Yes (started checkout)" : "No — paying at the door",
-    "Attending so far": String(count),
-    _replyto: email,
-    _subject: `New signup: ${EVENT.title} at Sinister Coffee — ${count} attending`,
-    _template: "table",
-    _autoresponse: attendeeText(name),
+  await sendEmail({
+    to: EVENT.notifyEmail,
+    subject: `New signup: ${EVENT.title} at Sinister Coffee — ${count} attending`,
+    text:
+      `New class signup\n\n` +
+      `  Name:   ${name}\n` +
+      `  Email:  ${email}\n` +
+      `  Prepay: ${prepay ? "Yes (started checkout)" : "No — paying at the door"}\n\n` +
+      `Attending so far: ${count}\n\n` +
+      `${EVENT.title} — ${EVENT.dateLabel}, ${EVENT.timeLabel}\n` +
+      `${EVENT.venue}, ${EVENT.address}`,
+    replyTo: email,
   });
+  try {
+    await sendEmail({
+      to: email,
+      subject: `You're signed up: ${EVENT.title} — ${EVENT.dateLabel}`,
+      text: attendeeText(name),
+      replyTo: EVENT.notifyEmail,
+    });
+  } catch (e) {
+    console.error("attendee confirmation failed:", e);
+  }
 }
 
 /** Prepayment received: confirm to the attendee + let Holly know it's paid. */
 export async function notifyPaid(name: string, email: string) {
-  await formSubmit({
-    name,
-    email,
-    Prepay: "PAID $30",
-    _subject: `Prepaid: ${EVENT.title} at Sinister Coffee — ${name}`,
-    _template: "table",
-    _autoresponse:
-      `Hi ${name},\n\nYour $${EVENT.price} prepayment for ${EVENT.title} is received and your spot is confirmed.\n\n` +
-      `  ${EVENT.dateLabel}, ${EVENT.timeLabel}\n  ${EVENT.venue}, ${EVENT.address}\n\nSee you there!\n— Holly Cole, Crystal Seed Tarot`,
+  try {
+    await sendEmail({
+      to: EVENT.notifyEmail,
+      subject: `Prepaid: ${EVENT.title} at Sinister Coffee — ${name}`,
+      text:
+        `${name} <${email}> prepaid $${EVENT.price} for ${EVENT.title}.\n\n` +
+        `${EVENT.dateLabel}, ${EVENT.timeLabel}\n${EVENT.venue}, ${EVENT.address}`,
+      replyTo: email,
+    });
+  } catch (e) {
+    console.error("prepaid notification to Holly failed:", e);
+  }
+  await sendEmail({
+    to: email,
+    subject: `Payment received: ${EVENT.title} — your spot is confirmed`,
+    text:
+      `Hi ${name},\n\n` +
+      `Your $${EVENT.price} prepayment for ${EVENT.title} is received and your spot is confirmed.\n\n` +
+      `  ${EVENT.dateLabel}, ${EVENT.timeLabel}\n  ${EVENT.venue}, ${EVENT.address}\n\n` +
+      `See you there!\n— Holly Cole, Crystal Seed Tarot`,
   });
 }
