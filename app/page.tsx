@@ -87,6 +87,27 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Tarotdoxa announcement banner */}
+      <section className="px-4 pt-6">
+        <div className="container mx-auto max-w-3xl">
+          <Link
+            href="/tarotdoxa"
+            className="group block rounded-lg border border-purple-300/40 bg-gradient-to-r from-purple-900/60 via-fuchsia-900/50 to-purple-900/60 backdrop-blur-md px-4 py-3 md:px-6 md:py-4 text-center transform transition-all duration-300 hover:scale-[1.02] hover:border-purple-300/60 hover:shadow-lg hover:shadow-purple-500/40"
+          >
+            <p className="text-white text-sm md:text-base [text-wrap:balance]">
+              <span className="font-semibold">🔮 NEW: Tarotdoxa</span> - our
+              very own Tarot app - coming to iPhone and Android{" "}
+              <span className="whitespace-nowrap">Fall 2026</span>
+            </p>
+            <p className="mt-1 text-xs md:text-sm text-purple-200 transition-colors group-hover:text-white">
+              <span className="whitespace-nowrap">
+                Learn more + pull the Card of the Day →
+              </span>
+            </p>
+          </Link>
+        </div>
+      </section>
+
       {/* Hero Section - Simplified for Mobile */}
       <section className="flex-grow flex items-center justify-center text-white px-4 py-8 md:py-16">
         <div className="text-center bg-black/20 backdrop-blur-md md:frosted-card p-4 md:p-8 rounded-lg max-w-3xl transform transition-all duration-2000 hover:scale-[1.02] hover:shadow-lg hover:shadow-purple-500/30 hover:bg-black/30">

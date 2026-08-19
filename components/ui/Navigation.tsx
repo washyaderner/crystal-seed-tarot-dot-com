@@ -13,6 +13,7 @@ export default function Navigation() {
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/events", label: "Events" },
+    { href: "/tarotdoxa", label: "Tarotdoxa" },
     { href: "/gallery", label: "Gallery" },
     { href: "/blog", label: "Blog" },
     { href: "/reviews", label: "Reviews" },
@@ -58,8 +59,9 @@ export default function Navigation() {
           ))}
         </ul>
 
-        {/* Mobile Navigation - Only visible on mobile */}
-        <div className="md:hidden" style={{ display: 'block' }}>
+        {/* Mobile Navigation - Only visible on mobile (no inline display:block:
+            it would override md:hidden and pin the hamburger onto desktop) */}
+        <div className="md:hidden">
           <MobileNav links={navLinks} />
         </div>
       </div>

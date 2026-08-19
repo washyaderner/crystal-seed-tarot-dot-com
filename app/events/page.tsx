@@ -25,22 +25,104 @@ export const metadata: Metadata = {
   },
 };
 
+// Re-render hourly so the upcoming/past split tracks real time, not build time
+export const revalidate = 3600;
+
 // Sample event data structure - this could be replaced with a CMS similar to blog posts
 interface Event {
   id: string;
   title: string;
   description: string;
   date: Date;
+  /** Shown instead of the formatted date when an event spans dates or has times */
+  dateLabel?: string;
   location: string;
   imageUrl: string;
   linkUrl?: string;
   buttonText?: string;
-  imageAspect?: 'square' | 'landscape';
+  imageAspect?: 'square' | 'landscape' | 'banner' | 'wide';
 }
+
+const ASPECT_RATIOS: Record<NonNullable<Event['imageAspect']>, string> = {
+  square: '1/1',
+  landscape: '16/9',
+  banner: '2/1',
+  wide: '5/2',
+};
 
 export default function Events() {
   // Sample events - to be replaced with real data
   const events: Event[] = [
+    {
+      id: "12",
+      title: "Psychic/Tarot Practice 🧿",
+      description:
+        "Want to sharpen your psychic skills and Tarot acumen? Join us this Thursday for 90 minutes of psychic and Tarot practice online through Kumara Academy! I'll be on hand for any questions or guidance needed. You'll be able to practice with other psychics and Tarot enthusiasts through private breakout rooms and build trust and confidence within yourself in a warm and welcoming setting. Register at the link below 👇",
+      date: new Date("2026-08-20T18:00:00-07:00"),
+      dateLabel: "Thursday, August 20, 2026 - 6:00 - 7:30 pm PST",
+      location: "Online Event - By Donation",
+      imageUrl: "/images/Events-Kumara-Tarot-Fall-2026.jpg",
+      linkUrl:
+        "https://www.kumaraacademy.com/event-details/psychic-practice-circle-card-readings-2026-08-20-18-00",
+      buttonText: "Register at Kumara Academy",
+      imageAspect: "banner",
+    },
+    {
+      id: "13",
+      title: "FREE Tarot Talk 🔮",
+      description:
+        "In support of my upcoming Intermediate-Advanced Tarot Mastery class being offered online through Kumara Academy in September, I will be giving a free Tarot talk to share some of the most rewarding aspects Tarot can bring into your life, and its many uses as a tool for personal and spiritual development. I'll give an overview of my four-week class and what all is included, and a live Q & A session will follow. Bring me all of your burning Tarot questions and I will do my best to answer as many as possible! You'll also get a free gift (i.e. a super sweet DISCOUNT CODE to use if you're interested in taking my intermediate-advanced Tarot Mastery class 😜). Register at the link below 👇",
+      date: new Date("2026-08-26T18:00:00-07:00"),
+      dateLabel: "Wednesday, August 26, 2026 - 6:00 - 7:00 pm PST",
+      location: "Online Event - Free",
+      imageUrl: "/images/Events-Kumara-Tarot-Fall-2026.jpg",
+      linkUrl:
+        "https://www.kumaraacademy.com/event-details/free-tarot-talk-q-a-with-tarot-card-reader-holly-cole-plus-a-gift",
+      buttonText: "Register for Free",
+      imageAspect: "banner",
+    },
+    {
+      id: "14",
+      title: "Empowered Empath Support Circle 💟",
+      description:
+        "As a spin-off of my Empowered Empath Course which I taught earlier this year, I am continuing to offer monthly Empowered Empath Support Circles through Kumara Academy. This online event is by donation, and offers you a chance to connect with fellow Empaths in a safe space and dedicate some time to ourselves and replenish our empathic hearts. It's our time to vent, lift each other up, and remind ourselves to be better Empaths to ourselves - not just to everyone else! Register at the link below 👇",
+      date: new Date("2026-09-02T18:00:00-07:00"),
+      dateLabel: "Wednesday September 2, 2026 - 6:00 - 7:00 pm PST",
+      location: "Online Event - By Donation",
+      imageUrl: "/images/Events-Empowered-Empath-Circle-2026.jpg",
+      linkUrl:
+        "https://www.kumaraacademy.com/event-details/empowered-empath-support-circle-2026-09-02-18-00",
+      buttonText: "Register at Kumara Academy",
+      imageAspect: "banner",
+    },
+    {
+      id: "15",
+      title: "Intermediate-Advanced Tarot Mastery Course 🪬",
+      description:
+        "If you're looking for the next step in your Tarot journey, here it is! I will be offering my intermediate-advanced Tarot course starting Sundays in September. The class will run for four weeks, 2:00 - 4:00 pm, and will include lots of partnered practice.\n\n**Use Discount Codes FBTarot and InstaTarot for $20 off!**\n\n**If you've taken one of my courses before, you can use Discount Code ReturnTarot for $30 off!**\n\n## In this class you'll learn:\n\n- Several different reading layouts, including the Celtic Cross and my favorite situational layout for specific questions 🤔\n- An overview of the best Tarot practices for giving accurate and healing readings every time! 🔭🧮\n- How to guide yourself and your clients through grounding sessions before readings to help set the right energetic tone 🧘🪷\n- How to spot different patterns in the readings - this is a HUGE part of identifying the most important aspects of the readings and can take your readings to the next level! 🔍📈\n- Some deeper or less common interpretations for certain cards, interesting card pairings, and how to use this century-old deck to give meaning to our modern world ⏳🌎\n- The chance to practice Tarot using REAL case studies of readings I've given in my two decades worth of reading! Utilizing my Tarot case-studies, try your hand at interpreting the same readings I've given and see if you get some of the same information I did! 🗺️🎯\n\nAlthough this is \"intermediate-advanced\" Tarot, do not be scared of the word \"advanced\"! What this really means is that you'll get all of the most detailed, insightful, and advanced information I can possibly teach you! We won't be doing anything that's over your head or outside your comfort zone, I promise! Register at the link below 👇",
+      // Sort by the FINAL session so the course stays in "upcoming" while it runs
+      date: new Date("2026-09-27T14:00:00-07:00"),
+      dateLabel: "Sundays in September - 2:00 - 4:00 pm PST",
+      location: "Online Class offered through Kumara Academy - $144",
+      imageUrl: "/images/Events-Kumara-Tarot-Fall-2026.jpg",
+      linkUrl:
+        "https://www.kumaraacademy.com/event-details/intermediate-advanced-tarot-mastery-4-week-certification-course",
+      buttonText: "Register for Course",
+      imageAspect: "banner",
+    },
+    {
+      id: "16",
+      title: "TAROTDOXA - NEW TAROT APP coming to iPhone and Android Fall 2026! 🔮⭐🔮",
+      description:
+        "**OKAY!** This is something I've been very, very excited to get to share with you! For the last four months, my husband and I have been developing our very own TAROT APP! We've trained an autonomous AI agent how to do Tarot *the way that I do Tarot,* which is still completely crazy to me. When I say that this Tarot app is like no other, I mean it really is unlike anything out there currently. While other apps may use AI to some extent to give readings, the readings typically work by using scripts and repeating the same information throughout multiple readings. Our app gives you full, authentic, original, one-of-a-kind readings every time. Every reading is personalized and unique to you and your energy. There's also an astrology side of the app, numerology, a Tarot journal that saves every single reading you've ever had, the ability to take notes on your readings, and SO MUCH MORE! In fact, next year we'll be developing the Tarotdoxa school side of the app so that you can also study Tarot through the app itself!\n\nI'm telling you, there really is nobody doing what we're doing and no Tarot apps that can give you full in-depth readings like Tarotdoxa. I can't wait for you all to get to see it out in the world! We'll be shipping it off to the app stores at the end of the month, so stay tuned to see when it's officially available!\n\nIn the meantime, please check out our website which gives more information on how our app works, and like and follow us on social media. We'll be posting a lot of content coming up over the next few months to promote the app and will be blasting the world with discount codes and behind-the-scenes looks at how we created it.\n\n**Tarotdoxa Links here:**\n\n[https://tarotdoxa.com/](https://tarotdoxa.com/) | [Facebook](https://www.facebook.com/share/1EcyUHnqEE/?mibextid=wwXIfr) | [Instagram](https://www.instagram.com/tarotdoxa/?hl=en)",
+      date: new Date("2026-09-30T12:00:00-07:00"),
+      dateLabel: "Coming Fall 2026",
+      location: "iPhone and Android",
+      imageUrl: "https://tarotdoxa.com/wordmark-wide.jpg",
+      linkUrl: "/tarotdoxa",
+      buttonText: "Visit the Tarotdoxa Page",
+      imageAspect: "wide",
+    },
     {
       id: "11",
       title: "The Magic of Tarot: Beginner's Class at Sinister Coffee",
@@ -200,7 +282,7 @@ export default function Events() {
                 >
                   {/* Event image */}
                   <div className="mb-6">
-                    <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: event.imageAspect === 'square' ? '1/1' : '16/9' }}>
+                    <div className="relative w-full overflow-hidden rounded-lg" style={{ aspectRatio: ASPECT_RATIOS[event.imageAspect ?? 'landscape'] }}>
                       <Image
                         src={event.imageUrl}
                         alt={event.title}
@@ -218,13 +300,14 @@ export default function Events() {
                     </h2>
                     <div className="flex flex-col md:flex-row gap-2 md:gap-4 mb-6">
                       <span className="text-white text-sm md:text-base font-bold">
-                        <strong>Date:</strong> {format(event.date, "MMMM d, yyyy")}
+                        <strong>Date:</strong>{" "}
+                        {event.dateLabel ?? format(event.date, "MMMM d, yyyy")}
                       </span>
                       <span className="text-white text-sm md:text-base font-bold">
                         <strong>Location:</strong> {event.location}
                       </span>
                     </div>
-                    <div className="text-white text-sm md:text-base mb-6 prose prose-lg max-w-none text-white prose-headings:text-white prose-a:text-blue-300 hover:prose-a:text-blue-200 prose-strong:text-white">
+                    <div className="text-white text-sm md:text-base mb-6 prose prose-lg max-w-none text-white prose-headings:text-white prose-a:text-blue-300 hover:prose-a:text-blue-200 prose-strong:text-white [overflow-wrap:anywhere]">
                       <ReactMarkdown 
                         remarkPlugins={[remarkGfm]} 
                         rehypePlugins={[rehypeRaw]}
