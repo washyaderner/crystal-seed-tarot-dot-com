@@ -88,3 +88,38 @@ chore: WIP sync snapshot 2026-07-23
 
 chore: WIP sync snapshot 2026-07-26
 
+
+## 2026-07-31 15:16 | fb40208
+
+chore: WIP sync snapshot 2026-07-31
+
+
+## 2026-08-06 17:46 | 6062b41
+
+fix(seo): og:image on every page, llms.txt, and the entity-name conflict
+
+
+## 2026-08-14 11:32 | a800e36
+
+fix(email): replace FormSubmit with first-party Gmail SMTP for signup + contact lanes
+
+
+## 2026-08-14 11:46 | 455db74
+
+chore: ignore all .env variants (added by vercel link)
+
+
+## 2026-08-14 11:59 | faaf4e1
+
+feat(email): Holly notifications note the list-add and link the Google Sheet
+
+
+## 2026-08-18 18:49 | d3e6a78
+
+feat(events+tarotdoxa): Holly's Aug-Sep 2026 events, Tarotdoxa page + banner + navbar, Card of the Day
+
+
+## 2026-08-19 15:38 | 86342a3
+
+feat(site): Tarotdoxa T logo as the site favicon
+

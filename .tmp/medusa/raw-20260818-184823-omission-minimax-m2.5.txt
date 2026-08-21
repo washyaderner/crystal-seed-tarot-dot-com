@@ -1,0 +1,32 @@
+I'll analyze this diff against the builder's claims to identify issues under the OMISSION lens - what's implied but missing.
+
+**Immediate observations from the diff:**
+
+1. **Claim #3: CardOfTheDay feature is NOT in this diff** - The home page banner text says "Learn more + pull the Card of the Day" but there's no CardOfTheDay component, hook, or logic anywhere in this diff. This feature is being promised to users but doesn't exist.
+
+2. **Claim mentions new `/tarotdoxa` page** - The navigation links to `/tarotdoxa`, the home banner links to `/tarotdoxa`, and one event links to `/tarotdoxa`, but `app/tarotdoxa/page.tsx` is NOT in this diff. The page doesn't exist.
+
+Let me verify the image availability claim and check for other surface areas:
+- The remotePatterns for tarotdoxa.com are added to next.config.mjs - this is correct
+- The wordmark-wide.jpg is used in event id "16" - I should check if this URL is valid
+
+**Critical gaps identified:**
+- No detection signal for broken images from tarotdoxa.com in production
+- No fallback mechanism if the Tarotdoxa app page doesn't exist
+- The sorting uses build-time `now` - this is known (claim #5) but there's no redeploy trigger mechanism mentioned
+
+Let me also verify the event descriptions against the claimed adaptations:
+- Claim says arrows flipped from "above" to "below" - I see "Register at the link below 👇" in multiple events, which matches
+- Claim says "It's.our" -> "It's our" - I don't see this phrase in the current diff, might be from original source
+- Claim says "study Tarot though" -> "study Tarot through" - I don't see this phrase either
+
+The key BLOCKERS are:
+1. CardOfTheDay announced but not implemented
+2. /tarotdoxa page linked everywhere but doesn't exist
+
+FINDINGS:
+- [BLOCKER] app/tarotdoxa/page.tsx (missing) | Home banner, navigation, and event #16 all link to /tarotdoxa but the page component doesn't exist - will 404 on any user click
+- [BLOCKER] CardOfTheDay (missing) | Home banner promises "pull the Card of the Day" but no card-picking logic, component, or /cards/{id}.jpg image verification exists in this diff - feature is announced but unimplemented
+- [RISK] app/events/page.tsx:sorting | Events use build-time `now` for static sorting - past/upcoming boundary only refreshes on redeploy. If deployed now (Aug 2026), Sept events show as past after Sep 30 without rebuild
+- [RISK] next.config.mjs:remotePatterns | Production Vercel image optimization for tarotdoxa.com hostname unverified (builder admission). Only tested locally.
+- [NIT] app/events/page.tsx:ASPECT_RATIOS | 'banner' and 'wide' keys added to ASPECT_RATIOS but TypeScript may fail strict null checks if imageAspect is undefined and not caught by ?? fallback - verify build passes

@@ -1,0 +1,5 @@
+FINDINGS:
+- [BLOCKER] `app/tarotdoxa/page.tsx` / Tarotdoxa route | No `/tarotdoxa` page or CardOfTheDay implementation appears in the supplied changed tree, so the homepage banner, navbar link, event CTA, and promised Card of the Day experience resolve to a missing route.
+- [BLOCKER] `app/events/page.tsx` / event sorting | After September 6, 2026 at 2:00 PM PT, the four-week course is classified as past because its sort date is only the first session, even though three course sessions remain, causing the “upcoming events” list to misorder an active event.
+- [RISK] `app/events/page.tsx` / new event `dateLabel` values | August and September Pacific times are labeled “PST” while the stored `-07:00` offset is PDT, so visitors interpreting PST literally can arrive or register at the wrong time.
+- [RISK] `next.config.mjs` / `images.remotePatterns` | Production Vercel optimization for `tarotdoxa.com` is unverified, so every remote Tarotdoxa image can fail at runtime despite local optimizer tests passing.

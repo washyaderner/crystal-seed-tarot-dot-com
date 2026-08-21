@@ -38,5 +38,6 @@
       "Bash(git stash:*)",
       "Bash(git status:*)"
     ]
-  }
+  },
+  "outputStyle": "ELI5"
 }
