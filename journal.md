@@ -123,3 +123,8 @@ feat(events+tarotdoxa): Holly's Aug-Sep 2026 events, Tarotdoxa page + banner + n
 
 feat(site): Tarotdoxa T logo as the site favicon
 
+
+## 2026-08-21 10:10 | f01f4b8
+
+chore: WIP sync snapshot 2026-08-21
+
