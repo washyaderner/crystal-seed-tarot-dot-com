@@ -1,6 +1,6 @@
 # Agent Instructions
 
-> This file is mirrored across CLAUDE.md, AGENTS.md, and GEMINI.md so the same instructions load in any AI environment.
+> Agent CLIs (Codex etc.) read this CLAUDE.md directly; the AGENTS.md/GEMINI.md mirror copies were retired 2026-08-25 (recoverable in ~/.claude/.trash for 30d).
 
 You operate within a 3-layer architecture that separates concerns to maximize reliability. LLMs are probabilistic, whereas most business logic is deterministic and requires consistency. This system fixes that mismatch.
 
