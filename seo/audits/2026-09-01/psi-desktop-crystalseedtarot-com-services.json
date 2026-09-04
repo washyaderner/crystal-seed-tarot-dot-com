@@ -1,0 +1,20 @@
+{
+ "url": "https://crystalseedtarot.com/services",
+ "strategy": "desktop",
+ "date": "2026-09-01T13:51:12.058Z",
+ "scores": {
+  "performance": 100,
+  "seo": 100,
+  "accessibility": 96,
+  "bestPractices": 100
+ },
+ "lab": {
+  "LCP": "0.5 s",
+  "FCP": "0.2 s",
+  "CLS": "0.003",
+  "TBT": "20 ms",
+  "SI": "0.6 s"
+ },
+ "field": null,
+ "opportunities": []
+}

@@ -1,0 +1,25 @@
+{
+ "url": "https://crystalseedtarot.com/contact",
+ "strategy": "mobile",
+ "date": "2026-09-01T13:51:22.173Z",
+ "scores": {
+  "performance": 92,
+  "seo": 100,
+  "accessibility": 96,
+  "bestPractices": 100
+ },
+ "lab": {
+  "LCP": "2.9 s",
+  "FCP": "0.9 s",
+  "CLS": "0.122",
+  "TBT": "0 ms",
+  "SI": "1.0 s"
+ },
+ "field": null,
+ "opportunities": [
+  {
+   "title": "Reduce unused CSS",
+   "savingsMs": 150
+  }
+ ]
+}
