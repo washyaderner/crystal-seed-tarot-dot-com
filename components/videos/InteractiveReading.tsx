@@ -4,7 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import {
   Check,
-  Coins,
+  DollarSign,
   ExternalLink,
   Heart,
   Play,
@@ -17,6 +17,8 @@ import { CardBack } from "./CardBack";
 import { YouTubePlayer, type PlayerState } from "./YouTubePlayer";
 import {
   CARD_BACK_RATIO,
+  CARD_FACE_RADIUS,
+  CARD_FACE_RATIO,
   REVEAL_CARDS,
   ROUNDS,
   TOPICS,
@@ -39,9 +41,21 @@ const CHOICES: Choice[] = [1, 2, 3];
 const HEADER_OFFSET = 88;
 
 const TOPIC_ICON: Record<Topic, React.ComponentType<{ className?: string }>> = {
-  money: Coins,
+  money: DollarSign,
   love: Heart,
 };
+
+/** A small YouTube-red play badge for video thumbnails */
+function YouTubePlayBadge({ className }: { className?: string }) {
+  return (
+    <span
+      className={cn("flex items-center justify-center rounded-[4px] bg-[#FF0000] text-white shadow shadow-black/40", className)}
+      aria-hidden="true"
+    >
+      <Play className="h-2 w-2 fill-current" />
+    </span>
+  );
+}
 
 /** #money/2025-10 or #money/2025-10/2 */
 function parseHash(hash: string): { topic: Topic; round: string; choice: Choice | null } | null {
@@ -180,12 +194,12 @@ export function InteractiveReading() {
           <li key={step.label} className="flex items-center gap-2">
             <span
               className={cn(
-                "flex h-6 w-6 items-center justify-center rounded-full border text-[11px] transition-colors md:h-7 md:w-7 md:text-xs",
+                "h-6 w-6 text-[11px] transition-colors md:h-7 md:w-7 md:text-xs",
                 step.done
-                  ? "border-purple-300 bg-purple-500 text-white"
+                  ? "brand-chip"
                   : step.active
-                    ? "border-purple-200 bg-purple-500/30 text-white ring-2 ring-purple-300/60"
-                    : "border-white/30 text-white/60",
+                    ? "brand-chip ring-2 ring-[#f8e4c8]/40"
+                    : "flex items-center justify-center rounded-full border border-white/30 text-white/60",
               )}
               aria-hidden="true"
             >
@@ -211,8 +225,8 @@ export function InteractiveReading() {
             className={cn(
               "rounded-full border px-4 py-1.5 text-sm transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300",
               r.key === roundKey
-                ? "border-purple-300 bg-purple-500/60 text-white shadow-md shadow-purple-500/30"
-                : "border-white/30 bg-white/5 text-white/80 hover:border-purple-300/60 hover:bg-white/10",
+                ? "border-white bg-white/15 text-white shadow-md shadow-black/30"
+                : "border-white/30 bg-white/5 text-white/80 hover:border-white/60 hover:bg-white/10",
             )}
           >
             {r.label}
@@ -240,10 +254,10 @@ export function InteractiveReading() {
                   <CardBack small className="absolute left-10 top-3 w-12 transition-transform duration-500 group-hover:-translate-y-1" />
                   <CardBack small className="absolute left-[4.5rem] top-6 w-12 rotate-12 transition-transform duration-500 group-hover:rotate-[18deg]" />
                 </div>
-                <Icon className="mb-4 h-8 w-8 text-purple-200 transition-transform duration-300 group-hover:scale-110" />
+                <Icon className="mb-4 h-8 w-8 text-[#f8e4c8] transition-transform duration-300 group-hover:scale-110" />
                 <h3 className="font-serif text-2xl md:text-3xl">{TOPICS[t].label}</h3>
                 <p className="mt-2 max-w-xs text-sm text-white/80 md:text-base">{TOPICS[t].tagline}</p>
-                <span className="mt-5 inline-flex items-center gap-2 rounded-full border border-purple-200/50 bg-purple-500/30 px-4 py-1.5 text-sm font-medium transition-colors group-hover:bg-purple-500/50">
+                <span className="mt-5 inline-flex items-center gap-2 rounded-md border border-white px-4 py-1.5 text-sm font-medium transition-colors group-hover:bg-white/10">
                   <Play className="h-3.5 w-3.5" /> Start · {count} readings · {round.short}
                 </span>
               </button>
@@ -271,7 +285,7 @@ export function InteractiveReading() {
             </div>
 
             {/* Player */}
-            <div className="player-glow relative rounded-xl border border-purple-300/40 shadow-lg shadow-purple-500/30">
+            <div className="player-glow relative rounded-xl border border-white/20 shadow-lg shadow-black/40">
               <YouTubePlayer
                 videoId={current.id}
                 title={current.title}
@@ -333,11 +347,17 @@ export function InteractiveReading() {
                       {/* Back: the Tarotdoxa card back */}
                       <CardBack
                         number={c}
-                        className="absolute inset-0 [backface-visibility:hidden] group-hover:shadow-purple-500/60"
+                        className="absolute inset-0 [backface-visibility:hidden] group-hover:shadow-black/70"
                       />
-                      {/* Face: a card from the Tarotdoxa deck, with a Now playing mark along the bottom */}
+                      {/* Face: a card from the Tarotdoxa deck at its own 350x600 shape (a hair shorter
+                          than the back, so it sits centered), with a Now playing mark along the bottom */}
                       <div
-                        className="absolute inset-0 overflow-hidden rounded-xl bg-black shadow-lg shadow-purple-500/40 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+                        className="absolute inset-x-0 top-1/2 overflow-hidden bg-white shadow-lg shadow-black/50 [backface-visibility:hidden]"
+                        style={{
+                          aspectRatio: CARD_FACE_RATIO,
+                          borderRadius: CARD_FACE_RADIUS,
+                          transform: "translateY(-50%) rotateY(180deg)",
+                        }}
                         aria-hidden="true"
                       >
                         <Image
@@ -347,11 +367,13 @@ export function InteractiveReading() {
                           sizes="(max-width: 640px) 33vw, 220px"
                           className="object-cover"
                         />
-                        <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-1 bg-gradient-to-t from-purple-950/95 via-purple-950/75 to-transparent px-1 pb-2 pt-8 text-white md:pb-3">
-                          <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-purple-600 px-1.5 py-0.5 text-[8px] uppercase tracking-wider shadow-md shadow-black/50 md:px-2.5 md:py-1 md:text-[10px] md:tracking-widest">
+                        <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-1 bg-gradient-to-t from-black/90 via-black/60 to-transparent px-1 pb-2 pt-8 md:pb-3">
+                          <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full border border-[#f8e4c8]/75 bg-[#14060c]/90 px-1.5 py-0.5 text-[8px] uppercase tracking-wider text-[#fdf7e4] shadow-md shadow-black/50 md:px-2.5 md:py-1 md:text-[10px] md:tracking-widest">
                             <Check className="h-2.5 w-2.5 md:h-3 md:w-3" /> Now playing
                           </span>
-                          <span className="font-serif text-sm leading-none md:text-base">{c}</span>
+                          <span className="font-serif text-sm leading-none text-[#fdf7e4] [text-shadow:0_0_6px_rgba(255,150,100,0.65)] md:text-base">
+                            {c}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -365,7 +387,7 @@ export function InteractiveReading() {
 
             {/* After the reading: the other angles */}
             {stage === "reading" && readingDone && otherTopic && (
-              <div className="mx-auto mt-6 max-w-2xl rounded-xl border border-purple-300/40 bg-purple-500/15 p-4 text-center text-white backdrop-blur-md md:p-5">
+              <div className="mx-auto mt-6 max-w-2xl rounded-xl border border-white/20 bg-white/10 p-4 text-center text-white backdrop-blur-md md:p-5">
                 <p className="font-serif text-lg md:text-xl">Want another angle?</p>
                 <p className="mt-1 text-sm text-white/80">
                   Tap another card above, or see what the cards say about {TOPICS[otherTopic].label.toLowerCase()}.
@@ -377,7 +399,7 @@ export function InteractiveReading() {
                   </Button>
                   <Button asChild variant="outline" size="sm">
                     <a href={SUBSCRIBE_URL} target="_blank" rel="noopener noreferrer" className="text-white">
-                      <Youtube className="mr-2 h-4 w-4" /> Subscribe for next month
+                      <Youtube className="mr-2 h-4 w-4 text-[#FF0000]" /> Subscribe for next month
                     </a>
                   </Button>
                 </div>
@@ -417,7 +439,7 @@ export function InteractiveReading() {
               <div className="mb-3 flex items-center justify-between">
                 <h4 className="font-serif text-lg text-white">{r.label}</h4>
                 {r.key === roundKey && topic && (
-                  <span className="text-xs uppercase tracking-wider text-purple-200">selected month</span>
+                  <span className="text-xs uppercase tracking-wider text-white/60">selected month</span>
                 )}
               </div>
               <div className="grid gap-4 md:grid-cols-2">
@@ -428,7 +450,7 @@ export function InteractiveReading() {
                   return (
                     <div key={t}>
                       <div className="mb-2 flex items-center gap-2 text-sm text-white">
-                        <Icon className="h-4 w-4 text-purple-200" /> {TOPICS[t].label}
+                        <Icon className="h-4 w-4 text-[#f8e4c8]" /> {TOPICS[t].label}
                       </div>
                       <div className="grid grid-cols-4 gap-2">
                         {rIntro && (
@@ -440,15 +462,15 @@ export function InteractiveReading() {
                             }}
                             aria-current={topic === t && roundKey === r.key && choice === null ? "true" : undefined}
                             className={cn(
-                              "group rounded-lg border p-1.5 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-purple-300/60 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300",
+                              "group rounded-lg border p-1.5 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300",
                               topic === t && roundKey === r.key && choice === null
-                                ? "border-purple-300 bg-purple-500/20"
+                                ? "border-white/70 bg-white/15"
                                 : "border-white/15",
                             )}
                           >
                             <div className="relative aspect-video overflow-hidden rounded-md bg-black">
                               <Image src={thumbUrl(rIntro.id, "hq")} alt="" fill sizes="120px" className="object-cover" />
-                              <Play className="absolute bottom-1 right-1 h-3.5 w-3.5 text-white drop-shadow" />
+                              <YouTubePlayBadge className="absolute bottom-1 right-1 h-3.5 w-5" />
                             </div>
                             <span className="mt-1 block truncate text-[11px] text-white/80 group-hover:text-white">
                               Intro · {formatDuration(rIntro.duration)}
@@ -469,13 +491,13 @@ export function InteractiveReading() {
                               }}
                               aria-current={active ? "true" : undefined}
                               className={cn(
-                                "group rounded-lg border p-1.5 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-purple-300/60 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300",
-                                active ? "border-purple-300 bg-purple-500/20" : "border-white/15",
+                                "group rounded-lg border p-1.5 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-300",
+                                active ? "border-white/70 bg-white/15" : "border-white/15",
                               )}
                             >
                               <div className="relative aspect-video overflow-hidden rounded-md bg-black">
                                 <Image src={thumbUrl(v.id, "hq")} alt="" fill sizes="120px" className="object-cover" />
-                                <Play className="absolute bottom-1 right-1 h-3.5 w-3.5 text-white drop-shadow" />
+                                <YouTubePlayBadge className="absolute bottom-1 right-1 h-3.5 w-5" />
                               </div>
                               <span className="mt-1 block truncate text-[11px] text-white/80 group-hover:text-white">
                                 Reading {v.choice} · {formatDuration(v.duration)}

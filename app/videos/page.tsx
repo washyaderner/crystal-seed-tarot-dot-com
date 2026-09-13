@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { Coins, Heart, MousePointerClick, PlayCircle, Youtube } from "lucide-react";
+import { DollarSign, Heart, MousePointerClick, PlayCircle, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CardBack } from "@/components/videos/CardBack";
 import { InteractiveReading } from "@/components/videos/InteractiveReading";
@@ -62,7 +62,7 @@ const videoListSchema = {
 
 const steps = [
   {
-    icon: Coins,
+    icon: DollarSign,
     title: "Pick your path",
     body: "Money & Career or Love & Relationships. Holly posts a fresh set of both every month.",
   },
@@ -102,12 +102,12 @@ export default function Videos() {
                 intro, and let one of three readings call to you. New sets every month, free.
               </p>
               <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
-                <Button asChild size="lg" className="bg-purple-600 text-white hover:bg-purple-500">
-                  <a href="#start">Start a reading</a>
+                <Button asChild variant="outline" size="lg">
+                  <a href="#start" className="text-white">Start a reading</a>
                 </Button>
                 <Button asChild variant="outline" size="lg">
                   <a href={SUBSCRIBE_URL} target="_blank" rel="noopener noreferrer" className="text-white">
-                    <Youtube className="mr-2 h-5 w-5" /> Subscribe on YouTube
+                    <Youtube className="mr-2 h-5 w-5 text-[#FF0000]" /> Subscribe on YouTube
                   </a>
                 </Button>
               </div>
@@ -165,10 +165,8 @@ export default function Videos() {
                   className="rounded-xl border border-white/20 bg-white/10 p-5 text-white backdrop-blur-md md:frosted-card md:p-6"
                 >
                   <div className="mb-3 flex items-center gap-3">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500 font-serif text-sm">
-                      {i + 1}
-                    </span>
-                    <Icon className="h-5 w-5 text-purple-200" />
+                    <span className="brand-chip h-8 w-8 text-sm">{i + 1}</span>
+                    <Icon className="h-5 w-5 text-[#f8e4c8]" />
                   </div>
                   <h3 className="font-serif text-xl">{step.title}</h3>
                   <p className="mt-2 text-sm text-white/85">{step.body}</p>
@@ -176,7 +174,7 @@ export default function Videos() {
               );
             })}
           </ol>
-          <div className="mt-6 rounded-xl border border-purple-300/40 bg-purple-500/15 p-5 text-white backdrop-blur-md md:mt-8 md:p-6">
+          <div className="mt-6 rounded-xl border border-white/20 bg-white/10 p-5 text-white backdrop-blur-md md:mt-8 md:p-6">
             <h3 className="font-serif text-lg md:text-xl">A note on the first rounds</h3>
             <p className="mt-2 text-sm text-white/85 md:text-base">
               The September and October 2025 intros keep it short: Holly names readings 1, 2,
@@ -208,7 +206,7 @@ export default function Videos() {
       {/* Closing */}
       <section className="py-12 md:py-16 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-3xl text-center">
-          <Heart className="mx-auto mb-4 h-8 w-8 text-purple-200" />
+          <Heart className="mx-auto mb-4 h-8 w-8 text-[#f8e4c8]" />
           <h2 className="font-serif text-2xl text-white md:text-3xl">
             Want a reading that is only about you?
           </h2>

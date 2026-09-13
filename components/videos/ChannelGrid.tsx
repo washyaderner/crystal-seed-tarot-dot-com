@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { ExternalLink, Play } from "lucide-react";
+import { ExternalLink, Play, Youtube } from "lucide-react";
 import {
   embedUrl,
   formatDuration,
@@ -87,9 +87,10 @@ function VideoCard({
               onError={() => setThumb(thumbUrl(video.id, "hq"))}
             />
             <span className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            {/* YouTube-red play button, the shape people already know from YouTube */}
             <span className="absolute inset-0 flex items-center justify-center">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-purple-600/80 text-white shadow-lg shadow-purple-900/50 backdrop-blur transition-all duration-300 group-hover:scale-110 group-hover:bg-purple-500">
-                <Play className="ml-0.5 h-6 w-6" />
+              <span className="flex h-12 w-[4.25rem] items-center justify-center rounded-[14px] bg-[#FF0000] text-white shadow-lg shadow-black/40 transition-transform duration-300 group-hover:scale-110">
+                <Play className="ml-0.5 h-6 w-6 fill-current" />
               </span>
             </span>
             <span className="absolute bottom-2 right-2 rounded-md bg-black/70 px-2 py-0.5 text-xs text-white">
@@ -105,9 +106,9 @@ function VideoCard({
           href={watchUrl(video.id)}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-flex items-center gap-1 self-start text-xs text-purple-200 transition-colors hover:text-white"
+          className="mt-3 inline-flex items-center gap-1.5 self-start text-xs text-white/80 transition-colors hover:text-white"
         >
-          Watch on YouTube <ExternalLink className="h-3 w-3" />
+          <Youtube className="h-3.5 w-3.5 text-[#FF0000]" /> Watch on YouTube <ExternalLink className="h-3 w-3" />
         </a>
       </div>
     </div>

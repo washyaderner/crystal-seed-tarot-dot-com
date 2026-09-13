@@ -40,6 +40,15 @@ export interface ChannelVideo {
 /** The Tarotdoxa card back, the same file the app and the /tarotdoxa page use (369x640) */
 export const CARD_BACK_URL = "https://tarotdoxa.com/cardback.jpg";
 export const CARD_BACK_RATIO = "369 / 640";
+/**
+ * The card back art has its own rounded corners (about 30.5px on the 369x640 file) with white
+ * outside them. Clip with the same curve as a share of width / height so it holds at any size;
+ * a hair larger than measured so no white shows at the corners.
+ */
+export const CARD_BACK_RADIUS = "8.7% / 5%";
+/** Deck faces are 350x600 rectangles with a white margin; a small real-card corner stays inside it. */
+export const CARD_FACE_RATIO = "350 / 600";
+export const CARD_FACE_RADIUS = "4% / 2.33%";
 export const cardFaceUrl = (id: string) => `https://tarotdoxa.com/cards/${id}.jpg`;
 
 /**

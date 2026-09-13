@@ -153,6 +153,23 @@ textarea.border-red-500:focus {
 
 
 /* /videos: the interactive reading experience */
+
+/* Number badge in the Crystal Seed logo's palette: warm ivory numeral with a soft crystal glow on
+   a maroon-black core, ringed in champagne. Used for reading numbers and step numbers. */
+.brand-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(248, 228, 200, 0.75);
+  background: radial-gradient(circle at 50% 30%, rgba(78, 22, 36, 0.96), rgba(20, 6, 12, 0.96) 72%);
+  color: #fdf7e4;
+  font-family: var(--font-playfair-display), serif;
+  line-height: 1;
+  text-shadow: 0 0 6px rgba(255, 150, 100, 0.65);
+  box-shadow: 0 0 10px rgba(255, 120, 90, 0.35), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
 .yt-mount iframe {
   position: absolute;
   inset: 0;
@@ -185,8 +202,8 @@ textarea.border-red-500:focus {
 .card-calling-3 { animation-delay: 0.6s; }
 
 @keyframes card-call {
-  0%, 100% { transform: translateY(0) rotateY(0deg); filter: drop-shadow(0 0 0 rgba(168, 85, 247, 0)); }
-  50% { transform: translateY(-10px) rotateY(0deg); filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.7)); }
+  0%, 100% { transform: translateY(0) rotateY(0deg); filter: drop-shadow(0 0 0 rgba(255, 140, 100, 0)); }
+  50% { transform: translateY(-10px) rotateY(0deg); filter: drop-shadow(0 0 16px rgba(255, 140, 100, 0.6)); }
 }
 
 /* The hero's floating fan of cards */

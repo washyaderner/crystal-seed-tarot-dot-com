@@ -29,15 +29,16 @@ export default function Navigation() {
           href="/"
           className="text-2xl font-serif text-white transition-all duration-300 hover:scale-105 flex items-center gap-2 sm:gap-3"
         >
-          {/* Brand mark: the Crystal Seed favicon art. Decorative (alt="") because the
-              name follows in the same link. */}
+          {/* Brand mark: the Crystal Seed crystal cut out of its background
+              (tools/favicon/cutout.py). Decorative (alt="") because the name follows
+              in the same link. */}
           <Image
-            src="/images/brand/crystal-seed-mark.png"
+            src="/images/brand/crystal-seed-mark-cutout.png"
             alt=""
-            width={40}
-            height={40}
-            className="shrink-0 rounded-lg"
-            sizes="40px"
+            width={30}
+            height={45}
+            className="shrink-0"
+            sizes="30px"
             priority
           />
           Crystal Seed Tarot

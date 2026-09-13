@@ -95,7 +95,19 @@ export default async function Home() {
             className="group block rounded-lg border border-purple-300/40 bg-gradient-to-r from-purple-900/60 via-fuchsia-900/50 to-purple-900/60 backdrop-blur-md px-4 py-3 md:px-6 md:py-4 text-center transform transition-all duration-300 hover:scale-[1.02] hover:border-purple-300/60 hover:shadow-lg hover:shadow-purple-500/40"
           >
             <p className="text-white text-sm md:text-base [text-wrap:balance]">
-              <span className="font-semibold">🔮 NEW: Tarotdoxa</span> - our
+              <span className="font-semibold">
+                {/* The Tarotdoxa app icon (the T), served from tarotdoxa.com like the other app art */}
+                <Image
+                  src="https://tarotdoxa.com/icon-t-clean.jpg"
+                  alt=""
+                  width={28}
+                  height={28}
+                  sizes="28px"
+                  className="mr-1.5 inline-block h-6 w-6 rounded-md align-middle md:h-7 md:w-7 -mt-1"
+                />
+                NEW: Tarotdoxa
+              </span>{" "}
+              - our
               very own Tarot app - coming to iPhone and Android{" "}
               <span className="whitespace-nowrap">Fall 2026</span>
             </p>
