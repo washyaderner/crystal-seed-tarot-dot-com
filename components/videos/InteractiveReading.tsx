@@ -16,9 +16,12 @@ import { Button } from "@/components/ui/button";
 import { CardBack } from "./CardBack";
 import { YouTubePlayer, type PlayerState } from "./YouTubePlayer";
 import {
+  CARD_BACK_RATIO,
+  REVEAL_CARDS,
   ROUNDS,
   TOPICS,
   SUBSCRIBE_URL,
+  cardFaceUrl,
   formatDuration,
   getIntro,
   getReading,
@@ -233,9 +236,9 @@ export function InteractiveReading() {
               >
                 {/* Three little face-down cards, fanned */}
                 <div className="pointer-events-none absolute -right-2 -top-3 h-28 w-32 opacity-80 transition-transform duration-500 group-hover:-translate-y-1 md:h-32 md:w-36" aria-hidden="true">
-                  <CardBack small className="absolute left-2 top-6 h-20 w-14 -rotate-12 transition-transform duration-500 group-hover:-rotate-[18deg]" />
-                  <CardBack small className="absolute left-10 top-3 h-20 w-14 transition-transform duration-500 group-hover:-translate-y-1" />
-                  <CardBack small className="absolute left-[4.5rem] top-6 h-20 w-14 rotate-12 transition-transform duration-500 group-hover:rotate-[18deg]" />
+                  <CardBack small className="absolute left-2 top-6 w-12 -rotate-12 transition-transform duration-500 group-hover:-rotate-[18deg]" />
+                  <CardBack small className="absolute left-10 top-3 w-12 transition-transform duration-500 group-hover:-translate-y-1" />
+                  <CardBack small className="absolute left-[4.5rem] top-6 w-12 rotate-12 transition-transform duration-500 group-hover:rotate-[18deg]" />
                 </div>
                 <Icon className="mb-4 h-8 w-8 text-purple-200 transition-transform duration-300 group-hover:scale-110" />
                 <h3 className="font-serif text-2xl md:text-3xl">{TOPICS[t].label}</h3>
@@ -304,6 +307,7 @@ export function InteractiveReading() {
                 const c = reading.choice as Choice;
                 const selected = choice === c;
                 const calling = stage === "intro" && introDone;
+                const reveal = REVEAL_CARDS[topic][c];
                 return (
                   <button
                     key={reading.id}
@@ -324,32 +328,30 @@ export function InteractiveReading() {
                         selected && "[transform:rotateY(180deg)]",
                         calling && `card-calling card-calling-${c}`,
                       )}
-                      style={{ aspectRatio: "5 / 7" }}
+                      style={{ aspectRatio: CARD_BACK_RATIO }}
                     >
-                      {/* Back */}
+                      {/* Back: the Tarotdoxa card back */}
                       <CardBack
                         number={c}
                         className="absolute inset-0 [backface-visibility:hidden] group-hover:shadow-purple-500/60"
                       />
-                      {/* Face: the video's own thumbnail behind a Now playing mark */}
+                      {/* Face: a card from the Tarotdoxa deck, with a Now playing mark along the bottom */}
                       <div
-                        className="absolute inset-0 overflow-hidden rounded-xl border border-purple-200/60 bg-black shadow-lg shadow-purple-500/40 [backface-visibility:hidden] [transform:rotateY(180deg)]"
+                        className="absolute inset-0 overflow-hidden rounded-xl bg-black shadow-lg shadow-purple-500/40 [backface-visibility:hidden] [transform:rotateY(180deg)]"
                         aria-hidden="true"
                       >
                         <Image
-                          src={thumbUrl(reading.id, "hq")}
+                          src={cardFaceUrl(reveal.id)}
                           alt=""
                           fill
                           sizes="(max-width: 640px) 33vw, 220px"
-                          className="object-cover opacity-40"
+                          className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-purple-950/95 via-purple-900/70 to-purple-950/50" />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 text-white">
-                          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-purple-500 shadow-md shadow-purple-900/60">
-                            <Check className="h-5 w-5" />
+                        <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-1 bg-gradient-to-t from-purple-950/95 via-purple-950/75 to-transparent px-1 pb-2 pt-8 text-white md:pb-3">
+                          <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-purple-600 px-1.5 py-0.5 text-[8px] uppercase tracking-wider shadow-md shadow-black/50 md:px-2.5 md:py-1 md:text-[10px] md:tracking-widest">
+                            <Check className="h-2.5 w-2.5 md:h-3 md:w-3" /> Now playing
                           </span>
-                          <span className="font-serif text-3xl leading-none md:text-4xl">{c}</span>
-                          <span className="text-[10px] uppercase tracking-widest text-purple-100">Now playing</span>
+                          <span className="font-serif text-sm leading-none md:text-base">{c}</span>
                         </div>
                       </div>
                     </div>

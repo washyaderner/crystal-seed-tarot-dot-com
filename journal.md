@@ -169,3 +169,18 @@ Key changes:
 - layout.tsx sameAs gained the channel URL; llms.txt lists the page.
 Verified: npm run build green; Playwright smoke (scratchpad smoke.mjs, 36 checks) on the local prod build at 1440/1280/1024/768/390: CSP headers, JSON-LD count, topic pick, real ENDED event from the player API after the 42 s intro, card pick + hash, topic/round switches, start over, archive jump, grid embed, deep-link restore, no horizontal overflow, mobile menu has Videos; 0 console errors.
 Lesson: rebuilding while `next start` is still running leaves the old process serving old HTML against new chunk names (unstyled page). Kill by port (lsof -t -iTCP:PORT) before rebuilding; pkill -f "next start" did not catch it.
+
+## 2026-09-13 09:43 | 38fbaed
+
+feat(videos): interactive choose-your-own-adventure readings page from Holly's YouTube channel
+
+
+## 2026-09-13 09:46 | bafed63
+
+test(videos): keep the /videos Playwright smoke test in the repo
+
+
+## 2026-09-13 | SHIP | /videos cards are now the real Tarotdoxa art
+
+Russ, after seeing the page ("Holly was so excited"): make every card on the page the actual Tarotdoxa card art, like the back of the cards in the app. Every face-down card (hero fan, the mini fans on the two path cards, the three pick cards) is now https://tarotdoxa.com/cardback.jpg, the same file the app and /tarotdoxa use, shown untouched at its own 369x640 ratio with a small purple number chip. A picked reading flips to a real deck card from https://tarotdoxa.com/cards/{id}.jpg: Money 1/2/3 = Ace, Nine, Ten of Pentacles; Love 1/2/3 = The Lovers, Two of Cups, Ten of Cups (fixed and decorative, not the cards Holly pulls). The drawn gradient cards and the shimmer CSS are gone.
+Verified: build green; the 34-check smoke on the local prod build; screenshots at 1440 and 390 read back (hero fan, path cards, pick cards, flipped face with a one-line Now playing pill).

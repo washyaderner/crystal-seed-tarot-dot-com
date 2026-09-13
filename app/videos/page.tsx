@@ -117,16 +117,19 @@ export default function Videos() {
             <div className="relative mx-auto h-48 w-64 md:h-60 md:w-full" aria-hidden="true">
               <CardBack
                 number={1}
-                className="float-card absolute left-0 top-8 h-40 w-28 md:h-48 md:w-[8.5rem]"
+                priority
+                className="float-card absolute left-0 top-6 w-24 md:w-28"
                 style={{ "--tilt": "-14deg" } as CSSProperties}
               />
               <CardBack
                 number={2}
-                className="float-card float-card-2 absolute left-[4.5rem] top-0 h-40 w-28 md:left-[3.875rem] md:h-48 md:w-[8.5rem]"
+                priority
+                className="float-card float-card-2 absolute left-[5rem] top-0 w-24 md:left-[4.625rem] md:w-28"
               />
               <CardBack
                 number={3}
-                className="float-card float-card-3 absolute right-0 top-8 h-40 w-28 md:h-48 md:w-[8.5rem]"
+                priority
+                className="float-card float-card-3 absolute right-0 top-6 w-24 md:w-28"
                 style={{ "--tilt": "14deg" } as CSSProperties}
               />
             </div>

@@ -37,6 +37,30 @@ export interface ChannelVideo {
   choice?: Choice;
 }
 
+/** The Tarotdoxa card back, the same file the app and the /tarotdoxa page use (369x640) */
+export const CARD_BACK_URL = "https://tarotdoxa.com/cardback.jpg";
+export const CARD_BACK_RATIO = "369 / 640";
+export const cardFaceUrl = (id: string) => `https://tarotdoxa.com/cards/${id}.jpg`;
+
+/**
+ * The deck card a picked reading flips over to. Decorative and fixed: Pentacles
+ * for money and career, the Lovers and Cups for love. Not the cards Holly pulls
+ * in the video. Ids and names match lib/tarotdoxa-cards.ts (kept out of the
+ * client bundle on purpose; six cards do not need the whole deck).
+ */
+export const REVEAL_CARDS: Record<Topic, Record<Choice, { id: string; name: string }>> = {
+  money: {
+    1: { id: "peac", name: "Ace of Pentacles" },
+    2: { id: "pe09", name: "Nine of Pentacles" },
+    3: { id: "pe10", name: "Ten of Pentacles" },
+  },
+  love: {
+    1: { id: "ar06", name: "The Lovers" },
+    2: { id: "cu02", name: "Two of Cups" },
+    3: { id: "cu10", name: "Ten of Cups" },
+  },
+};
+
 export const CHANNEL_NAME = "Crystal Seed Tarot";
 export const CHANNEL_HANDLE = "@CrystalSeedTarot";
 export const CHANNEL_URL = "https://www.youtube.com/@CrystalSeedTarot";
