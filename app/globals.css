@@ -170,6 +170,25 @@ textarea.border-red-500:focus {
   box-shadow: 0 0 10px rgba(255, 120, 90, 0.35), 0 2px 6px rgba(0, 0, 0, 0.5);
 }
 
+/* The chip lights up in steps, from the dark look above to the lit crystal. Colors are sampled
+   from the logo's crystal: deep red #550811 / #8d1d21, red #c7433f, pink facets #d0586b, amber
+   core #fba95b, cream hot spot #fdf5d9. Add after .brand-chip: class="brand-chip brand-chip-2". */
+.brand-chip-2 {
+  border-color: rgba(245, 171, 134, 0.85);
+  background: radial-gradient(circle at 50% 30%, #c7433f 0%, #8d1d21 55%, #550811 100%);
+  color: #fdf5d9;
+  text-shadow: 0 0 6px rgba(251, 169, 91, 0.85);
+  box-shadow: 0 0 14px rgba(208, 88, 107, 0.55), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.brand-chip-3 {
+  border-color: rgba(253, 245, 217, 0.95);
+  background: radial-gradient(circle at 50% 38%, #fdf5d9 0%, #fba95b 32%, #d0586b 72%, #8d1d21 100%);
+  color: #550811;
+  text-shadow: 0 0 4px rgba(253, 245, 217, 0.7);
+  box-shadow: 0 0 16px rgba(251, 169, 91, 0.8), 0 0 32px rgba(208, 88, 107, 0.45), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
 .yt-mount iframe {
   position: absolute;
   inset: 0;

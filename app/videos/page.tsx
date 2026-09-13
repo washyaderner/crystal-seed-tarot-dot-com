@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { DollarSign, Heart, MousePointerClick, PlayCircle, Youtube } from "lucide-react";
+import { DollarSign, Heart, MousePointerClick, PlayCircle, Youtube, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { CardBack } from "@/components/videos/CardBack";
 import { InteractiveReading } from "@/components/videos/InteractiveReading";
 import { ChannelGrid } from "@/components/videos/ChannelGrid";
@@ -12,6 +13,7 @@ import {
   CHANNEL_URL,
   SUBSCRIBE_URL,
   VIDEOS,
+  chipGlowClass,
   embedUrl,
   isoDuration,
   thumbUrl,
@@ -60,19 +62,22 @@ const videoListSchema = {
   })),
 };
 
-const steps = [
+// Picking a path comes first and is not numbered; the two numbered steps follow it.
+const steps: { icons: LucideIcon[]; number?: number; title: string; body: string }[] = [
   {
-    icon: DollarSign,
+    icons: [DollarSign, Heart],
     title: "Pick your path",
     body: "Money & Career or Love & Relationships. Holly posts a fresh set of both every month.",
   },
   {
-    icon: PlayCircle,
+    icons: [PlayCircle],
+    number: 1,
     title: "Watch the short intro",
     body: "Holly lays out three readings. Take a breath, quiet your mind, and notice which one pulls at you. One of them will.",
   },
   {
-    icon: MousePointerClick,
+    icons: [MousePointerClick],
+    number: 2,
     title: "Choose your reading",
     body: "Tap the card that called to you and your reading starts right away. On YouTube, the same three choices appear as cards at the end of the intro.",
   },
@@ -157,16 +162,23 @@ export default function Videos() {
             How it works
           </h2>
           <ol className="grid gap-4 md:grid-cols-3 md:gap-6">
-            {steps.map((step, i) => {
-              const Icon = step.icon;
+            {steps.map((step) => {
+              const numbered = steps.filter((s) => s.number !== undefined).length;
               return (
                 <li
                   key={step.title}
                   className="rounded-xl border border-white/20 bg-white/10 p-5 text-white backdrop-blur-md md:frosted-card md:p-6"
                 >
-                  <div className="mb-3 flex items-center gap-3">
-                    <span className="brand-chip h-8 w-8 text-sm">{i + 1}</span>
-                    <Icon className="h-5 w-5 text-[#f8e4c8]" />
+                  {/* Fixed row height so the titles line up with or without a number chip */}
+                  <div className="mb-3 flex h-8 items-center gap-3">
+                    {step.number !== undefined && (
+                      <span className={cn("brand-chip h-8 w-8 text-sm", chipGlowClass(step.number, numbered))}>
+                        {step.number}
+                      </span>
+                    )}
+                    {step.icons.map((Icon, k) => (
+                      <Icon key={k} className="h-5 w-5 text-[#f8e4c8]" />
+                    ))}
                   </div>
                   <h3 className="font-serif text-xl">{step.title}</h3>
                   <p className="mt-2 text-sm text-white/85">{step.body}</p>

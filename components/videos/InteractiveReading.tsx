@@ -179,35 +179,40 @@ export function InteractiveReading() {
     [stage],
   );
 
+  // Choosing a path comes first and is not numbered; the two numbered steps follow it.
+  const pathChosen = stage !== "choose";
   const steps: { label: string; done: boolean; active: boolean }[] = [
-    { label: "Choose a path", done: stage !== "choose", active: stage === "choose" },
     { label: "Watch the intro", done: introDone || stage === "reading", active: stage === "intro" && !introDone },
-    { label: "Pick a reading", done: stage === "reading", active: stage === "intro" && introDone },
-    { label: "Your reading", done: readingDone, active: stage === "reading" },
+    { label: "Pick your reading", done: stage === "reading", active: stage === "intro" && introDone },
   ];
 
   return (
     <div ref={stageRef} className="scroll-mt-24">
-      {/* Progress */}
+      {/* Progress: the numbered chips light up as you go, dark ahead, glowing when done */}
       <ol className="mb-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-xs md:mb-8 md:text-sm" aria-label="Progress">
+        <li className="flex items-center gap-2">
+          {pathChosen && <Check className="h-4 w-4 text-[#f8e4c8]" aria-hidden="true" />}
+          <span className={pathChosen ? "text-white/80" : "text-white"}>
+            Choose a path
+            <span className="sr-only">{pathChosen ? " (done)" : " (current step)"}</span>
+          </span>
+          <span className="mx-1 hidden text-white/30 sm:inline" aria-hidden="true">·</span>
+        </li>
         {steps.map((step, i) => (
           <li key={step.label} className="flex items-center gap-2">
             <span
               className={cn(
-                "h-6 w-6 text-[11px] transition-colors md:h-7 md:w-7 md:text-xs",
-                step.done
-                  ? "brand-chip"
-                  : step.active
-                    ? "brand-chip ring-2 ring-[#f8e4c8]/40"
-                    : "flex items-center justify-center rounded-full border border-white/30 text-white/60",
+                "brand-chip h-6 w-6 text-[11px] transition-shadow duration-500 md:h-7 md:w-7 md:text-xs",
+                step.done ? "brand-chip-3" : step.active ? "brand-chip-2 ring-2 ring-[#f8e4c8]/40" : "",
               )}
               aria-hidden="true"
             >
-              {step.done ? <Check className="h-3.5 w-3.5" /> : i + 1}
+              {i + 1}
             </span>
             <span className={cn(step.active || step.done ? "text-white" : "text-white/60")}>
               {step.label}
               {step.active && <span className="sr-only"> (current step)</span>}
+              {step.done && <span className="sr-only"> (done)</span>}
             </span>
             {i < steps.length - 1 && <span className="mx-1 hidden text-white/30 sm:inline" aria-hidden="true">·</span>}
           </li>

@@ -52,6 +52,16 @@ export const CARD_FACE_RADIUS = "4% / 2.33%";
 export const cardFaceUrl = (id: string) => `https://tarotdoxa.com/cards/${id}.jpg`;
 
 /**
+ * Number chips light up from dark to the lit crystal along a sequence (app/globals.css):
+ * the first item keeps the dark look, the last is fully lit, a middle item sits between.
+ */
+export function chipGlowClass(position: number, count: number): string {
+  if (count <= 1 || position <= 1) return "";
+  if (position >= count) return "brand-chip-3";
+  return "brand-chip-2";
+}
+
+/**
  * The deck card a picked reading flips over to. Decorative and fixed: Pentacles
  * for money and career, the Lovers and Cups for love. Not the cards Holly pulls
  * in the video. Ids and names match lib/tarotdoxa-cards.ts (kept out of the
