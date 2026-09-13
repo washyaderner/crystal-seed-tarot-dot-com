@@ -3,7 +3,6 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { DollarSign, Heart, MousePointerClick, PlayCircle, Youtube, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { CardBack } from "@/components/videos/CardBack";
 import { InteractiveReading } from "@/components/videos/InteractiveReading";
 import { ChannelGrid } from "@/components/videos/ChannelGrid";
@@ -13,7 +12,6 @@ import {
   CHANNEL_URL,
   SUBSCRIBE_URL,
   VIDEOS,
-  chipGlowClass,
   embedUrl,
   isoDuration,
   thumbUrl,
@@ -62,8 +60,8 @@ const videoListSchema = {
   })),
 };
 
-// Picking a path comes first and is not numbered; the two numbered steps follow it.
-const steps: { icons: LucideIcon[]; number?: number; title: string; body: string }[] = [
+// Icons only, no step numbers: the dollar and heart show the two paths to pick from.
+const steps: { icons: LucideIcon[]; title: string; body: string }[] = [
   {
     icons: [DollarSign, Heart],
     title: "Pick your path",
@@ -71,13 +69,11 @@ const steps: { icons: LucideIcon[]; number?: number; title: string; body: string
   },
   {
     icons: [PlayCircle],
-    number: 1,
     title: "Watch the short intro",
     body: "Holly lays out three readings. Take a breath, quiet your mind, and notice which one pulls at you. One of them will.",
   },
   {
     icons: [MousePointerClick],
-    number: 2,
     title: "Choose your reading",
     body: "Tap the card that called to you and your reading starts right away. On YouTube, the same three choices appear as cards at the end of the intro.",
   },
@@ -143,7 +139,9 @@ export default function Videos() {
       </section>
 
       {/* The adventure */}
-      <section id="start" className="scroll-mt-20 py-12 md:py-16 bg-black/20 backdrop-blur-md">
+      {/* overflow-x-clip: the player's breathing glow (.player-glow::before, inset -18px, scale 1.03)
+          reached 5 to 6px past the screen edge on phones and let the page scroll sideways */}
+      <section id="start" className="scroll-mt-20 overflow-x-clip py-12 md:py-16 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="mb-2 text-center font-serif text-2xl text-white md:text-3xl lg:text-4xl">
             Choose your reading
@@ -163,21 +161,14 @@ export default function Videos() {
           </h2>
           <ol className="grid gap-4 md:grid-cols-3 md:gap-6">
             {steps.map((step) => {
-              const numbered = steps.filter((s) => s.number !== undefined).length;
               return (
                 <li
                   key={step.title}
                   className="rounded-xl border border-white/20 bg-white/10 p-5 text-white backdrop-blur-md md:frosted-card md:p-6"
                 >
-                  {/* Fixed row height so the titles line up with or without a number chip */}
                   <div className="mb-3 flex h-8 items-center gap-3">
-                    {step.number !== undefined && (
-                      <span className={cn("brand-chip h-8 w-8 text-sm", chipGlowClass(step.number, numbered))}>
-                        {step.number}
-                      </span>
-                    )}
                     {step.icons.map((Icon, k) => (
-                      <Icon key={k} className="h-5 w-5 text-[#f8e4c8]" />
+                      <Icon key={k} className="h-6 w-6 text-[#f8e4c8]" />
                     ))}
                   </div>
                   <h3 className="font-serif text-xl">{step.title}</h3>

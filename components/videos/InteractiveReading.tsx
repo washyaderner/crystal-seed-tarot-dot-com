@@ -14,6 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { CardBack } from "./CardBack";
+import { PathTree } from "./PathTree";
 import { YouTubePlayer, type PlayerState } from "./YouTubePlayer";
 import {
   CARD_BACK_RATIO,
@@ -179,45 +180,10 @@ export function InteractiveReading() {
     [stage],
   );
 
-  // Choosing a path comes first and is not numbered; the two numbered steps follow it.
-  const pathChosen = stage !== "choose";
-  const steps: { label: string; done: boolean; active: boolean }[] = [
-    { label: "Watch the intro", done: introDone || stage === "reading", active: stage === "intro" && !introDone },
-    { label: "Pick your reading", done: stage === "reading", active: stage === "intro" && introDone },
-  ];
-
   return (
     <div ref={stageRef} className="scroll-mt-24">
-      {/* Progress: the numbered chips light up as you go, dark ahead, glowing when done */}
-      <ol className="mb-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-xs md:mb-8 md:text-sm" aria-label="Progress">
-        <li className="flex items-center gap-2">
-          {pathChosen && <Check className="h-4 w-4 text-[#f8e4c8]" aria-hidden="true" />}
-          <span className={pathChosen ? "text-white/80" : "text-white"}>
-            Choose a path
-            <span className="sr-only">{pathChosen ? " (done)" : " (current step)"}</span>
-          </span>
-          <span className="mx-1 hidden text-white/30 sm:inline" aria-hidden="true">·</span>
-        </li>
-        {steps.map((step, i) => (
-          <li key={step.label} className="flex items-center gap-2">
-            <span
-              className={cn(
-                "brand-chip h-6 w-6 text-[11px] transition-shadow duration-500 md:h-7 md:w-7 md:text-xs",
-                step.done ? "brand-chip-3" : step.active ? "brand-chip-2 ring-2 ring-[#f8e4c8]/40" : "",
-              )}
-              aria-hidden="true"
-            >
-              {i + 1}
-            </span>
-            <span className={cn(step.active || step.done ? "text-white" : "text-white/60")}>
-              {step.label}
-              {step.active && <span className="sr-only"> (current step)</span>}
-              {step.done && <span className="sr-only"> (done)</span>}
-            </span>
-            {i < steps.length - 1 && <span className="mx-1 hidden text-white/30 sm:inline" aria-hidden="true">·</span>}
-          </li>
-        ))}
-      </ol>
+      {/* The adventure as a map: Start, Money or Love, three readings on each; your path lights up */}
+      <PathTree topic={topic} choice={choice} />
 
       {/* Round switcher */}
       <div className="mb-6 flex flex-wrap items-center justify-center gap-2" role="group" aria-label="Choose a month">
