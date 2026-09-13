@@ -53,6 +53,7 @@ const businessSchema = {
       description:
         "Tarot readings, party and event readings, and tarot lessons. A crystal clear connection to yourself since 2008.",
       foundingDate: "2008",
+      logo: "https://crystalseedtarot.com/images/brand/crystal-seed-logo.jpg",
       image:
         "https://crystalseedtarot.com/images/Background-Image-Evergreen-Spreading-Cards.webp",
       sameAs: [

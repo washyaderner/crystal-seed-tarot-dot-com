@@ -27,8 +27,19 @@ export default function Navigation() {
       <div className="flex justify-between items-center relative">
         <Link
           href="/"
-          className="text-2xl font-serif text-white transition-all duration-300 hover:scale-105 flex items-center gap-3"
+          className="text-2xl font-serif text-white transition-all duration-300 hover:scale-105 flex items-center gap-2 sm:gap-3"
         >
+          {/* Brand mark: the Crystal Seed favicon art. Decorative (alt="") because the
+              name follows in the same link. */}
+          <Image
+            src="/images/brand/crystal-seed-mark.png"
+            alt=""
+            width={40}
+            height={40}
+            className="shrink-0 rounded-lg"
+            sizes="40px"
+            priority
+          />
           Crystal Seed Tarot
           <Image
             src="/images/2025 Thumbtack Top Pro Badge.webp"
@@ -51,8 +62,9 @@ export default function Navigation() {
 
         {/* Desktop Navigation. Ten links need about 760px beside the logo, so the
             row only shows from lg (1024px); tablets get the menu button. Before this
-            the row overflowed the viewport from 768 to about 850px wide. */}
-        <ul className="hidden lg:flex lg:space-x-4 xl:space-x-6">
+            the row overflowed the viewport from 768 to about 850px wide. lg uses
+            space-x-3 so the brand mark still fits beside the links at 1024px. */}
+        <ul className="hidden lg:flex lg:space-x-3 xl:space-x-6">
           {navLinks.map((link) => (
             <li key={link.href}>
               <NavLink href={link.href}>
