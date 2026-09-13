@@ -11,15 +11,16 @@ export function middleware(request: NextRequest) {
   const cspDirectives = [
     "default-src 'self'",
     // Allow scripts from Vercel and form submission
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.live https://*.vercel.app",
-    "script-src-elem 'self' 'unsafe-inline' https://*.vercel.live https://*.vercel.app",
+    // YouTube: the IFrame Player API script on /videos
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.vercel.live https://*.vercel.app https://www.youtube.com",
+    "script-src-elem 'self' 'unsafe-inline' https://*.vercel.live https://*.vercel.app https://www.youtube.com",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https:",
     "font-src 'self'",
     // Allow connections to FormSubmit and Vercel services
     "connect-src 'self' https://formsubmit.co https://*.vercel.live https://*.vercel.app",
-    // Allow Vercel live feedback iframe
-    "frame-src 'self' https://*.vercel.live https://*.vercel.app",
+    // Allow Vercel live feedback iframe + YouTube embeds (privacy-enhanced host first)
+    "frame-src 'self' https://*.vercel.live https://*.vercel.app https://www.youtube-nocookie.com https://www.youtube.com",
     "worker-src 'self' blob:",
     // Allow form submission
     "form-action 'self' https://formsubmit.co"

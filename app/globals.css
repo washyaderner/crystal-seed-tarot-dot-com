@@ -151,3 +151,73 @@ textarea.border-red-500:focus {
   }
 }
 
+
+/* /videos: the interactive reading experience */
+.yt-mount iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.player-glow::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  z-index: -1;
+  border-radius: 1.25rem;
+  background: radial-gradient(60% 60% at 50% 50%, rgba(168, 85, 247, 0.35), rgba(168, 85, 247, 0) 70%);
+  filter: blur(18px);
+  animation: player-breathe 5s ease-in-out infinite;
+}
+
+@keyframes player-breathe {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+/* A slow light pass across a face-down card */
+.card-shimmer {
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.16) 50%, transparent 65%);
+  background-size: 250% 100%;
+  animation: card-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes card-shimmer {
+  0% { background-position: 120% 0; }
+  60%, 100% { background-position: -120% 0; }
+}
+
+/* When the intro ends, the three cards call out one after another */
+.card-calling {
+  animation: card-call 1.8s ease-in-out infinite;
+}
+.card-calling-2 { animation-delay: 0.3s; }
+.card-calling-3 { animation-delay: 0.6s; }
+
+@keyframes card-call {
+  0%, 100% { transform: translateY(0) rotateY(0deg); filter: drop-shadow(0 0 0 rgba(168, 85, 247, 0)); }
+  50% { transform: translateY(-10px) rotateY(0deg); filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.7)); }
+}
+
+/* The hero's floating fan of cards */
+.float-card {
+  animation: float-card 6s ease-in-out infinite;
+}
+.float-card-2 { animation-delay: 1.2s; }
+.float-card-3 { animation-delay: 2.4s; }
+
+@keyframes float-card {
+  0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
+  50% { transform: translateY(-10px) rotate(var(--tilt, 0deg)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .player-glow::before,
+  .card-shimmer,
+  .card-calling,
+  .float-card {
+    animation: none;
+  }
+}

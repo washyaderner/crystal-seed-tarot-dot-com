@@ -13,6 +13,7 @@ export default function Navigation() {
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/events", label: "Events" },
+    { href: "/videos", label: "Videos" },
     { href: "/tarotdoxa", label: "Tarotdoxa" },
     { href: "/gallery", label: "Gallery" },
     { href: "/blog", label: "Blog" },
@@ -48,8 +49,10 @@ export default function Navigation() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-6">
+        {/* Desktop Navigation. Ten links need about 760px beside the logo, so the
+            row only shows from lg (1024px); tablets get the menu button. Before this
+            the row overflowed the viewport from 768 to about 850px wide. */}
+        <ul className="hidden lg:flex lg:space-x-4 xl:space-x-6">
           {navLinks.map((link) => (
             <li key={link.href}>
               <NavLink href={link.href}>
@@ -59,9 +62,9 @@ export default function Navigation() {
           ))}
         </ul>
 
-        {/* Mobile Navigation - Only visible on mobile (no inline display:block:
-            it would override md:hidden and pin the hamburger onto desktop) */}
-        <div className="md:hidden">
+        {/* Mobile + tablet navigation (no inline display:block:
+            it would override lg:hidden and pin the hamburger onto desktop) */}
+        <div className="lg:hidden">
           <MobileNav links={navLinks} />
         </div>
       </div>

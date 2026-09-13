@@ -153,3 +153,19 @@ chore: WIP sync snapshot 2026-08-28
 
 chore: WIP sync snapshot 2026-08-29
 
+
+## 2026-09-04 14:35 | 9b4780a
+
+chore: WIP sync snapshot 2026-09-04
+
+
+## 2026-09-13 | SHIP | /videos: interactive choose-your-own-adventure readings page
+
+Shipped: new /videos page (nav "Videos") that embeds Holly's YouTube channel and turns her monthly interactive readings into a native pick-a-card flow: choose Money & Career or Love & Relationships, the short intro plays, three face-down cards sit under the player, the IFrame Player API reports when the intro ends and the cards start "calling", tapping one flips it and plays that reading in the same player; hash deep links (/videos#love/2025-10/2); "Every reading so far" archive for both rounds (Sept + Oct 2025); the rest of the channel (lessons, season readings, card care, welcome) as click-to-play cards; JSON-LD ItemList of 23 VideoObjects.
+Key changes:
+- lib/youtube-videos.ts is the single data file (all 23 videos, pulled with yt-dlp 2026-09-13). New month = one ROUNDS entry + 8 videos.
+- middleware.ts CSP now allows www.youtube.com scripts and youtube-nocookie.com/youtube.com frames; next.config.mjs allows i.ytimg.com thumbnails.
+- Header link row moved from md to lg (hamburger through 1023px). The live site already overflowed the viewport from 768 to about 850px wide with 9 links; a 10th made it worse.
+- layout.tsx sameAs gained the channel URL; llms.txt lists the page.
+Verified: npm run build green; Playwright smoke (scratchpad smoke.mjs, 36 checks) on the local prod build at 1440/1280/1024/768/390: CSP headers, JSON-LD count, topic pick, real ENDED event from the player API after the 42 s intro, card pick + hash, topic/round switches, start over, archive jump, grid embed, deep-link restore, no horizontal overflow, mobile menu has Videos; 0 console errors.
+Lesson: rebuilding while `next start` is still running leaves the old process serving old HTML against new chunk names (unstyled page). Kill by port (lsof -t -iTCP:PORT) before rebuilding; pkill -f "next start" did not catch it.

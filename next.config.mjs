@@ -20,6 +20,8 @@ const nextConfig = {
     remotePatterns: [
       // Tarotdoxa card art + app screenshots served from our own tarotdoxa.com
       { protocol: 'https', hostname: 'tarotdoxa.com' },
+      // YouTube thumbnails on /videos
+      { protocol: 'https', hostname: 'i.ytimg.com' },
     ],
   },
   experimental: {

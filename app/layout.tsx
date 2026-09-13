@@ -58,6 +58,7 @@ const businessSchema = {
       sameAs: [
         "https://www.facebook.com/CrystalSeedTarot",
         "https://www.instagram.com/crystal_seed_tarot",
+        "https://www.youtube.com/@CrystalSeedTarot",
       ],
       areaServed: [
         { "@type": "City", name: "Portland" },
