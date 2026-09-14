@@ -19,7 +19,7 @@ import {
 } from "@/lib/youtube-videos";
 
 const description =
-  "Choose-your-own-adventure tarot readings from Holly Cole. Pick Money & Career, Love & Relationships, or a General reading, watch the short intro, and let one of three readings call to you. Plus free tarot lessons, season readings, and card care.";
+  "Choose-your-own-adventure tarot readings from Holly Cole. Pick Money & Career, a General reading, or Love & Relationships, watch the short intro, and let one of three readings call to you. Plus free tarot lessons, season readings, and card care.";
 
 export const metadata: Metadata = {
   title: "Interactive Tarot Readings & Videos",
@@ -63,9 +63,9 @@ const videoListSchema = {
 // Icons only, no step numbers: the dollar, heart and sparkle show the paths to pick from.
 const steps: { icons: LucideIcon[]; title: string; body: string }[] = [
   {
-    icons: [DollarSign, Heart, Sparkles],
+    icons: [DollarSign, Sparkles, Heart],
     title: "Pick your path",
-    body: "Money & Career, Love & Relationships, or a General reading with no topic at all. Holly posts fresh sets every month; some months have one path, some have all three.",
+    body: "Money & Career on the left, a General reading in the middle for when no one topic is calling, Love & Relationships on the right. Holly posts fresh sets every month; some months light up one path, some all three.",
   },
   {
     icons: [PlayCircle],

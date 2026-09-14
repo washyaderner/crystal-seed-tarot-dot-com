@@ -17,8 +17,8 @@
  */
 
 export type Topic = "money" | "love" | "general";
-/** The order the topics are shown in, wherever more than one appears */
-export const TOPIC_ORDER: Topic[] = ["money", "love", "general"];
+/** The order the paths are shown in, everywhere: Money on the left, General in the center, Love on the right */
+export const TOPIC_ORDER: Topic[] = ["money", "general", "love"];
 export type Choice = 1 | 2 | 3;
 export type VideoKind = "welcome" | "intro" | "reading" | "lesson" | "season" | "care";
 

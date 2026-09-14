@@ -2,13 +2,16 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import { DollarSign, Heart, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { TOPICS, type Choice, type Topic } from "@/lib/youtube-videos";
+import { TOPICS, TOPIC_ORDER, type Choice, type Topic } from "@/lib/youtube-videos";
 
 /**
- * The choose-your-own-adventure map: Start, then the paths this round offers (Money, Love,
- * General: one, two or all three), then three readings on each branch. Each tier keeps one
- * chip color, dark to lit like the hero cards (.brand-chip, -2, -3). The path taken lights
- * up solid; the paths still open stay dotted.
+ * The choose-your-own-adventure map: Start, then the three paths (Money on the left, General
+ * in the center for when no one topic is calling, Love on the right), then three readings on
+ * each branch: thirteen nodes, the same map every month. The paths a month offers are live;
+ * the others sit dim until a month brings them (Russ 2026-09-14: "a center tree branch for
+ * general readings, for when she's not specifically doing money or love"). Each tier keeps
+ * one chip color, dark to lit like the hero cards (.brand-chip, -2, -3). The path taken
+ * lights up solid; the paths still open stay dotted.
  *
  * Geometry is fixed in px down the page and in % across it, so the SVG connectors
  * (viewBox 0 0 100 HEIGHT, stretched across the width) meet the HTML nodes at any width.
@@ -38,7 +41,7 @@ const TOPIC_IN = TIER.topic.top - 6;
 const TOPIC_OUT = 180;
 const READING_IN = TIER.reading.top - 6;
 
-type NodeState = "current" | "open" | "sibling" | "faded" | "traveled";
+type NodeState = "current" | "open" | "sibling" | "faded" | "traveled" | "off";
 
 function curve(x0: number, y0: number, x1: number, y1: number) {
   const ym = (y0 + y1) / 2;
@@ -85,6 +88,7 @@ function Node({
       className={cn(
         "absolute flex -translate-x-1/2 flex-col items-center transition-opacity duration-500",
         state === "faded" && "opacity-40",
+        state === "off" && "opacity-30 saturate-50",
         state === "sibling" && "opacity-70",
       )}
       style={{ left: `${x}%`, top }}
@@ -112,19 +116,23 @@ function Node({
   );
 }
 
+/** `topics` = the paths this month offers; the map always draws all three */
 export function PathTree({ topic, choice, topics }: { topic: Topic | null; choice: Choice | null; topics: Topic[] }) {
-  const n = Math.max(1, topics.length);
-  // Paths share the width evenly; each path's three readings sit under it
-  const topicX = (t: Topic) => (100 * (topics.indexOf(t) + 0.5)) / n;
-  const readingX = (t: Topic, c: Choice) => (100 * (topics.indexOf(t) * 3 + (c - 1) + 0.5)) / (3 * n);
+  const paths = TOPIC_ORDER;
+  const n = paths.length;
+  // The three paths share the width evenly; each path's three readings sit under it
+  const topicX = (t: Topic) => (100 * (paths.indexOf(t) + 0.5)) / n;
+  const readingX = (t: Topic, c: Choice) => (100 * (paths.indexOf(t) * 3 + (c - 1) + 0.5)) / (3 * n);
+  const offered = (t: Topic) => topics.includes(t);
 
   const topicState = (t: Topic): NodeState =>
-    topic === null ? "open" : t !== topic ? "faded" : choice === null ? "current" : "traveled";
+    !offered(t) ? "off" : topic === null ? "open" : t !== topic ? "faded" : choice === null ? "current" : "traveled";
   const readingState = (t: Topic, c: Choice): NodeState =>
-    topic === null ? "open" : t !== topic ? "faded" : choice === null ? "open" : c === choice ? "current" : "sibling";
+    !offered(t) ? "off" : topic === null ? "open" : t !== topic ? "faded" : choice === null ? "open" : c === choice ? "current" : "sibling";
 
-  const pathNames = topics.map((t) => TOPICS[t].short);
-  const pathList = pathNames.length > 1 ? `${pathNames.slice(0, -1).join(", ")} or ${pathNames[pathNames.length - 1]}` : pathNames[0] ?? "a path";
+  const offeredNames = topics.map((t) => TOPICS[t].short);
+  const offeredList =
+    offeredNames.length > 1 ? `${offeredNames.slice(0, -1).join(", ")} and ${offeredNames[offeredNames.length - 1]}` : offeredNames[0] ?? "none yet";
   const where =
     topic === null
       ? "You are at the start."
@@ -137,7 +145,7 @@ export function PathTree({ topic, choice, topics }: { topic: Topic | null; choic
       className="relative mx-auto mb-6 w-full md:mb-8"
       style={{ height: HEIGHT }}
       role="img"
-      aria-label={`Choose your own adventure: start, then ${pathList}, then three readings on each path. ${where}`}
+      aria-label={`Choose your own adventure: start, then Money, General or Love, then three readings on each path. This month offers ${offeredList}. ${where}`}
     >
       <svg
         className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
@@ -145,7 +153,7 @@ export function PathTree({ topic, choice, topics }: { topic: Topic | null; choic
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        {topics.map((t) => (
+        {paths.map((t) => (
           <g key={t}>
             <Connector d={curve(startX, START_OUT, topicX(t), TOPIC_IN)} lit={topic === t} />
             {CHOICES.map((c) => (
@@ -163,13 +171,13 @@ export function PathTree({ topic, choice, topics }: { topic: Topic | null; choic
         <Image src="/images/brand/crystal-seed-mark-cutout.png" alt="" width={14} height={21} sizes="14px" />
       </Node>
 
-      {topics.map((t) => (
+      {paths.map((t) => (
         <Node key={t} x={topicX(t)} tier="topic" chipClass="brand-chip-2" state={topicState(t)} label={TOPICS[t].short}>
           {TOPIC_ICON[t]}
         </Node>
       ))}
 
-      {topics.flatMap((t) =>
+      {paths.flatMap((t) =>
         CHOICES.map((c) => (
           <Node
             key={`${t}-${c}`}
@@ -179,7 +187,7 @@ export function PathTree({ topic, choice, topics }: { topic: Topic | null; choic
             state={readingState(t, c)}
             label={`${TOPICS[t].short} ${c}`}
             // nine readings across a phone: the chip already shows the number, the label waits for a wider screen
-            labelClass={n >= 3 ? "hidden sm:block" : undefined}
+            labelClass="hidden sm:block"
           >
             {c}
           </Node>
