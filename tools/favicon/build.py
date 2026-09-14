@@ -1,7 +1,9 @@
 """Regenerate the site icons in app/ from the Crystal Seed favicon art.
 
-Source: public/images/brand/crystal-seed-mark.png (Russ's 1024x1024 favicon art, 2026-09-13;
-original also in _biz/Crystal Seed Tarot/Brand/). The art is only resized, never repainted.
+Source: public/images/brand/crystal-seed-mark.png (Russ's 1254x1254 pink favicon art, 2026-09-14,
+which replaced the red-orange 2026-09-13 crystal; original in _biz/Crystal Seed Tarot/logo/
+exec-45ba43e3-c840-4a7a-8237-f3085c3c1d5f.png, a 1024 copy in Brand/Pink 2026-09-14/).
+The art is only resized, never repainted.
 
     pip install pillow
     python3 tools/favicon/build.py
