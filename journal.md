@@ -184,3 +184,105 @@ test(videos): keep the /videos Playwright smoke test in the repo
 
 Russ, after seeing the page ("Holly was so excited"): make every card on the page the actual Tarotdoxa card art, like the back of the cards in the app. Every face-down card (hero fan, the mini fans on the two path cards, the three pick cards) is now https://tarotdoxa.com/cardback.jpg, the same file the app and /tarotdoxa use, shown untouched at its own 369x640 ratio with a small purple number chip. A picked reading flips to a real deck card from https://tarotdoxa.com/cards/{id}.jpg: Money 1/2/3 = Ace, Nine, Ten of Pentacles; Love 1/2/3 = The Lovers, Two of Cups, Ten of Cups (fixed and decorative, not the cards Holly pulls). The drawn gradient cards and the shimmer CSS are gone.
 Verified: build green; the 34-check smoke on the local prod build; screenshots at 1440 and 390 read back (hero fan, path cards, pick cards, flipped face with a one-line Now playing pill).
+
+## 2026-09-13 10:17 | 6f9bba1
+
+feat(videos): every card is the real Tarotdoxa art
+
+
+## 2026-09-13 14:17 | 325ad8e
+
+fix(site): Crystal Seed crystal favicon replaces the Tarotdoxa T
+
+
+## 2026-09-13 | SHIP | Crystal Seed crystal favicon replaces the Tarotdoxa T
+
+Russ: "crystalseedtarot.com is using tarotdoxa's logo as its favicon. please fix that". The Tarotdoxa T had been app/favicon.ico, app/icon.png and app/apple-icon.png since 86342a3 (8/19). Holly has no official logo (header is text, YouTube avatar is a photo, the old WordPress site used the WP default, .tmp/logos are unpicked drafts), so the icon is the gold crystal from crystal-seed-signup/public/icon.svg, scaled up with a heavier rim and brighter facets because the original read as dark mush at 16 and 32 px. Source SVGs and the generator: tools/favicon/ (build.py rebuilds all three files byte for byte).
+Verified: npm run build green; local next start served all three files with md5 equal to source and the new hashed links on /, /videos, /tarotdoxa, /about; production deployment 6426568129 (325ad8e) success; live HTML carries icon.png?8189702cbe22ada7 and apple-icon.png?671bf0ed493b21ed and no old hash; live /favicon.ico (plain and cache-busted), icon.png and apple-icon.png all md5-match the new files.
+Gotcha: Cloudflare sits in front of Vercel and icon files carry max-age=14400; none of CF_DNS_TOKEN, CF_CACHE_PURGE_TOKEN, CLOUDFLARE_API_TOKEN can purge this zone (10000 Authentication error). The Portland edge picked up the new favicon.ico within a minute anyway.
+
+## 2026-09-13 15:10 | d141386
+
+feat(brand): Russ's Crystal Seed logo and favicon across the site
+
+
+## 2026-09-13 | SHIP | Russ's official Crystal Seed logo and favicon
+
+Russ made a logo (1254 square, crystal + CRYSTAL SEED / TAROT wordmark) and a favicon (1024, crystal alone): "distribute them accordingly please". Originals: /Users/studio/Build/_biz/Crystal Seed Tarot/Brand/. On this site (d141386): favicon.ico/icon.png/apple-icon.png from public/images/brand/crystal-seed-mark.png (resized only, tools/favicon/build.py), a 40px crystal mark before the site name in the header (lg nav spacing space-x-3 so 1024 still fits), JSON-LD logo = /images/brand/crystal-seed-logo.jpg. OG images left alone on purpose. The interim gold crystal SVGs are retired. Same pass: sign-up PWA (e3da7a5) and Flyer Studio (8950b73) got the favicon too.
+Verified: build green; header measured on the local build and on production at 390/768/1023/1024/1280/1440, no overflow; production deployment 6427068706 success; 12 of 12 live checks (new icon hashes in HTML, no old hash, JSON-LD logo, header img, spacing class, favicon plain and cache-busted, icon.png, apple-icon.png, logo JPEG bytes, optimized mark 200 avif).
+Open: Holly's social profile pictures need her logins (inbox line 8, kit_gates da767315).
+
+## 2026-09-13 15:59 | 702a55c
+
+feat(videos): true card shapes, Crystal Seed number chips, YouTube-red play
+
+
+## 2026-09-13 | SHIP | /videos restyle: true card shapes, brand number chips, YouTube red, dollar sign, cut-out mark, T icon
+
+Russ (screenshots): the little cards' corners looked cut; numbers and CTAs should fit the rest of the site and the new logo instead of purple; red for YouTube on the play buttons; money icon just a dollar sign like the heart; no background on the nav crystal; the real Tarotdoxa T in the home banner. Shipped in 702a55c: card backs clip with the art's own corner curve (CARD_BACK_RADIUS 8.7% / 5%, measured ~30.5px on 369x640) instead of a fixed 12px; deck faces at their own 350:600 box; .brand-chip number badges (ivory numeral, champagne ring, maroon core, crystal glow); white outline CTAs like every other page; YouTube red icon, play buttons and archive badges; DollarSign topic icon; header crystal cut out (tools/favicon/cutout.py); banner T icon from tarotdoxa.com/icon-t-clean.jpg.
+Verified: build green; local 38/38 restyle checks + smoke 34/34; production deployment 6427506768 success; live 38/38 restyle checks (card ratios and radii at 1440 and 390, flipped face 350:600, no solid purple fills, red play, dollar icons, header fits at six widths, cut-out mark, banner icon) + live smoke 34/34, 0 console errors.
+
+## 2026-09-13 16:16 | 8aa3b44
+
+feat(videos): number chips light up from dark to the lit crystal; path step unnumbered
+
+
+## 2026-09-13 | SHIP | /videos: path step unnumbered, number chips glow from dark to the lit crystal
+
+Russ: "On Choose a Path: 1. Watch the intro. 2. Pick your reading." How it works "for Pick Your Path: 1. Watch the short intro. 2. Choose your reading." And "different levels of darkness to glowing of the Crystal Seed logo, from the current dark look to the glowing amber/pink of the actual crystal". Shipped in 8aa3b44: progress row = Choose a path, 1 Watch the intro, 2 Pick your reading ("Your reading" step removed); How it works = Pick your path ($ and heart icons, no number), 1 Watch the short intro, 2 Choose your reading. New .brand-chip-2 (ember) and .brand-chip-3 (lit crystal) with colors sampled from the cut-out crystal; chipGlowClass lights a sequence first-dark to last-lit (cards 1/2/3, How it works 1/2); progress chips light by state (dark ahead, ember current, lit done).
+Verified: build green; local 52/52 checks + smoke 34/34; production deployment 6427652363 success; live 52/52 checks; live smoke 34/34 three times: run 1 logged one console error whose text my filter hid, runs 2 and 3 had 0 errors.
+
+## 2026-09-13 16:38 | 16f96a1
+
+feat(videos): choose-your-own-adventure path tree; How it works icons only
+
+
+## 2026-09-13 | SHIP | /videos: choose-your-own-adventure path tree; How it works icons only
+
+Russ: the 1 and 2 on How it works "don't make sense", use just the play and click icons (keep dollar + heart on Pick your path); drop the sequential steps and illustrate the adventure: Start, then Money or Love, three readings on each, nine nodes, each tier its own color like the hero cards, every node labeled. Shipped in 16f96a1: components/videos/PathTree.tsx replaces the progress row (tier colors dark/ember/lit, dotted open paths, solid lit path taken, other branch faded, current node outlined); How it works cards show icons only. Also fixed a pre-existing sideways scroll on phones once the player mounts (.player-glow::before bled 5 to 6px past the edge; #start now overflow-x-clip).
+Verified: build green; local 55/55 checks + smoke 34/34; production deployment 6427835811 success; live sideways scroll 0px at start, after Love, after reading 2; live 55/55 checks; live smoke 34/34 with 0 console errors.
+
+## 2026-09-13 17:19 | 55ba563
+
+feat(services): a real photo of Holly on every service card
+
+
+## 2026-09-13 | SHIP | /services: a real photo of Holly on every service card
+
+Russ asked for images for the four service cards. Sources checked: public/images, _biz/Crystal Seed Tarot, the Pics & Vids drive, the vault, and Holly's last 60 Instagram posts (Apify apify/instagram-scraper). Shipped in 55ba563, all Holly's own photos: Private Readings = About-Holly-Rocky-2022 (unused before); Private Events/Party Readings = her candlelit table at the May 2026 1920s wedding at Cornelius Pass Roadhouse (from Instagram, saved 2000px, no metadata); Private Tarot Lessons = About-Holly-Nicole-Laughing-2022; Private Group Tarot Lessons = About-Holly-Kyle-Reading (no photo of an in-person group class exists in any source checked). Also fixed a pre-existing 186px sideways scroll on phones from the whitespace-nowrap tagline.
+Verified: build green; local 32/32 checks at 1440/1024/768/390; production deployment 6428180941 success; live 32/32 checks (right photo per card, loaded, 3:2, 0px sideways scroll, no console errors); live viewport screenshots read back.
+
+## 2026-09-13 18:14 | 180382e
+
+feat(services): real group class photo on Private Group Tarot Lessons
+
+
+## 2026-09-13 | SHIP | /services: real group class photo on Private Group Tarot Lessons
+
+Russ sent two class photos and picked the wide one (~/Downloads/IMG_3530.JPG, iPhone 2026-03-29, Holly teaching a full room at round tables). Shipped in 180382e as public/images/Services-Group-Tarot-Class-2026.jpg (2000x1500, metadata stripped, no GPS in the original), objectPosition 50% 80% so the 3:2 trim takes ceiling, not people. Replaces the Kyle stand-in.
+Verified: build green; local 32/32 checks at 1440/1024/768/390; production deployment 6428669316 success; live 32/32 checks; live screenshots read back.
+
+## 2026-09-14 12:03 | 42613f3
+
+feat(videos): general readings as a third path; a round may carry one, two or all three
+
+
+## 2026-09-14 13:06 | e90ab17
+
+feat(videos): the path tree is a fixed map with General in the center
+
+
+## 2026-09-14 13:59 | a408d7d
+
+feat(brand): Russ's pink Crystal Seed favicon replaces the red-orange crystal
+
+
+## 2026-09-14 13:59 | df179f7
+
+feat(brand): Russ's pink Crystal Seed favicon replaces the red-orange crystal
+
+
+## 2026-09-14 | SHIP | Russ's pink Crystal Seed favicon replaces the red-orange crystal
+
+Russ: "This is Holly's new favicon. Replace the current one on her site with this one, please" (1254 square, _biz/Crystal Seed Tarot/logo/exec-45ba43e3-c840-4a7a-8237-f3085c3c1d5f.png; a Brand/Pink 2026-09-14/ folder made at 1:15 PM already held a 1024 copy, 16/32 exports and the generation prompts). Same crystal, rose-pink (mean hue 343 deg) instead of red-orange (hue 5 deg), same flat #0e030a background (within 4 levels), so both build scripts ran unchanged: tools/favicon/build.py rebuilt app/favicon.ico (16/32/48), app/icon.png (512), app/apple-icon.png (180); tools/favicon/cutout.py rebuilt the header mark and the /videos Start node (323x480, was 320x480; the header shows it 30x45, a 1 percent ratio change). JSON-LD logo (the wordmark version) unchanged: no new logo was supplied. The same crystal shipped to Flyer Studio (2ee3570, Worker version adac0e2f) and the sign-up PWA (8a42b04, Worker version 225152f1).
+Verified: build green; commit df179f7 (the first push dropped mid-transfer with "unexpected disconnect while reading sideband packet" and left the remote untouched; the second push landed); GitHub deployment 6446354278 success 2:00 PM; live: HTML links icon.png?0aa01f6a8a139031 and apple-icon.png?dc5424788aa22afd with the old hashes gone, favicon.ico (plain and cache-busted), icon.png, apple-icon.png and the cutout PNG md5-match the committed files (5 of 5), and the header image through the next/image optimizer measures hue 343 (pink). Cloudflare served the new plain /favicon.ico on the first read (cf-cache-status EXPIRED).
