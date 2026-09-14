@@ -23,8 +23,17 @@ export const metadata: Metadata = {
   },
 };
 
-// Every photo is Holly's own: the 2022 shoot plus a May 2026 wedding from her Instagram.
-const services = [
+// Every photo is Holly's own: the 2022 shoot, a May 2026 wedding from her Instagram, and a
+// March 2026 group class photo from Russ.
+const services: {
+  title: string;
+  image: string;
+  imageAlt: string;
+  imagePosition?: string;
+  description: string;
+  price: string;
+  details: string[];
+}[] = [
   {
     title: "Private Readings",
     image: "/images/About-Holly-Rocky-2022.jpeg",
@@ -67,8 +76,10 @@ const services = [
   },
   {
     title: "Private Group Tarot Lessons",
-    image: "/images/About-Holly-Kyle-Reading.jpeg",
-    imageAlt: "Holly Cole holding up a tarot card and explaining it, one hand raised mid-story",
+    image: "/images/Services-Group-Tarot-Class-2026.jpg",
+    imageAlt: "Holly Cole standing and teaching a full room of students at round tables during a group tarot class",
+    // 4:3 photo in a 3:2 slot: trim mostly ceiling, keep the whole class
+    imagePosition: "50% 80%",
     description:
       "Bring your friends together for a shared learning experience exploring the wisdom of Tarot. Enjoy the same comprehensive instruction as private lessons in a fun, collaborative group setting.",
     price: "$100/hour",
@@ -106,6 +117,7 @@ export default function Services() {
                     fill
                     sizes="(max-width: 768px) 100vw, 448px"
                     className="object-cover"
+                    style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined}
                   />
                 </div>
                 <CardContent className="p-4 md:p-6">
