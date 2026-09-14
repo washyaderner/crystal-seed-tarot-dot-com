@@ -23,9 +23,12 @@ export const metadata: Metadata = {
   },
 };
 
+// Every photo is Holly's own: the 2022 shoot plus a May 2026 wedding from her Instagram.
 const services = [
   {
     title: "Private Readings",
+    image: "/images/About-Holly-Rocky-2022.jpeg",
+    imageAlt: "Holly Cole laughing with a client over a tarot spread at her candlelit reading table",
     description:
       "Get an overview of what is going on in your life at this time. Gain insight as to how you got here and where things could be stemming from. Receive validation as to what you have been through, and confirmation of where you could be headed.",
     price: "$100/hour",
@@ -37,6 +40,8 @@ const services = [
   },
   {
     title: "Private Events/Party Readings",
+    image: "/images/Services-Private-Events-1920s-Wedding-Cornelius-Pass-2026.jpg",
+    imageAlt: "Holly's candlelit tarot table set with crystals and a deck at a 1920s-themed wedding in a barn full of guests",
     description:
       "I am available to provide Tarot services at private events such as birthday parties, corporate events, theme parties, bachelorette parties, baby showers, school events, fundraisers, and more.",
     price: "$120/hour",
@@ -49,6 +54,8 @@ const services = [
   },
   {
     title: "Private Tarot Lessons",
+    image: "/images/About-Holly-Nicole-Laughing-2022.jpeg",
+    imageAlt: "Holly Cole and a guest laughing together over tarot cards",
     description:
       "Get an overview of what Tarot is and the many systems within this amazing oracle. Written materials provided covering Major and Minor Arcana, resources, practices, layouts, reversals, and more.",
     price: "$60/hour",
@@ -60,6 +67,8 @@ const services = [
   },
   {
     title: "Private Group Tarot Lessons",
+    image: "/images/About-Holly-Kyle-Reading.jpeg",
+    imageAlt: "Holly Cole holding up a tarot card and explaining it, one hand raised mid-story",
     description:
       "Bring your friends together for a shared learning experience exploring the wisdom of Tarot. Enjoy the same comprehensive instruction as private lessons in a fun, collaborative group setting.",
     price: "$100/hour",
@@ -79,7 +88,8 @@ export default function Services() {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-4 md:mb-8 text-center">
             Services
           </h1>
-          <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto text-center mb-8 md:mb-12 whitespace-nowrap">
+          {/* Wraps on phones (one line ran 186px past a 390px screen); one line from md up */}
+          <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto text-center mb-8 md:mb-12 [text-wrap:balance] md:whitespace-nowrap">
             Tarot is one of the most rewarding, memorable experiences in any setting.
           </p>
 
@@ -87,8 +97,17 @@ export default function Services() {
             {services.map((service) => (
               <Card
                 key={service.title}
-                className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15"
+                className="overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 hover:bg-white/15"
               >
+                <div className="relative aspect-[3/2] w-full bg-black/40">
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 448px"
+                    className="object-cover"
+                  />
+                </div>
                 <CardContent className="p-4 md:p-6">
                   <h2 className="text-xl md:text-2xl font-serif text-white mb-3 md:mb-4">
                     {service.title}
