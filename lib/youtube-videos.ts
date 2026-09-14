@@ -9,11 +9,16 @@
  * one short intro where Holly lays out three readings, and the three readings
  * themselves. On YouTube the choice is made through the cards at the end of the
  * intro; on /videos the same choice is made with the three cards under the
- * player. To add a round: add its entry to ROUNDS (newest first) and its eight
- * videos below with the matching `round` key.
+ * player. A round may carry any of the three topics (Money & Career, Love &
+ * Relationships, a General reading with no topic at all); the page shows only
+ * the topics a round has. To add a round: add its entry to ROUNDS (newest
+ * first) and its videos below with the matching `round` key (one intro plus
+ * three readings per topic).
  */
 
-export type Topic = "money" | "love";
+export type Topic = "money" | "love" | "general";
+/** The order the topics are shown in, wherever more than one appears */
+export const TOPIC_ORDER: Topic[] = ["money", "love", "general"];
 export type Choice = 1 | 2 | 3;
 export type VideoKind = "welcome" | "intro" | "reading" | "lesson" | "season" | "care";
 
@@ -63,9 +68,10 @@ export function chipGlowClass(position: number, count: number): string {
 
 /**
  * The deck card a picked reading flips over to. Decorative and fixed: Pentacles
- * for money and career, the Lovers and Cups for love. Not the cards Holly pulls
- * in the video. Ids and names match lib/tarotdoxa-cards.ts (kept out of the
- * client bundle on purpose; six cards do not need the whole deck).
+ * for money and career, the Lovers and Cups for love, three bright majors for a
+ * general reading. Not the cards Holly pulls in the video. Ids and names match
+ * lib/tarotdoxa-cards.ts (kept out of the client bundle on purpose; nine cards
+ * do not need the whole deck).
  */
 export const REVEAL_CARDS: Record<Topic, Record<Choice, { id: string; name: string }>> = {
   money: {
@@ -77,6 +83,11 @@ export const REVEAL_CARDS: Record<Topic, Record<Choice, { id: string; name: stri
     1: { id: "ar06", name: "The Lovers" },
     2: { id: "cu02", name: "Two of Cups" },
     3: { id: "cu10", name: "Ten of Cups" },
+  },
+  general: {
+    1: { id: "ar17", name: "The Star" },
+    2: { id: "ar19", name: "The Sun" },
+    3: { id: "ar10", name: "Wheel of Fortune" },
   },
 };
 
@@ -105,6 +116,12 @@ export const TOPICS: Record<
     short: "Love",
     tagline: "Partners, people, and what your heart wants to know.",
     question: "What do the cards want you to know about love and relationships right now?",
+  },
+  general: {
+    label: "General Reading",
+    short: "General",
+    tagline: "No topic. Whatever the cards want you to know right now.",
+    question: "What do the cards want you to know right now?",
   },
 };
 
@@ -371,6 +388,17 @@ export const CHANNEL_GROUPS: { title: string; blurb: string; videos: ChannelVide
     videos: VIDEOS.filter((v) => v.kind === "welcome"),
   },
 ];
+
+/** The topics a round actually has (an intro or readings with that round key), in TOPIC_ORDER */
+export function topicsInRound(round: string): Topic[] {
+  return TOPIC_ORDER.filter((t) =>
+    VIDEOS.some((v) => (v.kind === "intro" || v.kind === "reading") && v.topic === t && v.round === round),
+  );
+}
+
+export function isTopic(value: string | undefined): value is Topic {
+  return value !== undefined && (TOPIC_ORDER as string[]).includes(value);
+}
 
 export function getIntro(topic: Topic, round: string): ChannelVideo | undefined {
   return VIDEOS.find((v) => v.kind === "intro" && v.topic === topic && v.round === round);

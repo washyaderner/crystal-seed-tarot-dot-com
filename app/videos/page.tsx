@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { DollarSign, Heart, MousePointerClick, PlayCircle, Youtube, type LucideIcon } from "lucide-react";
+import { DollarSign, Heart, MousePointerClick, PlayCircle, Sparkles, Youtube, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CardBack } from "@/components/videos/CardBack";
 import { InteractiveReading } from "@/components/videos/InteractiveReading";
@@ -19,7 +19,7 @@ import {
 } from "@/lib/youtube-videos";
 
 const description =
-  "Choose-your-own-adventure tarot readings from Holly Cole. Pick Money & Career or Love & Relationships, watch the short intro, and let one of three readings call to you. Plus free tarot lessons, season readings, and card care.";
+  "Choose-your-own-adventure tarot readings from Holly Cole. Pick Money & Career, Love & Relationships, or a General reading, watch the short intro, and let one of three readings call to you. Plus free tarot lessons, season readings, and card care.";
 
 export const metadata: Metadata = {
   title: "Interactive Tarot Readings & Videos",
@@ -60,12 +60,12 @@ const videoListSchema = {
   })),
 };
 
-// Icons only, no step numbers: the dollar and heart show the two paths to pick from.
+// Icons only, no step numbers: the dollar, heart and sparkle show the paths to pick from.
 const steps: { icons: LucideIcon[]; title: string; body: string }[] = [
   {
-    icons: [DollarSign, Heart],
+    icons: [DollarSign, Heart, Sparkles],
     title: "Pick your path",
-    body: "Money & Career or Love & Relationships. Holly posts a fresh set of both every month.",
+    body: "Money & Career, Love & Relationships, or a General reading with no topic at all. Holly posts fresh sets every month; some months have one path, some have all three.",
   },
   {
     icons: [PlayCircle],

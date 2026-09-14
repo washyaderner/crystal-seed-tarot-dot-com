@@ -9,6 +9,7 @@ import {
   Heart,
   Play,
   RotateCcw,
+  Sparkles,
   Youtube,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -29,7 +30,9 @@ import {
   getIntro,
   getReading,
   getReadings,
+  isTopic,
   thumbUrl,
+  topicsInRound,
   watchUrl,
   type ChannelVideo,
   type Choice,
@@ -44,7 +47,12 @@ const HEADER_OFFSET = 88;
 const TOPIC_ICON: Record<Topic, React.ComponentType<{ className?: string }>> = {
   money: DollarSign,
   love: Heart,
+  general: Sparkles,
 };
+
+/** md:grid-cols for one, two or three paths side by side */
+const pathColumns = (count: number) =>
+  count >= 3 ? "md:grid-cols-3" : count === 2 ? "md:grid-cols-2" : "mx-auto max-w-lg";
 
 /** A small YouTube-red play badge for video thumbnails */
 function YouTubePlayBadge({ className }: { className?: string }) {
@@ -58,11 +66,12 @@ function YouTubePlayBadge({ className }: { className?: string }) {
   );
 }
 
-/** #money/2025-10 or #money/2025-10/2 */
+/** #money/2025-10, #money/2025-10/2 or #general/2026-09/1 */
 function parseHash(hash: string): { topic: Topic; round: string; choice: Choice | null } | null {
   const [topic, round, choice] = hash.replace(/^#/, "").split("/");
-  if (topic !== "money" && topic !== "love") return null;
+  if (!isTopic(topic)) return null;
   if (!ROUNDS.some((r) => r.key === round)) return null;
+  if (!topicsInRound(round).includes(topic)) return null;
   const n = choice ? Number(choice) : null;
   if (n !== null && !CHOICES.includes(n as Choice)) return null;
   return { topic, round, choice: n as Choice | null };
@@ -97,7 +106,9 @@ export function InteractiveReading() {
   const readings = topic ? getReadings(topic, roundKey) : [];
   const current: ChannelVideo | undefined =
     topic && choice ? getReading(topic, roundKey, choice) : intro;
-  const otherTopic: Topic | null = topic === "money" ? "love" : topic === "love" ? "money" : null;
+  // The paths this month offers (one, two or all three) and the ones not taken yet
+  const roundTopics = topicsInRound(roundKey);
+  const otherTopics: Topic[] = topic ? roundTopics.filter((t) => t !== topic) : [];
 
   // Restore a shared link like /videos#love/2025-10/2
   React.useEffect(() => {
@@ -150,6 +161,7 @@ export function InteractiveReading() {
   const changeRound = (key: string) => {
     if (key === roundKey) return;
     setRoundKey(key);
+    if (topic && !topicsInRound(key).includes(topic)) setTopic(null);
     setChoice(null);
     setIntroDone(false);
     setReadingDone(false);
@@ -183,7 +195,7 @@ export function InteractiveReading() {
   return (
     <div ref={stageRef} className="scroll-mt-24">
       {/* The adventure as a map: Start, Money or Love, three readings on each; your path lights up */}
-      <PathTree topic={topic} choice={choice} />
+      <PathTree topic={topic} choice={choice} topics={roundTopics} />
 
       {/* Round switcher */}
       <div className="mb-6 flex flex-wrap items-center justify-center gap-2" role="group" aria-label="Choose a month">
@@ -207,9 +219,9 @@ export function InteractiveReading() {
       </div>
 
       {stage === "choose" ? (
-        /* Step 1: two paths */
-        <div className="grid gap-4 md:grid-cols-2 md:gap-6">
-          {(Object.keys(TOPICS) as Topic[]).map((t) => {
+        /* Step 1: the paths this month offers */
+        <div className={cn("grid gap-4 md:gap-6", pathColumns(roundTopics.length))}>
+          {roundTopics.map((t) => {
             const Icon = TOPIC_ICON[t];
             const count = getReadings(t, roundKey).length;
             return (
@@ -357,17 +369,21 @@ export function InteractiveReading() {
             </div>
 
             {/* After the reading: the other angles */}
-            {stage === "reading" && readingDone && otherTopic && (
+            {stage === "reading" && readingDone && (
               <div className="mx-auto mt-6 max-w-2xl rounded-xl border border-white/20 bg-white/10 p-4 text-center text-white backdrop-blur-md md:p-5">
                 <p className="font-serif text-lg md:text-xl">Want another angle?</p>
                 <p className="mt-1 text-sm text-white/80">
-                  Tap another card above, or see what the cards say about {TOPICS[otherTopic].label.toLowerCase()}.
+                  {otherTopics.length > 0
+                    ? `Tap another card above, or see what the cards say about ${otherTopics.map((t) => TOPICS[t].label.toLowerCase()).join(" or ")}.`
+                    : "Tap another card above for a second angle on this month."}
                 </p>
                 <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
-                  <Button variant="outline" size="sm" onClick={() => start(otherTopic)}>
-                    {React.createElement(TOPIC_ICON[otherTopic], { className: "mr-2 h-4 w-4" })}
-                    Try {TOPICS[otherTopic].label}
-                  </Button>
+                  {otherTopics.map((t) => (
+                    <Button key={t} variant="outline" size="sm" onClick={() => start(t)}>
+                      {React.createElement(TOPIC_ICON[t], { className: "mr-2 h-4 w-4" })}
+                      Try {TOPICS[t].label}
+                    </Button>
+                  ))}
                   <Button asChild variant="outline" size="sm">
                     <a href={SUBSCRIBE_URL} target="_blank" rel="noopener noreferrer" className="text-white">
                       <Youtube className="mr-2 h-4 w-4 text-[#FF0000]" /> Subscribe for next month
@@ -384,12 +400,12 @@ export function InteractiveReading() {
                   <RotateCcw className="mr-2 h-4 w-4" /> Replay the intro
                 </Button>
               )}
-              {otherTopic && (
-                <Button variant="outline" size="sm" onClick={() => start(otherTopic)}>
-                  {React.createElement(TOPIC_ICON[otherTopic], { className: "mr-2 h-4 w-4" })}
-                  Switch to {TOPICS[otherTopic].short}
+              {otherTopics.map((t) => (
+                <Button key={t} variant="outline" size="sm" onClick={() => start(t)}>
+                  {React.createElement(TOPIC_ICON[t], { className: "mr-2 h-4 w-4" })}
+                  Switch to {TOPICS[t].short}
                 </Button>
-              )}
+              ))}
               <Button variant="ghost" size="sm" onClick={reset} className="text-white/70 hover:bg-white/10 hover:text-white">
                 Start over
               </Button>
@@ -413,8 +429,8 @@ export function InteractiveReading() {
                   <span className="text-xs uppercase tracking-wider text-white/60">selected month</span>
                 )}
               </div>
-              <div className="grid gap-4 md:grid-cols-2">
-                {(Object.keys(TOPICS) as Topic[]).map((t) => {
+              <div className={cn("grid gap-4", pathColumns(topicsInRound(r.key).length))}>
+                {topicsInRound(r.key).map((t) => {
                   const Icon = TOPIC_ICON[t];
                   const rIntro = getIntro(t, r.key);
                   const rReadings = getReadings(t, r.key);

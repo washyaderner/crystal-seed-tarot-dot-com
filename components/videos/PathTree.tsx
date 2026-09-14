@@ -1,21 +1,27 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
-import { DollarSign, Heart } from "lucide-react";
+import { DollarSign, Heart, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TOPICS, type Choice, type Topic } from "@/lib/youtube-videos";
 
 /**
- * The choose-your-own-adventure map: Start, then Money or Love, then three readings on each
- * branch (nine nodes). Each tier keeps one chip color, dark to lit like the hero cards
- * (.brand-chip, -2, -3). The path taken lights up solid; the paths still open stay dotted.
+ * The choose-your-own-adventure map: Start, then the paths this round offers (Money, Love,
+ * General: one, two or all three), then three readings on each branch. Each tier keeps one
+ * chip color, dark to lit like the hero cards (.brand-chip, -2, -3). The path taken lights
+ * up solid; the paths still open stay dotted.
  *
  * Geometry is fixed in px down the page and in % across it, so the SVG connectors
  * (viewBox 0 0 100 HEIGHT, stretched across the width) meet the HTML nodes at any width.
  */
 
 const HEIGHT = 288;
-const TOPIC_ORDER: Topic[] = ["money", "love"];
 const CHOICES: Choice[] = [1, 2, 3];
+
+const TOPIC_ICON: Record<Topic, ReactNode> = {
+  money: <DollarSign className="h-[18px] w-[18px]" />,
+  love: <Heart className="h-[18px] w-[18px]" />,
+  general: <Sparkles className="h-[18px] w-[18px]" />,
+};
 
 // Chip size and top edge per tier (px). Labels sit 6px under each chip.
 const TIER = {
@@ -25,8 +31,6 @@ const TIER = {
 } as const;
 
 const startX = 50;
-const topicX: Record<Topic, number> = { money: 25, love: 75 };
-const readingX = (t: Topic, c: Choice) => (100 * (TOPIC_ORDER.indexOf(t) * 3 + (c - 1) + 0.5)) / 6;
 
 // Where connectors leave a parent (under its label) and reach a child (just above its chip)
 const START_OUT = 64;
@@ -64,6 +68,7 @@ function Node({
   chipClass,
   state,
   label,
+  labelClass,
   children,
 }: {
   x: number;
@@ -71,6 +76,7 @@ function Node({
   chipClass: string;
   state: NodeState;
   label: string;
+  labelClass?: string;
   children?: ReactNode;
 }) {
   const { size, top } = TIER[tier];
@@ -97,6 +103,7 @@ function Node({
         className={cn(
           "mt-1.5 whitespace-nowrap text-[10px] leading-none sm:text-[11px] md:text-xs",
           state === "current" ? "font-medium text-white" : "text-white/80",
+          labelClass,
         )}
       >
         {label}
@@ -105,12 +112,19 @@ function Node({
   );
 }
 
-export function PathTree({ topic, choice }: { topic: Topic | null; choice: Choice | null }) {
+export function PathTree({ topic, choice, topics }: { topic: Topic | null; choice: Choice | null; topics: Topic[] }) {
+  const n = Math.max(1, topics.length);
+  // Paths share the width evenly; each path's three readings sit under it
+  const topicX = (t: Topic) => (100 * (topics.indexOf(t) + 0.5)) / n;
+  const readingX = (t: Topic, c: Choice) => (100 * (topics.indexOf(t) * 3 + (c - 1) + 0.5)) / (3 * n);
+
   const topicState = (t: Topic): NodeState =>
     topic === null ? "open" : t !== topic ? "faded" : choice === null ? "current" : "traveled";
   const readingState = (t: Topic, c: Choice): NodeState =>
     topic === null ? "open" : t !== topic ? "faded" : choice === null ? "open" : c === choice ? "current" : "sibling";
 
+  const pathNames = topics.map((t) => TOPICS[t].short);
+  const pathList = pathNames.length > 1 ? `${pathNames.slice(0, -1).join(", ")} or ${pathNames[pathNames.length - 1]}` : pathNames[0] ?? "a path";
   const where =
     topic === null
       ? "You are at the start."
@@ -123,7 +137,7 @@ export function PathTree({ topic, choice }: { topic: Topic | null; choice: Choic
       className="relative mx-auto mb-6 w-full md:mb-8"
       style={{ height: HEIGHT }}
       role="img"
-      aria-label={`Choose your own adventure: start, then Money or Love, then three readings on each path. ${where}`}
+      aria-label={`Choose your own adventure: start, then ${pathList}, then three readings on each path. ${where}`}
     >
       <svg
         className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
@@ -131,13 +145,13 @@ export function PathTree({ topic, choice }: { topic: Topic | null; choice: Choic
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        {TOPIC_ORDER.map((t) => (
+        {topics.map((t) => (
           <g key={t}>
-            <Connector d={curve(startX, START_OUT, topicX[t], TOPIC_IN)} lit={topic === t} />
+            <Connector d={curve(startX, START_OUT, topicX(t), TOPIC_IN)} lit={topic === t} />
             {CHOICES.map((c) => (
               <Connector
                 key={c}
-                d={curve(topicX[t], TOPIC_OUT, readingX(t, c), READING_IN)}
+                d={curve(topicX(t), TOPIC_OUT, readingX(t, c), READING_IN)}
                 lit={topic === t && choice === c}
               />
             ))}
@@ -149,13 +163,13 @@ export function PathTree({ topic, choice }: { topic: Topic | null; choice: Choic
         <Image src="/images/brand/crystal-seed-mark-cutout.png" alt="" width={14} height={21} sizes="14px" />
       </Node>
 
-      {TOPIC_ORDER.map((t) => (
-        <Node key={t} x={topicX[t]} tier="topic" chipClass="brand-chip-2" state={topicState(t)} label={TOPICS[t].short}>
-          {t === "money" ? <DollarSign className="h-[18px] w-[18px]" /> : <Heart className="h-[18px] w-[18px]" />}
+      {topics.map((t) => (
+        <Node key={t} x={topicX(t)} tier="topic" chipClass="brand-chip-2" state={topicState(t)} label={TOPICS[t].short}>
+          {TOPIC_ICON[t]}
         </Node>
       ))}
 
-      {TOPIC_ORDER.flatMap((t) =>
+      {topics.flatMap((t) =>
         CHOICES.map((c) => (
           <Node
             key={`${t}-${c}`}
@@ -164,6 +178,8 @@ export function PathTree({ topic, choice }: { topic: Topic | null; choice: Choic
             chipClass="brand-chip-3 text-sm"
             state={readingState(t, c)}
             label={`${TOPICS[t].short} ${c}`}
+            // nine readings across a phone: the chip already shows the number, the label waits for a wider screen
+            labelClass={n >= 3 ? "hidden sm:block" : undefined}
           >
             {c}
           </Node>
