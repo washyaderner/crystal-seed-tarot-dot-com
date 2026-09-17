@@ -286,3 +286,8 @@ feat(brand): Russ's pink Crystal Seed favicon replaces the red-orange crystal
 
 Russ: "This is Holly's new favicon. Replace the current one on her site with this one, please" (1254 square, _biz/Crystal Seed Tarot/logo/exec-45ba43e3-c840-4a7a-8237-f3085c3c1d5f.png; a Brand/Pink 2026-09-14/ folder made at 1:15 PM already held a 1024 copy, 16/32 exports and the generation prompts). Same crystal, rose-pink (mean hue 343 deg) instead of red-orange (hue 5 deg), same flat #0e030a background (within 4 levels), so both build scripts ran unchanged: tools/favicon/build.py rebuilt app/favicon.ico (16/32/48), app/icon.png (512), app/apple-icon.png (180); tools/favicon/cutout.py rebuilt the header mark and the /videos Start node (323x480, was 320x480; the header shows it 30x45, a 1 percent ratio change). JSON-LD logo (the wordmark version) unchanged: no new logo was supplied. The same crystal shipped to Flyer Studio (2ee3570, Worker version adac0e2f) and the sign-up PWA (8a42b04, Worker version 225152f1).
 Verified: build green; commit df179f7 (the first push dropped mid-transfer with "unexpected disconnect while reading sideband packet" and left the remote untouched; the second push landed); GitHub deployment 6446354278 success 2:00 PM; live: HTML links icon.png?0aa01f6a8a139031 and apple-icon.png?dc5424788aa22afd with the old hashes gone, favicon.ico (plain and cache-busted), icon.png, apple-icon.png and the cutout PNG md5-match the committed files (5 of 5), and the header image through the next/image optimizer measures hue 343 (pink). Cloudflare served the new plain /favicon.ico on the first read (cf-cache-status EXPIRED).
+
+## 2026-09-14 14:06 | bde2b34
+
+docs(journal): pink favicon ship entry, plus the 9/13 entries
+
