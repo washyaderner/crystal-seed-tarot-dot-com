@@ -199,6 +199,29 @@ export const CHANNEL_GROUPS: { title: string; blurb: string; videos: ChannelVide
   },
 ];
 
+/**
+ * Anything published less than this many days ago is "fresh" and breathes on the page
+ * (Russ 2026-09-22: "if something has been published less than 3 weeks ago, it breathes").
+ */
+export const FRESH_DAYS = 21;
+
+/** The newest upload date on a path, across every round; undefined when the path has no videos yet */
+export function newestOnPath(topic: Topic): string | undefined {
+  return VIDEOS.filter((v) => (v.kind === "intro" || v.kind === "reading") && v.topic === topic)
+    .map((v) => v.published)
+    .sort()
+    .pop();
+}
+
+/** The paths with a video newer than FRESH_DAYS as of `now` (a timestamp, so callers control the clock) */
+export function freshTopics(now: number = Date.now()): Topic[] {
+  const cutoff = now - FRESH_DAYS * 24 * 60 * 60 * 1000;
+  return TOPIC_ORDER.filter((t) => {
+    const newest = newestOnPath(t);
+    return newest !== undefined && Date.parse(`${newest}T12:00:00Z`) > cutoff;
+  });
+}
+
 /** The topics a round actually has (an intro or readings with that round key), in TOPIC_ORDER */
 export function topicsInRound(round: string): Topic[] {
   return TOPIC_ORDER.filter((t) =>

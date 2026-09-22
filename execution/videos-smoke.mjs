@@ -28,8 +28,14 @@ const OTHER = topicsIn(NEWEST).find((t) => t !== PATH); // a second path in the 
 const INTRO = DATA.videos.find((v) => v.kind === "intro" && v.round === NEWEST.key && v.topic === PATH);
 const READING2 = DATA.videos.find((v) => v.kind === "reading" && v.round === NEWEST.key && v.topic === PATH && v.choice === 2);
 const fmt = (s) => (s < 60 ? `${s} sec` : `${Math.round(s / 60)} min`);
+// The map's breathing rule, computed the same way lib/youtube-videos.ts does it (FRESH_DAYS = 21)
+const FRESH_DAYS = 21;
+const FRESH = TOPIC_ORDER.filter((t) => {
+  const newest = DATA.videos.filter((v) => (v.kind === "intro" || v.kind === "reading") && v.topic === t).map((v) => v.published).sort().pop();
+  return newest && Date.parse(`${newest}T12:00:00Z`) > Date.now() - FRESH_DAYS * 86400000;
+});
 const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-console.log(`INFO newest round ${NEWEST.key} path ${PATH} intro ${INTRO.id} (${INTRO.duration} s); ${DATA.videos.length} videos`);
+console.log(`INFO newest round ${NEWEST.key} path ${PATH} intro ${INTRO.id} (${INTRO.duration} s); ${DATA.videos.length} videos; fresh paths: ${FRESH.join(", ") || "none"}`);
 const chromium = await (async () => {
   const candidates = [
     "playwright",
@@ -83,12 +89,26 @@ const mk = async (w, h) => {
   ok((await page.getByRole("button", { name: new RegExp(esc(NEWEST.label)) }).innerText()).toLowerCase().includes("newest"), "newest round chip carries the newest badge");
   const noHScroll = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
   ok(noHScroll, "no horizontal scroll at 1440");
+  // The map: every path lit at the start, the fresh ones breathing
+  const tree = await page.evaluate(() =>
+    [...document.querySelectorAll("[data-node]")].map((n) => ({
+      id: n.dataset.node, state: n.dataset.state, fresh: n.dataset.fresh === "true",
+      opacity: getComputedStyle(n).opacity, anim: getComputedStyle(n).animationName,
+    })));
+  const topicNodes = tree.filter((n) => TOPIC_ORDER.includes(n.id));
+  ok(tree.length === 13, "map has 13 nodes", String(tree.length));
+  ok(topicNodes.length === 3 && topicNodes.every((n) => n.state === "open"), "all three paths are open at the start (none dimmed)", JSON.stringify(topicNodes.map((n) => [n.id, n.state])));
+  ok(topicNodes.every((n) => Number(n.opacity) >= 0.35), "no path sits dim at the start", JSON.stringify(topicNodes.map((n) => [n.id, n.opacity])));
+  ok(JSON.stringify(topicNodes.filter((n) => n.fresh).map((n) => n.id)) === JSON.stringify(FRESH), `fresh paths breathe: ${FRESH.join(", ") || "none"}`, JSON.stringify(topicNodes.map((n) => [n.id, n.fresh, n.anim])));
+  ok(topicNodes.every((n) => (n.fresh ? n.anim === "path-breathe" : n.anim === "none")), "breathing animation only on fresh paths", JSON.stringify(topicNodes.map((n) => [n.id, n.anim])));
   await page.screenshot({ path: `${OUT}/desktop-1-choose.png`, fullPage: true });
 
   // Start the newest month's first path
   await page.getByRole("button", { name: new RegExp(esc(TOPIC_LABEL[PATH])) }).first().click();
   await page.waitForTimeout(500);
   ok(await page.evaluate(() => location.hash) === `#${PATH}/${NEWEST.key}`, "hash after topic pick", await page.evaluate(() => location.hash));
+  const picked = await page.evaluate((id) => { const n = document.querySelector(`[data-node="${id}"]`); return { state: n?.dataset.state, anim: getComputedStyle(n).animationName }; }, PATH);
+  ok(picked.state === "current" && picked.anim === "none", "picked path is current and stops breathing", JSON.stringify(picked));
   const iframe = page.locator(".player-glow iframe");
   await iframe.first().waitFor({ state: "attached", timeout: 15000 }).catch(() => {});
   const src = (await iframe.first().getAttribute("src").catch(() => "")) || "";

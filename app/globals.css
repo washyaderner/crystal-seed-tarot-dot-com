@@ -213,6 +213,16 @@ textarea.border-red-500:focus {
   50% { opacity: 1; transform: scale(1.03); }
 }
 
+/* A path on the map with a video less than three weeks old breathes while it is still open */
+.path-fresh {
+  animation: path-breathe 3.2s ease-in-out infinite;
+}
+
+@keyframes path-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 /* When the intro ends, the three cards call out one after another */
 .card-calling {
   animation: card-call 1.8s ease-in-out infinite;
@@ -240,6 +250,7 @@ textarea.border-red-500:focus {
 @media (prefers-reduced-motion: reduce) {
   .player-glow::before,
   .card-calling,
+  .path-fresh,
   .float-card {
     animation: none;
   }

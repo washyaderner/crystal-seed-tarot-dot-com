@@ -27,6 +27,7 @@ import {
   SUBSCRIBE_URL,
   cardFaceUrl,
   formatDuration,
+  freshTopics,
   getIntro,
   getReading,
   getReadings,
@@ -97,6 +98,8 @@ export function InteractiveReading() {
   const [playToken, setPlayToken] = React.useState(0);
   const [playerMode, setPlayerMode] = React.useState<"api" | "iframe" | null>(null);
   const [hashSynced, setHashSynced] = React.useState(false);
+  // Which paths breathe on the map: set after mount so the server and the browser never disagree on "today"
+  const [fresh, setFresh] = React.useState<Topic[]>([]);
   const stageRef = React.useRef<HTMLDivElement>(null);
   const cardsRef = React.useRef<HTMLDivElement>(null);
 
@@ -109,6 +112,10 @@ export function InteractiveReading() {
   // The paths this month offers (one, two or all three) and the ones not taken yet
   const roundTopics = topicsInRound(roundKey);
   const otherTopics: Topic[] = topic ? roundTopics.filter((t) => t !== topic) : [];
+
+  React.useEffect(() => {
+    setFresh(freshTopics());
+  }, []);
 
   // Restore a shared link like /videos#love/2025-10/2
   React.useEffect(() => {
@@ -194,8 +201,8 @@ export function InteractiveReading() {
 
   return (
     <div ref={stageRef} className="scroll-mt-24">
-      {/* The adventure as a map: Start, Money or Love, three readings on each; your path lights up */}
-      <PathTree topic={topic} choice={choice} topics={roundTopics} />
+      {/* The adventure as a map: Start, then Money, General or Love, three readings on each; your path lights up, a fresh path breathes */}
+      <PathTree topic={topic} choice={choice} topics={roundTopics} fresh={fresh} />
 
       {/* Round switcher */}
       <div className="mb-6 flex flex-wrap items-center justify-center gap-2" role="group" aria-label="Choose a month">
