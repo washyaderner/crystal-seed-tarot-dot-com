@@ -315,3 +315,17 @@ feat(videos): nightly watchdog that puts new YouTube videos on /videos by itself
 ## 2026-09-22 00:50 | ab2bca6, cf86e15
 
 feat(videos): September 2026 General set live; channel data moved to lib/youtube-videos.json with a load-time row check; smoke reads the JSON. feat(videos): execution/videos-watch.py, the nightly 3:07 AM watchdog (launchd com.studio.crystal-seed-videos-watch) that places new YouTube videos by title rules, builds, pushes, proves live, smokes production and pings Russ + the handoffs bus; review pile with a Jev v2 suggestion for anything the rules cannot place. End-to-end proved on a scratch clone; replay 27/27.
+
+## 2026-09-22 00:50 | e3f4d31
+
+docs(journal): Sept 2026 set + videos watchdog entries
+
+
+## 2026-09-22 08:04 | a94cc1f
+
+feat(videos): every path on the map stays lit, and a fresh path breathes
+
+
+## 2026-09-22 01:06 | a94cc1f
+
+feat(videos): the map keeps every path lit (no more dim Money and Love); a path with a video under FRESH_DAYS (21) old breathes while open. Live, production smoke 42/42.
