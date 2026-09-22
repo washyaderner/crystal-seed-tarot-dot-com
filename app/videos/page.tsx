@@ -181,10 +181,10 @@ export default function Videos() {
             <h3 className="font-serif text-lg md:text-xl">A note on the first rounds</h3>
             <p className="mt-2 text-sm text-white/85 md:text-base">
               The September and October 2025 intros keep it short: Holly names readings 1, 2,
-              and 3, and the cards to click appear at the end of the video. Newer intros will
-              walk you through the choice on screen. Here you never have to hunt for them.
-              Your three cards are always right under the video, and any reading is one tap
-              away in the list above.
+              and 3, and the cards to click appear at the end of the video. From September
+              2026 on, each intro ends on a slate with the three cards to choose from. Here
+              you never have to hunt for them. Your three cards are always right under the
+              video, and any reading is one tap away in the list above.
             </p>
             <p className="mt-3 text-xs text-white/60">
               Readings are for entertainment purposes. Take what resonates, leave what doesn&apos;t.

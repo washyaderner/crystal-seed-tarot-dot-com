@@ -5,9 +5,31 @@
 //   node execution/videos-smoke.mjs
 // Or against production:
 //   BASE=https://crystalseedtarot.com INTRO=0 node execution/videos-smoke.mjs
-// INTRO=0 skips the 42 s wait for the intro's real ENDED event. Screenshots land in OUT
+// INTRO=0 skips the wait for the newest intro's real ENDED event. Screenshots land in OUT
 // (default .tmp/videos-smoke). Needs Playwright: this repo does not carry it, so the
 // import falls back to the copies other projects on this machine already have.
+//
+// Expectations come from lib/youtube-videos.json (the newest round, its first path, its
+// intro and readings), so a new month never needs a hand edit here; the nightly watchdog
+// runs this same file against production after every push.
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
+const DATA = JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), "..", "lib", "youtube-videos.json"), "utf8"));
+const TOPIC_ORDER = ["money", "general", "love"];
+const TOPIC_LABEL = { money: "Money & Career", general: "General Reading", love: "Love & Relationships" };
+const TOPIC_SHORT = { money: "Money", general: "General", love: "Love" };
+const NEWEST = DATA.rounds[0];
+const SECOND = DATA.rounds[1];
+const inRound = (round) => (v) => (v.kind === "intro" || v.kind === "reading") && v.round === round.key;
+const topicsIn = (round) => TOPIC_ORDER.filter((t) => DATA.videos.some((v) => inRound(round)(v) && v.topic === t));
+const PATH = topicsIn(NEWEST)[0];                       // the first path the newest month offers
+const OTHER = topicsIn(NEWEST).find((t) => t !== PATH); // a second path in the same month, if any
+const INTRO = DATA.videos.find((v) => v.kind === "intro" && v.round === NEWEST.key && v.topic === PATH);
+const READING2 = DATA.videos.find((v) => v.kind === "reading" && v.round === NEWEST.key && v.topic === PATH && v.choice === 2);
+const fmt = (s) => (s < 60 ? `${s} sec` : `${Math.round(s / 60)} min`);
+const esc = (t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+console.log(`INFO newest round ${NEWEST.key} path ${PATH} intro ${INTRO.id} (${INTRO.duration} s); ${DATA.videos.length} videos`);
 const chromium = await (async () => {
   const candidates = [
     "playwright",
@@ -53,22 +75,24 @@ const mk = async (w, h) => {
   ok(await page.locator('header nav a[href="/videos"]').count() === 1, "desktop nav has Videos link");
   const ld = await page.locator('script[type="application/ld+json"]').allTextContents();
   const list = ld.map((t) => { try { return JSON.parse(t); } catch { return null; } }).find((j) => j && j["@type"] === "ItemList");
-  ok(list && list.itemListElement.length === 23, "JSON-LD ItemList has 23 videos", String(list && list.itemListElement.length));
+  ok(list && list.itemListElement.length === DATA.videos.length, `JSON-LD ItemList has ${DATA.videos.length} videos`, String(list && list.itemListElement.length));
+  ok(list && list.itemListElement.some((e) => e.item.url.endsWith(INTRO.id)), "JSON-LD carries the newest intro");
   ok(await page.locator("h1", { hasText: "Interactive Tarot Readings" }).count() === 1, "h1 present");
-  ok(await page.getByRole("button", { name: /Money & Career/ }).count() >= 1, "Money & Career path button");
-  ok(await page.getByRole("button", { name: /Love & Relationships/ }).count() >= 1, "Love & Relationships path button");
+  ok(await page.getByRole("button", { name: new RegExp(esc(TOPIC_LABEL[PATH])) }).count() >= 1, `${TOPIC_LABEL[PATH]} path button (newest month)`);
+  ok(await page.getByRole("button", { name: new RegExp(esc(NEWEST.label)) }).count() === 1, `round chip ${NEWEST.label}`);
+  ok((await page.getByRole("button", { name: new RegExp(esc(NEWEST.label)) }).innerText()).toLowerCase().includes("newest"), "newest round chip carries the newest badge");
   const noHScroll = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1);
   ok(noHScroll, "no horizontal scroll at 1440");
   await page.screenshot({ path: `${OUT}/desktop-1-choose.png`, fullPage: true });
 
-  // Start Money & Career
-  await page.getByRole("button", { name: /Money & Career/ }).first().click();
+  // Start the newest month's first path
+  await page.getByRole("button", { name: new RegExp(esc(TOPIC_LABEL[PATH])) }).first().click();
   await page.waitForTimeout(500);
-  ok(await page.evaluate(() => location.hash) === "#money/2025-10", "hash after topic pick", await page.evaluate(() => location.hash));
+  ok(await page.evaluate(() => location.hash) === `#${PATH}/${NEWEST.key}`, "hash after topic pick", await page.evaluate(() => location.hash));
   const iframe = page.locator(".player-glow iframe");
   await iframe.first().waitFor({ state: "attached", timeout: 15000 }).catch(() => {});
   const src = (await iframe.first().getAttribute("src").catch(() => "")) || "";
-  ok(src.includes("youtube-nocookie.com") && src.includes("MS6HI6c15T0"), "player iframe loads the Oct money intro", src.slice(0, 120));
+  ok(src.includes("youtube-nocookie.com") && src.includes(INTRO.id), `player iframe loads the ${NEWEST.short} ${PATH} intro`, src.slice(0, 120));
   ok(await page.getByRole("button", { name: /^Reading 1, / }).count() === 1, "three reading cards rendered (card 1)");
   ok(await page.getByRole("button", { name: /^Reading 3, / }).count() === 1, "three reading cards rendered (card 3)");
   const promptEarly = await page.locator("p[aria-live]").innerText();
@@ -79,8 +103,8 @@ const mk = async (w, h) => {
   await page.screenshot({ path: `${OUT}/desktop-2-intro.png`, fullPage: false });
 
   if (WAIT_FOR_INTRO_END && mode === "api") {
-    // The Oct money intro is 42 s. Wait for the real ENDED event from the IFrame API.
-    const called = await page.locator("p[aria-live]", { hasText: "Which one is calling you" }).waitFor({ timeout: 75000 }).then(() => true).catch(() => false);
+    // Wait for the real ENDED event from the IFrame API (the intro's length plus slack).
+    const called = await page.locator("p[aria-live]", { hasText: "Which one is calling you" }).waitFor({ timeout: (INTRO.duration + 45) * 1000 }).then(() => true).catch(() => false);
     ok(called, "IFrame API reported the intro ENDED -> cards are calling");
     if (called) {
       ok(await page.locator(".card-calling").count() === 3, "three cards carry the calling animation");
@@ -91,21 +115,33 @@ const mk = async (w, h) => {
   // Pick reading 2
   await page.getByRole("button", { name: /^Reading 2, / }).click();
   await page.waitForTimeout(800);
-  ok(await page.evaluate(() => location.hash) === "#money/2025-10/2", "hash after reading pick", await page.evaluate(() => location.hash));
+  ok(await page.evaluate(() => location.hash) === `#${PATH}/${NEWEST.key}/2`, "hash after reading pick", await page.evaluate(() => location.hash));
   ok(await page.getByRole("button", { name: /^Now playing: Reading 2/ }).count() === 1, "card 2 shows Now playing");
   const header = await page.locator(".player-glow").locator("xpath=preceding-sibling::div[1]").innerText();
-  ok(header.includes("Reading 2") && header.includes("7 min"), "player header says Reading 2 · 7 min", header);
+  ok(header.includes("Reading 2") && header.includes(fmt(READING2.duration)), `player header says Reading 2 · ${fmt(READING2.duration)}`, header);
   await page.screenshot({ path: `${OUT}/desktop-4-reading.png`, fullPage: false });
 
-  // Switch to Love via the control
-  await page.getByRole("button", { name: /Switch to Love/ }).click();
-  await page.waitForTimeout(500);
-  ok(await page.evaluate(() => location.hash) === "#love/2025-10", "switch topic -> love intro hash", await page.evaluate(() => location.hash));
+  // Switch to another path in the same month, when the month has one
+  let topicNow = PATH;
+  if (OTHER) {
+    await page.getByRole("button", { name: new RegExp(`Switch to ${esc(TOPIC_SHORT[OTHER])}`) }).click();
+    await page.waitForTimeout(500);
+    ok(await page.evaluate(() => location.hash) === `#${OTHER}/${NEWEST.key}`, `switch topic -> ${OTHER} intro hash`, await page.evaluate(() => location.hash));
+    topicNow = OTHER;
+  } else {
+    ok(await page.getByRole("button", { name: /Switch to / }).count() === 0, "single-path month shows no Switch button");
+  }
 
-  // Change round
-  await page.getByRole("button", { name: /September 2025/ }).first().click();
+  // Change round: the path follows when the older month has it, else the stage resets
+  await page.getByRole("button", { name: new RegExp(esc(SECOND.label)) }).first().click();
   await page.waitForTimeout(400);
-  ok(await page.evaluate(() => location.hash) === "#love/2025-09", "round switch -> sept hash", await page.evaluate(() => location.hash));
+  const expectRound = topicsIn(SECOND).includes(topicNow) ? `#${topicNow}/${SECOND.key}` : "";
+  ok(await page.evaluate(() => location.hash) === expectRound, `round switch -> ${expectRound || "reset (path not in that month)"}`, await page.evaluate(() => location.hash));
+  if (!expectRound) {
+    // start the older month's first path so the rest of the flow has a player to test
+    await page.getByRole("button", { name: new RegExp(esc(TOPIC_LABEL[topicsIn(SECOND)[0]])) }).first().click();
+    await page.waitForTimeout(400);
+  }
 
   // Start over clears the hash
   await page.getByRole("button", { name: "Start over" }).click();
@@ -117,7 +153,7 @@ const mk = async (w, h) => {
   await page.getByRole("button", { name: /^Reading 3 · / }).nth(3).click().catch(() => {});
   await page.waitForTimeout(600);
   const h2 = await page.evaluate(() => location.hash);
-  ok(/^#(money|love)\/2025-(09|10)\/3$/.test(h2), "archive card jumps straight to a reading", h2);
+  ok(/^#(money|general|love)\/\d{4}-\d{2}\/3$/.test(h2), "archive card jumps straight to a reading", h2);
 
   // Channel grid: play a lesson in place
   await page.getByRole("button", { name: /Play Swords in Tarot/ }).click();
@@ -166,12 +202,12 @@ for (const w of [768, 1024]) {
   await page.goto(`${BASE}/videos`, { waitUntil: "networkidle" });
   ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1), "no horizontal scroll at 390");
   await page.screenshot({ path: `${OUT}/mobile-1-choose.png`, fullPage: true });
-  await page.getByRole("button", { name: /Love & Relationships/ }).first().click();
+  await page.getByRole("button", { name: new RegExp(esc(TOPIC_LABEL[PATH])) }).first().click();
   await page.waitForTimeout(1200);
   await page.screenshot({ path: `${OUT}/mobile-2-intro.png`, fullPage: false });
   await page.getByRole("button", { name: /^Reading 1, / }).click();
   await page.waitForTimeout(800);
-  ok(await page.evaluate(() => location.hash) === "#love/2025-10/1", "mobile pick -> hash");
+  ok(await page.evaluate(() => location.hash) === `#${PATH}/${NEWEST.key}/1`, "mobile pick -> hash", await page.evaluate(() => location.hash));
   await page.screenshot({ path: `${OUT}/mobile-3-reading.png`, fullPage: false });
   // hamburger menu carries Videos
   await page.getByRole("button", { name: "Open menu" }).click();

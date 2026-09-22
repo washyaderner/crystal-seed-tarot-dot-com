@@ -1,9 +1,11 @@
 /**
  * Holly's YouTube channel, as data.
  *
- * Every video on https://www.youtube.com/@CrystalSeedTarot as of 2026-09-13,
- * pulled with yt-dlp (ids, titles, durations, upload dates are YouTube's own).
- * The blurbs are ours, written for the cards on /videos.
+ * The videos themselves live in ./youtube-videos.json (ids, titles, durations
+ * and upload dates are YouTube's own, pulled with yt-dlp; the blurbs are ours,
+ * written for the cards on /videos). execution/videos-watch.py reads the channel
+ * every night, classifies anything new and appends it there, so keep the data
+ * in the JSON and the shapes, helpers and copy in this file.
  *
  * The interactive readings come in monthly rounds. Each round has, per topic,
  * one short intro where Holly lays out three readings, and the three readings
@@ -13,13 +15,24 @@
  * Relationships, a General reading with no topic at all); the page shows only
  * the topics a round has. To add a round: add its entry to ROUNDS (newest
  * first) and its videos below with the matching `round` key (one intro plus
- * three readings per topic).
+ * three readings per topic). By hand: edit the JSON. By the watchdog: it does
+ * the same edit, then builds, commits, pushes and checks the live page.
  */
+
+import channel from "./youtube-videos.json";
 
 export type Topic = "money" | "love" | "general";
 /** The order the paths are shown in, everywhere: Money on the left, General in the center, Love on the right */
 export const TOPIC_ORDER: Topic[] = ["money", "general", "love"];
 export type Choice = 1 | 2 | 3;
+export interface Round {
+  /** YYYY-MM, the month of the set; also the round key in hash links */
+  key: string;
+  /** "September 2026" */
+  label: string;
+  /** "Sept 2026" */
+  short: string;
+}
 export type VideoKind = "welcome" | "intro" | "reading" | "lesson" | "season" | "care";
 
 export interface ChannelVideo {
@@ -96,10 +109,8 @@ export const CHANNEL_HANDLE = "@CrystalSeedTarot";
 export const CHANNEL_URL = "https://www.youtube.com/@CrystalSeedTarot";
 export const SUBSCRIBE_URL = "https://www.youtube.com/@CrystalSeedTarot?sub_confirmation=1";
 
-export const ROUNDS: { key: string; label: string; short: string }[] = [
-  { key: "2025-10", label: "October 2025", short: "Oct 2025" },
-  { key: "2025-09", label: "September 2025", short: "Sept 2025" },
-];
+/** Newest first, straight from the JSON */
+export const ROUNDS: Round[] = channel.rounds;
 
 export const TOPICS: Record<
   Topic,
@@ -125,244 +136,43 @@ export const TOPICS: Record<
   },
 };
 
-const readingBlurb = (topic: Topic, round: string, choice: Choice) =>
-  `${TOPICS[topic].label} reading ${choice} of 3 for ${ROUNDS.find((r) => r.key === round)?.label}.`;
+/**
+ * Every video on the channel, newest first, straight from the JSON. The cast is
+ * the only place the JSON's plain strings become the union types above; the
+ * watchdog validates every row (kinds, topics, choices, round keys, unique ids)
+ * before it commits, and the smoke test reads the same file.
+ */
+export const VIDEOS: ChannelVideo[] = channel.videos as ChannelVideo[];
 
-export const VIDEOS: ChannelVideo[] = [
-  // October 2025 round
-  {
-    id: "MS6HI6c15T0",
-    title: "Interactive Tarot - Money & Career Intro (Oct 2025)",
-    kind: "intro",
-    topic: "money",
-    round: "2025-10",
-    duration: 42,
-    published: "2025-10-24",
-    blurb: "Holly lays out three money and career readings. Pick the one that pulls at you.",
-  },
-  {
-    id: "gaH-kOJgvxs",
-    title: "Interactive Tarot Reading - Money & Career #1 (Oct 2025)",
-    kind: "reading",
-    topic: "money",
-    round: "2025-10",
-    choice: 1,
-    duration: 639,
-    published: "2025-10-24",
-    blurb: readingBlurb("money", "2025-10", 1),
-  },
-  {
-    id: "tpEw4FYLl3I",
-    title: "Interactive Tarot Reading - Money & Career #2 (Oct 2025)",
-    kind: "reading",
-    topic: "money",
-    round: "2025-10",
-    choice: 2,
-    duration: 422,
-    published: "2025-10-24",
-    blurb: readingBlurb("money", "2025-10", 2),
-  },
-  {
-    id: "1Pg69yLaK18",
-    title: "Interactive Tarot Reading - Money & Career #3 (Oct 2025)",
-    kind: "reading",
-    topic: "money",
-    round: "2025-10",
-    choice: 3,
-    duration: 753,
-    published: "2025-10-24",
-    blurb: readingBlurb("money", "2025-10", 3),
-  },
-  {
-    id: "9e3DURlOcs4",
-    title: "Interactive Tarot - Love & Relationships Intro (Oct 2025)",
-    kind: "intro",
-    topic: "love",
-    round: "2025-10",
-    duration: 43,
-    published: "2025-10-24",
-    blurb: "Holly lays out three love readings. Pick the one that pulls at you.",
-  },
-  {
-    id: "kdLTrf67f_A",
-    title: "Interactive Tarot Reading - Love & Relationships #1 (Oct 2025)",
-    kind: "reading",
-    topic: "love",
-    round: "2025-10",
-    choice: 1,
-    duration: 730,
-    published: "2025-10-24",
-    blurb: readingBlurb("love", "2025-10", 1),
-  },
-  {
-    id: "ep1YSRLGo8E",
-    title: "Interactive Tarot Reading - Love & Relationships #2 (Oct 2025)",
-    kind: "reading",
-    topic: "love",
-    round: "2025-10",
-    choice: 2,
-    duration: 504,
-    published: "2025-10-24",
-    blurb: readingBlurb("love", "2025-10", 2),
-  },
-  {
-    id: "YE9ozNCag5k",
-    title: "Interactive Tarot Reading - Love & Relationships #3 (Oct 2025)",
-    kind: "reading",
-    topic: "love",
-    round: "2025-10",
-    choice: 3,
-    duration: 774,
-    published: "2025-10-24",
-    blurb: readingBlurb("love", "2025-10", 3),
-  },
-
-  // September 2025 round, the first one
-  {
-    id: "71ZoRwWras0",
-    title: "Interactive Tarot - Money & Career Intro Sept 2025",
-    kind: "intro",
-    topic: "money",
-    round: "2025-09",
-    duration: 31,
-    published: "2025-09-09",
-    blurb: "The very first round. Holly offers three money and career readings to choose from.",
-  },
-  {
-    id: "luTVmK6UZ1I",
-    title: "Interactive Tarot Reading - Money & Career #1 (Sept 2025)",
-    kind: "reading",
-    topic: "money",
-    round: "2025-09",
-    choice: 1,
-    duration: 766,
-    published: "2025-09-09",
-    blurb: readingBlurb("money", "2025-09", 1),
-  },
-  {
-    id: "tYu8i5efk1s",
-    title: "Interactive Tarot Reading - Money & Career #2 (Sept 2025)",
-    kind: "reading",
-    topic: "money",
-    round: "2025-09",
-    choice: 2,
-    duration: 751,
-    published: "2025-09-09",
-    blurb: readingBlurb("money", "2025-09", 2),
-  },
-  {
-    id: "vwJm9y-dPk8",
-    title: "Interactive Tarot Reading - Money & Career #3 (Sept 2025)",
-    kind: "reading",
-    topic: "money",
-    round: "2025-09",
-    choice: 3,
-    duration: 692,
-    published: "2025-09-09",
-    blurb: readingBlurb("money", "2025-09", 3),
-  },
-  {
-    id: "nuZpHWGVIH8",
-    title: "Interactive Tarot - Love & Relationships Intro Sept 2025",
-    kind: "intro",
-    topic: "love",
-    round: "2025-09",
-    duration: 31,
-    published: "2025-09-09",
-    blurb: "The very first round. Holly offers three love readings to choose from.",
-  },
-  {
-    id: "Zt82372f6p0",
-    title: "Interactive Tarot Reading - Love & Relationships #1 (Sept 2025)",
-    kind: "reading",
-    topic: "love",
-    round: "2025-09",
-    choice: 1,
-    duration: 685,
-    published: "2025-09-09",
-    blurb: readingBlurb("love", "2025-09", 1),
-  },
-  {
-    id: "r97BI6uLfVE",
-    title: "Interactive Tarot Reading - Love & Relationships #2 (Sept 2025)",
-    kind: "reading",
-    topic: "love",
-    round: "2025-09",
-    choice: 2,
-    duration: 555,
-    published: "2025-09-09",
-    blurb: readingBlurb("love", "2025-09", 2),
-  },
-  {
-    id: "MKg3G4qECyY",
-    title: "Interactive Tarot Reading - Love & Relationships #3 (Sept 2025)",
-    kind: "reading",
-    topic: "love",
-    round: "2025-09",
-    choice: 3,
-    duration: 707,
-    published: "2025-09-09",
-    blurb: readingBlurb("love", "2025-09", 3),
-  },
-
-  // The rest of the channel
-  {
-    id: "1E_-ACF3sME",
-    title: "Crystal Seed Tarot Introduction",
-    kind: "welcome",
-    duration: 509,
-    published: "2025-07-25",
-    blurb: "Meet Holly, hear how Crystal Seed Tarot started, and learn how the monthly readings work.",
-  },
-  {
-    id: "47UOQXY1LLU",
-    title: "Tarot Lesson - The Wands - What Fires You Up?",
-    kind: "lesson",
-    duration: 2248,
-    published: "2025-12-20",
-    blurb: "Wands are fire. Holly breaks down what that means for your energy, drive, and spirit, so the suit finally makes sense.",
-  },
-  {
-    id: "Tcc9MKQ56TI",
-    title: "Swords in Tarot: Why This Suit Isn't as Bad as You Think",
-    kind: "lesson",
-    duration: 1488,
-    published: "2025-11-12",
-    blurb: "Swords get a bad rap. Holly explains why the suit of air is not the villain of the deck.",
-  },
-  {
-    id: "xi3DOg93VeI",
-    title: "Scorpio Season Tarot Reading: Release & Rebirth",
-    kind: "season",
-    duration: 793,
-    published: "2025-10-24",
-    blurb: "A death-and-rebirth season reading on what is ready to fall away so something new can grow.",
-  },
-  {
-    id: "lTf9nGaJdMI",
-    title: "Sagittarius Season Tarot Reading - Adventure... Within",
-    kind: "season",
-    duration: 884,
-    published: "2025-12-20",
-    blurb: "Adventure, but inward. A season reading on taking stock and setting your sights on the year ahead.",
-  },
-  {
-    id: "msSg78S2wF8",
-    title: "How I Store My Tarot Cards (And Why I Skip the Silk & Wooden Box)",
-    kind: "care",
-    duration: 372,
-    published: "2026-03-10",
-    blurb: "Holly's real setup after almost 20 years of reading, and the myths about silk and wooden boxes.",
-  },
-  {
-    id: "hizuClTSsOo",
-    title: "Cleaning Tarot Cards",
-    kind: "care",
-    duration: 331,
-    published: "2026-03-12",
-    blurb: "Holly's go-to method for resetting a deck's energy, with commentary from a very loud crow.",
-  },
-];
+/**
+ * The JSON is plain data, so the cast above cannot catch a bad row. This runs once
+ * when the module loads (at build time, on Vercel too) and throws with the row named,
+ * so a malformed entry fails the build instead of rendering a broken card.
+ */
+(function checkChannelData() {
+  const kinds: VideoKind[] = ["welcome", "intro", "reading", "lesson", "season", "care"];
+  const seen = new Set<string>();
+  for (const v of VIDEOS) {
+    const where = `youtube-videos.json ${v.id || "(no id)"}: `;
+    if (!/^[A-Za-z0-9_-]{11}$/.test(v.id)) throw new Error(where + "id is not a YouTube id");
+    if (seen.has(v.id)) throw new Error(where + "duplicate id");
+    seen.add(v.id);
+    if (!v.title) throw new Error(where + "missing title");
+    if (!kinds.includes(v.kind)) throw new Error(where + `unknown kind ${String(v.kind)}`);
+    if (!Number.isInteger(v.duration) || v.duration <= 0) throw new Error(where + "duration must be whole seconds");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(v.published)) throw new Error(where + "published must be YYYY-MM-DD");
+    if (typeof v.blurb !== "string" || !v.blurb) throw new Error(where + "missing blurb");
+    const interactive = v.kind === "intro" || v.kind === "reading";
+    if (interactive) {
+      if (!isTopic(v.topic)) throw new Error(where + `topic ${String(v.topic)} is not one of ${TOPIC_ORDER.join(", ")}`);
+      if (!ROUNDS.some((r) => r.key === v.round)) throw new Error(where + `round ${String(v.round)} is not in rounds`);
+    }
+    if (v.kind === "reading" && ![1, 2, 3].includes(v.choice as number)) throw new Error(where + "reading needs choice 1, 2 or 3");
+  }
+  for (const r of ROUNDS) {
+    if (!/^\d{4}-\d{2}$/.test(r.key) || !r.label || !r.short) throw new Error(`youtube-videos.json round ${r.key}: needs key YYYY-MM, label and short`);
+  }
+})();
 
 export const INTERACTIVE_VIDEOS = VIDEOS.filter((v) => v.kind === "intro" || v.kind === "reading");
 
