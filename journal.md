@@ -296,3 +296,22 @@ docs(journal): pink favicon ship entry, plus the 9/13 entries
 
 chore: WIP sync snapshot 2026-09-17
 
+
+## 2026-09-17 15:36 | a2ee7d4
+
+chore: WIP sync snapshot 2026-09-17
+
+
+## 2026-09-22 00:40 | ab2bca6
+
+feat(videos): the September 2026 General set, and the channel data moves to JSON
+
+
+## 2026-09-22 00:48 | cf86e15
+
+feat(videos): nightly watchdog that puts new YouTube videos on /videos by itself
+
+
+## 2026-09-22 00:50 | ab2bca6, cf86e15
+
+feat(videos): September 2026 General set live; channel data moved to lib/youtube-videos.json with a load-time row check; smoke reads the JSON. feat(videos): execution/videos-watch.py, the nightly 3:07 AM watchdog (launchd com.studio.crystal-seed-videos-watch) that places new YouTube videos by title rules, builds, pushes, proves live, smokes production and pings Russ + the handoffs bus; review pile with a Jev v2 suggestion for anything the rules cannot place. End-to-end proved on a scratch clone; replay 27/27.
