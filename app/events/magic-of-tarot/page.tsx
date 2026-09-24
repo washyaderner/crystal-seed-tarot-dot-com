@@ -49,8 +49,8 @@ export default function MagicOfTarotPage() {
             </dl>
 
             <p className="mt-5 text-white/80">
-              Take a journey through the cards with expert tarot reader Holly Cole. With twenty years of
-              experience, she breaks down the systems of Tarot to make them easy to understand. You&rsquo;ll cover
+              Take a journey through the cards with expert tarot reader Holly Cole. Reading professionally since
+              2008, she breaks down the systems of Tarot to make them easy to understand. You&rsquo;ll cover
               the suits and numerology, reversals, working with both sides of the deck, how to give a 3-card
               reading, and hands-on partner practice.
             </p>
