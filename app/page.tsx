@@ -196,7 +196,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Services Section - 2x2 Grid */}
+      {/* Services Overview */}
       <section className="py-12 md:py-24 bg-black/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif text-center mb-8 md:mb-16 text-white">
@@ -297,6 +297,24 @@ export default async function Home() {
               </CardContent>
             </Card>
           </div>
+          <Card className="max-w-4xl mx-auto mt-6 md:mt-8 bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card">
+            <CardContent className="p-4 md:p-6">
+              <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3 md:mb-4">
+                <h3 className="text-lg md:text-xl font-serif text-white">Burn After Reading</h3>
+                <p className="text-white font-semibold">$125</p>
+              </div>
+              <p className="text-white text-sm md:text-base mb-4">
+                A 10 card reading to uncover what you’re ready to let go of,
+                followed by an intentional burn ceremony in my cauldron and a
+                Palo Santo smudging for nice clean energy moving forward.
+              </p>
+              <Button asChild variant="outline" size="default">
+                <Link href="/services#burn-after-reading" className="text-white">
+                  Explore Burn After Reading
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
           <div className="text-center mt-6 md:mt-8">
             <Button asChild variant="outline" size="default">
               <Link href="/services" className="text-white">
