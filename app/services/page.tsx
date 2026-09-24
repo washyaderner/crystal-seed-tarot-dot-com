@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 export const metadata: Metadata = {
   title: "Tarot Reading Services & Pricing",
   description:
-    "Private tarot readings, party and event readings, and private tarot lessons with Crystal Seed Tarot. Serving Portland, Vancouver, and beyond.",
+    "Private tarot readings, Burn After Reading ceremonies, party and event readings, and tarot lessons with Crystal Seed Tarot. Serving Portland, Vancouver, and beyond.",
   alternates: { canonical: "/services" },
   openGraph: {
     images: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     ],
     title: "Tarot Reading Services & Pricing | Crystal Seed Tarot",
     description:
-      "Private tarot readings, party and event readings, and private tarot lessons.",
+      "Private tarot readings, Burn After Reading ceremonies, party and event readings, and private tarot lessons.",
     url: "/services",
   },
 };
@@ -137,6 +137,38 @@ export default function Services() {
               </Card>
             ))}
           </div>
+
+          <section
+            id="burn-after-reading"
+            aria-labelledby="burn-after-reading-title"
+            className="scroll-mt-24 max-w-4xl mx-auto mb-8 md:mb-16 bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-8 rounded-lg"
+          >
+            <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4 md:mb-6">
+              <h2 id="burn-after-reading-title" className="text-2xl md:text-3xl font-serif text-white">
+                Burn After Reading
+              </h2>
+              <p className="text-xl md:text-2xl font-semibold text-white">$125</p>
+            </div>
+            <p className="text-sm md:text-base text-white/80 mb-4">
+              First, you’ll get a 10 card reading which will allow us to uncover
+              energetic blockages, old habits and patterns that need to be discarded,
+              and unhelpful ways of existing that we need to extinguish.
+            </p>
+            <p className="text-sm md:text-base text-white/80 mb-4">
+              Once the universe has shed a light on what we need to let go of, we
+              will write those things down and have an intentional burn ceremony
+              where we release these things back to the universe by burning them
+              in my cauldron.
+            </p>
+            <p className="text-sm md:text-base text-white/80 mb-6">
+              A nice Palo Santo smudging afterwards will help us to stay clear of
+              the things that we’ve released and provide us with nice clean energy
+              moving forward.
+            </p>
+            <Button asChild variant="outline" size="default">
+              <Link href="/contact" className="text-white">Book Burn After Reading</Link>
+            </Button>
+          </section>
 
           <div className="bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-8 rounded-lg">
             <h2 className="text-2xl md:text-3xl font-serif text-white mb-4 md:mb-6">
