@@ -300,8 +300,8 @@ export default async function Home() {
           <Card className="overflow-hidden max-w-4xl mx-auto mt-6 md:mt-8 bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card md:grid md:grid-cols-2">
             <div className="relative aspect-[3/2] self-center">
               <Image
-                src="/images/Services-Burn-After-Reading.webp"
-                alt="Burning paper in a cast-iron cauldron beside purple tarot card backs, Palo Santo, and amethyst"
+                src="/images/Services-Burn-After-Reading-v2.webp"
+                alt="Burning paper in a cast-iron cauldron beside Tarotdoxa card backs, Palo Santo, and clear and coral-red crystal clusters"
                 fill
                 sizes="(max-width: 768px) 100vw, 448px"
                 className="object-cover"

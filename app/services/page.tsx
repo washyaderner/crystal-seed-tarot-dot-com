@@ -145,8 +145,8 @@ export default function Services() {
           >
             <div className="relative aspect-[3/2] overflow-hidden rounded-lg mb-6">
               <Image
-                src="/images/Services-Burn-After-Reading.webp"
-                alt="Burning paper in a cast-iron cauldron beside purple tarot card backs, Palo Santo, and amethyst"
+                src="/images/Services-Burn-After-Reading-v2.webp"
+                alt="Burning paper in a cast-iron cauldron beside Tarotdoxa card backs, Palo Santo, and clear and coral-red crystal clusters"
                 fill
                 sizes="(max-width: 768px) 100vw, 832px"
                 className="object-cover"
