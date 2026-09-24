@@ -143,6 +143,15 @@ export default function Services() {
             aria-labelledby="burn-after-reading-title"
             className="scroll-mt-24 max-w-4xl mx-auto mb-8 md:mb-16 bg-white/10 backdrop-blur-md border border-white/20 md:frosted-card p-4 md:p-8 rounded-lg"
           >
+            <div className="relative aspect-[3/2] overflow-hidden rounded-lg mb-6">
+              <Image
+                src="/images/Services-Burn-After-Reading.webp"
+                alt="Burning paper in a cast-iron cauldron beside purple tarot card backs, Palo Santo, and amethyst"
+                fill
+                sizes="(max-width: 768px) 100vw, 832px"
+                className="object-cover"
+              />
+            </div>
             <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4 md:mb-6">
               <h2 id="burn-after-reading-title" className="text-2xl md:text-3xl font-serif text-white">
                 Burn After Reading
