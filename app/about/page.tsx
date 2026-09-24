@@ -73,7 +73,7 @@ export default function About() {
 
               <div className="prose prose-invert prose-lg max-w-none">
                 <p className="text-white/90 mb-8 leading-relaxed">
-                  I have been a professional Tarot card reader for sixteen years
+                  I have been a professional Tarot card reader since 2008
                   and I love what I do! I provide Tarot services for private
                   readings as well as public and private events, and teach Tarot
                   classes and give private Tarot lessons. I am grateful for all
